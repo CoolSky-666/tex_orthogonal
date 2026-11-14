@@ -1,0 +1,231 @@
+\chapter{术语表}
+
+本表汇总全书正文中出现的数学与物理术语，按英文原名词的字母顺序排列；每条给出中文译名、英文原词与简洁释义，便于中英对照、随时查阅。术语的中文译名与本书其余各章保持一致。
+
+\begin{description}[style=nextline, leftmargin=0em, itemsep=0.8ex]
+
+\item[基（Basis）]
+\emph{n} 维矢量空间 $V$ 的一组基，是 $n$ 个矢量 $\{\mathbf{e}_1,\mathbf{e}_2,\dots,\mathbf{e}_n\}$ 的集合，使得 $V$ 中任意矢量 $\mathbf{v}$ 都可写成这些基矢量的倍数之和：
+\[
+\mathbf{v} = v^{1}\mathbf{e}_{1} + v^{2}\mathbf{e}_{2} + \cdots + v^{n}\mathbf{e}_{n} .
+\]
+数 $v^{1},v^{2},\dots,v^{n}$ 称为矢量 $\mathbf{v}$ 相对于该基的\emph{坐标}或\emph{分量}；同一个矢量相对于不同的基具有不同的分量。本书主要涉及四维矢量空间，基矢量常不以 $1,2,3,4$ 编号，而记作 $\mathbf{e}_x,\mathbf{e}_y,\mathbf{e}_z,\mathbf{e}_t$。我们所使用的基大多是\textbf{正交归一}（orthonormal）的："归一"指所有矢量长度为 $1$，"正交"指它们两两垂直。例如在实数四元组构成的矢量空间 $\mathbb{R}^4$ 中，配以标准点积，一组正交归一基就是\textbf{标准基}：
+\[
+\mathbf{e}_x=(1,0,0,0),\quad \mathbf{e}_y=(0,1,0,0),\quad \mathbf{e}_z=(0,0,1,0),\quad \mathbf{e}_t=(0,0,0,1).
+\]
+
+\orthofig{images/99__001.png}{二维空间中的基（Bases in two dimensions）}
+
+\item[行列式（Determinant）]
+$n\times n$ 矩阵 $A$ 的行列式记作 $\det(A)$，它给出与 $A$ 对应的线性函数对 $n$ 维立方体体积的改变因子。若 $A$ 把 $n$ 维立方体压扁到低于 $n$ 维，行列式为零；若 $A$ 反转 $n$ 维立方体的取向，行列式为负。例如在二维情形，点集 $\{(0,0),(1,0),(1,1),(0,1)\}$ 按\emph{逆时针}顺序给出边长 $1$ 的正方形顶点；把 $A$ 作用于这些点得到四个新点，$|\det(A)|$ 就是以这些新点为顶点的平行四边形的面积，而当新点按\emph{顺时针}顺序排列时 $\det(A)$ 为负。
+
+\orthofig{images/99__002.png}{行列式示例（Determinant example）}
+
+设 $A$ 为 $2\times2$ 矩阵
+\[
+A=\begin{pmatrix} a & b \\ c & d \end{pmatrix},
+\]
+则平行四边形的两条边是矢量 $\mathbf{v}=(a,c)$ 与 $\mathbf{w}=(b,d)$。由于矢量 $\mathbf{p}=(-c,a)$ 垂直于 $\mathbf{v}$，若以 $\mathbf{v}$ 为"底"，则平行四边形的高 $h=(\mathbf{w}\cdot\mathbf{p})/|\mathbf{p}|$；面积等于高乘以底长，于是
+\[
+\det(A)=h|\mathbf{v}|=h|\mathbf{p}|=\mathbf{w}\cdot\mathbf{p}=ad-bc .
+\]
+一般地，求 $n\times n$ 矩阵 $A$ 的行列式，先列出 $\{1,2,\dots,n\}$ 的所有排列；每个排列对应一个称为其符号的数，当该排列相对原序经历偶数次交换时为 $+1$，经历奇数次交换时为 $-1$。对每个排列，用其符号乘以 $n$ 个矩阵分量之积（每行取一个，列号由排列中对应的数确定），所有这些乘积之和就是行列式：
+\[
+\det(A)=\sum_{p\ \text{为}\ \{1,2,\dots,n\}\ \text{的排列}} \sgn(p)\, A^{1}_{p(1)} A^{2}_{p(2)} \cdots A^{n}_{p(n)} .
+\]
+本例中 $\{1,2\}$ 的排列只有 $\{1,2\}$（符号 $1$）与 $\{2,1\}$（符号 $-1$），故
+\[
+\det(A)=A^{1}_{1}A^{2}_{2}-A^{1}_{2}A^{2}_{1}=ad-bc .
+\]
+另一个很有用的特例是\textbf{对角矩阵} $D$——除对角元外分量全为零的矩阵——的行列式：唯一始终落在对角线上的排列是保持 $\{1,2,\dots,n\}$ 原序的那个，故
+\[
+\det(D)=D^{1}_{1}D^{2}_{2}\cdots D^{n}_{n} .
+\]
+
+\item[点积（Dot product）]
+在四维黎曼几何中，两个矢量 $\mathbf{v}$ 与 $\mathbf{w}$ 的点积记作 $\mathbf{v}\cdot\mathbf{w}$，定义为
+\[
+\mathbf{v}\cdot\mathbf{w}=v^{x}w^{x}+v^{y}w^{y}+v^{z}w^{z}+v^{t}w^{t},
+\]
+其中 $v^{x}$ 等与 $w^{x}$ 等是两矢量在某正交归一基下的分量。它以显然的方式推广到 $n$ 维情形；用爱因斯坦求和约定即写作 $\mathbf{v}\cdot\mathbf{w}=v^{i}w^{i}$。点积还与两矢量的长度及其夹角 $\theta$ 有关：$\mathbf{v}\cdot\mathbf{w}=|\mathbf{v}|\,|\mathbf{w}|\cos\theta$。
+
+这里从\textbf{正交归一}基出发给出的定义适用于物理应用——我们理所当然地认为可以测量矢量的长度，并能从物理上判断它是否垂直于另一矢量。而在纯数学中，则需\emph{先}给出点积才能定义正交归一基：正是 $\mathbf{e}_x\cdot\mathbf{e}_y=0$ 告诉我们 $\mathbf{e}_x$ 与 $\mathbf{e}_y$ 正交，而 $\mathbf{e}_x\cdot\mathbf{e}_x=1$ 告诉我们 $\mathbf{e}_x$ 的长度为 $1$。例如在处理实数四元组空间 $\mathbb{R}^4$ 时，一般会使用\textbf{标准点积}，其定义为
+\[
+(v^{x},v^{y},v^{z},v^{t})\cdot(w^{x},w^{y},w^{z},w^{t})=v^{x}w^{x}+v^{y}w^{y}+v^{z}w^{z}+v^{t}w^{t},
+\]
+由此 $\mathbb{R}^4$ 的标准基恰为正交归一基。（详见"点积"专题注记。）
+
+\item[对偶（Dual）]
+若 $V$ 是实矢量空间，则 $V$ 上的\textbf{对偶矢量}是从 $V$ 到实数集 $\mathbb{R}$ 的线性函数 $f$。$V$ 的\textbf{对偶空间}记作 $V^{*}$，是 $V$ 上全体对偶矢量构成的集合，其本身也是一个矢量空间。若 $\{\mathbf{e}_1,\mathbf{e}_2,\dots,\mathbf{e}_n\}$ 是 $V$ 的一组基，则 $V^{*}$ 的\textbf{对偶基} $\{\mathbf{e}^{1},\mathbf{e}^{2},\dots,\mathbf{e}^{n}\}$ 是 $V$ 上一组满足下式的函数：
+\[
+\mathbf{e}^{i}(\mathbf{e}_{j})=\delta^{i}_{j},
+\]
+其中 $\delta^{i}_{j}$ 称为克罗内克（Kronecker）$\delta$ 符号，当 $i=j$ 时为 $1$，当 $i\neq j$ 时为 $0$。（详见"对偶矢量"专题注记。）
+
+\item[爱因斯坦求和约定（Einstein summation convention）]
+爱因斯坦求和约定是书写含矢量与矩阵分量的表达式中各项之和的一种简便记法。按此约定，凡是同一指标变量在一个乘积中出现两次，就意味着该乘积实际上是对该指标的所有适用取值求和。例如
+\[
+M^{i}_{j}v^{j},
+\]
+其中 $v^{j}$ 表示 $n$ 维矢量 $\mathbf{v}$ 的一个分量，指标 $j$ 出现两次，求和约定告诉我们把它展开为
+\[
+M^{i}_{j}v^{j}=M^{i}_{1}v^{1}+M^{i}_{2}v^{2}+\cdots+M^{i}_{n}v^{n} .
+\]
+注意，写成 $v^{x}w^{x}$ 这类项时，重复的"$x$"只是标记这两个矢量各自的\emph{特定}分量，故求和约定并不适用；每当 $x,y,z,t$ 作为上标或下标出现时，都只表示对应于传统坐标轴的标记，而不是需要求和的指标变量。
+
+\item[欧几里得群（Euclidean group）]
+欧几里得群 $E(n)$ 是 $n$ 维欧几里得空间所有对称变换构成的群，包括平移、转动与反射。本书主要涉及 $E(4)$，即四维欧几里得空间的对称变换。只含平移与转动、不含反射的欧几里得群子群，称为\textbf{特殊欧几里得群} $SE(n)$。（详见"对称性"专题注记。）
+
+\item[欧几里得宇宙（Euclidean universe）]
+本书用"欧几里得宇宙"一词，指一种理想化的四维黎曼宇宙：它是\emph{无限}且\emph{平直}的，因而服从欧几里得几何的公设。在我们自己的宇宙中，远离任何强引力场的\emph{空间}的微小区域，其几何非常接近欧几里得几何，但这类区域的\emph{时空}几何却并非如此，因为时间间隔不服从勾股定理；在我们宇宙中，近似的平直时空由闵可夫斯基（Minkowski）时空描述。
+
+\textbf{注意}：在物理学文献中，"欧几里得"一词常被用于经威克转动（Wick rotation）得到的物理定律版本。这些定律\emph{并非}\emph{正交}宇宙所适用的定律。
+
+\item[群（Group）]
+在数学中，群是集合 $G$ 连同一种"运算"——把 $G$ 中两个元素结合为第三个元素的方式。这种群运算有时称为"乘法"，把元素 $g$ 与 $h$ 结合所得的元素通常记作 $gh$。它必须服从与正数普通乘法类似的规则，但不必是\textbf{可交换}的，即可能有 $gh\neq hg$。具体地：
+\begin{itemize}
+  \item 群"乘法"必须\textbf{满足结合律}：$(gh)k=g(hk)$。
+  \item 群必须含有\textbf{单位元}，通常记作 $e$（矩阵群中有时记作 $1$ 或 $I$），满足 $ge=eg=g$。
+  \item 群中每个元素 $g$ 都必须有逆元 $g^{-1}$，满足 $gg^{-1}=g^{-1}g=e$。
+\end{itemize}
+可交换群的例子：正实数集 $\mathbb{R}^{+}$（以普通乘法为群运算）；实数 $n$ 元组构成的矢量空间 $\mathbb{R}^{n}$（以矢量加法为群运算、零矢量为单位元）。不可交换群的例子：全体行列式非零的 $n\times n$ 实矩阵集合 $GL(n)$（以矩阵乘法为群运算）；全体转置等于逆的 $n\times n$ 实矩阵集合 $O(n)$（以矩阵乘法为群运算）。
+
+\item[单位矩阵（Identity matrix）]
+$n\times n$ 单位矩阵记作 $I_n$，是除对角元为 $1$ 外其余分量全为零的矩阵。若 $n$ 由上下文显然可知，就简写为 $I$ 而不写 $I_n$。例如 $I_4$ 为
+\[
+I_{4}=\begin{pmatrix}1&0&0&0\\0&1&0&0\\0&0&1&0\\0&0&0&1\end{pmatrix}.
+\]
+用单位矩阵作乘法不会改变任何其他矩阵：若 $A$ 是任意 $n\times n$ 矩阵，则
+\[
+AI_{n}=I_{n}A=A .
+\]
+
+\item[逆矩阵（Inverse matrix）]
+$n\times n$ 矩阵 $A$ 的逆是满足下式的 $n\times n$ 矩阵，记作 $A^{-1}$：
+\[
+AA^{-1}=A^{-1}A=I_{n},
+\]
+其中 $I_n$ 是 $n\times n$ 单位矩阵。$A$ 的逆存在，当且仅当 $A$ 的行列式不为零。矩阵乘积的逆等于各个矩阵之逆的\emph{逆序}乘积：
+\[
+(AB)^{-1}=B^{-1}A^{-1}.
+\]
+
+\item[线性函数（Linear function）]
+线性函数是从一个矢量空间到另一个矢量空间（或许就是同一个）的函数，其特点是：先作函数还是先对矢量作加法或数乘，结果没有区别。也就是说，函数 $f$ 是线性的，当且仅当
+\[
+f(\mathbf{v}+\mathbf{w})=f(\mathbf{v})+f(\mathbf{w}),\qquad f(s\mathbf{v})=s\,f(\mathbf{v}).
+\]
+若 $f$ 是从 $m$ 维矢量空间 $V$ 到 $n$ 维矢量空间 $W$ 的线性函数，并为 $V$ 取基 $\{\mathbf{e}_1,\dots,\mathbf{e}_m\}$、为 $W$ 取基 $\{\mathbf{e}'_1,\dots,\mathbf{e}'_n\}$，就可用一个 $n\times m$ 矩阵 $M$ 来描述 $f$：矩阵分量 $M^{i}_{j}$ 是矢量 $f(\mathbf{e}_j)$ 相对于 $W$ 的基的第 $i$ 个分量。于是（用爱因斯坦求和约定）
+\[
+f(\mathbf{v})=f(v^{j}\mathbf{e}_{j})=v^{j}f(\mathbf{e}_{j})=M^{i}_{j}v^{j}\mathbf{e}'_{i}.
+\]
+
+\item[洛伦兹型（Lorentzian）]
+本书用形容词"洛伦兹型"来区分\textbf{适用于我们自身宇宙的物理}与适用于\emph{正交}宇宙的物理。（详见"洛伦兹几何与黎曼几何"专题注记。）
+
+\emph{[为何称"洛伦兹型"？亨德里克·安东·洛伦兹（Hendrik Antoon Lorentz）是一位荷兰物理学家，他建立了爱因斯坦在狭义相对论中所使用的数学框架。"洛伦兹型"一词用来指这样一种几何：其中一个维度作为\emph{时间}维度而与其余维度相区别。相比之下，在黎曼空间中，所有维度在根本上是彼此平等的。]}
+
+\item[矩阵（Matrix）]
+$n\times m$ 矩阵 $M$ 是数的网格或表格（本书中为实数或复数），有 $n$ 行、每行 $m$ 个数。各个数称为矩阵的\emph{分量}；$M^{i}_{j}$ 表示矩阵 $M$ 第 $i$ 行第 $j$ 个数。若 $A$ 是 $n\times m$ 矩阵、$B$ 是 $m\times p$ 矩阵，则可把 $A$ 与 $B$ 相乘得到 $n\times p$ 矩阵 $C=AB$，其中
+\[
+C^{i}_{j}=A^{i}_{1}B^{1}_{j}+A^{i}_{2}B^{2}_{j}+\cdots+A^{i}_{m}B^{m}_{j},
+\]
+或直接用爱因斯坦求和约定写作 $C^{i}_{j}=A^{i}_{k}B^{k}_{j}$。注意，要使矩阵乘积 $AB$ 存在，$A$ 的\emph{行}数必须等于 $B$ 的\emph{列}数。若 $A$ 与 $B$ 是同阶方阵，则 $AB$ 与 $BA$ 都存在，但一般并不相等。
+
+可以把 $n\times m$ 矩阵 $M$ 视为从 $m$ 维矢量空间 $V$ 到 $n$ 维矢量空间 $W$ 的线性函数：把 $V$ 中任意矢量 $\mathbf{v}$ 看作一个 $m\times 1$ 矩阵，其单列的数就是 $\mathbf{v}$ 在某选定基下的 $m$ 个分量；则矩阵乘积 $M\mathbf{v}$ 给出一个 $n\times 1$ 矩阵，可视为 $W$ 中某矢量在某选定基下的 $n$ 个分量。于是 $M$ 连同 $V$、$W$ 中各选定的基，给出从 $V$ 到 $W$ 的线性函数 $f$。若 $V$ 的基为 $\{\mathbf{e}_1,\dots,\mathbf{e}_m\}$、$W$ 的基为 $\{\mathbf{e}'_1,\dots,\mathbf{e}'_n\}$，用爱因斯坦求和约定可写
+\[
+f(\mathbf{v})=f(v^{j}\mathbf{e}_{j})=v^{j}f(\mathbf{e}_{j})=M^{i}_{j}v^{j}\mathbf{e}'_{i}.
+\]
+
+\item[零矢量（Null Vector）]
+沿普通时空中光所描绘的世界线指向的矢量。（详见"洛伦兹几何与黎曼几何"专题注记。）
+
+\item[O(4)]
+全体转置等于逆的 $4\times4$ 实矩阵集合称为 $O(4)$。它以矩阵乘法为群运算，构成一个群，另一名称为四维\emph{正交群}。若把这些矩阵视为四维空间上的线性函数，它们描述该空间中所有的转动与反射。（详见"对称性"专题注记。）
+
+\item[黎曼型（Riemannian）]
+本书用形容词"黎曼型"来区分\textbf{适用于\emph{正交}宇宙的物理}与适用于我们自身宇宙的物理。（详见"洛伦兹几何与黎曼几何"专题注记。）
+
+\emph{[为何称"黎曼型"？格奥尔格·弗里德里希·伯恩哈德·黎曼（Georg Friedrich Bernhard Riemann）是微分几何领域的先驱之一，这门学科把欧几里得几何推广到弯曲曲面与空间。在该领域中，数学家用"黎曼型"来描述我们通常视为各类\emph{空间}（无论平直或弯曲）、其中所有维度被视为根本平等的几何。相比之下，在我们自身的洛伦兹型\emph{时空}中，其中一个维度——\emph{时间}——受到特殊对待。]}
+
+\item[黎曼标量波（RSW）方程（Riemannian Scalar Wave (RSW) Equation）]
+这是标量波 $A$ 在黎曼宇宙真空中传播所满足的方程：
+\begin{equation}
+\partial_{x}^{2}A+\partial_{y}^{2}A+\partial_{z}^{2}A+\partial_{t}^{2}A+\wms^{2}A=0 . \tag{RSW}
+\end{equation}
+（详见"标量波"专题注记。）
+
+\item[黎曼矢量波（RVW）方程（Riemannian Vector Wave (RVW) Equations）]
+这些是矢量波 $\mathbf{A}$ 在黎曼宇宙真空中传播所满足的方程：
+\begin{equation}
+\partial_{x}^{2}\mathbf{A}+\partial_{y}^{2}\mathbf{A}+\partial_{z}^{2}\mathbf{A}+\partial_{t}^{2}\mathbf{A}+\wms^{2}\mathbf{A}=\mathbf{0}, \tag{RVW}
+\end{equation}
+\begin{equation}
+\partial_{x}A^{x}+\partial_{y}A^{y}+\partial_{z}A^{z}+\partial_{t}A^{t}=0 . \tag{Transverse}
+\end{equation}
+（详见"矢量波"专题注记。）可以把第一式推广，以包含源项：
+\begin{equation}
+\partial_{x}^{2}\mathbf{A}+\partial_{y}^{2}\mathbf{A}+\partial_{z}^{2}\mathbf{A}+\partial_{t}^{2}\mathbf{A}+\wms^{2}\mathbf{A}+\mathbf{j}=\mathbf{0} . \tag{RVWS}
+\end{equation}
+（详见"黎曼电磁学"专题注记。）
+
+\item[标量（Scalar）]
+所有观察者都会一致同意的数，因为它不依赖于观察者对坐标系的选择。例如气压是标量，而"电场在 $x$ 方向的分量"则不是。
+
+\item[SO(4)]
+全体转置等于逆且行列式为 $1$ 的 $4\times4$ 实矩阵集合称为 $SO(4)$。它以矩阵乘法为群运算，构成一个群，另一名称为四维\emph{特殊正交群}。若把这些矩阵视为四维空间上的线性函数，它们描述该空间中所有的转动。（详见"对称性"专题注记。）
+
+\item[子空间（Subspace）]
+矢量空间 $V$ 的子空间是 $V$ 的一个子集，它本身也是一个矢量空间。例如在二维及以上的矢量空间中，任何过原点的直线都是原矢量空间的一维子空间。但并非矢量空间的所有子集都是\emph{子空间}：所有长度为 $1$ 的矢量构成的球面就\emph{不}构成子空间，因为把两个长度为 $1$ 的矢量相加会得到另一个长度不同的矢量，落在所选子集之外。
+
+\item[转置（Transpose）]
+$n\times m$ 矩阵 $A$ 的转置是 $m\times n$ 矩阵，记作 $A^{\mathrm{T}}$，其各列就是原矩阵的各行。矩阵乘积的转置等于各个矩阵转置之积的\emph{逆序}乘积：
+\[
+(AB)^{\mathrm{T}}=B^{\mathrm{T}}A^{\mathrm{T}}.
+\]
+
+\item[矢量空间（Vector space）]
+矢量空间 $V$ 是一组对象构成的集合，其中对象可以彼此相加，也可以乘以某种数（本书中这些数为实数或复数）。它须满足以下各条：
+\begin{itemize}
+  \item 每个矢量空间都含有一个\emph{零矢量} $\mathbf{0}$，把它加到任何矢量上都不改变该矢量：$\mathbf{v}+\mathbf{0}=\mathbf{v}$。
+  \item 每个矢量 $\mathbf{v}$ 都有一个相反量（或称\emph{加法逆元}）$-\mathbf{v}$，满足 $\mathbf{v}+(-\mathbf{v})=\mathbf{0}$。
+  \item 乘法对加法\emph{满足分配律}：$s(\mathbf{v}+\mathbf{w})=s\mathbf{v}+s\mathbf{w}$ 且 $(r+s)\mathbf{v}=r\mathbf{v}+s\mathbf{v}$。
+  \item 还可定义矢量之间的减法：$\mathbf{v}-\mathbf{w}=\mathbf{v}+(-\mathbf{w})$。
+  \item 矢量空间对这些运算必须\emph{封闭}：若选定了集合 $V$ 并在其上定义这些运算，则运算结果决不允许落到 $V$ \emph{之外}。
+\end{itemize}
+例如取 $V$ 为全体实数四元组构成的集合 $\mathbb{R}^4$，按显然的方式定义加法、数乘、零矢量与相反量：
+\[
+(x,y,z,t)+(a,b,c,d)=(x+a,y+b,z+c,t+d),\qquad s(x,y,z,t)=(sx,sy,sz,st),
+\]
+\[
+\mathbf{0}=(0,0,0,0),\qquad -(x,y,z,t)=(-x,-y,-z,-t).
+\]
+
+\item[威克转动（Wick rotation）]
+威克转动是现代物理学中用来分析\emph{我们自身宇宙}中某些问题的一种手段。在威克转动中，把时间 $t$ 替换为虚数 $\ii\tau$，而\emph{其余一切都不改变}。与之相反，小说\emph{正交}所涉及的物理，是改变各方程中某些参数的正负号，由此得到的结果与威克转动大不相同。
+
+例如，在自然单位下，普通的洛伦兹型克莱因—戈尔登（Klein-Gordon）方程为
+\begin{equation}
+\partial_{x}^{2}\psi+\partial_{y}^{2}\psi+\partial_{z}^{2}\psi-\partial_{t}^{2}\psi-m^{2}\psi=0 . \tag{1}
+\end{equation}
+（常可看到它写作 $\partial^{\mu}\partial_{\mu}\psi+m^{2}\psi=0$，其中对 $\mu$ 用爱因斯坦求和约定求和；$m^{2}\psi$ 项取正号，是因为作者采用了闵可夫斯基度规的 $(+,-,-,-)$ 号差，即 $\partial^{\mu}\partial_{\mu}\psi=\partial_{t}^{2}\psi-\partial_{x}^{2}\psi-\partial_{y}^{2}\psi-\partial_{z}^{2}\psi$。）
+
+经威克转动（$t\to\ii\tau$）后的版本为
+\begin{equation}
+\partial_{x}^{2}\psi+\partial_{y}^{2}\psi+\partial_{z}^{2}\psi+\partial_{\tau}^{2}\psi-m^{2}\psi=0 . \tag{2}
+\end{equation}
+适用于\emph{正交}宇宙的黎曼型版本与之相似，但 $m^{2}$ 项的符号相反：
+\begin{equation}
+\partial_{x}^{2}\psi+\partial_{y}^{2}\psi+\partial_{z}^{2}\psi+\partial_{t}^{2}\psi+m^{2}\psi=0 . \tag{3}
+\end{equation}
+普通的克莱因—戈尔登方程 \textbf{(1)} 具有有界的平面波解：
+\begin{equation}
+\psi(\mathbf{x})=\sin(k^{x}x+k^{y}y+k^{z}z-k^{t}t), \tag{4}
+\end{equation}
+其中 $\mathbf{k}$ 是任一满足 $(k^{x})^{2}+(k^{y})^{2}+(k^{z})^{2}-(k^{t})^{2}=-m^{2}$ 的类时矢量。适用于\emph{正交}宇宙的 \textbf{(3)} 式同样具有有界的平面波解：
+\begin{equation}
+\psi(\mathbf{x})=\sin(\mathbf{k}\cdot\mathbf{x}), \tag{5}
+\end{equation}
+其中 $|\mathbf{k}|^{2}=m^{2}$。但威克转动版本 \textbf{(2)} 的\emph{全部}解都会沿至少一个方向指数增长：若把解 \textbf{(5)} 代入方程 \textbf{(2)}，将得到 $|\mathbf{k}|^{2}=-m^{2}$，这只有在 $\mathbf{k}$ 至少有一个分量为虚数时才可能成立——而虚数的正弦会指数增长。
+
+\end{description}

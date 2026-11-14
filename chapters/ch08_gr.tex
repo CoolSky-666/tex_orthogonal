@@ -1,0 +1,489 @@
+\chapter{黎曼广义相对论}
+
+本章探讨引力的本质在黎曼宇宙中会发生怎样的变化。我们首先从直观论证出发，说明为何黎曼宇宙既不会有黑洞，也不存在（我们所理解的）引力波与大爆炸；随后在进阶部分系统推导黎曼宇宙的 Schwarzschild--Kottler 解、测试粒子的运动常数与有效势、圆轨道与逃逸速度、引力蓝移与时间膨胀、引力散射，并借助 Einstein 方程把时空曲率与物质的熵态联系起来，讨论各类均匀各向同性宇宙模型及其拓扑。全章沿用黎曼度规 $(+,+,+,+)$ 与光速可变的设定，引力常数经单位选取归一化。
+
+\section{我们确实没有黑洞（Yes, We Have No Black Holes）}
+
+黎曼宇宙中的引力行为与我们自身宇宙有多大不同？
+
+一种可能的变化是：既然既没有固定的光速、对物质客体也没有任何速度上限，那么看起来就不可能有黑洞——若你能以任意高的速度运动，那么无论一个天体的逃逸速度有多大，原则上你都能达到该速度。
+
+但另一方面，物体的动能并不会随速度无限增大。如我们此前所讨论的，当速度趋于无穷时，动能趋近于物体的静止质量。那么，若你身处一个引力势阱中、深到你的势能小于 $-m$（即静止质量的反号），又会怎样？至少在牛顿引力中，质量为 $m$ 的物体在距质量为 $M$ 的恒星或行星 $r$ 处的势能为
+\[
+U=-\frac{GMm}{r},
+\]
+其大小在 $r<GM$ 时就超过静止质量 $m$。把引力势能与黎曼运动学结合，可以证明如下量守恒：
+\begin{equation*}
+E^{2}=\frac{1+2GM/r}{1+v^{2}},
+\end{equation*}
+这正是引力场中能量守恒的黎曼广义相对论（Riemannian general relativity）版本。无论物体下落并加速，还是远离大质量天体上升而被减速，这个量都保持不变。因此，为使物体在距大质量天体无穷远处速度为 $0$——也就是它恰好以逃逸速度运动的条件——需要 $E^{2}=1$。换言之：
+\begin{align*}
+\frac{1+2GM/r}{1+v_{esc}(r)^{2}} &= 1,\\
+v_{esc}(r)^{2} &= \frac{2GM}{r},\\
+\frac{1}{2}mv_{esc}(r)^{2}-\frac{GMm}{r} &= 0.
+\end{align*}
+
+最后一行表明，牛顿形式的动能与牛顿形式的势能之和为零。这同一最终结果在我们自身宇宙中其实也成立——但在我们的宇宙里 $v$ 必须小于 $1$，于是在 $r=2GM$ 处逃逸已不可能，你便越过了黑洞的事件视界（event horizon）。而在黎曼宇宙中，正如我们最初的直觉所提示的：$v$ 没有上限，意味着引力永远不会强到无法逃脱。
+
+\orthofig{images/06__005.png}{黎曼与牛顿引力场中靠近大质量天体时的轨迹}
+
+尽管黎曼宇宙没有黑洞，一个足够致密的大质量天体周围的弯曲四维空间仍会产生一些奇特效应。首先是时间膨胀（time dilation），其方向与我们宇宙中的引力时间膨胀相反：在黎曼宇宙中，若你在大质量天体附近度过一段时间，然后再与一位一直保持距离的同伴会合，则\emph{你}经历的时间比同伴\emph{更多}。
+
+另一种效应是曲率对离心力的修正。在我们宇宙中，若你离黑洞太近，离心力实际上会反向，帮你被推向洞中。而在黎曼宇宙中，离心力始终是斥力，甚至可以比牛顿版本的离心力更强。其结果是，若你从某个致密大质量天体旁经过得太近，你非但不会沿牛顿双曲轨道绕行，反而会被推离开它。
+
+由于离心力更强，行星绕行轨道的速度存在上限——无论它与所绕恒星多近、无论恒星多重。任何圆轨道都不可能以大于 $1/\sqrt2$ 的速度存在；若行星速度更快，离心力就会压倒引力。
+
+\section{没有引力波（No Gravitational Waves）}
+
+黎曼宇宙中支配引力波的方程，可能面临与我们此前在光波中见过的同类问题：在某一维上频率过高的波会在另一维上指数增长。但对引力波而言情况更糟，因为这会发生在\emph{任何}频率的波上——并不需要超过某个最高频率。
+
+其结果是，那个阻止光波指数增长的机制，会把引力波彻底消除。在我们宇宙中，两个彼此靠得很近相互绕转的大质量物体会以引力波的形式辐射能量，导致它们盘旋向内、最终碰撞。在黎曼宇宙中，任何用于产生引力波的能量都会产生相反的效果，使绕转天体相互远离……但事实上这不会发生，因为根本不可能有引力辐射。
+
+\section{……多半也没有大爆炸（\ldots and Probably No Big Bang）}
+
+\orthofig{images/06__006.png}{含奇点的黎曼宇宙玩具模型}
+\orthofig{images/06__007.png}{不含奇点的黎曼宇宙玩具模型}
+
+在洛伦兹物理中，若你把大多数简单宇宙模型的历史回溯到过去，最终会到达一个万物密度无穷、广义相对论的经典定律必然失效的时刻：大爆炸（Big Bang）。
+
+在黎曼物理中，这类宇宙模型是可能的，但它非常人为、造作。它要求你假设宇宙充满了世界线大致都指向同一方向的物质。在洛伦兹宇宙中这或许是个自然的假设，因为那里的世界线被限制在类时方向的锥内；但在黎曼宇宙中，它们可以指向四维空间中的\emph{任意}方向。
+
+在黎曼情形下，若作更自然的假设——在宇宙尺度上物质的世界线对任何特定方向都无偏好——那么当我们选定某个方向并称之为"时间"时，物质在回溯过去时的平均密度根本无须改变。宇宙仍然可以收缩到零体积，但发生收缩的那个特定事件只是我们选择时间方向所造成的人为产物——正如纬线圈在南、北极收缩到零，只是我们选择坐标所造成的人为产物。
+
+为简单起见，右图中的两个模型都画在球面上，但只有当存在一个足够大的正宇宙学常数（cosmological constant）时，四维空间才真正在所有方向上正弯曲——而在黎曼情形下，这等价于一个大的\emph{负}真空能。没有宇宙学常数时，第一个模型在"时间"方向上正弯曲、在其余三个方向上负弯曲。这意味着：若一团自由落体粒子的世界线与宇宙中其它物质大致对齐，它们会被挤入更小体积；但若它们相对该背景物质以无穷大速度运动，则反而会变得更加散开。
+
+第二个模型在没有宇宙学常数时，在所有方向上都是负弯曲。
+
+关于本主题的额外材料，提供给不介意稍高数学门槛的读者。
+
+\section{进阶：黎曼 Schwarzschild 解（The Riemannian Schwarzschild Solution）}
+
+把时空曲率与其中物质相联系的 Einstein 方程为
+\begin{equation*}
+G+\Lambda g=8\pi T,
+\end{equation*}
+其中：
+
+\begin{itemize}
+  \item $g$ 是时空度规（metric）；
+  \item $G$ 是 Einstein 张量（Einstein tensor），由度规导出，量化时空曲率的某些方面；
+  \item $\Lambda$ 是宇宙学常数；
+  \item $T$ 是任何存在物质（包括电磁场等场）的应力--能量张量（stress-energy tensor）。
+\end{itemize}
+
+我们沿用广义相对论中的通行做法，采用使时间、空间乃至质量都以相同单位度量的单位制，并选取单位使引力常数（常被赋予与 Einstein 张量相同的符号 $G$，颇易混淆）等于 $1$。
+
+这个方程没有理由需要为适用于黎曼宇宙而改变。引力相对于其它力的强弱在黎曼宇宙中或许不同、或许相同，但既然我们已把引力常数吸收进单位选取之中（无论其取值为何），就再无别的可做。Einstein 方程最重要的特征是 Einstein 张量的散度必为零，而度规乘以任一常数亦然。这使得这些量可以被合理地等同于应力--能量张量的某个常数倍，后者的散度必须为零，才能保证能量与动量的局域守恒。所有这一切在黎曼宇宙中同样成立、同样恰当。
+
+于是唯一的真正区别在于：我们要求 Einstein 方程的\emph{解}中度规 $g$ 的号差（signature）为 $(++++)$，即所有维度都是类空的解。
+
+当然，还有一种可能的改动不会破坏方程左端的无散度性质：我们可以要求引力常数为负，这样即便其大小经单位选取被设为 $1$，方程右端也会带一个负号。但正如我们将看到的，若想让黎曼宇宙中的引力在物体缓慢运动时本质上表现得像牛顿引力，保持引力常数为正才是正确的选择。
+
+在我们自身宇宙的许多情境中，宇宙学常数 $\Lambda$ 可取为零，但我们将尽量保持一般性，在计算中保留它，只在求某些具体结果时才令其为零。因此我们从"Schwarzschild--Kottler"度规\textsuperscript{[1]}开始探索引力，它是 Schwarzschild 度规推广到包含宇宙学常数的版本。
+
+\subsection*{Schwarzschild--Kottler 度规}
+
+$r$、$\theta$、$\phi$ 为以质量 $M$ 的天体为中心的极坐标。度规为
+\begin{align*}
+g &= \left(1+\frac{2M}{r}-\frac{\Lambda r^{2}}{3}\right)\dd t^{2}
+     +\frac{1}{1+\dfrac{2M}{r}-\dfrac{\Lambda r^{2}}{3}}\,\dd r^{2}
+     +r^{2}\left[\dd\theta^{2}+(\sin\theta)^{2}\,\dd\phi^{2}\right]
+     \qquad(\text{黎曼}),\\
+g &= -\left(1-\frac{2M}{r}-\frac{\Lambda r^{2}}{3}\right)\dd t^{2}
+     +\frac{1}{1-\dfrac{2M}{r}-\dfrac{\Lambda r^{2}}{3}}\,\dd r^{2}
+     +r^{2}\left[\dd\theta^{2}+(\sin\theta)^{2}\,\dd\phi^{2}\right]
+     \qquad(\text{洛伦兹}).
+\end{align*}
+
+该度规描述一个球对称、质量为 $M$ 的天体外部真空中的几何。眼下我们对黎曼宇宙中 $\Lambda$ 的取值乃至符号都不作承诺，只假设 $|\Lambda|$ 小到在所关心的区域内 $1+2M/r-\Lambda r^{2}/3$ 始终为正。
+
+\orthofig{images/06__008.png}{黎曼 Schwarzschild 度规中到中心的距离}
+\orthofig{images/06__009.png}{黎曼 Schwarzschild 度规中球面的表面积}
+
+洛伦兹度规与黎曼度规的一个显著差别是：在黎曼情形下，沿 $t$、$\theta$、$\phi$ 为常数的路径测得的径向距离都是有限的。对 $\Lambda=0$，我们甚至能得到从坐标中心出发的距离的显式公式（假设该解一直适用到 $r=0$）：
+\begin{equation*}
+\operatorname{dist}(r)=\sqrt{r(r+2M)}-2M\,\operatorname{arcsinh}\!\sqrt{\frac{r}{2M}}.
+\end{equation*}
+
+该度规中 $r$ 为常数的曲面面积为 $4\pi r^{2}$，但 $\operatorname{dist}(r)$ 的值总小于 $r$ 本身，所以这些球面相对于其半径而言表面积比欧氏几何中的更大。这是负曲率空间的一个特征。
+
+与此相反，洛伦兹 Schwarzschild 度规中的径向距离在 $r>2M$ 之前甚至不是类空的，而且此后它总\emph{大于} $r$ 坐标之差。
+
+\subsection{运动常数与有效势（Constants of Motion and the Effective Potential）}
+
+我们希望理解一个小的"测试粒子"（test particle）在此度规中的运动——该粒子小到对几何本身的影响可以忽略。我们采用的一般方法与 Misner、Thorne 和 Wheeler\textsuperscript{[2]}处理普通 Schwarzschild 几何中运动物体的方式相近。
+
+测试粒子的世界线是一条测地线，我们用符号 $\bu$ 表示其四维速度（4-velocity），即与其世界线相切的单位矢量。矢量 $\bu$ 在坐标中的分量就是沿测地线的固有时 $\tau$ 下各坐标的变化率：
+\begin{align*}
+u^{t} &= \partial_{\tau} t, &
+u^{r} &= \partial_{\tau} r, &
+u^{\phi} &= \partial_{\tau} \phi, &
+u^{\theta} &= \partial_{\tau} \theta.
+\end{align*}
+
+由于几何球对称，我们总可以选取坐标使测试粒子的世界线位于 $\theta=\pi/2$ 的"赤道面"内，从而 $u^{\theta}=\partial_{\tau}\theta=0$。
+
+由于度规与坐标 $t$ 和 $\phi$ 无关，坐标矢量场 $\partial_{t}$ 与 $\partial_{\phi}$ 是 Killing 矢量场（Killing vector field）：即描述"把图形在几何中滑动而保持其形状与大小不变"的方式，好比我们在不扭曲一座岛屿地貌的前提下，给岛上每一点经度加 $5$ 度。$\partial_{t}$ 与 $\partial_{\phi}$ 为 Killing 矢量场的一个推论是：任一测地线的切矢量与这些场的点积沿测地线保持不变。于是对测试粒子的整条世界线都有
+\begin{align*}
+\bu\cdot\partial_{t} &= u_{t}=E, \\
+\bu\cdot\partial_{\phi} &= u_{\phi}=L,
+\end{align*}
+其中我们引入 $E$ 与 $L$ 作为两个常数的名称。低标号分量 $u_{t}$ 与 $u_{\phi}$ 是对偶矢量的分量。$\bu$ 是单位矢量、其对偶矢量长度也为 $1$，这一事实用对偶分量表出即为
+\begin{equation*}
+g^{ij}u_{i}u_{j}=1
+\end{equation*}
+（此处使用 Einstein 求和约定）。由于度规对角，上标度规分量 $g^{ij}$ 就是 Schwarzschild--Kottler 度规定义中给出的下标配元的倒数，于是
+\begin{align*}
+g^{tt}u_{t}^{2}+g^{rr}u_{r}^{2}+g^{\phi\phi}u_{\phi}^{2} &= 1,\\
+\frac{E^{2}}{1+2M/r-\Lambda r^{2}/3}+\left(1+\frac{2M}{r}-\frac{\Lambda r^{2}}{3}\right)u_{r}^{2}+\frac{L^{2}}{r^{2}} &= 1.
+\end{align*}
+
+若把 $u_{r}$ 用 $u^{r}=\partial_{\tau}r$ 表出，则有
+\begin{equation*}
+u_{r}=g_{rr}u^{r}=\frac{\partial_{\tau} r}{1+2M/r-\Lambda r^{2}/3},
+\end{equation*}
+于是
+\begin{equation*}
+\frac{E^{2}+(\partial_{\tau} r)^{2}}{1+2M/r-\Lambda r^{2}/3}+\frac{L^{2}}{r^{2}}=1,
+\end{equation*}
+或
+\begin{equation*}
+(\partial_{\tau} r)^{2}=\left(1-\frac{L^{2}}{r^{2}}\right)\left(1+\frac{2M}{r}-\frac{\Lambda r^{2}}{3}\right)-E^{2}.
+\tag{1}
+\end{equation*}
+
+于是我们得到一个联系 $r$ 的变化率（相对于测试粒子测得的时间 $\tau$）与粒子 $r$ 坐标的方程。对它关于 $\tau$ 求导（再把两边除以 $2\partial_{\tau}r$），得到二阶导数
+\begin{equation*}
+\partial_{\tau}^{2} r=\frac{L^{2}(r+3M)}{r^{4}}-\frac{M}{r^{2}}-\frac{\Lambda r}{3}.
+\tag{2}
+\end{equation*}
+
+第一项代表离心加速度，对给定角动量 $L$ 而言是一个近似反三次方的斥力。在洛伦兹版本中此处分子为 $r-3M$，故该项在 $r=3M$ 处变号，这正是黑洞周围不存在比此更近的轨道的原因。但在这里，离心力处处都是离心力，而且总比洛伦兹与牛顿版本更强。
+
+第二项正是反平方的引力吸引，由此可以看出，若要引力具有通常的牛顿极限，我们把 $M$ 的符号取对是正确的。
+
+第三项是源于宇宙学常数的吸引或排斥，它在大尺度上依 $\Lambda$ 的符号增强或削弱引力。
+
+\orthofig{images/06__001.png}{黎曼 Schwarzschild 度规的有效势}
+
+右图给出测试粒子径向运动在 $\Lambda=0$、不同 $L$ 取值下的有效势。函数
+\begin{equation*}
+V(r)=\left(\frac{L^{2}}{r^{2}}-1\right)\left(1+\frac{2M}{r}\right)
+\end{equation*}
+通过方程 (1) 决定径向运动，后者变为
+\begin{equation*}
+(\partial_{\tau} r)^{2}+V(r)=-E^{2}.
+\end{equation*}
+
+对每个非零的 $L$，有效势 $V$ 都有一个极小值；$E^{2}>1$ 且 $L\neq0$ 的粒子将处于稳定的束缚轨道，在 $\partial_{\tau}r=0$（即 $V(r)=-E^{2}$）所对应的两个 $r$ 值之间来回运动。图中那条红色虚线给出 $E^{2}=1.3$、$L=M$ 的一个例子。
+
+若 $E^{2}<1$（例如粒子从无穷远处入射的情形），有效势在 $r\to\infty$ 处低于 $-E^{2}$，粒子将不被束缚，从无穷远驰入、在最近心点折返后逃逸回无穷远——这正是下一小节引力散射所讨论的轨道。
+
+\subsection{圆轨道（Circular Orbits）}
+
+假设测试粒子绕中心质量作圆轨道运动，则 $r=R$ 为常数，$r$ 的一阶与二阶导数都为零，由此得到关于 $L^{2}$ 与 $E^{2}$ 的两个方程（以轨道半径 $R$ 表出）。解出后代入四维速度 $\bu$，便可确定测试粒子相对于同一距离处静止观测者的普通速度。结果为
+\begin{equation*}
+v^{2}=\frac{3M+\Lambda R^{3}}{3R+6M-\Lambda R^{3}}.
+\end{equation*}
+对 $\Lambda=0$ 的情形，这变为
+\begin{equation*}
+v^{2}=\frac{M}{R+2M}.
+\end{equation*}
+
+当 $R$ 很大且 $\Lambda=0$，上式给出牛顿极限，其动能是引力势能大小的二分之一。
+
+在牛顿物理中，绕行天体越靠近中心质量，其速度就越无界增大。而黎曼轨道则不同：当 $R$ 变小时，所有轨道的 $v^{2}$ 都趋于 $1/2$。由于离心力更强（在 $r$ 小时呈反四次方特征），$1/\sqrt2$ 就是任何物体为束缚于圆轨道所能具有的最快速度（至少就近距离而言）。
+
+若存在宇宙学常数，足够大的轨道会有修正。若 $\Lambda$ 为正，引力在大尺度上变强，$v^{2}$ 在降到极小之后又开始无界上升。若 $\Lambda$ 为负，宇宙学项附加的排斥最终会使得无论物体运动多慢，都无法再被引力束缚于轨道。
+
+\orthofig{images/06__002.png}{黎曼圆轨道的速度平方}
+
+\subsection{径向运动与逃逸速度（Radial Motion and Escape Velocity）}
+
+假设测试粒子径直朝向或背离中心质量运动，则 $L=0$，我们可以将另一个运动常数 $E^{2}$ 用它在某个特定 $r$ 处的速度（由同一距离处静止观测者判定）表出：
+\begin{equation*}
+E^{2}=\frac{1+2M/r-\Lambda r^{2}/3}{1+v^{2}},
+\end{equation*}
+对 $\Lambda=0$ 变为
+\begin{equation*}
+E^{2}=\frac{1+2M/r}{1+v^{2}}.
+\end{equation*}
+
+在 $\Lambda=0$ 情形中，一个恰好能逃逸到无穷远的粒子的 $E^{2}$，就是当 $r\to\infty$ 时 $v\to0$ 所取的值，即 $1$。因此粒子的逃逸速度为
+\begin{equation*}
+v_{esc}^{2}=\frac{2M}{r}.
+\end{equation*}
+这与逃逸速度的牛顿形式一致，也清楚地表明不存在无法逃脱的距离。
+
+在更一般的 $\Lambda\neq0$ 情形中，"逃逸速度"其实不是个有意义的概念，因为宇宙学项在大距离上要么排斥、要么吸引粒子。但无论如何，中心质量本身永远不是无法逃脱的——黎曼宇宙没有黑洞。
+
+\subsection{引力蓝移与时间膨胀（Gravitational Blueshift and Time Dilation）}
+
+若一束离中心质量很远的、以速度 $v_{\infty}$ 接近它的光（假设 $\Lambda=0$，使 $r\to\infty$ 处的行为有良好定义），当它到达距离 $r$ 处时必定运动得更快，且有
+\begin{align*}
+\frac{1}{1+v_{\infty}^{2}} &= \frac{1+2M/r}{1+v(r)^{2}},\\
+v(r)^{2} &= \left(1+\frac{2M}{r}\right)v_{\infty}^{2}+\frac{2M}{r}.
+\end{align*}
+
+更快的光波长更短，用《正交》（\emph{Orthogonal}）的语言说就是蓝移（blue-shifted）。但与洛伦兹情形不同，这一更短的波长会伴随一个\emph{更长}的周期 $\tau$，光的每个周期在大质量天体附近测得耗时更长。具体地说，
+\begin{equation*}
+\tau(r)=\tau_{\infty}\sqrt{1+\frac{2M}{r}}.
+\end{equation*}
+
+由此可知，一个在空间中绕行、接近了大质量天体的人，总体上会比绕开这段路的人经历更长的时间。与平直四维空间中运动引起的其它时间膨胀效应一样，黎曼宇宙中的引力时间膨胀意味着旅行者经历\emph{更多}时间，而非更少。
+
+\subsection{引力散射（Gravitational Scattering）}
+
+\orthofig{images/06__003.png}{黎曼引力散射}
+\orthofig{images/06__004.png}{黎曼引力散射}
+
+在牛顿引力物理中，一个从远处向大质量天体运动、且偏移得足以避免碰撞的测试粒子，将沿一条朝中心质量弯曲的双曲轨道运动。当粒子再次逃逸到无穷远时，其运动方向已经改变；我们说粒子被\textbf{散射}（scattered）了某个角度，记作 $\delta$。
+
+在洛伦兹引力中类似的轨道是常态，但在黑洞的极端情形下，粒子可以在逃逸或被俘获之前绕黑洞数圈。
+
+在黎曼引力中不存在黑洞之类的东西，但当相遇涉及大质量致密天体或高速粒子时，偏转是\emph{背离}天体而非朝向天体。
+
+右图给出测试粒子在各种初速度 $v$、以及两个碰撞参数（impact parameter）$b$ 取值下的轨迹；$b$ 定义为轨迹相对于正碰的侧向位移（在粒子位于无穷远时测量）。上图中红色与橙色曲线——对应运动相当缓慢、且不会太靠近大质量天体的粒子——酷似牛顿双曲线，同一图中黄色曲线也仅略微偏离其原方向，但其它所有轨迹都被推离中心质量。
+
+把这些粒子甩开的是一个非牛顿的离心力。正如我们在方程 (2) 中看到的，对小的 $r$，给定角动量 $L$ 下的离心加速度大致正比于 $r$ 的反四次方，而牛顿物理中是反三次方。
+
+\section{进阶：宇宙学（Cosmology）}
+
+\subsection{曲率与熵（Curvature and Entropy）}
+
+从 Einstein 方程出发，我们可以导出用应力--能量张量表示 Ricci 张量的有用表达式。Einstein 张量 $G$ 用 Ricci 张量 $R$ 与度规 $g$ 定义为
+\begin{equation*}
+G=R-\tfrac{1}{2}R_{c}^{c}g,
+\end{equation*}
+此处用 Einstein 求和约定取 Ricci 张量的迹。把 Einstein 方程写成分量形式，有
+\begin{align*}
+G_{ab}+\Lambda g_{ab} &= 8\pi T_{ab},\\
+R_{ab}-\tfrac{1}{2}R_{c}^{c}g_{ab}+\Lambda g_{ab} &= 8\pi T_{ab}.
+\end{align*}
+
+应力--能量张量的迹由此可求得为
+\begin{align*}
+8\pi T_{e}^{e} &= R_{e}^{e}-\tfrac{1}{2}R_{c}^{c}g_{e}^{e}+\Lambda g_{e}^{e}.
+\end{align*}
+黎曼度规的迹 $g_{e}^{e}$ 恰为空间的维数，即 $4$。于是
+\begin{align*}
+8\pi T_{e}^{e} &= R_{e}^{e}-2R_{c}^{c}+4\Lambda = -R_{e}^{e}+4\Lambda.
+\end{align*}
+
+[当然，对四维\emph{洛伦兹}空间，采用 $(-+++)$ 号差约定时 $g_{e}^{e}=2$。故上式及其后诸式\emph{不}适用于洛伦兹宇宙。]
+
+利用这一点，可以写出
+\begin{align*}
+8\pi\bigl(T_{ab}-\tfrac{1}{2}T_{e}^{e}g_{ab}\bigr) &= 8\pi T_{ab}+\left[\tfrac{1}{2}R_{e}^{e}-2\Lambda\right]g_{ab}.
+\end{align*}
+再把 Einstein 方程给出的 $8\pi T_{ab}$ 代入，便得
+\begin{align*}
+8\pi\bigl(T_{ab}-\tfrac{1}{2}T_{e}^{e}g_{ab}\bigr)
+&= R_{ab}-\tfrac{1}{2}R_{c}^{c}g_{ab}+\Lambda g_{ab}
+ +\left[\tfrac{1}{2}R_{e}^{e}-2\Lambda\right]g_{ab} \nonumber\\
+&= R_{ab}-\Lambda g_{ab}.
+\end{align*}
+
+这就给出用应力--能量张量与度规表示的 Ricci 张量：
+\begin{equation*}
+R_{ab}=8\pi\bigl(T_{ab}-\tfrac{1}{2}T_{e}^{e}g_{ab}\bigr)+\Lambda g_{ab}.
+\tag{3}
+\end{equation*}
+
+整理我们此前得到的、联系 Ricci 张量与应力--能量张量之迹的结果：
+\begin{equation*}
+R_{c}^{c}=-8\pi T_{c}^{c}+4\Lambda.
+\tag{4}
+\end{equation*}
+
+除 Ricci 张量的迹之外，我们还关心其各个对角元。若在局域正交归一坐标中工作，使每个 $a$ 都有 $g_{aa}=1$，则有（重复低标对不作求和）
+\begin{equation*}
+R_{aa}=8\pi\bigl(T_{aa}-\tfrac{1}{2}T_{c}^{c}\bigr)+\Lambda.
+\tag{5}
+\end{equation*}
+
+$R_{aa}$ 告诉我们的是：一束初始平行的、沿 $a$ 方向排列的测地线将如何聚拢或散开——即它们所围体积（用垂直于 $a$ 方向的超曲面切片）的二阶变化率为正、为负还是为零。更精确地说：
+\begin{equation*}
+\frac{\partial_{a}\partial_{a}V}{V}=-R_{aa}.
+\end{equation*}
+
+大致说来，我们可以把黎曼宇宙中的物质分成两大范畴。在\textbf{低熵态}（low-entropy state）中，大多数物质沿大致相同的方向运动（一块固体、一团低负温度气体、或一个引力束缚系统），若把时间坐标 $t$ 与这些物质的世界线对齐，应力--能量张量将有较大的 $T_{tt}$，其余分量可忽略。一个例子是密度为 $\rho$、压强可忽略的尘埃云：
+\begin{equation*}
+T=\rho\,\bu\otimes\bu,
+\end{equation*}
+在尘埃云静止的正交归一参考系中 $T_{tt}=\rho$，其余分量为零。于是
+\begin{align*}
+T_{c}^{c} &= \rho, \\
+R_{tt} &= 4\pi\rho+\Lambda, \\
+R_{xx}=R_{yy}=R_{zz} &= -4\pi\rho+\Lambda, \\
+R_{c}^{c} &= -8\pi\rho+4\Lambda.
+\end{align*}
+
+若 $\Lambda=0$，则 $R_{tt}>0$，于是沿 $t$ 方向排列的一束测地线所围体积会收缩。换言之，对初始相对尘埃云静止的测试粒子团，引力是吸引的，会把它们聚拢。而 $R_{xx}$ 等则为负，所以以无穷大速度穿过尘埃云的测试粒子团会散开。Ricci 张量的迹、即标量曲率，将为负。
+
+一个足够大的正 $\Lambda$ 会使测试粒子团无论朝何方向都收缩，并给出正的标量曲率；而足够负的 $\Lambda$ 则可能反转所有这些结果。
+
+那么，若物质处于\textbf{高熵态}（high-entropy state）、其世界线在四维空间中指向任何方向的概率都相等，又会怎样？在这种态下，
+\begin{equation*}
+T_{tt}=T_{xx}=T_{yy}=T_{zz}=\rho.
+\end{equation*}
+黎曼宇宙中的高熵物质表现得就像一个宇宙学常数：其应力--能量张量就是度规的一个倍数。把 $\rho$ 与 $\Lambda$ 的效应合并，得
+\begin{align*}
+T_{c}^{c} &= 4\rho, \\
+R_{tt}=R_{xx}=R_{yy}=R_{zz} &= -8\pi\rho+\Lambda, \\
+R_{c}^{c} &= -32\pi\rho+4\Lambda.
+\end{align*}
+
+若 $\Lambda$ 为零，则标量曲率为负，各个 Ricci 曲率 $R_{aa}$ 也都为负，于是沿\emph{任意}方向排列的一束测地线都会散开。若 $\rho$ 在四维空间中为常数，那会使黎曼宇宙成为一个四维双曲流形。
+
+一个足够大的正 $\Lambda$ 可以克服 $\rho$ 的效应而给出正曲率，而负的 $\Lambda$ 则相当于增大 $\rho$、加剧负曲率。
+
+\subsection{简单模型（Simple Models）}
+
+\subsubsection{大爆炸模型（Big Bang Models）}
+
+黎曼宇宙学中看来\emph{有可能}存在大爆炸奇点。但与洛伦兹物理（那里奇点似乎不可避免）不同，它只在给宇宙物质强加某种对称性时才会发生。
+
+若假设一个完全均匀且各向同性的空间宇宙——形式为 3-球面、欧氏空间或双曲空间，其长度尺度 $a(t)$ 随时间变化（如 Misner、Thorne 和 Wheeler\textsuperscript{[3]}对洛伦兹情形所发展的那样），则 Einstein 方程成为关于 $a(t)$ 的微分方程：
+
+\begin{keybox}[均匀各向同性宇宙的动力学]
+（Dynamics of Homogeneous, Isotropic Universe）
+
+\begin{gather*}
+k=1\ \text{对应 3-球面};\qquad
+k=0\ \text{对应欧氏空间};\qquad
+k=-1\ \text{对应双曲空间}. \notag\\[4pt]
+3\,\frac{a'(t)^{2}}{a(t)^{2}}-3\,\frac{k}{a(t)^{2}}+\Lambda=8\pi\rho\bigl(a(t)\bigr)
+\qquad(\text{黎曼}), \\
+3\,\frac{a'(t)^{2}}{a(t)^{2}}+3\,\frac{k}{a(t)^{2}}-\Lambda=8\pi\rho\bigl(a(t)\bigr)
+\qquad(\text{洛伦兹}).
+\end{gather*}
+\end{keybox}
+
+这里 $\rho\bigl(a(t)\bigr)$ 是质量--能量密度，作为长度尺度 $a(t)$ 的函数。
+
+注意与洛伦兹版本相比，黎曼版本中 $\Lambda$ 与 $k$ 的符号都换了。在洛伦兹宇宙学中，暂时抛开 $\Lambda$ 的效应、假设它为零，最著名的结果之一是：当空间宇宙为 3-球面时，它会膨胀到最大尺寸后重新收缩；而若它是平坦或双曲的，则会永远膨胀下去。由于黎曼版本中 $k$ 的符号相反，其它条件相同时结论正好相反：3-球面空间宇宙会永远膨胀下去，而平坦或双曲的则会膨胀到最大尺寸后重新收缩。
+
+在黎曼情形中能量密度 $\rho$ 的形式会有什么不同吗？在洛伦兹情形中，一种常见的粗略近似是谈论"物质"与"辐射"各自对 $\rho$ 贡献一项。物质被认为压强相对其静止质量可忽略，其随长度的标度为
+\begin{equation*}
+\rho_{m}a^{3}=\text{常数}.
+\end{equation*}
+换言之，空间宇宙任一给定区域中（由 3-球面上的角坐标或其它情形中的等价物描绘的边界所划出）有一个常数质量，该区域缩小时密度增大、增大时密度减小。各向同性辐射总是施加等于其能量密度三分之一的压强，由此可知当给定体积 $V$ 的空间区域膨胀时，辐射做功并损失能量：
+\begin{equation*}
+\frac{\dd(\rho_{r}V)}{\dd\tau}=-p_{r}\frac{\dd V}{\dd\tau}=-\frac{1}{3}\rho_{r}\frac{\dd V}{\dd\tau}.
+\end{equation*}
+取 $V=a^{3}$，此式由下式满足：
+\begin{equation*}
+\rho_{r}a^{4}=\text{常数}.
+\end{equation*}
+所以当 $a$ 小时，辐射的能量密度占主导。而当 $a\to0$ 时，能量密度的两个分量当然都趋于无穷。
+
+在黎曼物理中，既然不存在零矢量（null vector），物质与辐射之间就没有同样深刻的区分。不过，像我们在上一节中描述的那样，区分低熵态与高熵态仍然有用。低熵物质的压强相对其静止质量可忽略，因此其贡献正如洛伦兹分析中的 $\rho_{m}$。高熵物质的压强与其静止质量相当，更像洛伦兹的辐射，但有两个关键区别。一是不存在 $1/3$ 这一因子；在真正 SO(4) 不变的态中（例如我们在无限温度稀薄气体中见过的），三个空间方向上的压强都\emph{等于}能量密度。二是压强下膨胀所做的功在黎曼情形中与洛伦兹情形相反（例如，一个黎曼系统对抗活塞膨胀时会给活塞动能，这意味着系统本身获得总能量）。于是
+\begin{equation*}
+\frac{\dd(\rho_{h}V)}{\dd\tau}=p_{h}\frac{\dd V}{\dd\tau}=\rho_{h}\frac{\dd V}{\dd\tau},
+\end{equation*}
+此式由下式满足：
+\begin{equation*}
+\rho_{h}=\text{常数}.
+\end{equation*}
+所以高熵物质的能量密度保持常数！细想之下这其实并不很令人惊讶：这种形式的物质在四维空间中根本没有任何偏好方向，因此它对我们选作 $t$ 坐标的那个方向完全无动于衷。
+
+现在，若黎曼宇宙中均匀分布着某种\emph{低熵}物质，其世界线都正交于 3-球面或其它超曲面（由于均匀性，我们称后者为"某一瞬间的空间"），那么当我们沿这些世界线回溯到万物更紧密的时刻时，该物质的密度会趋于无穷，正如理想化自行车轮辐的密度在理想化轮毂处会趋于无穷一样确定。但在洛伦兹情形中已被证明，在某些相当合理的假设下\textsuperscript{[4]}这种奇点不可避免；而在黎曼情形中没有光锥来约束世界线，所以让它们全都汇聚到一个事件是一种\emph{选择}而非\emph{必需}——而且是一种相当人为的选择。诚然，很容易举出完全不含奇点的均匀黎曼宇宙。
+
+\subsubsection{无奇点模型（Models Without Singularities）}
+
+假设我们有一个充满物质的均匀宇宙，这些物质在宇宙学尺度上处于高熵、SO(4) 不变的状态。这并不妨碍任何局域的熵梯度与时间箭头，但宇宙中任何平行世界线束的取向都将指向四维空间中的随机方向。
+
+我们可以把上一节的框架应用于此模型。我们应当能够把四维空间切片为均匀超曲面，它们或是 3-球面、或具有欧氏或双曲几何。能量密度将是某个常数 $\rho$。与我们所选超曲面正交的时间坐标 $t$ 的尺度因子 $a(t)$ 必须满足方程
+\begin{equation*}
+a'(t)^{2}-k=\pm K^{2}a(t)^{2},
+\tag{6}
+\end{equation*}
+其中我们定义了一个正实常数 $K$，使得
+\begin{equation*}
+\pm K^{2}=\frac{8\pi\rho-\Lambda}{3}.
+\end{equation*}
+它给出物质与宇宙学常数的净效应，而参数 $k$ 告诉我们所拥有的是何种均匀超曲面：
+\begin{equation*}
+k=1\ \text{对应 3-球面};\qquad
+k=0\ \text{对应欧氏空间};\qquad
+k=-1\ \text{对应双曲空间}.
+\end{equation*}
+
+方程 (6) 有哪些可能的解？
+
+\textbf{(A)} $8\pi\rho-\Lambda>0$。双曲四维空间，Ricci 标量 $R_{c}^{c}=-12K^{2}$。
+\begin{itemize}
+  \item $k=1$：$a(t)=\dfrac{\sinh(Kt)}{K}$，切片为 3-球面，其半径从 $0$ 开始增长，先是线性、随后指数增长。
+  \item $k=0$：$a(t)=\exp(Kt)$，切片为平坦超曲面，随 $t$ 指数增长。
+  \item $k=-1$：$a(t)=\dfrac{\cosh(Kt)}{K}=\dfrac{1}{2K}\bigl[\exp(Kt)+\exp(-Kt)\bigr]$，切片为双曲超曲面，随 $t$ 与 $-t$ 指数增长。
+\end{itemize}
+
+\textbf{(B)} $8\pi\rho-\Lambda=0$。欧氏四维空间，Ricci 标量 $R_{c}^{c}=0$。
+\begin{itemize}
+  \item $k=1$：$a(t)=t$，切片为 3-球面，随 $t$ 从半径 $0$ 线性增长（即 $t$ 是径向极坐标）。
+  \item $k=0$：$a(t)=1$，切片为恒定尺度的平坦超曲面（即 $t$ 是笛卡儿坐标）。
+  \item $k=-1$：无解。
+\end{itemize}
+
+\textbf{(C)} $8\pi\rho-\Lambda<0$。四维球面 $S^{4}$，Ricci 标量 $R_{c}^{c}=12K^{2}$。
+\begin{itemize}
+  \item $k=1$：$a(t)=\dfrac{\sin(Kt)}{K}$，切片为 3-球面，其半径从 $0$ 增长、达到最大后又重新收缩。
+  \item $k=0$ 或 $-1$：无解。
+\end{itemize}
+
+于是四维空间的几何有三种可能：双曲、平坦或球面。有各种方式把这些四维空间切片为均匀的三维超曲面，但四维空间本身不受这一选择的影响。在那些宇宙从尺度因子为零开始和/或结束的情形中，这\emph{并不}意味着奇点！能量密度 $\rho$ 保持常数，尺度因子趋于零的位置只是我们把四维空间切成超曲面这一方式的产物。
+
+如我们此前所讨论的，我们有理由偏好一个\emph{有限}的四维空间，而这里没有任何东西排除这一点。在正曲率情形中，整个四维空间必然是有限的；这可由 Myers 定理推出。然而，有些拓扑与正曲率不相容；例如，任何环面（torus）都不可能具有正标量曲率的度规\textsuperscript{[5]}。
+
+对零曲率与负曲率，则既有有限空间也有无限空间；例如 $\mathbb{R}^{4}$（无限四维空间）与 $T^{4}$（四维环面）都可以赋予均匀平坦的度规。不过对拓扑仍有某些限制。Cartan--Hadamard 定理意味着，一个负曲率的均匀各向同性空间不可能具有 4-球面的拓扑。
+
+\section{进阶：引力波（Gravitational Waves）}
+
+把引力波\textsuperscript{[6]}作为平直度规中的小扰动来处理的标准方法，可以像在洛伦兹版本中那样应用于黎曼广义相对论。所得方程（假设 $\Lambda=0$）为：
+
+\begin{keybox}[引力波方程]
+（Gravitational Wave Equations，$\Lambda=0$）
+
+\begin{gather*}
+g_{ab}=\delta_{ab}+h_{ab},\qquad
+w_{ab}=h_{ab}-\tfrac{1}{2}h_{c}^{c}\,\delta_{ab}, \notag\\
+\partial_{x}^{2}\mathbf{w}+\partial_{y}^{2}\mathbf{w}+\partial_{z}^{2}\mathbf{w}+\partial_{t}^{2}\mathbf{w}=-16\pi\mathbf{T}
+\qquad(\text{黎曼}), \\[6pt]
+g_{ab}=\eta_{ab}+h_{ab},\qquad
+w_{ab}=h_{ab}-\tfrac{1}{2}h_{c}^{c}\,\eta_{ab}, \notag\\
+\partial_{x}^{2}\mathbf{w}+\partial_{y}^{2}\mathbf{w}+\partial_{z}^{2}\mathbf{w}-\partial_{t}^{2}\mathbf{w}=-16\pi\mathbf{T}
+\qquad(\text{洛伦兹}), \\[6pt]
+\partial_{x}w^{ax}+\partial_{y}w^{ay}+\partial_{z}w^{az}+\partial_{t}w^{at}=0
+\qquad(\text{横波条件，Transverse}).
+\end{gather*}
+\end{keybox}
+
+我们先陈述：在我们所选坐标中度规分量 $g_{ab}$ 等于 Kronecker delta（$\delta_{ab}$ 在 $a=b$ 时为 $1$、$a\neq b$ 时为 $0$，即欧氏空间笛卡儿坐标中平坦度规的分量）加上某个小扰动 $h_{ab}$，后者像度规本身一样是对称张量。
+
+在洛伦兹版本中，我们使用 Minkowski 度规 $\eta_{ab}$，它有 $\eta_{tt}=-1$，其余分量与 $\delta_{ab}$ 相同。
+
+我们定义一个新的对称张量 $w_{ab}$，它等于 $h_{ab}$ 减去 $\mathbf{h}$ 的迹之半乘以相应的平直空间度规：黎曼情形用 $\delta$，洛伦兹情形用 $\eta$。[通常的记号是在原扰动 $\mathbf{h}$ 上加一横，但在网页上很难做到。] 当我们在张量 $h_{ab}$ 上抬升指标以取迹时，我们用的是 $\delta$ 或 $\eta$ 而非完整度规，因为我们只关心 $h$ 的一阶量。同理，在操作 $w_{ab}$ 的指标时我们也用平直空间度规。
+
+这些定义的目的在于：在每种情形中，对扰动及其导数取一阶的 Einstein 方程都变成关于扰动 $\mathbf{w}$ 的简单波动方程（如上所示），只要 $\mathbf{w}$ 还满足一个横波条件——类似于我们此前对黎曼矢量波施加的那个条件。
+
+在黎曼情形中，这个"波动方程"就是 Laplace 方程，任何 $\mathbf{T}=0$ 的非平凡解都将无界。$\mathbf{w}$ 的二阶导数之和必须为零，所以若解在某个方向上呈周期性（这给出等于原函数负倍数的二阶导数），它就必须在另一个方向上指数增长（给出等于原函数\emph{正}倍数的二阶导数）。若施加周期性边界条件，例如要求宇宙是 $T^{4}$，指数解将无法满足边界条件，唯一的解将是 $\mathbf{w}=\text{常数}$。
+
+因此，在没有宇宙学常数、且假设我们为避免电磁波中指数解所需的那类边界条件下，黎曼宇宙中不可能有无源引力波。不仅如此，与一个振荡源相关的解会随离源的距离指数衰减；其理由与如下情形基本相同：在 $T^{4}$ 边界条件下，若交变电流的频率超过最高频率 $\nu_{max}$，其周围的场会随距离指数衰减——但在引力波这里，最高频率是零！
+
+若有一个非零的宇宙学常数会怎样？看起来这似乎会把引力波方程从 Laplace 方程的张量版本变成更像 Helmholtz 方程的东西——引入波函数的一个常数倍，就像黎曼矢量波方程（Riemannian Vector Wave Equation）中的 $\wms^{2}$ 项那样，从而若 $\Lambda$ 符号合适，就能允许某些最高频率以内的周期解。
+
+但结果并非如此。完整分析很复杂，但若把度规扰动取为相对于给定 $\Lambda$ 的真空解，则曲率相关（因而依赖 $\Lambda$）的项会以多种方式进入扰动方程，此外 Einstein 方程本身也明显含有 $\Lambda$。最终它们全部抵消，留下一个不含波函数常数倍的方程。
+
+所以看起来，那个为驯服电磁波所需的边界条件，会把引力波完全排除。
+
+\section{参考文献}
+
+\begin{itemize}
+  \item[{[1]}] \emph{Exact Solutions of Einstein's Field Equations}, Hans Stephani, Dietrich Kramer, Malcolm MacCallum, Cornelius Hoenselaers, Eduard Herlt, Cambridge University Press, Cambridge, 2003, 第 15.4 节。
+  \item[{[2]}] \emph{Gravitation}, Charles Misner, Kip Thorne, John Wheeler, W.H. Freeman, San Francisco, 1973, 第 25.2、25.3 节。
+  \item[{[3]}] Misner, Thorne 和 Wheeler, \emph{同上}, 第 27 章。
+  \item[{[4]}] \emph{The Large Scale Structure of Space-time}, S. W. Hawking, G. F. R. Ellis, Cambridge University Press, Cambridge, 1973, 第 10 章。
+  \item[{[5]}] "On the structure of manifolds with positive scalar curvature", R. Schoen, S. T. Yau, \emph{Manuscripta Mathematica}, 1979, 第 28 卷, 第 1--3 期, 第 159--183 页。
+  \item[{[6]}] Misner, Thorne 和 Wheeler, \emph{同上}, 第 18、35 章。
+\end{itemize}

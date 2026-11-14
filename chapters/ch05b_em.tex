@@ -1,0 +1,497 @@
+\section{黎曼 Proca 方程（The Riemannian Proca Equation）}
+
+如果光子有质量，我们自身宇宙中的电磁学会有何不同？1930 年代，罗马尼亚物理学家 Alexandru Proca 将麦克斯韦方程组（Maxwell's equations）推广，建立了一套大质量粒子产生类电磁力的理论，用以解释弱核力，这是开创性的工作。Proca 的名声似乎不及其应得，但他的结果曾被 Wolfgang Pauli 在 1946 年的诺贝尔获奖演讲中提到。由与弱力的联系不难猜到：给传递力的粒子赋予\emph{静止质量}会缩短其作用程。若在我们自身宇宙中光子有质量，库仑势将随距离指数衰减。
+
+但正如我们已经看到的，黎曼库仑势并不会指数衰减；相反，它会随空间振荡。从洛伦兹几何变为黎曼几何造成了一切差别。
+
+为得到 Proca 方程的黎曼版本，我们从带源项 $\bj$（我们称之为\emph{四维电流}，four-current）的黎曼矢量波方程出发，再加上我们对任何矢量波 $\bA$ 施加的横波条件——它用来排除那些伪装成矢量波的标量波解。
+
+\begin{equation}
+\partial_{x}^{2}\bA + \partial_{y}^{2}\bA + \partial_{z}^{2}\bA + \partial_{t}^{2}\bA + \wms^{2}\bA + \bj = \mathbf{0} \tag{RVWS}
+\end{equation}
+\begin{equation}
+\partial_{x} A^{x} + \partial_{y} A^{y} + \partial_{z} A^{z} + \partial_{t} A^{t} = 0 \tag{Transverse}
+\end{equation}
+
+从这对方程立刻可以得到一个好结果：
+\begin{equation}
+\partial_{x} j^{x} + \partial_{y} j^{y} + \partial_{z} j^{z} + \partial_{t} j^{t} = 0 \tag{1}
+\end{equation}
+它由横波条件、以及四维电流 $\bj$ 等于 $\bA$ 与其导数的线性组合这一事实推出。这相当于一条\emph{电荷守恒}（conservation of charge）的陈述：某点电荷密度随时间增大的速率 $\partial_t j^t$，是电流密度散度 $\partial_x j^x + \partial_y j^y + \partial_z j^z$ 的相反数，后者描述单位时间内流出该点周围小区域的电荷净量。
+
+我们此前指出，能量-动量四维矢量在不同观测者计算下会有严重问题，因为不存在客观的手段来决定它应沿物体世界线指向何方。四维电流没有这个毛病，因为它被定义为 $\bj = \rho\bu$，其中 $\rho$ 是带电物质静止系中的电荷密度；若我们把 $\bu$ 反号，$\rho$ 也随之反号，因为一个时间反演的正电荷看起来是负的，反之亦然。（当然，把"正"与"负"这两个标签分配给电荷只是约定，但这是一个可以全局地、一劳永逸地作出的选择。）
+
+正如寻常电磁学，我们用 $\bA$ 定义电磁场 $F$：
+\begin{equation}
+F_{ab} = \partial_{a} A_{b} - \partial_{b} A_{a} \tag{2}
+\end{equation}
+这里的 $A_a$ 是矢量 $\bA$ 对应的对偶矢量（dual vector）的分量。留意这一区分是个好习惯，尽管在黎曼空间的幺正直角坐标中，矢量分量（如 $A^{a}$）与相应对偶矢量分量（如 $A_{a}$）完全相同。在洛伦兹时空中，这几乎成立，但并非完全成立：我们有 $A_{x} = A^{x}$、$A_{y} = A^{y}$、$A_{z} = A^{z}$，但 $A_{t} = -A^{t}$。
+
+假定我们选三个坐标，记作 $a$、$b$、$c$。那么仅凭 $F$ 的定义、以及导数可交换（即 $\partial_{a}\partial_{b} = \partial_{b}\partial_{a}$）这一事实，就有：
+\begin{align}
+\partial_{a} F_{bc} + \partial_{b} F_{ca} + \partial_{c} F_{ab}
+&= \partial_{a}(\partial_{b} A_{c} - \partial_{c} A_{b})
+ + \partial_{b}(\partial_{c} A_{a} - \partial_{a} A_{c})
+ + \partial_{c}(\partial_{a} A_{b} - \partial_{b} A_{a}) \nonumber\\
+&= 0. \tag{3}
+\end{align}
+
+由 $F$ 的定义还可推出：
+\begin{align}
+\partial_{b} F^{ab}
+&= \partial_{b}(\partial^{a} A^{b} - \partial^{b} A^{a}) \nonumber\\
+&= \partial^{a}(\partial_{b} A^{b}) - \partial_{b}\partial^{b} A^{a} \nonumber\\
+&= -\partial_{b}\partial^{b} A^{a}. \tag{4}
+\end{align}
+这里使用了爱因斯坦求和约定，且 $\partial_{b} A^{b}$ 由横波条件为零。
+
+把结果 (4) 代入带源项的黎曼矢量波方程 (RVWS)，即得\emph{黎曼 Proca 方程}（Riemannian Proca equation）。我们还有方程 (3)，它仅由 $F$ 的定义推出，因而为黎曼版与洛伦兹版的电磁学\emph{共有}。下面给出四维形式的麦克斯韦方程组以作比较。在此处及此后的一切中，我们为洛伦兹方程选取光速为 1、真空介电常数 $\varepsilon_{0}$ 为 1 的单位制，并采用 $(-+++)$ 符号的洛伦兹度规，而某些文献用 $(+---)$ 符号。
+
+\begin{keybox}[黎曼 Proca 方程 与 麦克斯韦方程组]
+\textbf{[黎曼 Proca 方程]（Riemannian Proca Equation）}
+\begin{align}
+\partial_{b} F^{ab} - \wms^{2} A^{a} - j^{a} &= 0 \tag{Riemannian}\\
+\partial_{a} F_{bc} + \partial_{b} F_{ca} + \partial_{c} F_{ab} &= 0 \tag{Common}
+\end{align}
+
+\textbf{[麦克斯韦方程组]（Maxwell's Equations）}
+\begin{align}
+\partial_{b} F^{ab} - j^{a} &= 0 \tag{Lorentzian}\\
+\partial_{a} F_{bc} + \partial_{b} F_{ca} + \partial_{c} F_{ab} &= 0 \tag{Common}
+\end{align}
+\end{keybox}
+
+\section{高斯定律与安培定律的变迁（What Becomes of Gauss and Ampère）}
+
+黎曼电磁学的四维方程很简洁，但要在各种情形中看清正在发生什么、并与洛伦兹对应物作比较，给出三维版本会有所帮助；在三维版本中，我们不谈电磁场 $F$，而是用两个三维矢量场——电场 $\bE$ 与磁场 $\bB$——来描述一切。
+
+\subsection{共同的基础（Common Ground）}
+
+我们从一些定义开始。电场 $\bE$ 的分量取为电磁场 $F$ 中第一个指标为空间指标、第二个指标为 $t$ 的那些分量；而磁场 $\bB$ 的每个分量是 $F$ 中指标为\emph{另外两个}空间方向、并保持循环顺序 $xyz$ 的分量。
+
+\begin{keybox}[电场、磁场与电磁场的定义]
+\textbf{[电场 $\bE$]}
+\begin{equation}
+(E_{x}, E_{y}, E_{z}) = (F_{xt}, F_{yt}, F_{zt}) \tag{Common}
+\end{equation}
+
+\textbf{[磁场 $\bB$]}
+\begin{equation}
+(B_{x}, B_{y}, B_{z}) = (F_{yz}, F_{zx}, F_{xy}) \tag{Common}
+\end{equation}
+
+\textbf{[电磁场 $F$]}（此处采用 $(-+++)$ 符号的洛伦兹度规）
+\begin{equation}
+F_{ab} = \begin{pmatrix}
+0 & -E_{x} & -E_{y} & -E_{z}\\
+E_{x} & 0 & B_{z} & -B_{y}\\
+E_{y} & -B_{z} & 0 & B_{x}\\
+E_{z} & B_{y} & -B_{x} & 0
+\end{pmatrix} \tag{Common}
+\end{equation}
+\end{keybox}
+
+注意在上面的矩阵中，$F$ 的第一个指标指行、第二个指标指列，而 $t$ 分量显示在\emph{第一}行与\emph{第一}列。于是例如 $F_{xt}$ 是第二行第一列的元素。
+
+我们把\emph{电标势}（electric scalar potential）$\phi$ 定义为（对偶矢量）四维矢量势 $\bA$ 的时间分量的\emph{相反数}，并把三维\emph{磁矢势} $\bA_{(3)}$ 取为 $\bA$ 的剩余部分。
+
+\begin{keybox}[电势与磁矢势]
+\textbf{[电势 $\phi$]}
+\begin{equation}
+\phi = -A_{t} \tag{Common}
+\end{equation}
+
+\textbf{[磁矢势 $\bA_{(3)}$]}
+\begin{equation}
+(A_{(3)x}, A_{(3)y}, A_{(3)z}) = (A_{x}, A_{y}, A_{z}) \tag{Common}
+\end{equation}
+\end{keybox}
+
+最后我们用四维电流矢量 $\bj$ 定义\emph{电荷密度}（charge density）$\rho$ 与三维\emph{电流密度}（current density）$\bj_{(3)}$。
+
+\begin{keybox}[电荷密度与电流密度]
+\textbf{[电荷密度 $\rho$]}
+\begin{equation}
+\rho = j^{t} \tag{Common}
+\end{equation}
+
+\textbf{[电流密度 $\bj_{(3)}$]}
+\begin{equation}
+(j_{(3)}^{x}, j_{(3)}^{y}, j_{(3)}^{z}) = (j^{x}, j^{y}, j^{z}) \tag{Common}
+\end{equation}
+\end{keybox}
+
+这些定义——正如我们给出的、上下指标恰如此处所列——无论我们做的是黎曼物理还是洛伦兹物理都相同。但若你想与关于洛伦兹版本的文献作比较，请记住：对 $t$ 指标进行升或降会得到原量的相反数。另外请注意，某些文献对洛伦兹度规使用 $(+---)$ 符号，而此处的洛伦兹公式使用 $(-+++)$。
+
+连同由方程 (2) 用四维矢量势 $\bA$ 定义 $F$ 这一做法，这些定义让我们把电场描述为：其势 $\phi$ 的梯度的相反数、再减去磁矢势的时间变化率；而磁场描述为：其势 $\bA_{(3)}$ 的旋度。同样，这完全如同常规电磁学。
+
+\begin{keybox}[由势给出的场]
+\begin{equation}
+\bE = -\nabla\phi - \partial_{t}\bA_{(3)} \tag{Common}
+\end{equation}
+\begin{equation}
+\bB = \nabla\times\bA_{(3)} \tag{Common}
+\end{equation}
+\end{keybox}
+
+接下来，考虑一个带电量为 $q$、四维速度为 $\bu$ 的粒子所受的四维力 $\mathbf{f}$：
+\begin{equation}
+\mathbf{f} = q F \mathbf{u} \tag{5}
+\end{equation}
+四维力是粒子能量-动量矢量 $\mathbf{P}$ 对固有时 $\tau$ 的变化率，因此这等价于：
+\begin{equation}
+\partial_{\tau}\mathbf{P} = q F \mathbf{u} \tag{6}
+\end{equation}
+现在，$\mathbf{P}$ 的空间部分就是三维动量 $\bp$，而四维速度 $\bu$ 的空间部分并不完全是普通速度 $\bv$。普通速度描述粒子的空间坐标对\emph{坐标时间} $t$ 的变化率，而 $\bu$ 的空间部分给出对\emph{固有时} $\tau$ 的变化率——因此 $\bu$ 的空间部分是 $(dt/d\tau)\bv$。不过，我们可以改用 $\bp$ 对坐标时间的变化率，从而吸收掉这个 $(dt/d\tau)$ 因子。
+
+我们最终得到的称为洛伦兹力定律（Lorentz force law）。这同样是黎曼版与洛伦兹版共有的（尽管相对论性运动对粒子动量 $\bp$ 的影响当然\emph{不}相同）。
+
+\begin{keybox}[洛伦兹力定律]
+\begin{equation}
+\partial_{t}\mathbf{p} = q(\bE + \bv\times\bB) \tag{Common}
+\end{equation}
+\end{keybox}
+
+接下来，我们把由定义 [方程 (3)] 强加于 $F$ 的条件，翻译为对 $\bE$ 与 $\bB$ 的推论。当我们在方程 (3) 中取 $a$、$b$、$c$ 为 $x$、$y$、$z$ 时，它告诉我们 $\bB$ 的散度必须为零。这称为磁高斯定律（Gauss's Law For Magnetism），它陈述了不存在磁单极子（这在常规电磁学中成立，当然也存在磁单极子确实存在的思辨性理论）。
+
+当我们在方程 (3) 中取 $a$、$b$、$c$ 为 $t$ 与两个空间坐标——对三对空间坐标中的每一对——时，它告诉我们 $\bE$ 的旋度与 $\bB$ 的时间变化率之和为零。这一结果称为麦克斯韦-法拉第方程（Maxwell-Faraday equation），它描述了磁场随时间变化时电场如何被产生出来。
+
+\begin{keybox}[磁高斯定律与麦克斯韦-法拉第方程]
+\begin{equation}
+\nabla\cdot\bB = 0 \tag{Common}
+\end{equation}
+\begin{equation}
+\nabla\times\bE + \partial_{t}\bB = 0 \tag{Common}
+\end{equation}
+\end{keybox}
+
+\subsection{改变（Changes）}
+
+最后我们来到黎曼电磁学与洛伦兹电磁学的差别，它们来自把麦克斯韦方程组中涉及场源的那个方程替换为黎曼 Proca 方程。
+
+当我们在黎曼 Proca 方程或麦克斯韦方程中把指标 $a$ 取为 $t$ 时，我们得到两个版本的高斯定律：在麦克斯韦情形中，它告诉我们电通量线只在电荷处起始与终止。在黎曼 Proca 情形中，这不再成立：通量线会从真空中冒出来，在这一点上电势的表现恰如一个电荷密度。
+
+\begin{keybox}[高斯定律]
+\begin{equation}
+\nabla\cdot\bE = \wms^{2}\phi - \rho \tag{Riemannian}
+\end{equation}
+\begin{equation}
+\nabla\cdot\bE = \rho \tag{Lorentzian}
+\end{equation}
+\end{keybox}
+
+当我们在黎曼 Proca 方程或麦克斯韦方程中把指标 $a$ 取为每个空间坐标时，我们得到两个版本的安培-麦克斯韦定律（Ampère-Maxwell Law），它描述了磁场由电流、变化的电场——以及在黎曼情形中，直接由磁矢势——所产生。
+
+\begin{keybox}[安培-麦克斯韦定律]
+\begin{equation}
+\nabla\times\bB + \partial_{t}\bE = \wms^{2}\bA_{(3)} + \bj_{(3)} \tag{Riemannian}
+\end{equation}
+\begin{equation}
+\nabla\times\bB - \partial_{t}\bE = \bj_{(3)} \tag{Lorentzian}
+\end{equation}
+\end{keybox}
+
+\section{静电学的例子（Examples from Electrostatics）}
+
+\subsection{库仑势（The Coulomb Potential）}
+
+我们在电磁学注记的主页讨论过黎曼库仑势。现在我们有了推导该势的工具。
+
+\orthofig{images/04__007.png}{点电荷周围的电通量线}
+
+我们感兴趣的是静止于我们坐标系中的一个点电荷 $q$ 周围的场。该情形不随时间变化、在空间上完全径向对称，因此它实际上是一个一维问题：一切都是到电荷距离 $r$ 的函数。
+
+黎曼电磁学给这一情形带来的奇特转折是：电通量线——在洛伦兹电磁学中总在电荷处起始与终止——现在可以在真空中间终止，而这一效应依赖于电势。右图中箭头表示电场的方向——但此处画出的是通量线而\emph{非}矢量：场的强度由通量线的疏密表示，而非其长度。
+
+与洛伦兹情形共有的主要数学困难在于：粒子所在位置处的电荷密度是\emph{无穷}的。绕过它的办法是对电荷密度作空间积分；对一个包含该粒子的区域积分将给出有限值 $q$。但我们的方程都是微分方程，因此首先要把其中一个化为合适的形式。为此我们利用散度定理（divergence theorem）——纯数学中的一条结论：对任意矢量场 $\bE$ 与任意空间区域，$\bE$ 与区域表面外法向的点积的积分，等于 $\bE$ 的散度在该区域上的体积分：
+\begin{equation}
+\int_{\text{Surface}} \bE\cdot\mathbf{n} = \int_{\text{Volume}} \nabla\cdot\bE \tag{7}
+\end{equation}
+
+我们取矢量场 $\bE$ 为电场，取积分区域为围绕点电荷、半径为 $r$ 的球面。我们预期电势 $\phi$ 只是 $r$ 的函数，且由问题的径向对称性，预期电场沿径向指向或背离电荷。鉴于问题是静态的，我们可以仅用电势表示 $\bE$：
+\begin{align}
+\bE(r) &= -\nabla\phi(r) \nonumber\\
+&= -\phi'(r)\,\be_{r} \tag{8}
+\end{align}
+其中 $\be_{r}$ 是指离电荷的单位矢量。黎曼版的高斯定律给出 $\nabla\cdot\bE$ 作为电荷密度 $\rho$ 与电势 $\phi$ 的函数。我们把这一点、连同 (8)，代入 (7) 中作用于电荷周围球形区域的积分。我们还利用这样的事实：$\rho$ 在包含电荷的区域上的任何体积分都简单地给出 $q$。两边除以 $4\pi$ 后，得到：
+\begin{equation}
+-r^{2}\phi'(r) = \wms^{2}\int_{0}^{r}\phi(s)\,s^{2}\,ds - \frac{q}{4\pi} \tag{9}
+\end{equation}
+
+现在，根据处理常规静电学的经验，我们猜测：若把 $\phi$ 写成一个新函数 $f$ 除以 $r$，事情会更简单：
+\begin{equation}
+\phi(r) = \frac{f(r)}{r} \tag{10}
+\end{equation}
+\begin{equation}
+\phi'(r) = \frac{f'(r)}{r} - \frac{f(r)}{r^{2}} \tag{11}
+\end{equation}
+
+用新函数 $f$ 表示，方程 (9) 变为 (12)；我们取 (12) 在 $r=0$ 处求值，得到 (12a)：
+\begin{equation}
+f(r) - r f'(r) = \wms^{2}\int_{0}^{r} f(s)\,s\,ds - \frac{q}{4\pi} \tag{12}
+\end{equation}
+\begin{equation}
+f(0) = -\frac{q}{4\pi} \tag{12a}
+\end{equation}
+
+(12) 对 $r$ 求导给出 (13)，稍加改写给出 (14)：
+\begin{equation}
+-r f''(r) = \wms^{2} f(r)\,r \tag{13}
+\end{equation}
+\begin{equation}
+f''(r) + \wms^{2} f(r) = 0 \tag{14}
+\end{equation}
+
+方程 (14) 是一个非常著名的微分方程，其实值通解为：
+\begin{equation}
+f(r) = C_{1}\cos(\wms r) + C_{2}\sin(\wms r) \tag{15}
+\end{equation}
+方程 (12a) 告诉我们 $C_{1} = -q/(4\pi)$。
+
+$C_{2}$ 呢？我们为 $C_{2}$ 选取任何值都会给出问题的一个有效解，但既然这一项与点电荷 $q$ 无关，我们令 $C_{2}$ 为零。正如常规电磁学，一个问题的通解往往包含某种仅仅路过关注区域的辐射——在此即碰巧在电荷静止系中静止的径向对称辐射。
+
+于是我们推导出了黎曼库仑势。下面也给出相应的电场 $\bE = -\nabla\phi$。
+
+\begin{keybox}[库仑势与库仑场]
+\textbf{[库仑势]}
+\[
+\phi(r) = \begin{cases}
+-\dfrac{q}{4\pi r}\cos(\wms r), & \text{(Riemannian)}\\[8pt]
+\dfrac{q}{4\pi r}, & \text{(Lorentzian)}
+\end{cases}
+\]
+
+\textbf{[库仑场]}
+\[
+\bE(r) = \begin{cases}
+-\dfrac{q}{4\pi r^{2}}
+\bigl[\cos(\wms r) + \wms r\sin(\wms r)\bigr]\be_{r}, & \text{(Riemannian)}\\[9pt]
+\dfrac{q}{4\pi r^{2}}\,\be_{r}, & \text{(Lorentzian)}
+\end{cases}
+\]
+\end{keybox}
+
+\subsection{黎曼电磁学的格林函数（A Green's Function for Riemannian Electromagnetism）}
+
+单个静止点电荷的库仑势原则上让我们能通过对场源的积分求出任何静态电荷分布的电场。然而，拥有一个更基本的、黎曼电动力学方程的解会很有用：它联系于一个瞬时"脉冲"电荷——它在四维空间某个事件处产生，随即消失。显然这种行为违反电荷守恒，但把该解沿任意多个具有完整历史的电荷的世界线积分，就能找到一个尊重电荷守恒的解。
+
+这样一个基本解称为\emph{格林函数}（Green's function）。
+
+我们先寻找黎曼标量波方程（Riemannian Scalar Wave equation）的四维旋转对称解（无源项）。这就是四维的亥姆霍兹方程（Helmholtz equation），施加四维旋转对称后，我们得到关于单变量 $s$（四维空间中到原点的距离）的函数 $G$ 的常微分方程：
+\begin{equation}
+G''(s) + \frac{3}{s}G'(s) + \wms^{2}G(s) = 0 \tag{16}
+\end{equation}
+该方程的通解为：
+\begin{equation}
+G(s) = C_{1}\frac{J_{1}(\wms s)}{s} + C_{2}\frac{Y_{1}(\wms s)}{s} \tag{17}
+\end{equation}
+其中 $J_{1}$ 与 $Y_{1}$ 分别是第一类与第二类贝塞尔函数（Bessel function）。尽管这是无源方程在 $s>0$ 时的解，但当 $s$ 趋于零时贝塞尔函数 $Y_{1}$ 趋于负无穷，这正暗示了与点电荷相联系的格林函数所应有的那种奇异行为。
+
+借助变量替换，我们可以显式地把 $G$ 沿一个静止点电荷的整条世界线积分——把沿世界线的时间坐标 $t$ 换成 $s = \sqrt{r^{2}+t^{2}}$，即从世界线上某个事件到离点电荷空间距离为 $r$ 的某个事件之间的四维距离。利用 $t = \sqrt{s^{2}-r^{2}}$ 与 $dt = (s/t)\,ds$，有：
+\begin{align}
+\int_{-\infty}^{\infty}G\!\left(\sqrt{r^{2}+t^{2}}\right)dt
+&= 2\int_{r}^{\infty}G(s)\,\frac{s}{\sqrt{s^{2}-r^{2}}}\,ds \nonumber\\
+&= 2\int_{r}^{\infty}\frac{C_{1}J_{1}(\wms s) + C_{2}Y_{1}(\wms s)}{\sqrt{s^{2}-r^{2}}}\,ds \nonumber\\
+&= 2\,\frac{C_{1}\sin(\wms r) - C_{2}\cos(\wms r)}{\wms r} \tag{18}
+\end{align}
+
+把它与一个带电量为 $q$ 的点粒子的黎曼库仑势相匹配，可令 $C_{1}=0$、$C_{2}=q\wms/(8\pi)$。
+
+我们是对标量势 $\phi$ 做的这一计算，但若用四维矢量来表达，结果会最有用。用四维矢量的语言说，粒子世界线的每一无穷小段对四维矢量势 $\bA$ 贡献一个平行于粒子四维速度 $\bu$ 的部分。我们加上一个负号，因为 $\phi = -A_{t}$。
+
+\begin{keybox}[格林函数]
+粒子带电量为 $q$。其世界线 $\mathbf{y}(\tau)$ 以固有时 $\tau$ 参数化。其四维速度 $\bu(\tau) = \partial_{\tau}\mathbf{y}(\tau)$。四维矢量势 $\bA$ 在事件 $\mathbf{x}$ 处取值。
+\begin{equation}
+d\bA(\mathbf{x}) = -\bu(\tau)\,\frac{q\wms}{8\pi}\,
+\frac{Y_{1}\bigl(\wms|\mathbf{x}-\mathbf{y}(\tau)|\bigr)}{|\mathbf{x}-\mathbf{y}(\tau)|}\,d\tau \tag{Riemannian}
+\end{equation}
+\end{keybox}
+
+我们不作洛伦兹对应物的推导，因为那需要大段绕路来解释所有细节与差别。我们只指出：所谓李纳-维谢尔势（Liénard-Wiechert potential）在给定事件处，只依赖电荷世界线与该事件的过去光锥之交点处电荷的位置与四维速度。换言之，正如你所料，在洛伦兹物理中 $\bA$ 只受粒子从过去以光速传播过来的信息的影响。
+
+我们此处给出的黎曼格林函数不区分过去与未来。对静电与静磁问题这没问题，但我们须记住：若把它用于产生电磁波的情形，它将给出既含入射波又含出射波的解。
+
+\subsection{电偶极子（Electric Dipoles）}
+
+电偶极子（electric dipole）由两个强度相等、一正一负、并保持固定间距的点电荷组成。若两电荷彼此靠近，它们会倾向于互相抵消库仑势，但会剩下一个特征性的\emph{偶极场}（dipole field）。
+
+\orthofig{images/04__008.png}{电偶极子}
+
+我们可以通过研究一个极限情形来简化对偶极场形状的理解：让两电荷彼此越来越靠近，同时每个电荷的强度越来越大。若我们定义矢量 $\bp$（\emph{偶极矩}，dipole moment）为从负电荷指向正电荷的位移矢量\emph{乘以}电荷的（正）强度，那么我们取这样的极限：$\bp$ 保持恒定有限，而间距趋于零、每个电荷的强度趋于无穷。
+
+得到该极限的最简单方式是：沿与所选偶极矩相反的方向对库仑势求\emph{导数}。所得电势见右图，电势与电场的公式见下表。这里 $\mathbf{r}$ 是从偶极子位置到我们求场之点的三维矢量，$r$ 是其大小。
+
+\begin{keybox}[电偶极子]
+\textbf{[电偶极子电势]}
+\[
+\phi(\mathbf{r}) = \begin{cases}
+-\dfrac{\bp\cdot\mathbf{r}}{4\pi r^{3}}
+\bigl[\cos(\wms r) + \wms r\sin(\wms r)\bigr], & \text{(Riemannian)}\\[9pt]
+\dfrac{\bp\cdot\mathbf{r}}{4\pi r^{3}}, & \text{(Lorentzian)}
+\end{cases}
+\]
+
+\textbf{[电偶极子电场]}
+\[
+\bE(\mathbf{r}) = \begin{cases}
+-\dfrac{3(\bp\cdot\mathbf{r})\mathbf{r} - r^{2}\bp}{4\pi r^{5}}
+\bigl[\cos(\wms r) + \wms r\sin(\wms r)\bigr]
++ \dfrac{\wms^{2}(\bp\cdot\mathbf{r})\mathbf{r}}{4\pi r^{3}}\cos(\wms r), & \text{(Riemannian)}\\[12pt]
+\dfrac{3(\bp\cdot\mathbf{r})\mathbf{r} - r^{2}\bp}{4\pi r^{5}}, & \text{(Lorentzian)}
+\end{cases}
+\]
+\end{keybox}
+
+若你在看到黎曼偶极势时有一种\emph{似曾相识}（déjà vu）之感，那你多半在\emph{常规}电磁学中见过\emph{振荡}偶极子势的非常相似的图形。事实上，静态黎曼偶极子的场，恰与常规电磁学中对一个振荡偶极子相关的入射与出射辐射求和所构造的驻波的空间部分相同。
+
+\subsection{带电球壳（Charged Spherical Shells）}
+
+假设总电荷 $Q$ 均匀分布在半径为 $R$ 的球壳上。洛伦兹电磁学中有一个众所周知的结果：球外电势与位于球心处点电荷的电势完全相同，而球内电势为常数。然而在黎曼电磁学中结果大不相同！无论是对表面各处的贡献作显式积分，还是用适当形式的高斯定律，我们都得到如下结果。
+
+\begin{keybox}[均匀带电球壳]
+半径为 $R$、总电荷为 $Q$ 的球壳。
+
+\textbf{[电势（Riemannian）]}
+\[
+\phi(r) = \begin{cases}
+-\dfrac{Q\cos(\wms R)\sin(\wms r)}{4\pi\wms R r}, & r<R\\[9pt]
+-\dfrac{Q\sin(\wms R)\cos(\wms r)}{4\pi\wms R r}, & r>R
+\end{cases}
+\]
+
+\textbf{[电势（Lorentzian）]}
+\[
+\phi(r) = \begin{cases}
+\dfrac{Q}{4\pi R}, & r<R\\[9pt]
+\dfrac{Q}{4\pi r}, & r>R
+\end{cases}
+\]
+
+\textbf{[电场（Riemannian）]}
+\[
+\bE(r) = \begin{cases}
+-\dfrac{Q\cos(\wms R)}{4\pi\wms R r^{2}}
+\bigl[\sin(\wms r) - \wms r\cos(\wms r)\bigr]\be_{r}, & r<R\\[10pt]
+-\dfrac{Q\sin(\wms R)}{4\pi\wms R r^{2}}
+\bigl[\cos(\wms r) + \wms r\sin(\wms r)\bigr]\be_{r}, & r>R
+\end{cases}
+\]
+
+\textbf{[电场（Lorentzian）]}
+\[
+\bE(r) = \begin{cases}
+\mathbf{0}, & r<R\\[9pt]
+\dfrac{Q}{4\pi r^{2}}\,\be_{r}, & r>R
+\end{cases}
+\]
+\end{keybox}
+
+\orthofig{images/04__009.png}{带电球壳}
+
+在黎曼情形中，球壳的外部电势是点电荷电势乘以一个因子 $\sin(\wms R)/(\wms R)$，而内部电势则交换了 $r$ 与 $R$ 的角色。
+
+尽管内部电势一般不是常数，但对某些 $R$ 值，内部\emph{或}外部电势会为零。当 $\wms R$ 为 $\pi/2$ 的奇数倍、等价地当 $R$ 为光的最小波长 $\lambda_{\min}$ 的四分之一波长的奇数倍时，内部电势为零。当 $\wms R$ 为 $\pi$ 的整数倍、等价地当 $R$ 为 $\lambda_{\min}$ 一半的整数倍时，外部电势为零。
+
+当然，这些精确的相消对电荷分布的确切几何非常敏感。不过一般而言，外部电势会比点电荷的电势大幅减弱。
+
+\subsection{带电实心球（Charged Solid Spheres）}
+
+我们可以对球壳的结果积分，得到电荷 $Q$ 均匀分布于整个实心球体时的电势与电场。
+
+\begin{keybox}[均匀带电实心球]
+半径为 $R$、总电荷为 $Q$ 的实心球。
+
+\textbf{[电势（Riemannian，$r<R$）]}
+\begin{equation}
+\phi(r) = \frac{3Q}{4\pi\wms^{2}R^{3}}
+\left\{1 - \bigl[\cos(\wms R) + \wms R\sin(\wms R)\bigr]\frac{\sin(\wms r)}{\wms r}\right\}
+\end{equation}
+
+\textbf{[电势（Lorentzian，$r<R$）]}
+\begin{equation}
+\phi(r) = \frac{Q}{8\pi R}\left[3 - \left(\frac{r}{R}\right)^{2}\right]
+\end{equation}
+
+\textbf{[电场（Riemannian，$r<R$）]}
+\begin{equation}
+\bE(r) = -\frac{3Q\bigl[\cos(\wms R) + \wms R\sin(\wms R)\bigr]}{4\pi\wms^{3}R^{3}r^{2}}
+\bigl[\sin(\wms r) - \wms r\cos(\wms r)\bigr]\be_{r}
+\end{equation}
+
+\textbf{[电场（Lorentzian，$r<R$）]}
+\begin{equation}
+\bE(r) = \frac{Q r}{4\pi R^{3}}\,\be_{r}
+\end{equation}
+\end{keybox}
+
+\orthofig{images/04__029.png}{带电实心球}
+
+在洛伦兹情形中，与球壳一样，实心球外的电势与电场就是集中于球心处点电荷的电势与电场。在实心球内部，电场来自比你更靠近球心的那部分球体，因此它随到球心的距离线性增大，而电势是到球心距离的二次函数。
+
+在黎曼情形中，外部电势与电场是点电荷的值乘以一个依赖球体大小的因子：
+\[
+\frac{3\bigl[\sin(\wms R) - \wms R\cos(\wms R)\bigr]}{\wms^{3}R^{3}}
+\]
+该因子随 $R$ 振荡，其第一个零点在 $R\approx 0.715\,\lambda_{\min}$ 处。
+
+内部电势由一个依赖 $R$ 但不振荡的平坦项，加上一个同时随 $R$ 与 $r$ 振荡的项构成。适当地选取 $R$ 可使振荡部分为零，从而使电势在整个球体内保持平坦，其第一个零点在 $R\approx 0.445\,\lambda_{\min}$ 处。
+
+\subsection{电容器（Capacitors）}
+
+假设我们有两个同心带电球壳，带有等量异号电荷。这一构置构成一个带电\emph{电容器}（capacitor）。电子电路中现实世界的电容器通常比这复杂得多，但这个简单几何允许我们做一些精确计算，以演示电容在黎曼宇宙中如何运作。
+
+\begin{keybox}[球形电容器]
+内壳半径 $R_{1}$，总电荷 $-Q$；外壳半径 $R_{2}$，总电荷 $+Q$。
+
+\textbf{[电势（Riemannian，$r<R_{2}$）]}
+\begin{equation}
+\phi(r) = \frac{Q\sin(\wms r)\bigl[R_{2}\cos(\wms R_{1}) - R_{1}\cos(\wms R_{2})\bigr]}{4\pi\wms r R_{1}R_{2}}
+\end{equation}
+
+\textbf{[电势（Lorentzian，$r<R_{2}$）]}
+\begin{equation}
+\phi(r) = \frac{Q(R_{1} - R_{2})}{4\pi R_{1}R_{2}}
+\end{equation}
+
+\textbf{[电场（Riemannian，$r<R_{2}$）]}
+\begin{equation}
+\bE(r) = \frac{Q\bigl[\sin(\wms r) - \wms r\cos(\wms r)\bigr]
+\bigl[R_{2}\cos(\wms R_{1}) - R_{1}\cos(\wms R_{2})\bigr]}{4\pi\wms r^{2}R_{1}R_{2}}\,\be_{r}
+\end{equation}
+
+\textbf{[电场（Lorentzian，$r<R_{2}$）]}
+\begin{equation}
+\bE(r) = \mathbf{0}
+\end{equation}
+
+\textbf{[电容（Riemannian）]}
+\begin{equation}
+C = \frac{8\pi\wms R_{1}^{2}R_{2}^{2}}
+{4R_{1}R_{2}\sin(\wms R_{1})\cos(\wms R_{2})
+ - R_{1}^{2}\sin(2\wms R_{2}) - R_{2}^{2}\sin(2\wms R_{1})}
+\end{equation}
+
+\textbf{[电容（Lorentzian）]}
+\begin{equation}
+C = \frac{4\pi R_{1}R_{2}}{R_{2} - R_{1}}
+\end{equation}
+\end{keybox}
+
+\orthofig{images/04__010.png}{球形电容器}
+
+在洛伦兹情形中，电势总是从内壳上的负值升到外壳上的零，器件两端的电压被定义为正值：
+\[
+V_{\text{Lorentzian}} = \phi(R_{2}) - \phi(R_{1}) = \frac{Q(R_{2} - R_{1})}{4\pi R_{1}R_{2}}
+\]
+总正电荷与电压差之间的比例常数称为器件的\emph{电容}（capacitance）$C$：
+\[
+C_{\text{Lorentzian}} = \frac{Q}{V_{\text{Lorentzian}}} = \frac{4\pi R_{1}R_{2}}{R_{2} - R_{1}}
+\]
+
+在黎曼情形中，两壳之间的电压差仍正比于总电荷，我们可以用同样的方式定义电容，但公式（见上表）复杂得多，且对由光的最小波长所设定的长度尺度敏感。黎曼电容原则上可以是正的、负的、甚至无穷大。无穷大电容意味着你可以向该器件注入任意多的电荷，而两壳自身之间不会建立起电压——尽管电场仍会增大。负电容意味着所带正电荷过剩的球壳处于比所带负电荷过剩的球壳更低的电势，因此若把两者连通，正电荷的球壳会吸入更多正电荷。当你把普通电容器短路时，它会放电；当你把具有负电容的电容器短路时，它的电荷会\emph{增加}。
+
+显然这可能引发失控过程，而我们（高度简化的）分析中没有任何东西能表明它何时会终止。但在一个更详细的、包含所有涉及材料性质的负电容器电路模型中，最终会出现一些复杂性来中止电荷的积聚。同样，黎曼库仑势允许\emph{同种电荷相吸}的情形这一单纯事实，似乎威胁到"宇宙中所有正电荷最终可能聚集到一处"的可能性——但那种场景忽略了量子力学效应对同种带电粒子聚集所施加的限制。
+
+同样重要的是要注意：我们研究的是一种理想化情形，即球壳完全光滑、电荷均匀分布，其尺度远小于光的最小波长。任何大于该尺度的起伏都会产生一个混合了正电容与负电容的器件，从而导致那种在黎曼宇宙中缓和一切静电现象的相消。
+
+此外，整个分析都假定电荷与电压的任何变化都发生得非常缓慢。我们将在后一节中处理交流电中的电容器。

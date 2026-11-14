@@ -1,0 +1,960 @@
+\subsection{四元数与 SO(4) 双覆盖的表示（Quaternions and Representations of the Double Cover of SO(4)）}
+
+$\mathrm{SO}(4)$ 双覆盖最重要的三个表示，都可以用对四元数（quaternion）的运算来非常简洁而自然地描述\textsuperscript{[5][6]}（感谢 John Baez 向我解释如何把旋量（spinor）看作四元数）。
+
+我们已经看到，二对一同态 $f_4:\mathrm{SU}(2)\times\mathrm{SU}(2)\to \mathrm{SO}(4)$ 可以通过构造一个由若干 $2\times2$ 复矩阵组成的四维实空间 $H$ 来定义。事实上，空间 $H$ 就是四元数的一个矩阵表示：一个定义了加法与乘法的四维向量空间，其加法与乘法像实数、复数那样定义，本质区别在于四元数的乘法不可交换。当然矩阵乘法也不可交换——而在 $H$ 中做矩阵乘法，正等同于做四元数乘法。
+
+思考四元数的一种方式，是把它看作复数的推广：$-1$ 的平方根不再只有一个 $i$，而是有三个不同的四元数 $i,j,k$，满足
+\[
+i^2=j^2=k^2=-1,\qquad ijk=-1 .
+\]
+若把四元数 $i$ 认同为矩阵 $H_x$、$j$ 认同为 $H_y$、$k$ 认同为 $H_z$、$1$ 认同为 $H_t$，则一切都完美地对应起来：矩阵与四元数具有完全相同的乘法表。
+
+$H$ 中的矩阵之乘法表为
+\[
+\begin{array}{c|cccc}
+\cdot & H_x & H_y & H_z & H_t \\ \hline
+H_x & -H_t & H_z & -H_y & H_x\\
+H_y & -H_z & -H_t & H_x & H_y\\
+H_z & H_y & -H_x & -H_t & H_z\\
+H_t & H_x & H_y & H_z & H_t
+\end{array}
+\]
+而四元数之乘法表为
+\[
+\begin{array}{c|cccc}
+\cdot & i & j & k & 1 \\ \hline
+i & -1 & k & -j & i\\
+j & -k & -1 & i & j\\
+k & j & -i & -1 & k\\
+1 & i & j & k & 1
+\end{array}
+\]
+
+我们将把实数四元组空间 $\mathbb{R}^4$、写成“实部加三个 $-1$ 的平方根的线性组合”的四元数、以及 $2\times2$ 矩阵空间 $H$，三者视为可互换：
+\[
+(a,b,c,d)\in\mathbb{R}^4 \;\longleftrightarrow\; a+bi+cj+dk
+\;\longleftrightarrow\; H(a,b,c,d)=a H_t+b H_x+c H_y+d H_z .
+\]
+
+给定四元数 $q=a+bi+cj+dk$，其共轭 $q^*$ 为 $a-bi-cj-dk$，且对任意四元数 $p,q$ 有 $(pq)^*=q^*p^*$。取共轭对应于对相应矩阵取厄米（Hermitian）伴随。
+
+四元数 $q$ 的实部 $\operatorname{Re}(q)$ 就是 $a$，它也等于 $\tfrac12(q+q^*)$。这对应于取相应矩阵的迹的一半。
+
+我们定义四元数 $q$ 的长度或范数 $|q|$ 为相应向量的通常欧氏长度，故
+\[
+|q|^2=a^2+b^2+c^2+d^2=q q^*=q^* q .
+\]
+
+我们已指出，当把 $\mathbb{R}^4$ 中的向量 $\mathbf{x}$ 映射到矩阵空间 $H$ 时，$H(\mathbf{x})$ 的行列式等于 $|\mathbf{x}|$ 的平方。因此 $H$ 中的单位向量就是行列式为 $1$ 的 $2\times2$ 复矩阵，事实上它们恰好是矩阵群 $\mathrm{SU}(2)$ 的元素。于是 $\mathrm{SO}(4)$ 的双覆盖——即 $\mathrm{SU}(2)$ 中元素的有序对之集合——同样可以看作\textbf{单位四元数}的有序对之集合。
+
+这使我们能够把二对一同态 $f_4$ 描述为 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 在四元数向量空间 $H$ 上的一个表示：
+\begin{equation}
+f_4(g,h)\,q=g\,q\,h^{-1}, \tag{4.2.1}
+\end{equation}
+其中 $\mathrm{SU}(2)$ 中的 $g,h$ 被理解为单位四元数。如上一节所述，这个二对一同态等价于 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 在 $\mathbb{C}^2\otimes\mathbb{C}^2$ 上的四维自旋 $(\tfrac12,\tfrac12)$ 表示，也称为\textbf{矢量表示}（vector representation）。除了它是对 $\mathrm{SO}(4)$ 的双覆盖而非 $\mathrm{SO}(4)$ 本身的表示这一点之外，这不过是用另一种话术在谈 $\mathbb{R}^4$ 中向量被 $\mathrm{SO}(4)$ 元素所做的普通旋转。$\mathrm{SO}(4)$ 中的每个旋转都能由某对单位四元数 $(g,h)$ 这样生成；唯一的复杂之处在于 $(-g,-h)$ 也产生完全相同的旋转，这正是 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 为 $\mathrm{SO}(4)$ 双覆盖所预期的。
+
+到目前为止我们其实并未做任何新事情：不过是把矩阵空间 $H$ 认同为四元数，并在其上做与先前完全相同的运算。然而，不那么显然的是，我们还能证明 $\rho_{\frac12}$（$\mathrm{SU}(2)$ 的自旋 $\tfrac12$ 表示）——从而 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 的自旋 $(\tfrac12,0)$ 与自旋 $(0,\tfrac12)$ 表示——也可以用四元数来定义。
+
+我们把 $\rho'_{\frac12}$ 定义为 $\mathrm{SU}(2)$ 在 $H$ 上的表示：
+\[
+\rho'_{\frac12}(g)\,q=g\,q .
+\]
+这里照例把 $\mathrm{SU}(2)$ 中的 $g$ 理解为单位四元数。我们可以通过任取 $\mathbb{C}^2$ 中一个单位向量 $\mathbf{v}_0$ 来构造 $H$ 与 $\mathbb{C}^2$ 之间的同构 $T$：
+\[
+T(q)=q\,v_0 ,
+\]
+其中通过把四元数 $q$ 认同为 $2\times2$ 复矩阵来作 $q$ 与 $\mathbf{v}_0$ 的乘法。
+
+若要用 $T$ 把四元数认同为复向量空间 $\mathbb{C}^2$，我们需要给 $H$ 赋予一个复结构：即 $H$ 上对应 $\mathbb{C}^2$ 中乘以 $i$ 的线性算符 $J$。它的选取依赖于 $\mathbf{v}_0$ 的选择，一个简单的选择是 $\mathbf{v}_0=(0,1)$ 及复结构
+\[
+J(q)=q\,H_z ,
+\]
+即右乘 $H_z$。选择 $H_z$ 的原因在于 $\mathbf{v}_0$ 正是 $H_z$ 的本征值为 $i$ 的本征向量：
+\[
+H_z(0,1)=i\,(0,1).
+\]
+于是 $J^2(q)=q H_z^2=-q$，且当 $\mathbf{v}_0=(0,1)$ 时有
+\[
+T(J(q))=q H_z(0,1)=i\,q(0,1)=i\,T(q).
+\]
+利用 $T$ 容易证明两个表示 $\rho'_{\frac12}$ 与 $\rho_{\frac12}$ 等价：
+\[
+T(\rho'_{\frac12}(g)q)=g\,q\,v_0=\rho_{\frac12}(g)\,T(q).
+\]
+还需注意 $\rho'_{\frac12}$ 与复结构 $J$ 对易，因为 $J$ 所做的右乘与 $\rho'_{\frac12}$ 所做的左乘相互对易。
+
+现在我们可以在 $H$ 上定义 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 的自旋 $(\tfrac12,0)$ 与自旋 $(0,\tfrac12)$ 表示：
+\[
+\rho'_{(\frac12,0)}(g,h)\,q=g\,q,\qquad
+\rho'_{(0,\frac12)}(g,h)\,q=h\,q .
+\]
+它们分别称为\textbf{左手旋量表示}与\textbf{右手旋量表示}（left-handed／right-handed spinor representation）。我们采用统一记号，把 $H$ 上等价于 $f_4$ 的矢量表示写成
+\[
+\rho'_{(\frac12,\frac12)}(g,h)\,q=g\,q\,h^{-1}.
+\]
+若 $v$ 是一个向量（即按 $\rho'_{(\frac12,\frac12)}$ 变换的四元数），$r$ 是一个右手旋量（即按 $\rho'_{(0,\frac12)}$ 变换的四元数），则二者之积 $v\,r$ 将是一个左手旋量，按 $\rho'_{(\frac12,0)}$ 变换：
+\begin{align*}
+\big(\rho'_{(\frac12,\frac12)}(g,h)v\big)\big(\rho'_{(0,\frac12)}(g,h)r\big)
+&=(g\,v\,h^{-1})(h\,r)\\
+&=g\,(v\,r)\\
+&=\rho'_{(\frac12,0)}(g,h)\,(v\,r).
+\end{align*}
+这意味着四元数乘法这一运算，充当了“矢量表示与右手旋量表示的张量积”到“左手旋量表示”之间的一个纠缠算符（intertwiner）——即一个从前者到后者、与所有表示都对易的线性映射。
+
+同理，从矢量 $v$ 与左手旋量 $l$ 出发也能做类似的事，但必须把它们以 $v^* l$ 的形式组合：
+\begin{align*}
+\big(\rho'_{(\frac12,\frac12)}(g,h)v\big)^*\big(\rho'_{(\frac12,0)}(g,h)l\big)
+&=(g\,v\,h^{-1})^*(g\,l)\\
+&=(h\,v^*\,g^{-1})(g\,l)\\
+&=h\,(v^* l)\\
+&=\rho'_{(0,\frac12)}(g,h)\,(v^* l).
+\end{align*}
+可见 $v^* l$ 按右手旋量变换。
+
+当把 $\mathbb{R}^4$ 映射到 $H$ 时，我们看到可以在 $H$ 上放置一个实内积：
+\[
+x\cdot y=\tfrac12\operatorname{tr}\!\big(H(x)H(y)^*\big).
+\]
+它可以改写成
+\[
+p\cdot q=\operatorname{Re}(p^* q)=\operatorname{Re}(p\,q^*)=\tfrac12(p\,q^*+q\,p^*).
+\]
+但现在把 $\mathbb{C}^2$ 映射到 $H$，我们真正需要的是 $H$ 上的一个\emph{复}内积，可定义为
+\[
+\langle p,q\rangle_S=\operatorname{Re}(p^* q)-\operatorname{Re}(p^* J(q))\,i
+=\operatorname{Re}(p^* q)-\operatorname{Re}(p^* q H_z)\,i .
+\]
+下标 “$S$” 代表旋量（spinor）。容易看出，用任意单位四元数 $g\in\mathrm{SU}(2)$ 左乘都保持此内积，因为 $g^* g=|g|^2=1$：
+\begin{align*}
+\langle gp,gq\rangle_S
+&=\operatorname{Re}\big((gp)^* gq\big)-\operatorname{Re}\big((gp)^* gq H_z\big)i\\
+&=\operatorname{Re}\big(p^* g^* gq\big)-\operatorname{Re}\big(p^* g^* gq H_z\big)i\\
+&=\langle p,q\rangle_S .
+\end{align*}
+因此我们关于 $\mathrm{SU}(2)$ 的表示 $\rho'_{\frac12}$ 在此复内积下是酉算符。我们还有
+\begin{align*}
+\langle gp,q\rangle_S
+&=\operatorname{Re}\big((gp)^* q\big)-\operatorname{Re}\big((gp)^* q H_z\big)i\\
+&=\operatorname{Re}\big(p^* g^* q\big)-\operatorname{Re}\big(p^* g^* q H_z\big)i\\
+&=\langle p,g^* q\rangle_S .
+\end{align*}
+这告诉我们：若把左乘 $g$ 看作线性算符，则关于此内积的伴随算符就是左乘共轭 $g^*$。
+
+\subsection{宇称（Parity）}
+
+正交群 $\mathrm{O}(4)$ 由两部分组成：行列式为 $1$ 的正交矩阵，它们构成群 $\mathrm{SO}(4)$；以及行列式为 $-1$ 的正交矩阵，其中包含反射。从拓扑上看，这是分离的两块；必然如此，因为行列式是矩阵分量的多项式，因而是一个连续函数。它不可能在连通集合中间从 $1$ 跳到 $-1$，所以 $\mathrm{O}(4)$ 中行列式为 $1$ 与 $-1$ 的部分必然不连通。
+
+[在我们自己的宇宙中，情况要复杂得多：洛伦兹变换群由\emph{四}块不连通的部分组成，因为除了空间反射以外还必须考虑时间反演，以及反射与时间反演的组合。但在黎曼宇宙中，时间反演不过是另一种反射。]
+
+$\mathrm{O}(4)$ 的这两块可以通过与任意行列式为 $-1$ 的 $\mathrm{O}(4)$ 元素相乘而相互映射。我们取一个特定的线性算符，称为\textbf{宇称操作}（parity operation）$P$，其定义为
+\begin{equation}
+P(x,y,z,t)=(-x,-y,-z,t). \tag{4.2.2}
+\end{equation}
+若 $R\in\mathrm{SO}(4)$，则 $\det(R)=1$，而 $\det(PR)=\det(P)\det(R)=-1$。反之，任意 $\det(F)=-1$ 的 $F\in\mathrm{O}(4)$ 都可以与 $P$ 相乘得到 $\mathrm{SO}(4)$ 的元素。因此与 $P$ 相乘给出 $\mathrm{O}(4)$ 两个连通分量之间的一个可逆映射。显然 $P^2=I_4$，所以将此映射作用两次便回到出发点。
+
+现在，我们想把 $\mathrm{SU}(2)\times\mathrm{SU}(2)$（即 $\mathrm{SO}(4)$ 的双覆盖）\emph{扩展}为一个构成 $\mathrm{O}(4)$ 双覆盖的新群。模仿 $\mathrm{SO}(4)$ 与 $\mathrm{O}(4)$ 的关系，我们通过加上一个 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 的“额外副本”来做这件事；这个副本是把 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 的元素与一个我们将称之为 $Q$ 的新群元素相乘而得到的。目标是让扩展群的第二部分充当 $\mathrm{O}(4)$ 中含反射部分的双覆盖。
+
+我们把新群的元素要么写成 $(g,h)$（$\mathrm{SU}(2)\times\mathrm{SU}(2)$ 的元素），要么写成 $Q\cdot(g,h)$（群第二部分的元素）。后者只是一个无法进一步简化的形式表达式；这里 $Q$ 起到一种标记的作用。
+
+除了扩展 $\mathrm{SU}(2)\times\mathrm{SU}(2)$，我们还想把二对一同态 $f_4:\mathrm{SU}(2)\times\mathrm{SU}(2)\to\mathrm{SO}(4)$ 扩展为从新群到 $\mathrm{O}(4)$ 的同态。我们把 $f_4$ 定义为
+\[
+f_4(g,h)\,x=H^{-1}\!\big(g\,H(x)\,h^{-1}\big),
+\]
+并作如下宣布来扩展它：
+\[
+f_4(Q)\,x=P\,x .
+\]
+先前我们注意到，对 $H(\mathbf{x})$ 取厄米伴随的效果是
+\[
+H(x)^*=H(Px),
+\]
+故有
+\[
+Px=H^{-1}\!\big(H(x)^*\big).
+\]
+这一点，加上要求扩展后的 $f_4$ 是群同态，告诉我们：
+\begin{align*}
+f_4\big(Q\cdot(g,h)\big)x
+&=f_4(Q)\,f_4(g,h)\,x\\
+&=P\,f_4(g,h)\,x\\
+&=P\,H^{-1}\!\big(g\,H(x)\,h^{-1}\big)\\
+&=H^{-1}\!\big((g\,H(x)\,h^{-1})^*\big)\\
+&=H^{-1}\!\big(h^{*-1}H(x)^*\,g^*\big)\\
+&\qquad\text{[矩阵乘积的伴随等于各矩阵伴随按相反顺序之积]}\\
+&=H^{-1}\!\big(h\,H(Px)\,g^{-1}\big)\\
+&\qquad\text{[因 $g,h\in\mathrm{SU}(2)$，其伴随即其逆]}\\
+&=f_4(h,g)\,P\,x\\
+&=f_4(h,g)\,f_4(Q)\,x\\
+&=f_4\big((h,g)\cdot Q\big)x .
+\end{align*}
+由此我们可以断定
+\begin{align*}
+f_4\big(Q\cdot(g,h)\cdot Q^{-1}\big)
+&=f_4\big(Q\cdot(g,h)\big)f_4(Q^{-1})\\
+&=f_4\big((h,g)\cdot Q\big)f_4(Q^{-1})\\
+&=f_4(h,g).
+\end{align*}
+由于 $f_4$ 是二对一的，且它映到同一点的两个元素总是相反数，于是推出 $Q\cdot(g,h)\cdot Q^{-1}=\pm(h,g)$。但对于 $(g,h)=(I_2,I_2)$（它是 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 的单位元，从而也是整个扩展群的单位元）的情形，唯一正确的选择是正号。又因 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 连通，且我们期望用 $Q$ 作共轭是一个连续映射，符号不能跳变。所以
+\begin{equation}
+Q\cdot(g,h)\cdot Q^{-1}=(h,g),\qquad
+Q\cdot(g,h)=(h,g)\cdot Q . \tag{4.2.3}
+\end{equation}
+我们还有
+\[
+f_4(Q^2)=f_4(Q)^2=P^2=I_4,\qquad Q^2=\pm(I_2,I_2).
+\]
+两种选择在数学上都成立；哪一个为真只能由实验决定。在我们自己的宇宙中，结果发现宇称根本不是精确对称，因为 $\beta$ 衰变实验显示宇称被破坏。然而它仍是一个有用的概念，适用于广泛的现象，尽管它并非对全部物理都是完美对称。
+
+若把 $\mathrm{O}(3)$ 视为 $\mathrm{O}(4)$ 中使时间轴固定的子群，并把 $\mathrm{SU}(2)$ 视为 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 中由形如 $(g,g)$ 的元素构成的子群，则以上所做的一切都可改造为 $\mathrm{O}(3)$ 的一个双覆盖。注意元素 $Q$ 与 $\mathrm{SU}(2)$ 的每个元素对易：
+\[
+Q\cdot(g,g)=(g,g)\cdot Q .
+\]
+
+\subsubsection{含宇称的表示（Representations Including Parity）}
+
+设我们取 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 的某一个自旋 $(j,k)$ 表示，并想把它扩展到含 $Q$ 的群上。先前我们注意到，当 $Q$ 从 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 某元素的左侧移到右侧时，它交换这些元素的次序：
+\[
+Q\cdot(g,h)=(h,g)\cdot Q .
+\]
+此恒等式必须被表示保持：
+\[
+\rho_{j,k}(Q)\,\rho_{j,k}(g,h)=\rho_{j,k}(h,g)\,\rho_{j,k}(Q).
+\]
+把它作用到两个向量的张量积上：
+\begin{align*}
+\rho_{j,k}(Q)\,\rho_{j,k}(g,h)\,v\otimes w
+&=\rho_{j,k}(h,g)\,\rho_{j,k}(Q)\,v\otimes w\\
+\rho_{j,k}(Q)\,(\rho_j(g)v)\otimes(\rho_k(h)w)
+&=\rho_{j,k}(h,g)\,\rho_{j,k}(Q)\,v\otimes w .
+\end{align*}
+若把自身限制在 $j=k$ 的特殊情形，并定义
+\[
+\rho_{j,j,p}(Q)\,v\otimes w=p\,w\otimes v
+\]
+（$p$ 是某个待定常数，暂时只把它写进表示的标签里），则我们恒等式的左右两边都变为
+\[
+p\,(\rho_j(h)w)\otimes(\rho_j(g)v).
+\]
+但当 $j\neq k$ 时该怎么办？我们需要把表示扩展为我们称之为 $(j,k)\oplus(k,j)$ 的东西，即原表示与另一个自旋互换的版本之直和。我们在 $(\mathbb{V}_j\otimes\mathbb{V}_k)\times(\mathbb{V}_k\otimes\mathbb{V}_j)$（其元素为分别取自两个张量积的有序对）上定义 $\rho_{(j,k)\oplus(k,j),p}$：
+\begin{align}
+\rho_{(j,k)\oplus(k,j),p}(g,h)\,(a\otimes b,\;c\otimes d)
+&=\big((\rho_j(g)a)\otimes(\rho_k(h)b),\;\;(\rho_k(g)c)\otimes(\rho_j(h)d)\big), \tag{4.2.4}\\
+\rho_{(j,k)\oplus(k,j),p}(Q)\,(a\otimes b,\;c\otimes d)
+&=p\,(d\otimes c,\;b\otimes a). \notag
+\end{align}
+这同样能让我们满足那个交换 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 中两元素次序的恒等式。若不是因为有对称操作 $Q$，此表示显然可约，直和的每一部分都是不变子空间；但既然 $Q$ 交换两个子空间中的元素，整体表示就是不可约的。
+
+那常数 $p$ 呢？$\rho_{j,j,p}(Q)^2$ 与 $\rho_{(j,k)\oplus(k,j),p}(Q)^2$ 的作用都只是乘以 $p^2$。若 $Q^2=(I_2,I_2)$，则对我们的任意一个表示有
+\[
+\rho(Q)^2=\rho(Q^2)=\rho(I_2,I_2)=I,
+\]
+故必有 $p^2=1$，即 $p=\pm1$。我们称 $p$ 为该表示的\textbf{内禀宇称}（intrinsic parity）。
+
+另一方面，若 $Q^2=(-I_2,-I_2)$，则
+\[
+\rho_{(j,k)\oplus(k,j),p}(Q)^2=\rho_{(j,k)\oplus(k,j),p}(Q^2)
+=\rho_{(j,k)\oplus(k,j),p}(-I_2,-I_2)=(-1)^{2(j+k)}I .
+\]
+在玻色情形（$j+k$ 为整数），内禀宇称的选择与之前相同。在费米情形（$j+k$ 等于半奇数），内禀宇称是虚数 $\pm i$。
+
+把 $\mathrm{SU}(2)$ 的表示扩展到含 $Q$ 的情形要简单得多。既然 $Q$ 与每个元素对易，它必被表示为恒等算符的倍数，故有
+\[
+\rho_{j,p}(Q)=p\,I,
+\]
+其中 $p$ 的选择取决于相同的判据。
+
+最后，我们可以像构造 $\mathrm{SO}(3)$、$\mathrm{SO}(4)$ 的表示那样，用扩展后的二对一同态 $f_3$ 与 $f_4$ 来构造 $\mathrm{O}(3)$ 与 $\mathrm{O}(4)$ 的表示。在玻色情形这些是真正的表示，在费米情形则是射影表示（projective representation）。
+
+\subsection{欧氏群的表示（Representations of the Euclidean Group）}
+
+到目前为止，我们讨论的所有表示，都是欧氏群中使坐标原点固定的子群的表示。现在我们想前进到完整的群，它包含\emph{平移}（translation）——把四维空间中每一点都位移某个常矢量的对称操作。
+
+\subsubsection{函数空间上的表示（Representations on Function Spaces）}
+
+为找出整个欧氏群的表示，我们首先要引入一种新的向量空间：$\mathbb{R}^4$ 上的复值函数空间。取从 $\mathbb{R}^4$ 到 $\mathbb{C}$ 的函数之集，以显然的方式定义加法与标量乘法，便可把它当作向量空间。对任意这样的函数 $A,B$ 及任意复数 $c$：
+\[
+(A+B)(x)=A(x)+B(x),\qquad (cA)(x)=c\,A(x).
+\]
+通过定义函数间的内积
+\[
+\langle A,B\rangle=\int_{\mathbb{R}^4}A(x)^* B(x)\,d^4x,
+\]
+我们可以把 $\mathbb{R}^4$ 上复值函数的一个子集做成希尔伯特空间，记作 $L^2(\mathbb{R}^4)$。$L^2(\mathbb{R}^4)$ 由那些其模方
+\[
+|A|^2=\langle A,A\rangle=\int_{\mathbb{R}^4}A(x)^* A(x)\,d^4x=\int_{\mathbb{R}^4}|A(x)|^2 d^4x
+\]
+有限的函数组成。这样的函数称为\textbf{平方可积}（square-integrable）函数。
+
+我们可以在 $L^2(\mathbb{R}^4)$ 上定义 $\mathrm{E}(4)$ 的一个表示 $\rho_F$：
+\[
+\big(\rho_F(g)A\big)(x)=A(g^{-1}x).
+\]
+可以把函数 $A$ 想象为 $\mathbb{R}^4$ 中一个“涂着”复数的刚性物体。当我们用对称操作 $g$ 滑动这个物体时，$\mathbb{R}^4$ 中每一点现在都关联到最终落在该点的那个新数。这里需要用 $g^{-1}$ 而非 $g$，才能得到一个表示：
+\begin{align*}
+\big(\rho_F(gh)A\big)(x)
+&=A\big((gh)^{-1}x\big)\\
+&=A\big(h^{-1}g^{-1}x\big)\\
+&=\big(\rho_F(h)A\big)(g^{-1}x)\\
+&=\big(\rho_F(g)\rho_F(h)A\big)(x).
+\end{align*}
+由于欧氏群在 $\mathbb{R}^4$ 上的作用保持四维体积，给出内积的积分不变。所以这是一个酉表示。它在整个 $L^2(\mathbb{R}^4)$ 上不是不可约的，但我们可以找到一个不可约子空间：对任意固定值 $\omega_m$ 的黎曼标量波方程（Riemannian Scalar Wave equation, RSW）之解：
+\begin{equation}
+\partial_x^2 A+\partial_y^2 A+\partial_z^2 A+\partial_t^2 A+\omega_m^2 A=0. \tag{RSW}
+\end{equation}
+要看出满足 RSW 方程的函数 $A$ 意味着 $\rho_F(g)A$ 也满足它，设 $g^{-1}$ 作用在 $\mathbf{x}=x^i\mathbf{e}_i$ 上为
+\[
+g^{-1}x=(R^i_{\ j}x^j+a^i)\,\mathbf{e}_i,
+\]
+其中 $R^i_{\ j}$ 是某正交矩阵的分量，$a^i$ 是 $\mathbb{R}^4$ 中某向量的分量，并对重复指标采用爱因斯坦求和约定。则
+\begin{align*}
+&\partial_x^2(\rho_F(g)A)(x)+\partial_y^2(\rho_F(g)A)(x)
++\partial_z^2(\rho_F(g)A)(x)+\partial_t^2(\rho_F(g)A)(x)\\
+&=\partial_x^2\big(A(g^{-1}x)\big)+\partial_y^2\big(A(g^{-1}x)\big)
++\partial_z^2\big(A(g^{-1}x)\big)+\partial_t^2\big(A(g^{-1}x)\big)\\
+&=\sum_{p}\partial_{x^p}^2\big(A(g^{-1}x)\big)\\
+&=\sum_{p,q,r}R^q_{\ p}R^r_{\ p}\,\partial_{y^q}\partial_{y^r}A(y)\Big|_{y=g^{-1}x}\\
+&=\sum_{q,r}(RR^{T})^q_{\ r}\,\partial_{y^q}\partial_{y^r}A(y)\Big|_{y=g^{-1}x}\\
+&=\sum_{r}\partial_{y^r}^2 A(y)\Big|_{y=g^{-1}x}\\
+&=-\omega_m^2 A(y)\Big|_{y=g^{-1}x}
+=-\omega_m^2\,(\rho_F(g)A)(x).
+\end{align*}
+这里我们做的是：从 $A$ 对坐标 $x^p$ 的导数（$A$ 只通过 $g^{-1}\mathbf{x}$ 见到这些坐标）转换到对直接传给 $A$ 的坐标 $y^r$ 的导数；这让我们能够引用原函数所满足的方程。实际上，我们是在说明：在一个直角坐标系中满足 RSW 方程的函数，在任何其他直角坐标系中进行计算时也同样满足它。
+
+那向量值函数呢？我们可以在 $\mathbb{C}^n$ 值函数空间上定义内积
+\[
+\langle A,B\rangle=\int_{\mathbb{R}^4}\langle A(x),B(x)\rangle\,d^4x,
+\]
+其中积分号内的内积就是 $\mathbb{C}^n$ 本身的标准内积。于是 $\mathbb{C}^n$ 值函数的模方为
+\[
+|A|^2=\langle A,A\rangle=\int_{\mathbb{R}^4}\langle A(x),A(x)\rangle\,d^4x=\int_{\mathbb{R}^4}|A(x)|^2 d^4x .
+\]
+把 $g$ 的“非平移部分”作用到函数在 $\mathbb{R}^4$ 中每一点所赋予的四元复数组上，我们可以在平方可积 $\mathbb{C}^4$ 值函数空间 $\mathbb{C}^4\otimes L^2(\mathbb{R}^4)$ 上得到一个酉表示。若 $\mathbf{A}\in\mathbb{C}^4\otimes L^2(\mathbb{R}^4)$ 且 $g^{-1}\mathbf{x}=(R^i_{\ j}x^j+a^i)\mathbf{e}_i$，我们定义
+\[
+\big(\rho_V(g)A\big)(x)
+=(R^{-1})^i_{\ j}A^j(g^{-1}x)\,\mathbf{e}_i
+=R^j_{\ i}A^j(g^{-1}x)\,\mathbf{e}_i .
+\]
+若要求 $\mathbf{A}$ 的每个分量都满足 RSW 方程，则 $\rho_V(g)\mathbf{A}$ 的分量也满足。但正如在向量波注记中所提示的，这\emph{并不}足以给出不可约表示，因为我们还可以通过施加\textbf{横波条件}（transverse condition）
+\begin{equation}
+\partial_x A^x+\partial_y A^y+\partial_z A^z+\partial_t A^t=0 \tag{Transverse}
+\end{equation}
+把函数限制到一个更小的不变子空间上。设 $\mathbf{A}$ 满足横波条件，则对 $\rho_V(g)\mathbf{A}$ 有
+\begin{align*}
+&\partial_x(\rho_V(g)A)^x(x)+\partial_y(\rho_V(g)A)^y(x)
++\partial_z(\rho_V(g)A)^z(x)+\partial_t(\rho_V(g)A)^t(x)\\
+&=\sum_{p,j}\partial_{x^p}R^j_{\ p}A^j(g^{-1}x)\\
+&=\sum_{p,j,q}R^q_{\ p}\partial_{y^q}R^j_{\ p}A^j(y)\Big|_{y=g^{-1}x}\\
+&=\sum_{j,q}(RR^T)^q_{\ j}\partial_{y^q}A^j(y)\Big|_{y=g^{-1}x}\\
+&=\sum_{j}\partial_{y^j}A^j(y)\Big|_{y=g^{-1}x}=0 .
+\end{align*}
+所以 $\rho_V(g)\mathbf{A}$ 也满足横波条件。
+
+在这个情形中我们设法在大表示里找到了一个不可约表示，但过程仍有些神秘。要想系统地确定欧氏群\emph{所有}的不可约酉表示，需要援引一种更精细的方法。
+
+\textbf{一个警告}：本节余下部分包含大量抽象的群论构造。若你享受这种细致程度，那很好——但若你觉得它难啃，跳过即可！它并非后续材料的必要前提。
+
+\subsubsection{群作用、轨道与迷向子群（Group Actions, Orbits and Isotropy Subgroups）}
+
+首先给出几个我们需要的简单定义\textsuperscript{[2]}。
+
+群 $G$ 在集合 $M$ 上的一个\textbf{作用}（action）$\alpha$，为群的每个元素 $g$ 指派一个可逆函数 $\alpha(g):M\to M$，并要求 $\alpha(e)x=x$，其中 $e$ 是群的单位元。若 $\alpha_L$ 是\textbf{左作用}，则对所有 $x\in M$ 及 $g,h\in G$，它必须满足
+\[
+\alpha_L(g)\alpha_L(h)x=\alpha_L(gh)x .
+\]
+若 $\alpha_R$ 是\textbf{右作用}，则条件为
+\[
+\alpha_R(h)\alpha_R(g)x=\alpha_R(gh)x .
+\]
+最显然的例子是群作用在\emph{自身}上，通过左乘或右乘：
+\[
+\alpha_L(g)a=ga,\qquad \alpha_R(g)a=ag .
+\]
+群也可以通过\textbf{共轭}（conjugation）作用在自身上，既可作为左作用也可作为右作用：
+\[
+\alpha_L(g)a=gag^{-1},\qquad \alpha_R(g)a=g^{-1}ag .
+\]
+群在向量空间上的表示是左作用，且附加要求：每个群元素所对应的函数必须是线性算符。
+
+若有一个 $G$ 在 $M$ 上的作用 $\alpha$，则 $M$ 中任意元素 $x$ 的\textbf{轨道}（orbit）是集合 $\{\alpha(g)x\mid g\in G\}$。它由 $M$ 中所有能被某个群元素作用把 $x$ 移到的点组成。例如，若取 $\mathrm{SO}(3)$ 在 $\mathbb{R}^3$ 上以矩阵乘法作用（即 $\mathrm{SO}(3)$ 元素只是旋转 $\mathbb{R}^3$ 中的向量），则除原点外 $\mathbb{R}^3$ 中任一点的轨道是一个球面，而原点的轨道只是原点本身。
+
+$G$ 在 $M$ 上的作用 $\alpha$ 称为\textbf{可迁}（transitive）的，如果对任意两个元素 $m_1,m_2$，都存在某个 $g\in G$ 使
+\[
+\alpha(g)m_1=m_2 .
+\]
+换句话说，若作用在 $M$ 上可迁，则任意点的轨道就是整个集合 $M$。
+
+我们把 $G$ 在 $M$ 上的\emph{所有轨道之集}记作 $M/G$。在 $\mathrm{SO}(3)$ 与 $\mathbb{R}^3$ 的例子中，轨道集 $\mathbb{R}^3/\mathrm{SO}(3)$ 同构于非负实数集，等于各球面轨道的半径。
+
+\textbf{迷向子群}（isotropy subgroup）$G_m$ 是 $G$ 中使 $M$ 中某点 $m$ 在此作用下固定的元素之集：
+\[
+G_m=\{h\in G\mid \alpha(h)m=m\}.
+\]
+例如，若 $G=\mathrm{SO}(3)$、$M=\mathbb{R}^3$，则使 $z$ 轴固定的迷向子群 $G_{(0,0,1)}$ 是 $\mathrm{SO}(3)$ 的一个同构于二维转动群 $\mathrm{SO}(2)$ 的子群。
+
+若 $M$ 中两点 $x,y$ 位于某作用 $\alpha$ 的同一轨道上，则它们在该作用下的迷向子群彼此同构；即存在可逆群同态 $\phi:G_x\to G_y$。对左作用，若 $y=\alpha_L(g)x$，则同构为 $\phi(h)=ghg^{-1}$。对右作用，若 $y=\alpha_R(g)x$，则同构为 $\phi(h)=g^{-1}hg$。
+
+例如，$\mathrm{SO}(3)$ 中分别使 $x$ 轴与 $y$ 轴固定的两个子群彼此同构，取 $g$ 为把 $x$ 轴映到 $y$ 轴的任意旋转并用 $\phi(h)=ghg^{-1}$ 即可证明。
+
+\subsubsection{半直积（Semidirect Products）}
+
+设有一个群 $G$ 及 $G$ 在向量空间 $\mathbb{R}^4$ 上的一个表示 $\sigma$。则通过定义群运算
+\[
+(g,x)(h,y)=\big(gh,\;\sigma(g)y+x\big),
+\]
+我们可以把 $G\times\mathbb{R}^4$（有序对 $(g,\mathbf{x})$ 之集）变成一个群 $S$。群单位元为 $(I,\mathbf{0})$，逆元为
+\[
+(g,x)^{-1}=\big(g^{-1},\;-\sigma(g)^{-1}x\big).
+\]
+当 $G=\mathrm{O}(4)$ 且 $\sigma$ 为矩阵乘法时，$S$ 正是欧氏四维空间一切对称操作构成的欧氏群 $\mathrm{E}(4)$。$S$ 的群乘法规则，就是我们在用扩展矩阵表示平移矢量时见到的欧氏对称操作的复合规则：
+\[
+\begin{pmatrix}R_2 & \mathbf{s}_2\\ \mathbf{0} & 1\end{pmatrix}
+\begin{pmatrix}R_1 & \mathbf{s}_1\\ \mathbf{0} & 1\end{pmatrix}
+=
+\begin{pmatrix}R_2 R_1 & R_2\mathbf{s}_1+\mathbf{s}_2\\ \mathbf{0} & 1\end{pmatrix}.
+\]
+形如 $(I,\mathbf{x})$ 的元素构成平移子群 $\mathrm{T}(4)$，而形如 $(g,\mathbf{0})$ 的元素构成作为 $\mathrm{E}(4)$ 子群的 $\mathrm{O}(4)$。
+
+我们说 $\mathrm{E}(4)$ 是 $\mathrm{O}(4)$ 与 $\mathrm{T}(4)$ 的\textbf{半直积}。这一术语在群论中有更一般的定义，但对我们而言最关心的事实是：$\mathrm{E}(4)$ 的每个元素都能唯一地写成 $\mathrm{O}(4)$ 与 $\mathrm{T}(4)$ 各一个元素的有序对。
+
+我们还关心把 $\mathrm{O}(4)$ 换成另一个群时会发生什么——例如 $\mathrm{SO}(4)$、或其双覆盖 $\mathrm{SU}(2)\times\mathrm{SU}(2)$、或 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 扩展到 $\mathrm{O}(4)$ 双覆盖后所得的群。若使用这些双覆盖之一，它在 $\mathbb{R}^4$ 上的表示 $\sigma$ 将是二对一同态 $f_4$，而所得半直积 $S$ 本身将是一个双覆盖，或是 $\mathrm{E}(4)$ 的双覆盖，或是其排除反射的子群 $\mathrm{SE}(4)$ 的双覆盖。
+
+\subsubsection{向量丛（Vector Bundles）}
+
+我们现在定义一个称为\textbf{向量丛}（vector bundle）的数学结构\textsuperscript{[3]}。它由一个集合 $E$（丛）、一个称为丛的\textbf{底空间}（base space）的集合 $M$、以及一个\textbf{投影}（projection）$\pi:E\to M$ 组成，后者把 $E$ 中每个元素映射到 $M$ 中一个元素。
+
+\orthofig{images/03__011.png}{圆上的向量丛}
+\orthofig{images/03__012.png}{圆上的莫比乌斯丛}
+
+对 $M$ 中每一点 $m$，$E$ 中投影到 $m$ 的子集是一个向量空间；我们把 $\pi^{-1}(m)$ 作为一个向量空间记作 $E_m$。我们称 $E$ 是\textbf{在}集合 $M$ \textbf{之上}的向量丛，并可把它想象为一族向量空间，每一个“坐落在”$M$ 中不同点之上。我们把每个向量空间 $E_m$ 称为 $m$ 上的\textbf{纤维}（fibre）。
+
+一个简单的向量丛例子是 $\mathbb{R}^3$ 中中心在 $z$ 轴上的无限长圆柱面，连同到该圆柱面与 $xy$ 平面相交所得圆的投影。“在”圆上每点“之上”都躺着一个一维实向量空间，由投影到该点的那条直线组成。
+
+\textbf{平凡}丛（trivial bundle）是指仅由底空间 $M$ 与某向量空间 $V$ 的点对组成、即丛为 $E=M\times V$ 的丛。我们的圆柱面就是一例。但丛不必是平凡的。例如我们可以构造一个具有莫比乌斯带拓扑的丛。它与圆柱面有相同的底空间，且每个 $E_m$ 也是一维实向量空间，但它显然\emph{不}是同一个集合。（我们无法把无限宽的莫比乌斯带嵌入三维空间，因此该插图只是想给拓扑一个直观印象。）
+
+若存在 $G$ 的分别作用在 $E$ 与 $M$ 上的左作用 $\alpha_E$ 与 $\alpha_M$，且它们与投影 $\pi:E\to M$ 相容——即先作用 $E$ 再投影到 $M$，与先投影到 $M$ 再作用 $M$ 效果相同——则向量丛 $E$ 称为\textbf{齐性 $G$-丛}（homogeneous $G$-bundle）。换言之，对所有 $g\in G$ 与 $\mathbf{w}\in E$：
+\[
+\alpha_M(g)\pi(w)=\pi\big(\alpha_E(g)w\big).
+\]
+这意味着 $\alpha_E(g)$ 把纤维 $E_m$ 映入纤维 $E_{\alpha_M(g)m}$。我们要求这个映射是\emph{线性}的。
+
+在任意向量丛 $E$ 上，我们可以定义丛的\textbf{截面}（section）向量空间 $\Gamma(E)$。$\Gamma(E)$ 中每个截面 $f$ 是一个从底空间 $M$ 到 $E$ 的函数，使得 $f$ 把每一点 $m$ 指派给“坐落在”该点之上的向量空间 $E_m$ 的一个元素。另一种说法是：
+\[
+\pi(f(m))=m
+\]
+对 $M$ 中所有 $m$ 成立。
+
+通过逐点把两个截面相加、并把截面乘以标量（在每一点乘以其值），$\Gamma(E)$ 成为向量空间。截面有点像 $M$ 上的向量值函数——只不过 $M$ 中每点的值都落在不同的向量空间 $E_m$ 中。若我们在圆柱面上画一条曲线，使其与圆柱面上每条竖直线恰好相交一次，那就给出一个截面。
+
+若 $E$ 是齐性 $G$-丛，我们可以用作用 $\alpha_E$ 与 $\alpha_M$ 得到 $G$ 在截面向量空间 $\Gamma(E)$ 上的一个表示。若把这个表示记为 $r$，则对每个 $g\in G$、每个 $f\in\Gamma(E)$ 及每个 $m\in M$：
+\begin{equation}
+\big(r(g)f\big)(m)=\alpha_E(g)\,f\big(\alpha_M(g^{-1})m\big). \tag{4.2.5}
+\end{equation}
+我们可以对所得的新函数施加投影 $\pi$，来检验它确实是\emph{截面}：
+\begin{align*}
+\pi\big((r(g)f)(m)\big)
+&=\pi\big(\alpha_E(g)f(\alpha_M(g^{-1})m)\big)\\
+&=\alpha_M(g)\pi\big(f(\alpha_M(g^{-1})m)\big)\\
+&=\alpha_M(g)\alpha_M(g^{-1})m\\
+&=m .
+\end{align*}
+
+\subsubsection{向量丛上的表示（Representations on Vector Bundles）}
+
+以下内容主要基于 Sternberg\textsuperscript{[4]}，并按需要从洛伦兹物理改造为黎曼物理。
+
+我们先把向量空间 $\mathbb{R}^4$ 看作一个\textbf{阿贝尔}（Abelian）群：即运算（此处为向量加法）可交换的群。我们可以把这个群叫作 $\mathrm{T}(4)$，但改记为 $(\mathbb{R}^4,+)$，以提醒我们可以把 $\mathrm{T}(4)$ 中每个平移简单地看成 $\mathbb{R}^4$ 中的一个向量。
+
+虽然我们不予证明，但阿贝尔群在\emph{复}向量空间上的每个不可约表示都是一维的。一维复向量空间上的线性算符就是乘以一个复数，而若该表示是酉的，这个数的逆必等于其复共轭，故其绝对值必须为 $1$。$(\mathbb{R}^4,+)$ 的一个不可约酉表示 $\chi$ 本质上是一个从 $(\mathbb{R}^4,+)$ 到绝对值为 $1$ 的复数集的函数。这些复数也称为\emph{相位}（phase），每个相位都可写成 $\exp(i\theta)$ 的形式，其中 $\theta$ 为某实数。
+
+$\mathbb{R}^4$ 中任意向量 $\mathbf{k}$ 给出群 $(\mathbb{R}^4,+)$ 的一个一维酉表示 $\chi_{\mathbf{k}}$：
+\[
+\chi_{\mathbf{k}}(x)=\exp(i\,\mathbf{k}\cdot x).
+\]
+我们可以通过验证
+\[
+\chi_{\mathbf{k}}(x)\chi_{\mathbf{k}}(y)=\exp(i\,\mathbf{k}\cdot x)\exp(i\,\mathbf{k}\cdot y)=\exp(i\,\mathbf{k}\cdot(x+y))=\chi_{\mathbf{k}}(x+y)
+\]
+看出这是一个表示。事实上，$(\mathbb{R}^4,+)$ 的\emph{全部}不可约酉表示都是这种形式。于是我们可以用第二种方式看待 $\mathbb{R}^4$ 本身：把它看作加法群 $(\mathbb{R}^4,+)$ 的全部不可约酉表示之集。
+
+设 $S$ 是某群 $G$ 与 $(\mathbb{R}^4,+)$ 经由 $G$ 在 $\mathbb{R}^4$ 上一个保持点积的表示 $\sigma$ 所得之半直积。若 $G$ 是 $\mathrm{O}(4)$ 或 $\mathrm{SO}(4)$，则 $\sigma$ 就是基本矩阵表示；若 $G$ 是双覆盖，则 $\sigma$ 就是二对一同态 $f_4$。存在一个 $S$ 在其子群 $(\mathbb{R}^4,+)$ 上的右作用 $\alpha$，定义如下：其中 $s=(g,\mathbf{y})$ 是 $S$ 的任意元素，$\mathbf{x}$ 是 $(\mathbb{R}^4,+)$ 的任意元素，当要把 $\mathbf{x}$ 显式作为半直积 $S$ 的元素时写成 $(I,\mathbf{x})$。
+\begin{align*}
+\alpha(s)x
+&=s^{-1}xs\\
+&=(g,y)^{-1}(I,x)(g,y)\\
+&=\big(g^{-1},-\sigma(g)^{-1}y\big)(I,x)(g,y)\\
+&=\big(g^{-1},-\sigma(g)^{-1}y\big)(g,y+x)\\
+&=\big(I,\sigma(g)^{-1}x\big)\\
+&=\sigma(g)^{-1}x .
+\end{align*}
+由这个右作用 $\alpha$，可得到 $S$ 在 $\mathbb{R}^4$（作为加法群 $(\mathbb{R}^4,+)$ 的不可约酉表示之集）上的一个左作用 $\beta$：
+\begin{align*}
+(\beta(s)\chi_{\mathbf{k}})(x)
+&=\chi_{\mathbf{k}}(\alpha(s)x)\\
+&=\chi_{\mathbf{k}}\big(\sigma(g)^{-1}x\big)\\
+&=\exp\big(i\,\mathbf{k}\cdot(\sigma(g)^{-1}x)\big)\\
+&=\exp\big(i\,(\sigma(g)\mathbf{k})\cdot x\big)\\
+&\qquad\text{[$\sigma(g)$ 保持点积，且把它同时作用于 $\mathbf{k}$ 与 $\sigma(g)^{-1}x$]}\\
+&=\chi_{\sigma(g)\mathbf{k}}(x).
+\end{align*}
+我们通过 $\beta$ 在表示集 $\chi_{\mathbf{k}}$ 上的作用来定义它，但我们将模糊 $\chi_{\mathbf{k}}$ 与 $\mathbf{k}$ 的区别，并把 $\beta$ 也用作 $\mathbb{R}^4$（仅仅看作向量空间）上的作用：
+\[
+\beta(s)\mathbf{k}=\beta(g,y)\mathbf{k}=\sigma(g)\mathbf{k}.
+\]
+任意非零向量 $\mathbf{k}$ 在此作用 $\beta$ 下的轨道都是 $\mathbb{R}^4$ 中的一个三维球面，因为 $\sigma(g)$ 保持 $\mathbf{k}$ 的长度——而且（就我们的目的而言）群 $G$ 总是至少为 $\mathrm{SO}(4)$。零向量的轨道只是它自己，一个单点。于是我们可以用半径来对所有轨道分类。[在洛伦兹物理中情况更复杂：那时 $\mathbf{k}$ 依其类时、类空或类光而具有不同类型的轨道。详情见 Sternberg 中所引章节。]
+
+现在，设 $\rho$ 是半直积群 $S$ 在某向量空间 $V$ 上的一个不可约酉表示。$S$ 或是欧氏群 $\mathrm{E}(4)$、或是特殊欧氏群 $\mathrm{SE}(4)$、或是其中之一的双覆盖。
+
+若把 $\rho$ 限制到 $S$ 的平移子群 $(\mathbb{R}^4,+)$，则 $\rho$ 给出 $(\mathbb{R}^4,+)$ 的一个酉表示，但除非 $V$ 是一维的，这个被限制的表示\emph{不会}不可约——因为 $(\mathbb{R}^4,+)$ 是阿贝尔群，其不可约表示都是一维的。于是一般而言，$V$ 将由\emph{许多}在限制后的 $\rho$ 作用下不变的一维子空间张成。
+
+在每个这样的一维子空间中，对所有 $\mathbf{x}\in(\mathbb{R}^4,+)$ 及子空间中每个 $\mathbf{w}$，将有
+\[
+\rho(x)\mathbf{w}=\chi_{\mathbf{k}}(x)\mathbf{w},
+\]
+其中向量 $\mathbf{k}$ 标识出 $\rho$ 的限制等价于 $(\mathbb{R}^4,+)$ 的哪一个不可约酉表示。由于无法保证给定的向量 $\mathbf{k}$ 只出现在单个一维子空间里，我们把 $V$ 中使所有 $\mathbf{w}$ 都满足
+\[
+\rho(x)\mathbf{w}=\chi_{\mathbf{k}}(x)\mathbf{w}
+\]
+的整个子空间写作 $E(\mathbf{k})$。这样我们就分解了 $V$，得到子空间 $E(\mathbf{k})$，其中表示 $\rho$ 的\emph{平移}部分与某个特定向量 $\mathbf{k}$ 的 $\chi_{\mathbf{k}}$ 相同。
+
+\orthofig{images/03__013.png}{由表示构造的向量丛}
+
+若用 $\rho(s)$（其中 $s=(g,\mathbf{y})$ 是 $S$ 的任意元素）作用在 $E(\mathbf{k})$ 中某个 $\mathbf{w}$ 上会怎样？对任意 $\mathbf{x}\in(\mathbb{R}^4,+)$ 有
+\begin{align*}
+\rho(x)\rho(s)\mathbf{w}
+&=\rho(s)\rho(s^{-1})\rho(x)\rho(s)\mathbf{w}\\
+&=\rho(s)\rho(s^{-1}xs)\mathbf{w}\\
+&=\rho(s)\chi_{\mathbf{k}}(\alpha(s)x)\mathbf{w}\\
+&=\rho(s)(\beta(s)\chi_{\mathbf{k}})(x)\mathbf{w}\\
+&=\rho(s)\chi_{\sigma(g)\mathbf{k}}(x)\mathbf{w}\\
+&=\chi_{\sigma(g)\mathbf{k}}(x)\,\rho(s)\mathbf{w}.
+\end{align*}
+这告诉我们 $\rho(s)\mathbf{w}$ 落在 $E(\sigma(g)\mathbf{k})$ 中，其中 $g$ 来自 $s=(g,\mathbf{y})$。换句话说，$\rho(g,\mathbf{y})$ 把 $E(\mathbf{k})$ 映入 $E(\sigma(g)\mathbf{k})$。
+
+于是对应于各个 $E(\mathbf{k})$ 的所有向量 $\mathbf{k}$ 必定来自 $S$ 在 $\mathbb{R}^4$ 上（等价地，$G$ 的作用 $\sigma$）作用 $\beta$ 下的同一条轨道，因而它们都有相同的长度。若该长度为 $k=|\mathbf{k}|$，我们定义 $\mathbf{k}_0=(0,0,0,k)\in\mathbb{R}^4$。则每个 $\mathbf{k}$ 都来自 $\mathbf{k}_0$ 的轨道，而该轨道是 $\mathbb{R}^4$ 中半径为 $k$ 的一个三维球面。我们把这个三维球面称为 $M_k$。
+
+把在 $V$ 中找到的所有 $E(\mathbf{k})$ 合起来，我们写
+\[
+E=\bigcup_{k}E(k),
+\]
+其中 “$\bigcup$” 指不交并（disjoint union），即把所有 $E(\mathbf{k})$ 看作完全不同的集合、把它们的所有元素收集到一个大集合 $E$ 中。（具体地说，这意味着尽管所有子空间 $E(\mathbf{k})$ 共享原点——即 $V$ 的原点——但在 $E$ 中我们把每个 $E(\mathbf{k})$ 都看作有各自不同的原点。）
+
+$V$ 中一般向量不会落在这些子空间的\emph{任何}一个里，但 $\rho(s)$ 总把每个 $E(\mathbf{k})$ 映到另一个这样的子空间 $E(\sigma(g)\mathbf{k})$——所以 $\rho$ 给出 $S$ 在 $E$ 上的一个作用，恰如向量丛上的作用，纤维被映到纤维！我们通过定义投影 $\pi$ 把每个 $E(\mathbf{k})$ 的元素都映到 $\mathbf{k}$ 本身，来把这一族向量空间 $E(\mathbf{k})$ 组成的集合 $E$ 做成 $M_k$ 之上的向量丛。
+
+表示 $\rho$ 给出 $S$ 在 $E$ 上的一个左作用，我们还有 $S$ 在 $M_k$ 上的一个左作用，即 $\beta$。这两个作用与我们的投影 $\pi$ 相容；对所有 $s\in S$ 及所有 $\mathbf{w}\in E$：
+\[
+\beta(s)\pi(w)=\pi\big(\rho(s)w\big).
+\]
+我们可以用这些作用得到 $S$ 在截面向量空间 $\Gamma(E)$ 上的一个表示。若把这个表示记为 $r$，则对每个 $s\in S$、每个 $f\in\Gamma(E)$ 及每个 $\mathbf{k}\in M_k$：
+\[
+\big(r(s)f\big)(k)=\rho(s)\,f\big(\beta(s^{-1})k\big).
+\]
+事实上，$S$ 在 $\Gamma(E)$ 上的表示 $r$ \emph{等价于} $S$ 在 $V$ 上的原表示 $\rho$！给定 $V$ 中任意向量 $\mathbf{v}$，可把它唯一地写成分别落在各 $E(\mathbf{k})$ 中向量之和。这就给每个 $\mathbf{k}$ 指派了 $E(\mathbf{k})$ 中一个向量，于是可把它看作 $\Gamma(E)$ 中一个截面。同样，给定 $\Gamma(E)$ 中任意截面，可以把各 $E(\mathbf{k})$ 中的向量作为 $V$ 中向量加起来。在这个 $V$ 与 $\Gamma(E)$ 的同一化下，两表示等价。
+
+现在，一般而言 $\rho$ 会把向量从一个 $E(\mathbf{k})$ 移到另一个，但若把它限制到某个合适的子群，我们就能考察它仅作用在\emph{一个}这样的空间上的情况。我们定义 $S_{\mathbf{k}_0}$ 为 $S$ 中所有满足
+\[
+\beta(h,x)\mathbf{k}_0=\sigma(h)\mathbf{k}_0=\mathbf{k}_0
+\]
+的 $(h,\mathbf{x})$ 组成的迷向子群。我们还定义 $G_{\mathbf{k}_0}$ 为 $G$ 中所有满足 $\sigma(h)\mathbf{k}_0=\mathbf{k}_0$ 的 $h$ 组成的迷向子群。显然 $G_{\mathbf{k}_0}$ 恰由 $S_{\mathbf{k}_0}$ 各元素 $(h,\mathbf{x})$ 的非平移部分 $h$ 组成。事实上，$S_{\mathbf{k}_0}$ 是 $G_{\mathbf{k}_0}$ 与 $(\mathbb{R}^4,+)$ 的半直积。同一条轨道上所有点的迷向子群彼此同构，所以选择 $\mathbf{k}_0$ 而非轨道上其他 $\mathbf{k}$ 对这些子群的结构没有影响。
+
+限制到 $S_{\mathbf{k}_0}$ 时，$\rho$ 把 $E(\mathbf{k}_0)$ 映到自身，给出 $S_{\mathbf{k}_0}$ 的一个表示。但表示的平移部分我们已经了解：$E(\mathbf{k})$ 的定义说明，在 $E(\mathbf{k}_0)$ 上 $\rho$ 限制到平移 $(I,\mathbf{y})$ 由 $\chi_{\mathbf{k}_0}(\mathbf{y})$ 描述，即一致地乘以相位 $\exp(i\,\mathbf{k}_0\cdot\mathbf{y})$。所以让我们集中于非平移部分，抽取出 $G_{\mathbf{k}_0}$ 在 $E(\mathbf{k}_0)$ 上的一个表示 $\eta$。对任意 $h\in G_{\mathbf{k}_0}$ 及 $\mathbf{w}\in E(\mathbf{k}_0)$，定义
+\[
+\eta(h)\mathbf{w}=\rho(h,0)\mathbf{w}.
+\]
+$\rho$ 是表示这一事实足以使 $\eta$ 是表示，而 $\rho$ 不可约意味着 $\eta$ 也不可约。后者或许不那么显然：若存在 $E(\mathbf{k}_0)$ 的某个真子空间 $U$ 被 $G_{\mathbf{k}_0}$ 保持，我们可以定义
+\[
+U^{+}=\text{由}\ \{\rho(s)\mathbf{w}\mid s\in S,\ \mathbf{w}\in U\}\ \text{张成的}\ V\ \text{的子空间}.
+\]
+$U^{+}$ 不是 $V$ 的全部，因为按假设 $G_{\mathbf{k}_0}$ 的任何元素都不能把 $\mathbf{w}$ 移出 $U$，$S_{\mathbf{k}_0}$ 的任何元素也不行（它至多再乘一个相位），而 $S_{\mathbf{k}_0}$ 之外的任何 $S$ 元素都把每个 $\mathbf{w}$ 映入某个 $\mathbf{k}\neq\mathbf{k}_0$ 的 $E(\mathbf{k})$。但 $U^{+}$ 是不变子空间，因为用 $\rho$ 作用在形如 $\rho(s)\mathbf{w}$ 的向量的任意线性组合上，仍给出同形向量的线性组合。因此我们关于 $U$ 的假设将与 $\rho$ 的不可约性矛盾。
+
+关于使 $\eta$ 成为 $E(\mathbf{k}_0)$ 上不可约表示的迷向子群 $G_{\mathbf{k}_0}$，我们能说些什么？我们将假设 $k\neq0$，于是 $\mathbf{k}_0$ 是欧氏四维空间中的非零向量。保持 $\mathbf{k}_0=(0,0,0,k)$ 固定的 $\mathrm{SO}(4)$ 子群就是 $\mathrm{SO}(3)$。我们可以通过从全群与子群两边都去掉“特殊”（special）的 “S”，和／或把两者都做成双覆盖，来得到各种变体。为了得到真正的表示，最简单的做法是用双覆盖而非 $\mathrm{SO}(4)$ 或 $\mathrm{O}(4)$ 本身，于是两个最有用的情形是：
+
+\begin{itemize}
+\item 若 $G=\mathrm{SU}(2)\times\mathrm{SU}(2)$（$\mathrm{SO}(4)$ 的双覆盖），则 $G_{\mathbf{k}_0}$ 是 $\mathrm{SU}(2)$（$\mathrm{SO}(3)$ 的双覆盖）。更确切地说，它是 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 中由形如 $(h,h)$ 的元素对组成的子群，同构于 $\mathrm{SU}(2)$。
+\item 若 $G$ 是 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 扩展到 $\mathrm{O}(4)$ 双覆盖所得的群，则 $G_{\mathbf{k}_0}$ 是 $\mathrm{SU}(2)$ 扩展到 $\mathrm{O}(3)$ 双覆盖所得的群。
+\end{itemize}
+
+这些群的不可约酉表示我们已经考察过了。对 $\mathrm{SU}(2)$，它们是自旋 $j$ 表示。对 $\mathrm{O}(3)$ 的双覆盖，还有一个内禀宇称的选择。
+
+在对 $\rho$（一个假定的 $S$ 的不可约表示）作了“反向工程”之后，我们现在能看出如何自己\emph{构造}同类的表示。步骤如下：
+
+\begin{itemize}
+\item 要找到 $\mathrm{SE}(4)$（排除反射）双覆盖的表示，令群 $G$ 等于 $\mathrm{SU}(2)\times\mathrm{SU}(2)$，即 $\mathrm{SO}(4)$ 的双覆盖。
+\item 要找到 $\mathrm{E}(4)$（含反射）双覆盖的表示，令群 $G$ 等于 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 扩展到 $\mathrm{O}(4)$ 双覆盖所得的群。
+\item 定义 $S$ 为 $G$ 与 $(\mathbb{R}^4,+)$ 的半直积。为此所需的 $G$ 在 $\mathbb{R}^4$ 上的表示——在一般情形中我们称之为 $\sigma$——将是 $G$ 到 $\mathrm{SO}(4)$ 或 $\mathrm{O}(4)$ 的二对一同态 $f_4$。
+\item 选取一个正数 $k$，定义 $\mathbf{k}_0=(0,0,0,k)$，并定义 $\chi_{\mathbf{k}_0}(\mathbf{y})=\exp(i\,\mathbf{k}_0\cdot\mathbf{y})$。
+\item 选取迷向子群 $G_{\mathbf{k}_0}$ 的一个不可约酉表示 $\eta$。这将是 $\mathrm{SU}(2)$ 的一个自旋 $j$ 表示，可能还带上一个内禀宇称 $p$。把 $\eta$ 作用其上的向量空间 $\mathbb{C}^{2j+1}$ 记为 $W$。
+\item 通过 $\xi(h,\mathbf{y})=\chi_{\mathbf{k}_0}(\mathbf{y})\eta(h)$ 定义 $S_{\mathbf{k}_0}$（$G_{\mathbf{k}_0}$ 与 $(\mathbb{R}^4,+)$ 的半直积）在 $W$ 上的一个表示 $\xi$。
+\item 我们要一个齐性 $S$-丛 $E$，其底空间为 $M_k$，每个向量空间 $E(\mathbf{k})$ 同构于 $W$。但我们不能把 $E$ 定义为 $M_k\times W$（平凡丛），因为没有自然的作用让整个群 $S$ 作用其上。不过很容易找到 $S$ 在自身上的作用——而且，存在 $S_{\mathbf{k}_0}$ 在 $S$ 上的一个作用，使轨道 $S/S_{\mathbf{k}_0}$ 能与 $M_k$ 建立一一对应。定义 $S_{\mathbf{k}_0}$ 在 $S$ 上的一个左作用 $\gamma_0$ 为 $\gamma_0(s_0)s=s\,s_0^{-1}$。把 $S_{\mathbf{k}_0}$ 的元素取逆后放到 $S$ 元素的\emph{右}边看似古怪，但这是本质的。然后定义映射 $\pi_0:S\to M_k$：
+\[
+\pi_0(g,\mathbf{x})=f_4(g)\mathbf{k}_0 .
+\]
+有了 $\pi_0$，$S$ 中在作用 $\gamma_0$ 下的同一条轨道 $S/S_{\mathbf{k}_0}$ 上的所有元素都被认同为 $M_k$ 的同一元素。既已知道如何把 $S$“缩小”为 $M_k$，我们在集合 $S\times W$ 上照搬这一技巧。定义 $S_{\mathbf{k}_0}$ 在 $S\times W$ 上的一个左作用 $\gamma$：
+\[
+\gamma(h,\mathbf{y})\big((g,\mathbf{x}),\mathbf{w}\big)=\big((g,\mathbf{x})(h,\mathbf{y})^{-1},\ \xi(h,\mathbf{y})\mathbf{w}\big).
+\]
+把 $((g,\mathbf{x}),\mathbf{w})$ 在此作用下的轨道写作 $[((g,\mathbf{x}),\mathbf{w})]$。现在我们定义丛 $E$ 为 $S\times W$ 在 $S_{\mathbf{k}_0}$ 的作用 $\gamma$ 下的\emph{轨道之集}，记作 $E=(S\times W)/S_{\mathbf{k}_0}$。再定义投影 $\pi:E\to M_k$ 为
+\[
+\pi\big([((g,\mathbf{x}),\mathbf{w})]\big)=f_4(g)\mathbf{k}_0,
+\]
+这使 $E$ 成为 $M_k$ 之上的一个丛。
+\item 我们的投影 $\pi$ 定义是否无歧义，即结果与轨道中所取的点无关？当遍历轨道时，$S$ 的元素 $(g,\mathbf{x})$ 变为 $(g,\mathbf{x})(h,\mathbf{y})^{-1}$，其非平移部分（投影所依赖的）为 $gh^{-1}$。当 $h$ 遍历迷向子群 $G_{\mathbf{k}_0}$ 时，$gh^{-1}$ 取哪些值？定义 $G(\mathbf{k}_0,\mathbf{k})$ 为 $G$ 中在作用 $f_4$ 下把 $\mathbf{k}_0$ 映到 $\mathbf{k}$ 的子集：
+\[
+G(\mathbf{k}_0,\mathbf{k})=\{a\in G\mid f_4(a)\mathbf{k}_0=\mathbf{k}\}.
+\]
+若 $g\in G(\mathbf{k}_0,\mathbf{k})$，则 $gh^{-1}$ 也在其中，因为 $h^{-1}$ 使 $\mathbf{k}_0$ 固定。设 $a$ 也在 $G(\mathbf{k}_0,\mathbf{k})$ 中，则 $f_4(g)\mathbf{k}_0=\mathbf{k}$、$f_4(a)\mathbf{k}_0=\mathbf{k}$。于是
+\[
+\mathbf{k}_0=f_4(a^{-1})\mathbf{k}=f_4(a^{-1})f_4(g)\mathbf{k}_0=f_4(a^{-1}g)\mathbf{k}_0,
+\]
+这告诉我们 $a^{-1}g\in G_{\mathbf{k}_0}$。令 $h=a^{-1}g$，则 $h^{-1}=g^{-1}a$，且 $gh^{-1}=a$。所以在每条轨道中 $gh^{-1}$ 所取的值恰是集合 $G(\mathbf{k}_0,\mathbf{k})$，因此无论选轨道中哪一点，它都投影到同一个 $\mathbf{k}$。
+\item 定义 $E(\mathbf{k})$ 为 $\pi^{-1}(\mathbf{k})=\{[((a,\mathbf{x}),\mathbf{w})]\mid a\in G(\mathbf{k}_0,\mathbf{k}),\ \mathbf{x}\in\mathbb{R}^4,\ \mathbf{w}\in W\}$。要把纤维 $E(\mathbf{k})$ 变成向量空间，需要能进行通常的向量相加与标量乘法。为此，选取某函数 $a:M_k\to G$，使 $a(\mathbf{k})$ 总在 $G(\mathbf{k}_0,\mathbf{k})$ 中，然后定义映射 $\phi_{a(\mathbf{k})}:W\to E(\mathbf{k})$ 与 $\psi_{a(\mathbf{k})}:E(\mathbf{k})\to W$ 为
+\[
+\phi_{a(\mathbf{k})}(\mathbf{w})=[((a(\mathbf{k}),\mathbf{0}),\mathbf{w})],\qquad
+\psi_{a(\mathbf{k})}\big([((g,\mathbf{x}),\mathbf{w})]\big)=\xi\big((a(\mathbf{k}),\mathbf{0})^{-1}(g,\mathbf{x})\big)\mathbf{w}.
+\]
+$\psi_{a(\mathbf{k})}$ 是良定义的，因为若在同一轨道中另取一个元素，我们得到相同结果。这正是把 $(h,\mathbf{y})$ 取逆后放到右侧所带来的好处：
+\begin{align*}
+&\psi_{a(\mathbf{k})}\big([((g,\mathbf{x})(h,\mathbf{y})^{-1},\ \xi(h,\mathbf{y})\mathbf{w})]\big)\\
+&=\xi\big((a(\mathbf{k}),\mathbf{0})^{-1}(g,\mathbf{x})(h,\mathbf{y})^{-1}\big)\,\xi(h,\mathbf{y})\mathbf{w}\\
+&=\xi\big((a(\mathbf{k}),\mathbf{0})^{-1}(g,\mathbf{x})\big)\mathbf{w}.
+\end{align*}
+这两个映射 $\phi_{a(\mathbf{k})}$ 与 $\psi_{a(\mathbf{k})}$ 实际上互为逆映射：
+\begin{align*}
+&\phi_{a(\mathbf{k})}\Big(\psi_{a(\mathbf{k})}\big([((g,\mathbf{x}),\mathbf{w})]\big)\Big)\\
+&=\phi_{a(\mathbf{k})}\Big(\xi\big((a(\mathbf{k}),\mathbf{0})^{-1}(g,\mathbf{x})\big)\mathbf{w}\Big)\\
+&=\big[\big((a(\mathbf{k}),\mathbf{0}),\ \xi\big((a(\mathbf{k}),\mathbf{0})^{-1}(g,\mathbf{x})\big)\mathbf{w}\big)\big]\\
+&=\big[\gamma\big((g,\mathbf{x})^{-1}(a(\mathbf{k}),\mathbf{0})\big)\big((a(\mathbf{k}),\mathbf{0}),\ \xi((a(\mathbf{k}),\mathbf{0})^{-1}(g,\mathbf{x}))\mathbf{w}\big)\big]\\
+&=\big[\big((a(\mathbf{k}),\mathbf{0})(a(\mathbf{k}),\mathbf{0})^{-1}(g,\mathbf{x}),\ \xi((g,\mathbf{x})^{-1}(a(\mathbf{k}),\mathbf{0}))\xi((a(\mathbf{k}),\mathbf{0})^{-1}(g,\mathbf{x}))\mathbf{w}\big)\big]\\
+&=[((g,\mathbf{x}),\mathbf{w})],
+\end{align*}
+以及
+\begin{align*}
+\psi_{a(\mathbf{k})}\big(\phi_{a(\mathbf{k})}(\mathbf{w})\big)
+&=\psi_{a(\mathbf{k})}\big([((a(\mathbf{k}),\mathbf{0}),\mathbf{w})]\big)\\
+&=\xi\big((a(\mathbf{k}),\mathbf{0})^{-1}(a(\mathbf{k}),\mathbf{0})\big)\mathbf{w}=\mathbf{w}.
+\end{align*}
+我们用 $\phi_{a(\mathbf{k})}$ 与 $\psi_{a(\mathbf{k})}$ 把 $E(\mathbf{k})$ 与 $W$ 认同。于是若 $\mathbf{c},\mathbf{d}\in E(\mathbf{k})$、$z$ 是复标量，通过定义
+\[
+\mathbf{c}+\mathbf{d}=\phi_{a(\mathbf{k})}\big(\psi_{a(\mathbf{k})}(\mathbf{c})+\psi_{a(\mathbf{k})}(\mathbf{d})\big),\qquad
+z\,\mathbf{c}=\phi_{a(\mathbf{k})}\big(z\,\psi_{a(\mathbf{k})}(\mathbf{c})\big)
+\]
+把 $E(\mathbf{k})$ 变成向量空间。
+\item $\phi_{a(\mathbf{k})}$、$\psi_{a(\mathbf{k})}$ 与 $\xi(h,\mathbf{0})=\eta(h)$（$G_{\mathbf{k}_0}$ 在 $W$ 上的表示）之间有一些简单关系。若 $h\in G_{\mathbf{k}_0}$、$a(\mathbf{k})\in G(\mathbf{k}_0,\mathbf{k})$，则
+\[
+\phi_{a(\mathbf{k})h}=\phi_{a(\mathbf{k})}\circ\xi(h,\mathbf{0}),\qquad
+\psi_{a(\mathbf{k})h}=\xi(h,\mathbf{0})^{-1}\circ\psi_{a(\mathbf{k})}.
+\]
+由此可知，我们在 $G(\mathbf{k}_0,\mathbf{k})$ 中选取哪个 $a(\mathbf{k})$ 对 $E(\mathbf{k})$ 上向量空间运算的定义没有影响。若把 $E(\mathbf{k})$ 中两元素 $\mathbf{c}$ 与 $\mathbf{d}$ 之和重新定义为 $\mathbf{c}+\mathbf{d}=\phi_{a(\mathbf{k})h}(\psi_{a(\mathbf{k})h}(\mathbf{c})+\psi_{a(\mathbf{k})h}(\mathbf{d}))$，它就变成
+\begin{align*}
+&\phi_{a(\mathbf{k})}\Big(\xi(h,\mathbf{0})\big(\psi_{a(\mathbf{k})h}(\mathbf{c})+\psi_{a(\mathbf{k})h}(\mathbf{d})\big)\Big)\\
+&\quad=\phi_{a(\mathbf{k})}\Big(\xi(h,\mathbf{0})\big(\xi(h,\mathbf{0})^{-1}(\psi_{a(\mathbf{k})}(\mathbf{c})+\psi_{a(\mathbf{k})}(\mathbf{d}))\big)\Big)\\
+&\quad=\phi_{a(\mathbf{k})}\big(\psi_{a(\mathbf{k})}(\mathbf{c})+\psi_{a(\mathbf{k})}(\mathbf{d})\big),
+\end{align*}
+与原定义一致。
+\item 定义 $S$ 在 $E$ 上的作用 $\rho$ 为
+\[
+\rho(b,\mathbf{z})\,[((g,\mathbf{x}),\mathbf{w})]=[((b,\mathbf{z})(g,\mathbf{x}),\mathbf{w})],
+\]
+并定义 $S$ 在 $M_k$ 上的作用 $\beta$ 为 $\beta(b,\mathbf{z})\mathbf{k}=f_4(b)\mathbf{k}$。这些作用与我们的投影 $\pi$ 相容：
+\begin{align*}
+\pi\big(\rho(b,\mathbf{z})[((g,\mathbf{x}),\mathbf{w})]\big)
+&=\pi\big([((b,\mathbf{z})(g,\mathbf{x}),\mathbf{w})]\big)\\
+&=f_4(bg)\mathbf{k}_0=f_4(b)f_4(g)\mathbf{k}_0\\
+&=\beta(b,\mathbf{z})\,\pi\big([((g,\mathbf{x}),\mathbf{w})]\big).
+\end{align*}
+\item 设我们以 $\rho\big((a(\mathbf{k}),\mathbf{0})(h,\mathbf{y})(a(\mathbf{k}),\mathbf{0})^{-1}\big)$ 作用在纤维 $E(\mathbf{k})$ 上，其中 $(h,\mathbf{y})\in S_{\mathbf{k}_0}$。元素 $(a(\mathbf{k}),\mathbf{0})(h,\mathbf{y})(a(\mathbf{k}),\mathbf{0})^{-1}$ 将在使 $\mathbf{k}$ 固定的迷向子群 $S_{\mathbf{k}}$ 中——该子群同构于 $S_{\mathbf{k}_0}$。不难看出
+\[
+\rho\big((a(\mathbf{k}),\mathbf{0})(h,\mathbf{y})(a(\mathbf{k}),\mathbf{0})^{-1}\big)\,[((g,\mathbf{x}),\mathbf{w})]
+=\phi_{a(\mathbf{k})}\Big(\xi(h,\mathbf{y})\,\psi_{a(\mathbf{k})}\big([((g,\mathbf{x}),\mathbf{w})]\big)\Big).
+\]
+这表明 $\rho$ 限制到纤维 $E(\mathbf{k})$ 与子群 $S_{\mathbf{k}}$ 上的作用“等价于”我们起初所用的 $S_{\mathbf{k}_0}$ 的不可约表示 $\xi$。严格说来我们只应谈完全同一个群的等价表示，但既然已用显式同构把 $S_{\mathbf{k}}$ 与 $S_{\mathbf{k}_0}$ 认同，我们就是在说明：$S_{\mathbf{k}}$ 在每个纤维上的表示本质上只是 $S_{\mathbf{k}_0}$ 在 $W$ 上表示 $\xi$ 的一个版本。
+\item 通过以下公式定义 $S$ 在丛截面向量空间 $\Gamma(E)$ 上的表示 $r$：对每个 $s\in S$、$f\in\Gamma(E)$ 及 $\mathbf{k}\in M_k$，
+\[
+\big(r(s)f\big)(\mathbf{k})=\rho(s)\,f\big(\beta(s^{-1})\mathbf{k}\big).
+\]
+这将是我们所寻求的\textbf{$S$ 的不可约酉表示}。呼！$\mathrm{E}(4)$ 或 $\mathrm{SE}(4)$ 双覆盖的这个表示完全由我们对以下量的选择确定：
+\begin{itemize}
+\item 三维球面的半径 $k$；
+\item $\mathrm{SU}(2)$ 的不可约表示 $\eta$ 的自旋 $j$；
+\item 以及对 $\mathrm{E}(4)$ 的情形，$\eta$ 的内禀宇称 $p$。
+\end{itemize}
+\end{itemize}
+
+\subsubsection{自旋 0 的丛表示（The Spin-0 Bundle Representation）}
+
+在 $\mathrm{SU}(2)$ 的自旋 0 表示的情形，向量空间 $W$ 就是复数集，$\eta(h)$ 是恒等算符，且我们还有
+\[
+\xi(h,y)=\chi_{\mathbf{k}_0}(y)\eta(h)=\exp(i\,\mathbf{k}_0\cdot y).
+\]
+我们用来把每个纤维与 $W$ 认同的映射 $\psi_{a(\mathbf{k})}:E(\mathbf{k})\to W$ 变为
+\begin{align*}
+\psi_{a(\mathbf{k})}\big([((g,x),w)]\big)
+&=\xi\big((a(\mathbf{k}),0)^{-1}(g,x)\big)w\\
+&=\chi_{\mathbf{k}_0}\big(f_4(a(\mathbf{k})^{-1})x\big)w\\
+&=\exp\big(i\,\mathbf{k}_0\cdot(f_4(a(\mathbf{k})^{-1})x)\big)w\\
+&=\exp\big(i\,(f_4(a(\mathbf{k}))\mathbf{k}_0)\cdot x\big)w\\
+&=\exp(i\,\mathbf{k}\cdot x)\,w .
+\end{align*}
+这完全不依赖于我们对 $a(\mathbf{k})$ 的选择！于是我们可以定义一个从整个丛 $E$ 到平凡丛的映射 $\psi:E\to M_k\times\mathbb{C}$：
+\[
+\psi\big([((g,x),w)]\big)=\big(k,\ \exp(i\,\mathbf{k}\cdot x)\,w\big),
+\]
+这里为清晰起见只写了 $\mathbf{k}$，但它可由 $E$ 中的点显式给出：$\mathbf{k}=\pi([((g,\mathbf{x}),\mathbf{w})])=f_4(g)\mathbf{k}_0$。我们可以用 $\psi$ 把丛的一个截面变成从 $M_k$ 到复数的函数。同样，我们也能经由映射 $\phi:M_k\times\mathbb{C}\to E$ 把这样的函数变成丛的截面，其中
+\[
+\phi(k,w)=[((a(k),0),w)].
+\]
+看起来这似乎依赖于 $a(\mathbf{k})$，但实际上无论怎样都映到完全相同的轨道。这是因为 $\xi(h,\mathbf{y})$ 现在只依赖于平移部分 $\mathbf{y}$，所以只要 $a_1$ 与 $a_2$ 都在 $G(\mathbf{k}_0,\mathbf{k})$ 中，作用 $\gamma(a_2^{-1}a_1,\mathbf{0})$ 就把 $((a_1,\mathbf{0}),w)$ 变成 $((a_2,\mathbf{0}),w)$，表明它们在同一条轨道上。
+
+若我们用 $\phi$ 把函数 $w:M_k\to\mathbb{C}$ 变成一个截面，用 $S$ 的某元素 $(b,\mathbf{z})$ 经由表示 $r$ 作用到该截面上，再用 $\psi$ 把截面变回 $M_k$ 上的函数，我们就得到 $S$ 在 $M_k$ 上函数空间中的一个表示，我们也把它称为 $r$。对任意这样的函数 $w$：
+\begin{equation}
+\big(r(b,z)w\big)(k)=\exp(i\,\mathbf{k}\cdot z)\,w\big(f_4(b)^{-1}k\big). \tag{4.2.6}
+\end{equation}
+我们预期 $M_k$ 上自旋 0 丛的截面表示与 $\omega_m=k$ 的 RSW 方程之解有关。在关于标量波的注记中，我们考察过该方程的实值平面波解，但为当前目的我们需要复值平面波：
+\[
+A_k(x)=A_0\exp(-i\,\mathbf{k}\cdot x).
+\]
+我们可以通过构造 $\mathbb{R}^4$ 上的一个函数 $A_w$（它等于对平面波解集、以 $M_k$ 上复值函数 $w(\mathbf{k})$ 为权重的积分）来在两个表示间架起桥梁。换句话说，我们把 $M_k$ 中每个向量 $\mathbf{k}$ 视为\emph{一个平面波的传播矢量}，并取 $w(\mathbf{k})$ 为该平面波对整个 $\mathbb{R}^4$ 上函数之傅里叶合成（Fourier synthesis）的贡献：
+\[
+A_w(x)=\int_{M_k}w(k)\exp(-i\,\mathbf{k}\cdot x)\,d^3k .
+\]
+$A_w$ 在我们先前讨论过的 $\mathbb{R}^4$ 上函数空间的表示 $\rho_F$ 下如何变换？
+\begin{align*}
+\big(\rho_F(b,z)A_w\big)(x)
+&=A_w\big((b,z)^{-1}x\big)=A_w\big(f_4(b^{-1})(x-z)\big)\\
+&=\int_{M_k}w(k)\exp\big(-i\,\mathbf{k}\cdot(f_4(b^{-1})(x-z))\big)\,d^3k\\
+&=\int_{M_k}w(f_4(b)^{-1}k')\exp\big(-i\,(f_4(b)^{-1}k')\cdot(f_4(b^{-1})(x-z))\big)\,d^3k'\\
+&\qquad\text{[换积分变量为 $k'=f_4(b)k$]}\\
+&=\int_{M_k}w(f_4(b)^{-1}k')\exp\big(-i\,k'\cdot(x-z)\big)\,d^3k'\\
+&=\int_{M_k}\exp(i\,k'\cdot z)\,w(f_4(b)^{-1}k')\exp(-i\,k'\cdot x)\,d^3k'\\
+&=A_{r(b,z)w}(x).
+\end{align*}
+对每个正值 $\omega_m$，RSW 方程的平方可积解构成 $\mathbb{R}^4$ 上函数的一个不可约子空间，而 $\rho_F$ 限制到该子空间上等价于 $k=\omega_m$ 的自旋 0 丛表示。自旋 0 丛表示就是“空间上函数表示”的傅里叶变换，说明 RSW 方程的解在写成平面波解之积分时如何变换。
+
+若想包含宇称操作 $P$，我们可以自由选择内禀宇称为 $1$ 或 $-1$ 的表示。
+
+\subsubsection{自旋 1 的丛表示（The Spin-1 Bundle Representation）}
+
+$\mathrm{SU}(2)$ 的自旋 1 表示是三维的，它给出 $\mathrm{SO}(3)$ 的一个真表示，等价于\textbf{基本表示}（fundamental representation）——其中每个 $3\times3$ 实矩阵按矩阵乘法作用在 $\mathbb{C}^3$ 中的向量上。
+
+这里的谜题是：这种三维性如何嵌入\emph{四维}欧氏群的表示？四维空间中的向量在 $\mathrm{SO}(4)$ 下以自然方式变换，那 $\mathrm{SO}(3)$ 又是如何登场的呢？
+
+我们在向量波的注记中见到了一些线索：在那里我们发现可以把黎曼矢量波方程（Riemannian Vector Wave, RVW）的解限制到另外服从一个“横波条件”的解，该条件要求平面波的向量\emph{值}与波的\emph{传播矢量}正交。而正如在讨论函数空间上的表示时所指出的，横波条件从更大的解空间中挑出一个不变子空间。所以，既然已把自旋 0 丛与标量平面波联系起来，我们可以试着把自旋 1 丛与\emph{矢量}平面波联系起来，丛纤维的三维性来自描述波的值的向量应与波的传播矢量正交这一事实。
+
+\orthofig{images/03__014.png}{二维球面的切丛}
+
+事实上——撇开我们为表示所作的丛构造不谈——对于任何像 $M_k$ 这样的三维球面，已经有一个非常自然的三维向量丛的选取，即三维球面的\textbf{切丛}（tangent bundle）。若退一步想想 $\mathbb{R}^3$ 中的二维球面，类似的丛可以很容易地可视化。在球面上每一点，都有一个由所有在该点与曲面相切的向量组成的二维向量空间。这个\textbf{切空间}（tangent space）在不同点是\emph{不同的}向量空间，所以这样向量的整体自然被设想为一个向量丛。有些读者会知道，微分几何给出了切丛的一个精确、内蕴于二维球面或三维球面本身的定义，不依赖于把这些球面看作嵌在 $\mathbb{R}^3$ 或 $\mathbb{R}^4$ 中。但就我们的目的而言，把三维球面 $M_k$ 看作嵌在 $\mathbb{R}^4$ 中、其切向量为字面意义上与三维球面相切、因而与从球心指向表面的向量 $\mathbf{k}$ 正交的\emph{四维}向量，其实非常有用。在这幅图像中，我们可以把 $\mathbf{k}$ 当作平面波的传播矢量，而切向量 $\mathbf{A}_0$ 给出波的四维矢量值：
+\[
+A_k(x)=A_0\exp(-i\,\mathbf{k}\cdot x),\qquad \mathbf{k}\cdot\mathbf{A}_0=0 .
+\]
+只差一个小步骤：我们需要允许“复切向量”。这意味着不再把 $\mathbf{A}_0$ 限制在 $\mathbb{R}^4$ 中，而是允许它取 $\mathbb{C}^4$ 中的值。只要我们仍有 $\mathbf{k}\cdot\mathbf{A}_0=0$，数学就同样漂亮地成立。我们称允许这些向量取复值的向量丛为 $M_k$ 的\textbf{复化切丛}（complexified tangent bundle）。
+
+令人惊讶的是，三维球面的切丛实际上是平凡的！二维球面则不是，这与我们可以把任何三维球面认同为群 $\mathrm{SU}(2)$ 有关。我们最初遇到 $\mathrm{SU}(2)$ 是在构造从 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 到 $\mathrm{SO}(4)$ 的二对一同态时，我们看到 $\mathrm{SU}(2)$ 是我们称之为 $H$ 的矩阵四维向量空间中单位向量的三维球面。现在，用我们那个从 $\mathbb{R}^4$ 到该矩阵空间的映射 $H$，我们有
+\[
+H(\mathbf{k}_0)=H(0,0,0,k)=k\,I_2 .
+\]
+若 $G=\mathrm{SU}(2)\times\mathrm{SU}(2)$，我们可以选取 $a(\mathbf{k})=(H(\mathbf{k}/k),I_2)$：
+\begin{align*}
+f_4(a(k))\mathbf{k}_0
+&=H^{-1}\big(H(k/k)\,H(\mathbf{k}_0)\,I_2\big)\\
+&=H^{-1}\big(H(k)/k\,(k\,I_2)\,I_2\big)\\
+&=\mathbf{k}.
+\end{align*}
+除了把 $\mathbf{k}_0$ 映到 $\mathbf{k}$ 之外，算符 $f_4(a(\mathbf{k}))$ 还可用来把 $\mathbf{k}_0$ 处的切空间搬到 $\mathbf{k}$ 处的切空间——而且由于这里一切都涉及 $\mathbb{R}^4$ 中坐标的光滑函数，对所有 $\mathbf{k}\in M_k$ 这样做，就能取 $\mathbf{k}_0$ 处切空间的一个基，把它变成覆盖整个三维球面的光滑向量场的一个基。若切丛\emph{不}平凡，任何这样做的尝试都必然在某处涉及不连续（例如，想象在莫比乌斯带上做同样的事）。
+
+我们需要证明自旋 1 丛实际上与 $M_k$ 的复化切丛相同。利用 $a(\mathbf{k})=(H(\mathbf{k}/k),I_2)$ 及 $\eta(h)=f_3(h)=f_4(h,h)$，我们用来把每个纤维与此情形中的表示空间（即 $\mathbb{C}^3$）认同的映射 $\psi_{a(\mathbf{k})}$ 变为
+\begin{align*}
+\psi_{a(k)}\big([((g,x),w)]\big)
+&=\xi\big((a(k),0)^{-1}(g,x)\big)w\\
+&=\chi_{\mathbf{k}_0}\big(f_4(a(k)^{-1})x\big)\,f_4(a(k)^{-1}g)w\\
+&=\exp(i\,\mathbf{k}\cdot x)\,f_4(a(k)^{-1}g)w .
+\end{align*}
+由于 $\mathbf{w}\in\mathbb{C}^3$，且 $f_4(a(\mathbf{k})^{-1}g)$ 是保持 $t$ 轴的旋转，这个向量也将落在 $\mathbb{C}^3$ 中。若再用 $f_4(a(\mathbf{k}))$ 作用于这个向量，它将给出 $\mathbb{C}^4$ 中一个与 $\mathbf{k}$ 正交的子空间中的向量。我们定义映射 $\psi':E\to M_k\times\mathbb{C}^4$ 为
+\begin{align*}
+\psi'\big([((g,x),w)]\big)
+&=\big(k,\ f_4(a(k))\,\psi_{a(k)}([((g,x),w)])\big)\\
+&=\big(k,\ f_4(a(k))\exp(i\,\mathbf{k}\cdot x)f_4(a(k)^{-1}g)w\big)\\
+&=\big(k,\ \exp(i\,\mathbf{k}\cdot x)\,f_4(g)w\big),
+\end{align*}
+这里我们知道 $f_4(g)\mathbf{w}$ 与 $\mathbf{k}$ 正交，因为 $\mathbf{w}\in\mathbb{C}^3$（即与 $\mathbf{k}_0=(0,0,0,k)$ 正交），而 $f_4(g)$ 保持点积，同时把 $\mathbf{k}_0$ 映到 $\mathbf{k}$。逆映射 $\phi':M_k\times\mathbb{C}^4\to E$ 由
+\[
+\phi'(k,u)=\big[((a(k),0),\ f_4(a(k)^{-1})u)\big]
+\]
+给出。这里 $f_4(a(\mathbf{k})^{-1})\mathbf{u}$ 落在 $\mathbb{C}^3$ 中当且仅当 $\mathbf{k}\cdot\mathbf{u}=0$，所以 $\phi'$ 只在 $M_k\times\mathbb{C}^4$ 中我们与 $M_k$ 复化切丛认同的那部分上有定义，而非在整个 $M_k\times\mathbb{C}^4$ 上。
+
+若我们用 $\phi'$ 把复化切丛的一个截面 $f(\mathbf{k})=(\mathbf{k},\mathbf{u}(\mathbf{k}))$ 变成自旋 1 丛的一个截面，用 $S$ 的某元素 $(b,\mathbf{z})$ 经由表示 $r$ 作用到该截面，再用 $\psi'$ 把结果变回切丛的一个截面，则切丛截面上的表示为
+\[
+\big(r(b,z)f\big)(k)=\big(k,\ \exp(i\,\mathbf{k}\cdot z)\,f_4(b)\,u\big(f_4(b)^{-1}k\big)\big).
+\]
+我们也可把它重新解释为在满足 $\mathbf{u}(\mathbf{k})\cdot\mathbf{k}=0$ 的\emph{函数} $\mathbf{u}:M_k\to\mathbb{C}^4$ 空间上的表示，并写成
+\[
+\big(r(b,z)u\big)(k)=\exp(i\,\mathbf{k}\cdot z)\,f_4(b)\,u\big(f_4(b)^{-1}k\big).
+\]
+截面上的表示与我们从 $S$ 在 $M_k\times\mathbb{C}^4$ 上自然选取的作用
+\[
+\rho'(b,z)(k,u)=\big(f_4(b)k,\ \exp\big(i\,(f_4(b)k)\cdot z\big)f_4(b)u\big)
+\]
+所得的相同。
+
+最后，我们可以验证它与 $\rho_V$（我们在 $\mathbb{R}^4$ 上平方可积向量值函数空间上的表示，限制到满足黎曼矢量波方程与横波条件的函数子空间）等价。对每个满足 $\mathbf{u}(\mathbf{k})\cdot\mathbf{k}=0$ 的函数 $\mathbf{u}:M_k\to\mathbb{C}^4$，我们通过傅里叶合成定义 $\mathbb{R}^4$ 上的一个函数：
+\[
+A_u(x)=\int_{M_k}u(k)\exp(-i\,\mathbf{k}\cdot x)\,d^3k .
+\]
+$\mathbf{A}_{\mathbf{u}}$ 在 $\rho_V$ 下如何变换？
+\begin{align*}
+\big(\rho_V(b,z)A_u\big)(x)
+&=f_4(b)A_u\big((b,z)^{-1}x\big)=f_4(b)A_u\big(f_4(b^{-1})(x-z)\big)\\
+&=f_4(b)\int_{M_k}u(k)\exp\big(-i\,\mathbf{k}\cdot(f_4(b^{-1})(x-z))\big)\,d^3k\\
+&=f_4(b)\int_{M_k}u(f_4(b)^{-1}k')\exp\big(-i\,(f_4(b)^{-1}k')\cdot(f_4(b^{-1})(x-z))\big)\,d^3k'\\
+&\qquad\text{[换积分变量为 $k'=f_4(b)k$]}\\
+&=f_4(b)\int_{M_k}u(f_4(b)^{-1}k')\exp\big(-i\,k'\cdot(x-z)\big)\,d^3k'\\
+&=f_4(b)\int_{M_k}\exp(i\,k'\cdot z)\,u(f_4(b)^{-1}k')\exp(-i\,k'\cdot x)\,d^3k'\\
+&=A_{r(b,z)u}(x).
+\end{align*}
+所以自旋 1 丛表示可以看作“$\mathbb{R}^4$ 上向量值函数某子空间上的表示”的傅里叶变换。横波条件
+\[
+\partial_x A^x+\partial_y A^y+\partial_z A^z+\partial_t A^t=0
+\]
+的傅里叶变换对应于条件 $\mathbf{u}(\mathbf{k})\cdot\mathbf{k}=0$，因为在任意方向上偏导数的傅里叶变换对应于把变换结果乘以该方向上的频率分量，即 $\partial_x A^x\to k_x u^x$，等等。
+
+与自旋 0 情形一样，若我们要的不仅是 $\mathrm{SE}(4)$ 而是 $\mathrm{E}(4)$ 的表示，我们可以自由选择内禀宇称为 $1$ 或 $-1$ 的表示。若选后者，则 $P$ 的作用会把一切再乘一个因子 $-1$。
+
+\subsubsection{自旋 $\tfrac12$ 的丛表示（The Spin-$\tfrac12$ Bundle Representation）}
+
+$\mathrm{SU}(2)$ 的自旋 $\tfrac12$ 表示是二维的，所以在其截面上我们得到欧氏群双覆盖表示的丛 $E$ 将具有同构于 $\mathbb{C}^2$ 的纤维 $E(\mathbf{k})$。照例底空间 $M_k$ 是一个三维球面。
+
+把这个丛可视化很棘手，但正如对 $M_k$ 的复化切丛一样，如果我们把它看作形如 $M_k\times\mathbb{C}^n$（某 $n$）的平凡丛的一个“子丛”，会有帮助。沿循自旋 1 丛中所见的模式，我们预期把自旋 $\tfrac12$ 丛表示与 $\mathbb{R}^4$ 上 $\mathbb{C}^n$ 值函数的某子空间上的表示联系起来。在自旋 1 情形，若把表示限制到非平移群 $G$、并限制到只在原点非零的函数，我们最终得到 $\mathrm{SO}(4)$ 或 $\mathrm{O}(4)$ 双覆盖的四维矢量表示。若在自旋 $\tfrac12$ 情形照做，类似的结果会是什么？$\mathrm{O}(4)$ 双覆盖最小的费米表示是自旋 $(\tfrac12,0)\oplus$ 自旋 $(0,\tfrac12)$，它也是四维的。所以我们将试着把自旋 $\tfrac12$ 丛认同为平凡丛 $M_k\times\mathbb{C}^4$ 的一个子丛，使得结果得到在原点处（在旋转与反射下）按自旋 $(\tfrac12,0)\oplus(0,\tfrac12)$ 变换的 $\mathbb{C}^4$ 值函数。
+
+$\mathrm{SU}(2)\times\mathrm{SU}(2)$ 在 $\mathbb{C}^4=\mathbb{C}^2\oplus\mathbb{C}^2$ 上的自旋 $(\tfrac12,0)\oplus(0,\tfrac12)$ 表示为
+\[
+\tau(g_1,g_2)(v_1,v_2)=(g_1 v_1,\ g_2 v_2),
+\]
+其中 $g_1,g_2\in\mathrm{SU}(2)$、$\mathbf{v}_1,\mathbf{v}_2\in\mathbb{C}^2$。
+
+我们定义映射 $\psi'':E\to M_k\times\mathbb{C}^4$ 为
+\[
+\psi''\big([((g,x),w)]\big)=\big(k,\ \exp(i\,\mathbf{k}\cdot x)\,\tau(g)(w,w)\big),
+\]
+其中照例 $\mathbf{k}=\pi([((g,\mathbf{x}),\mathbf{w})])=f_4(g)\mathbf{k}_0$。这里为 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 的元素我们只写 $g$，而不显式写成 $\mathrm{SU}(2)$ 中两个独立元素的对。此定义无歧义，因为若取同一等价类的另一代表元，我们得到相同结果：
+\begin{align*}
+&\psi''\big([((g,x)(h,y)^{-1},\ \xi(h,y)w)]\big)\\
+&=\psi''\big([((gh^{-1},\ -f_4(gh^{-1})y+x),\ \exp(i\,\mathbf{k}_0\cdot y)\eta(h)w)]\big)\\
+&=\Big(f_4(gh^{-1})\mathbf{k}_0,\ \exp\big(i\,(f_4(gh^{-1})\mathbf{k}_0)\cdot(-f_4(gh^{-1})y+x)\big)\exp(i\,\mathbf{k}_0\cdot y)\,\tau(gh^{-1})(\eta(h)w,\eta(h)w)\Big)\\
+&=\Big(f_4(g)\mathbf{k}_0,\ \exp(-i\,\mathbf{k}_0\cdot y)\exp\big(i\,(f_4(g)\mathbf{k}_0)\cdot x\big)\exp(i\,\mathbf{k}_0\cdot y)\,\tau(g)\tau(h^{-1})(hw,hw)\Big)\\
+&=\Big(f_4(g)\mathbf{k}_0,\ \exp\big(i\,(f_4(g)\mathbf{k}_0)\cdot x\big)\,\tau(g)(w,w)\Big)\\
+&=\big(k,\ \exp(i\,\mathbf{k}\cdot x)\,\tau(g)(w,w)\big).
+\end{align*}
+
+接下来定义 $S$ 在 $M_k\times\mathbb{C}^4$ 上的左作用 $\rho''$：
+\[
+\rho''(b,z)\big(k,(v,w)\big)=\big(f_4(b)k,\ \exp\big(i\,(f_4(b)k)\cdot z\big)\,\tau(b)(v,w)\big).
+\]
+自旋 $\tfrac12$ 丛 $E$ 上通常的作用 $\rho$ 为
+\[
+\rho(b,z)\,[((g,x),w)]=[((b,z)(g,x),w)].
+\]
+$\psi''$ 与这些丛作用对易：
+\[
+\rho''(b,z)\,\psi''\big([((g,x),w)]\big)=\psi''\big(\rho(b,z)[((g,x),w)]\big).
+\]
+由作用 $\rho''$ 得到 $S$ 在 $M_k\times\mathbb{C}^4$ 的截面 $f(\mathbf{k})=(\mathbf{k},\mathbf{u}(\mathbf{k}))$ 上的表示：
+\[
+\big(r(b,z)f\big)(k)=\big(k,\ \exp(i\,\mathbf{k}\cdot z)\,\tau(b)\,u(f_4(b)^{-1}k)\big).
+\]
+更简洁地，在函数 $\mathbf{u}:M_k\to\mathbb{C}^4$ 上的表示为
+\begin{equation}
+\big(r(b,z)u\big)(k)=\exp(i\,\mathbf{k}\cdot z)\,\tau(b)\,u\big(f_4(b)^{-1}k\big). \tag{4.2.7}
+\end{equation}
+当然 $\psi''$ 的像不是整个 $M_k\times\mathbb{C}^4$，所以我们需要限制函数 $\mathbf{u}$。在自旋 1 情形，子丛由条件 $\mathbf{u}(\mathbf{k})\cdot\mathbf{k}=0$ 指定，我们需要找出自旋 $\tfrac12$ 情形中 $\mathbf{u}(\mathbf{k})$ 与 $\mathbf{k}$ 满足的类似条件。首先注意纤维 $E(\mathbf{k}_0)$ 的像是
+\[
+\psi''\big(E(\mathbf{k}_0)\big)=\{\psi''([((I,0),w)])\mid w\in\mathbb{C}^2\}=\{(\mathbf{k}_0,(w,w))\mid w\in\mathbb{C}^2\}.
+\]
+用 $\rho''(b,\mathbf{z})$ 作用在形如上述的元素上，得到
+\[
+\psi''(E)=\Big\{\Big(f_4(b)\mathbf{k}_0,\ \exp\big(i\,(f_4(b)\mathbf{k}_0)\cdot z\big)\,\tau(b)(w,w)\Big)\ \Big|\ w\in\mathbb{C}^2,\ b\in\mathrm{SU}(2)\times\mathrm{SU}(2),\ z\in\mathbb{R}^4\Big\}.
+\]
+若 $b=(b_1,b_2)$，其中 $b_1,b_2\in\mathrm{SU}(2)$，则
+\[
+f_4(b_1,b_2)\mathbf{k}_0=H^{-1}\big(b_1 H(\mathbf{k}_0)b_2^{-1}\big)=k\,H^{-1}(b_1 b_2^{-1}),
+\]
+故 $H(f_4(b_1,b_2)\mathbf{k}_0)=k\,b_1 b_2^{-1}$，且
+\[
+\tau(b_1,b_2)(w,w)=(b_1 w,\ b_2 w).
+\]
+把最后两个结果合起来，对 $\psi''(E)$ 中每个 $(\mathbf{k},(\mathbf{u}_1,\mathbf{u}_2))$ 有
+\[
+H(\mathbf{k})\,\mathbf{u}_2=k\,\mathbf{u}_1 .
+\]
+左乘伴随 $H(\mathbf{k})^*$ 得
+\begin{align*}
+H(\mathbf{k})^* H(\mathbf{k})\,\mathbf{u}_2&=k\,H(\mathbf{k})^*\mathbf{u}_1\\
+k^2\,H(\mathbf{k}/k)^* H(\mathbf{k}/k)\,\mathbf{u}_2&=k\,H(\mathbf{k})^*\mathbf{u}_1\\
+k^2\,\mathbf{u}_2&=k\,H(\mathbf{k})^*\mathbf{u}_1\\
+H(\mathbf{k})^*\mathbf{u}_1&=k\,\mathbf{u}_2 .
+\end{align*}
+这些方程可以打包成一个矩阵方程：
+\[
+\begin{pmatrix}-k\,I_2 & H(\mathbf{k})\\ H(\mathbf{k})^* & -k\,I_2\end{pmatrix}
+\begin{pmatrix}\mathbf{u}_1\\ \mathbf{u}_2\end{pmatrix}
+=\begin{pmatrix}\mathbf{0}\\ \mathbf{0}\end{pmatrix}.
+\]
+我们也可把它写成
+\[
+\big(k_\mu\gamma^\mu-k\big)u(k)=0,
+\]
+其中对 $\mu$ 求和，并定义矩阵 $\gamma^\mu$ 为
+\[
+\gamma^\mu=\begin{pmatrix}0 & H_\mu\\ H_\mu^* & 0\end{pmatrix}.
+\]
+我们不会写出由此定义得到的那些具体的矩阵，因为它们依赖于我们在把自旋 $\tfrac12$ 丛与 $M_k\times\mathbb{C}^4$ 的某子丛认同时所选取的基；而在后面讨论狄拉克方程时，我们将集中于对特定应用有用的两个特殊基的选取。$\gamma$ 矩阵真正重要的性质是一个不依赖于基选取的性质：
+\[
+\gamma^\mu\gamma^\nu+\gamma^\nu\gamma^\mu=2\,\delta^{\mu\nu}I_4 .
+\]
+从 $H$ 矩阵的定义与性质不难验证这一点。
+
+在傅里叶合成
+\[
+A_u(x)=\int_{M_k}u(k)\exp(-i\,\mathbf{k}\cdot x)\,d^3k
+\]
+中对每个平面波施加条件
+\[
+\big(k_\mu\gamma^\mu-k\big)u(k)=0,
+\]
+等同于要求 $\mathbf{A}_{\mathbf{u}}(\mathbf{x})$ 满足微分方程
+\[
+i\,\gamma^\mu\partial_\mu A_u(x)-k\,A_u(x)=0 .
+\]
+若把 $k$（传播矢量的模）认同为粒子的质量 $m$，这恰恰就是狄拉克方程（Dirac equation）。于是狄拉克方程的解构成 $\mathbb{R}^4$ 上 $\mathbb{C}^4$ 值函数的一个子空间，它按自旋 $\tfrac12$ 丛表示变换。
+
+\subsection{射影正交群（The Projective Orthogonal Groups）}
+
+关于欧氏四维空间中的对称性，我们还需要考察一个进一步的变体。设有一个\emph{中性}经典粒子在四维空间中自由穿行，其世界线是一条无限长的直线。我们可以给这个粒子赋予一个沿其世界线指向某特定方向的能动量矢量，但只有在我们选定一个参考系、并出于方便或约定决定能动量矢量在该参考系中应有正的时间坐标时才能如此。实际上并\emph{不存在}这样一个与粒子本身相关联的矢量。世界线确实在四维空间中有一个方向——在相差一个符号的意义上——粒子的质量也决定了其能动量的大小，但我们所选的任何能动量矢量都可以被其相反矢量同样好地取代。
+
+这表明对一个自由中性粒子而言，$\mathrm{SO}(4)$ 其实并不是正确的对称群。我们真正想做的是，把“反转所有矢量”这一操作视为对该系统\emph{完全没有影响}。当然，对带电粒子就不合适了，因为它的电荷在此操作下会改变符号。
+
+本质上，我们想做的，是把 $\mathbb{R}^4$ 上通常的恒等算符 $I_4$ \emph{以及} $-I_4$（反转所有矢量的方向）\emph{二者}都对应于某取代 $\mathrm{SO}(4)$ 的新对称群的单位元。我们能做到这一点，不是通过限制到 $\mathrm{SO}(4)$ 的某个子群，而是通过构造一个商群（quotient group）。取 $\mathrm{SO}(4)$ 的子群 $\mathrm{SZO}(4)=\{I_4,-I_4\}$，然后构造新群 $\mathrm{PSO}(4)=\mathrm{SO}(4)/\mathrm{SZO}(4)$，它由位于 $\mathrm{SZO}(4)$ 同一陪集内的等价类组成。子群的陪集，是用群元素从左边或右边乘该子群所得的集合；此处 $\mathrm{SZO}(4)$ 的元素与一切对易，故左、右陪集没有差别。于是每个陪集形如 $g\,\mathrm{SZO}(4)=\{g,-g\}$（$g\in\mathrm{SO}(4)$）。我们将它写作 $\pm g$；对任意 $g\in\mathrm{SO}(4)$，$\pm g$ 是 $\mathrm{PSO}(4)$ 的一个元素。我们用 $\mathrm{SO}(4)$ 中的乘法来乘这些元素，故
+\[
+(\pm g)(\pm h)=\pm(gh).
+\]
+显然 $\pm I_4$ 充当单位元，逆元为
+\[
+(\pm g)^{-1}=\pm(g^{-1}).
+\]
+我们构造出的这个新群 $\mathrm{PSO}(4)$ 称为四维射影特殊正交群（projective special orthogonal group in four dimensions）。我们可以对 $\mathrm{O}(4)$ 作类似构造，得到射影一般正交群 $\mathrm{PGO}(4)=\mathrm{O}(4)/\{I_4,-I_4\}$，它包含反射。谈 $\mathrm{PGO}(3)$（商群 $\mathrm{O}(3)/\{I_3,-I_3\}$）也说得通。由于 $-I_3$ 的行列式为 $-1$，它不是 $\mathrm{SO}(3)$ 的元素，所以不存在 $\mathrm{PSO}(3)$ 这样的东西——尽管按某些定义，$\mathrm{PSO}(3)$ 就直接定义为 $\mathrm{SO}(3)/\{I_3\}=\mathrm{SO}(3)$。
+
+由
+\[
+\pi(g)=\pm g
+\]
+定义的映射 $\pi:\mathrm{SO}(4)\to\mathrm{PSO}(4)$ 是一个从 $\mathrm{SO}(4)$ 到 $\mathrm{PSO}(4)$ 的二对一同态，所以 $\mathrm{SO}(4)$ 是 $\mathrm{PSO}(4)$ 的双覆盖，就像 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 是 $\mathrm{SO}(4)$ 的双覆盖一样。更有甚者，我们可以把二对一同态 $\pi$ 与二对一同态 $f_4$ 复合，得到一个从 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 到 $\mathrm{PSO}(4)$ 的四对一同态 $\alpha$：
+\[
+\alpha(g,h)=\pi\big(f_4(g,h)\big)=\pm f_4(g,h).
+\]
+$\mathrm{SU}(2)\times\mathrm{SU}(2)$ 的四个元素 $(g,h)$、$(-g,h)$、$(g,-h)$、$(-g,-h)$ 在 $\alpha$ 下的像都落在 $\mathrm{PSO}(4)$ 中同一点。经由 $\alpha$，我们可以像用 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 的自旋 $(j,k)$ 酉表示得到 $\mathrm{SO}(4)$ 的表示那样，用它们得到 $\mathrm{PSO}(4)$ 的（一般而言是\emph{射影}的）表示。回忆自旋 $(j,k)$ 表示定义为
+\[
+\rho_{j,k}(g,h)\,x\otimes y=(\rho_j(g)x)\otimes(\rho_k(h)y),
+\]
+且
+\[
+\rho_j(-g)=(-1)^{2j}\rho_j(g).
+\]
+这表明当 $j$ 与 $k$ 都为整数时，四个算符 $\rho_{j,k}(\pm g,\pm h)$ 全都相同，所以 $\rho_{j,k}$ 将给出 $\mathrm{PSO}(4)$ 的一个真表示，而不只是射影表示。

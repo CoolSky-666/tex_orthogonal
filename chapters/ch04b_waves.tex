@@ -1,0 +1,474 @@
+\section{李代数（Lie Algebras）}
+
+$n$ 维旋转群 SO($n$) 是所谓\textbf{李群}（Lie group）的一个例子：群元素可以被赋予坐标，使得群运算（两个元素相乘、元素取逆）都是这些坐标的光滑函数。为避免出现类似地球极点与 $180^\circ$ 经线处的坐标退化问题，有时需要使用不止一张坐标“图卡”（chart）。以三维旋转群 SO(3) 为例，它可以设想为一个半径 $\pi$ 的实心三维球，球面上相对的两点彼此认同：从球心指向球内某点的矢量给出旋转轴，该矢量的长度给出旋转角。这个集合可以用一张以恒等元素为中心的坐标图卡覆盖，再用另一张以某个 $\pi$ 旋转为中心的图卡覆盖。
+
+现在设 $n$ 维空间中的一个刚体随时间转动，其质心固定于坐标原点。在任意时刻 $t$，都存在某个矩阵 $R(t)$，把物体上每一点在 $t=0$ 时的位置映到它在 $t$ 时的新位置。若物体光滑地转动，则 $R(t)$ 的分量是 $t$ 的光滑函数，我们可以定义 $R'(t)$——其各分量是 $R$ 的各分量对 $t$ 的导数所构成的矩阵。
+
+$R'(t)$ 显然与转动体的\textbf{角速度}（angular velocity）有关。在三维中我们惯于把转动与某一根转轴对应，并把角速度描述为沿该轴的矢量，其长度与转动速率成正比。但在四维中，转动不会留下唯一的固定轴——它要么不固定任何矢量，要么使一整个平面保持不变。因此一般而言，角速度最好用一个矩阵 $\Omega$ 来描述：当它作用于从转心指向物体上某点的位移矢量时，给出该点的瞬时线速度：
+
+\begin{equation}
+\Omega\,\mathbf{x} = \mathbf{v}
+\end{equation}
+
+物体上在时刻 $t_1$ 位于 $\mathbf{x}_1$ 的点，其原始位置（$t=0$ 时）为 $\mathbf{x}_0 = R(t_1)^{-1}\mathbf{x}_1$，于是同一点的一般位置可写为
+
+\begin{equation}
+\mathbf{x}(t) = R(t)\,R(t_1)^{-1}\,\mathbf{x}_1
+\end{equation}
+
+其一般线速度为
+
+\begin{equation}
+\mathbf{v}(t) = R'(t)\,R(t_1)^{-1}\,\mathbf{x}_1
+\end{equation}
+
+特别地，在 $t=t_1$ 时：
+
+\begin{equation}
+\mathbf{v}(t_1) = R'(t_1)\,R(t_1)^{-1}\,\mathbf{x}_1
+\end{equation}
+
+于是我们看到：
+
+\begin{equation}
+\Omega(t_1) = R'(t_1)\,R(t_1)^{-1}
+\end{equation}
+
+$R'(t)$ 与角速度有关，但为了得到 $\Omega$，我们必须“撤销”到目前为止所发生的净转动。或者，如果我们把时间坐标的原点选得使 $t_1=0$，那么 $R(t_1)^{-1}$ 就是单位矩阵，于是 $\Omega(0)=R'(0)$。
+
+无论如何，既然我们知道所有矩阵 $R(t)$ 都是正交矩阵——即其转置等于其逆——我们有：
+
+\begin{align}
+R(t)\,R(t)^{T} &= I_n \\
+\partial_t\!\left(R(t)\,R(t)^{T}\right) &= 0 \\
+R'(t)\,R(t)^{T} + R(t)\,R'(t)^{T} &= 0 \\
+R'(t)\,R(t)^{T} &= -R(t)\,R'(t)^{T} \\
+\Omega(t) &= -\Omega(t)^{T}
+\end{align}
+
+这表明角速度 $\Omega$ 是一个\textbf{反对称矩阵}（antisymmetric matrix）：它的转置等于原矩阵的相反数。
+
+例如，设
+
+\begin{equation}
+R(t) = \begin{pmatrix}
+\cos(\omega t) & -\sin(\omega t) & 0 \\
+\sin(\omega t) & \cos(\omega t) & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\end{equation}
+
+这些是绕 $z$ 轴以角速度 $\omega$ 转动的物体随时间的旋转。我们对时间求导再令时间为零，得到角速度矩阵：
+
+\begin{equation}
+R'(t) = \begin{pmatrix}
+-\omega\sin(\omega t) & -\omega\cos(\omega t) & 0 \\
+\omega\cos(\omega t) & -\omega\sin(\omega t) & 0 \\
+0 & 0 & 0
+\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+\Omega(0) = R'(0) = \begin{pmatrix}
+0 & -\omega & 0 \\
+\omega & 0 & 0 \\
+0 & 0 & 0
+\end{pmatrix}
+\end{equation}
+
+我们把 $n\times n$ 反对称矩阵的集合称为与 SO($n$) 相对应的李代数，并按惯例把群名改为小写来命名它：so($n$)。李代数是一个矢量空间：我们可以把元素相加，或乘以标量（此处为实数），结果仍是同一李代数中的元素。反对称矩阵相加或乘以实数，所得矩阵仍反对称。
+
+给定李代数中的两个元素 $\mathbf{v}$ 与 $\mathbf{w}$，我们还可以施行称为\textbf{李括号}（Lie bracket）或\textbf{交换子}（commutator）的运算：
+
+\begin{equation}
+[\mathbf{v},\mathbf{w}] = \mathbf{v}\mathbf{w} - \mathbf{w}\mathbf{v}
+\end{equation}
+
+其中乘积 $\mathbf{v}\mathbf{w}$ 与 $\mathbf{w}\mathbf{v}$ 按通常的矩阵乘法构成。容易看出两个反对称矩阵的李括号仍是反对称的：
+
+\begin{align}
+[\mathbf{v},\mathbf{w}]^{T} &= (\mathbf{v}\mathbf{w} - \mathbf{w}\mathbf{v})^{T} \\
+&= (\mathbf{v}\mathbf{w})^{T} - (\mathbf{w}\mathbf{v})^{T} \\
+&= \mathbf{w}^{T}\mathbf{v}^{T} - \mathbf{v}^{T}\mathbf{w}^{T} \\
+&= \mathbf{w}\mathbf{v} - \mathbf{v}\mathbf{w} \\
+&= -[\mathbf{v},\mathbf{w}]
+\end{align}
+
+一般而言，我们可以把与任一李群相联系的李代数，设想为所有穿过该群恒等元素的光滑路径的可能切矢所组成的矢量空间。对旋转而言，可以把群中的路径设想为某个刚体随时间的转动、把恒等元素处的切矢设想为描述该刚体在某一时刻的角速度，来使这一概念更具体；但同样的想法也适用于像 SU(2) 这样更抽象的群。
+
+给定李代数 $g$ 的一个元素 $\mathbf{v}$，存在一个从 $g$ 到李群 $G$ 的函数，称为\textbf{指数映射}（exponential map），它把 $\mathbf{v}$ 的倍数映为一条经过恒等元素、切矢为 $\mathbf{v}$ 的路径。这可以非常一般地做到，但我们将集中讨论 $G$ 与 $g$ 的元素都是矩阵的情形。此时指数映射就是通常的指数函数，只是被推广到矩阵。这既可以用幂级数来做：
+
+\begin{equation}
+\exp(A) = I_n + A + \frac{A^{2}}{2!} + \frac{A^{3}}{3!} + \frac{A^{4}}{4!} + \cdots
+\end{equation}
+
+也可以在许多情形下，选择一组使矩阵 $A$ 呈对角形式 $\diag(\lambda_1,\dots,\lambda_n)$ 的基，然后只需对各对角元取指数得到 $\diag(\exp(\lambda_1),\dots,\exp(\lambda_n))$，再变换回原来的基。
+
+例如，若我们对反对称角速度矩阵 $\Omega$ 的某一倍数取指数，就得到一个正交旋转矩阵：
+
+\begin{equation}
+R(t) = \exp(t\Omega)
+\end{equation}
+
+它给出经过旋转群的一条路径。我们在恒等元素处求这条路径的切矢，只需对 $t$ 求导再令 $t=0$：
+
+\begin{align}
+R'(t) &= \Omega\exp(t\Omega) \\
+R'(0) &= \Omega
+\end{align}
+
+我们已经指出，李代数 so($n$) 由 $n\times n$ 反对称矩阵组成。那么与群 SU($n$) 相联系的李代数 su($n$) 又是什么呢？SU($n$) 中的矩阵是酉矩阵，即其转置的复共轭（也称为厄米共轭）等于其逆。于是，若有一条经过 SU($n$) 的路径 $M(t)$ 且 $M(0)=I_n$，并把厄米共轭记作 $M(t)^{*}$，我们有：
+
+\begin{align}
+M(t)\,M(t)^{*} &= I_n \\
+\partial_t\!\left(M(t)\,M(t)^{*}\right) &= 0 \\
+M'(t)\,M(t)^{*} + M(t)\,M'(t)^{*} &= 0 \\
+M'(t)\,M(t)^{*} &= -M(t)\,M'(t)^{*} \\
+M'(0) &= -M'(0)^{*}
+\end{align}
+
+因此李代数元素 $m=M'(0)$ 的厄米共轭等于原元素的相反数。具有这一性质的矩阵称为\textbf{反厄米矩阵}（skew-Hermitian）。
+
+但 su($n$) 并不包含\emph{全部} $n\times n$ 反厄米矩阵。原来，矩阵的迹与其指数的行列式之间存在一个关系：
+
+\begin{equation}
+\det(\exp(A)) = \exp(\Tr A)
+\end{equation}
+
+对对角矩阵不难看出为什么成立。若 $A=\diag(\lambda_1,\lambda_2,\dots,\lambda_n)$，则
+
+\begin{align}
+\Tr A &= \lambda_1 + \lambda_2 + \dots + \lambda_n \\
+\exp(A) &= \diag(\exp(\lambda_1),\exp(\lambda_2),\dots,\exp(\lambda_n)) \\
+\det(\exp(A)) &= \exp(\lambda_1)\times\exp(\lambda_2)\times\dots\times\exp(\lambda_n) \\
+&= \exp(\Tr A)
+\end{align}
+
+由于 SU($n$) 的元素行列式为 1，su($n$) 的元素的迹的指数必须为 1，即迹为零。因此 su($n$) 由\textbf{无迹、反厄米的 $n\times n$ 矩阵}组成。
+
+\subsection{so(3) 与 su(2)}
+
+我们知道群 SU(2) 构成群 SO(3) 的双覆盖。当一个李群是另一个的李群的双覆盖时，它们的李代数总是“相同的”，即我们可以找到二者之间的一个李代数同构：一个保持李括号的可逆线性映射。
+
+我们之前如下定义了 $f_3:\mathrm{SU}(2)\to\mathrm{SO}(3)$：
+
+\begin{equation}
+f_3(g)\,\mathbf{x} = H^{-1}\!\left(g\,H(\mathbf{x})\,g^{-1}\right)
+\end{equation}
+
+其中对 $\mathbb{R}^{3}$ 中的任一点 $\mathbf{x}=(x,y,z)$，我们定义：
+
+\begin{equation}
+H(\mathbf{x}) = \begin{pmatrix}
+-z\,\ii & -y - x\,\ii \\
+y - x\,\ii & z\,\ii
+\end{pmatrix}
+\end{equation}
+
+在此三维情形里，$H(\mathbf{x})$ 无迹且反厄米，因而是 su(2) 的一个元素。所以我们有 $H:\mathbb{R}^{3}\to\mathrm{su}(2)$。
+
+设 SU(2) 中的群元素 $g$ 由 su(2) 的元素 $\mathbf{v}$ 的倍数取指数得到：
+
+\begin{equation}
+g(t) = \exp(t\mathbf{v})
+\end{equation}
+
+我们便可以这样求出与 su(2) 中 $\mathbf{v}$ 相对应的 so(3) 元素：对 $f_3(g)\mathbf{x}$ 关于 $t$ 求导，再令 $t=0$。
+
+\begin{align}
+\partial_t\!\left(f_3(g(t))\,\mathbf{x}\right)
+&= \partial_t\!\left(H^{-1}\!\left(g(t)\,H(\mathbf{x})\,g(t)^{-1}\right)\right) \\
+&= H^{-1}\!\left(\partial_t\!\left(g(t)\,H(\mathbf{x})\,g(t)^{-1}\right)\right) \\
+&= H^{-1}\!\left(\partial_t\!\left(\exp(t\mathbf{v})\,H(\mathbf{x})\,\exp(-t\mathbf{v})\right)\right) \\
+&= H^{-1}\!\left(\mathbf{v}\exp(t\mathbf{v})\,H(\mathbf{x})\,\exp(-t\mathbf{v}) - \exp(t\mathbf{v})\,H(\mathbf{x})\,\mathbf{v}\exp(-t\mathbf{v})\right)
+\end{align}
+
+令 $t=0$，得：
+
+\begin{align}
+\left.\partial_t\!\left(f_3(g(t))\,\mathbf{x}\right)\right|_{t=0}
+&= H^{-1}\!\left(\mathbf{v}\,H(\mathbf{x}) - H(\mathbf{x})\,\mathbf{v}\right) \\
+&= H^{-1}\!\left([\mathbf{v},H(\mathbf{x})]\right)
+\end{align}
+
+现在我们可以定义映射 $df_3:\mathrm{su}(2)\to\mathrm{so}(3)$，即双覆盖的\emph{导数}：
+
+\begin{equation}
+df_3(\mathbf{v})\,\mathbf{x} = H^{-1}\!\left([\mathbf{v},H(\mathbf{x})]\right)
+\end{equation}
+
+让我们列出把 $H$ 作用于 $\mathbb{R}^{3}$ 的基矢量所得到的矩阵，并把它们用作 su(2) 的一组基：
+
+\begin{align}
+H_x = H(\mathbf{e}_x) &= \begin{pmatrix} 0 & -\ii \\ -\ii & 0 \end{pmatrix} \\
+H_y = H(\mathbf{e}_y) &= \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \\
+H_z = H(\mathbf{e}_z) &= \begin{pmatrix} -\ii & 0 \\ 0 & \ii \end{pmatrix}
+\end{align}
+
+这些矩阵之间的交换子（李括号）为：
+
+\begin{align}
+[H_x,H_y] &= 2H_z \\
+[H_y,H_z] &= 2H_x \\
+[H_z,H_x] &= 2H_y
+\end{align}
+
+若交换李括号内元素的顺序则结果反号，而任一元素与自身的李括号自然为零。由此推出：
+
+\begin{align}
+df_3(H_x/2)\,\mathbf{e}_x &= H^{-1}\!\left([H_x/2,H_x]\right) = 0 \\
+df_3(H_x/2)\,\mathbf{e}_y &= H^{-1}\!\left([H_x/2,H_y]\right) = \mathbf{e}_z \\
+df_3(H_x/2)\,\mathbf{e}_z &= H^{-1}\!\left([H_x/2,H_z]\right) = -\mathbf{e}_y
+\end{align}
+
+于是 $df_3$ 把 su(2) 中的 $H_x/2$ 映为 so(3) 中生成绕 $x$ 轴旋转的元素 $J_x$（即若对 $J_x$ 的任一倍数取指数，就得到绕 $x$ 轴的旋转）。对所有基元素显式写出，我们有：
+
+\begin{align}
+df_3(H_x/2) = J_x &= \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 1 & 0 \end{pmatrix} \\
+df_3(H_y/2) = J_y &= \begin{pmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ -1 & 0 & 0 \end{pmatrix} \\
+df_3(H_z/2) = J_z &= \begin{pmatrix} 0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}
+\end{align}
+
+各坐标轴旋转生成元 $J$ 矩阵之间的交换子为：
+
+\begin{align}
+[J_x,J_y] &= J_z \\
+[J_y,J_z] &= J_x \\
+[J_z,J_x] &= J_y
+\end{align}
+
+那些烦人的因子 2 与 $1/2$ 最终都相互抵消，映射 $df_3:\mathrm{su}(2)\to\mathrm{so}(3)$ 保持李括号：
+
+\begin{equation}
+[df_3(\mathbf{v}), df_3(\mathbf{w})] = df_3([\mathbf{v},\mathbf{w}])
+\end{equation}
+
+\subsection{so(4)}
+
+与四维欧氏空间中旋转所构成的李群 SO(4) 相联系的李代数 so(4)，是一个六维矢量空间。我们可以通过数 $4\times 4$ 反对称矩阵的自由度看出这一点（例如矩阵对角线上方有 6 个元素）。这些元素的一组基由六个坐标平面（每对坐标轴确定一个平面）中各自的旋转生成元组成。注意我们把坐标排序为 $t,x,y,z$，因此这些矩阵的第一行与第一列涉及 $t$。
+
+\begin{align}
+J_{xy} &= \begin{pmatrix} 0 & 0 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix} \\
+J_{yz} &= \begin{pmatrix} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & -1 \\ 0 & 0 & 1 & 0 \end{pmatrix} \\
+J_{zx} &= \begin{pmatrix} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \end{pmatrix} \\
+J_{xt} &= \begin{pmatrix} 0 & 1 & 0 & 0 \\ -1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix} \\
+J_{yt} &= \begin{pmatrix} 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 \\ -1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix} \\
+J_{zt} &= \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ -1 & 0 & 0 & 0 \end{pmatrix}
+\end{align}
+
+这里 $J_{ij}$ 把 $\mathbf{e}_i$ 映到 $\mathbf{e}_j$，把 $\mathbf{e}_j$ 映到 $-\mathbf{e}_i$。与上面所列坐标指标顺序相反的配对给出相反的矩阵，例如 $J_{tz}=-J_{zt}$。这个李代数可以这样概括：当 $i,j,k$ 互不相同时，
+
+\begin{equation}
+[J_{ij}, J_{kj}] = J_{ik}
+\end{equation}
+
+除这个基本恒等式及其带适当符号变化的重新排列外，所有其他的交换子都为零。
+
+这已经足够简单，但原来还存在另一组基的选择，它揭示了 so(4) 的一个关键性质。
+
+\begin{align}
+A_x = \tfrac12(J_{yz}+J_{xt}) &= \begin{pmatrix} 0 & \half & 0 & 0 \\ -\half & 0 & 0 & 0 \\ 0 & 0 & 0 & -\half \\ 0 & 0 & \half & 0 \end{pmatrix} \\
+A_y = \tfrac12(J_{zx}+J_{yt}) &= \begin{pmatrix} 0 & 0 & \half & 0 \\ 0 & 0 & 0 & \half \\ -\half & 0 & 0 & 0 \\ 0 & -\half & 0 & 0 \end{pmatrix} \\
+A_z = \tfrac12(J_{xy}+J_{zt}) &= \begin{pmatrix} 0 & 0 & 0 & \half \\ 0 & 0 & -\half & 0 \\ 0 & \half & 0 & 0 \\ -\half & 0 & 0 & 0 \end{pmatrix} \\
+B_x = \tfrac12(J_{yz}-J_{xt}) &= \begin{pmatrix} 0 & -\half & 0 & 0 \\ \half & 0 & 0 & 0 \\ 0 & 0 & 0 & -\half \\ 0 & 0 & \half & 0 \end{pmatrix} \\
+B_y = \tfrac12(J_{zx}-J_{yt}) &= \begin{pmatrix} 0 & 0 & -\half & 0 \\ 0 & 0 & 0 & \half \\ \half & 0 & 0 & 0 \\ 0 & -\half & 0 & 0 \end{pmatrix} \\
+B_z = \tfrac12(J_{xy}-J_{zt}) &= \begin{pmatrix} 0 & 0 & 0 & -\half \\ 0 & 0 & -\half & 0 \\ 0 & \half & 0 & 0 \\ \half & 0 & 0 & 0 \end{pmatrix}
+\end{align}
+
+三个 $A$ 矩阵由某个 $J$ 矩阵与它的\textbf{对偶}（dual，即第一个矩阵未曾触及的那个平面中旋转的生成元）之和的一半构成。（注意这里的“对偶”与前面用过的含义不同，前面指的是矢量与矢量的线性函数之间的关系。）\textbf{B} 矩阵遵循同样的配方，但用的是差而非和。结果是：若把“取对偶”看作 so(4) 上的一个线性算符（存在一整套优美且自洽的语境使这说得通，但在此展开会离题太远），则 $A$ 矩阵是“自对偶”的，即等于自身的对偶；而 $B$ 矩阵是“反自对偶”的，即等于自身对偶的相反数。
+
+在这组基下，交换子为：
+
+\begin{align}
+[A_x,A_y] &= A_z, \quad \text{及其循环置换} \\
+[B_x,B_y] &= B_z, \quad \text{及其循环置换} \\
+[A_i,B_j] &= 0, \quad \text{对所有 } i,j
+\end{align}
+
+因此 $A$ 矩阵与 $B$ 矩阵各自构成的三维李子代数的结构与 so(3) 或 su(2) 完全相同，而两个子代数之间的所有交换子都为零。我们把这一结果写成：
+
+\begin{equation}
+\mathrm{so}(4) = \mathrm{so}(3)\oplus\mathrm{so}(3)
+\end{equation}
+
+so(4) 如此分裂为两个 so(3)（或 su(2)）副本，与 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 是 SO(4) 的双覆盖这一事实直接相关。我们之前如下定义了函数 $f_4:\mathrm{SU}(2)\times\mathrm{SU}(2)\to\mathrm{SO}(4)$：
+
+\begin{equation}
+f_4(g,h)\,\mathbf{x} = H^{-1}\!\left(g\,H(\mathbf{x})\,h^{-1}\right)
+\end{equation}
+
+其中对 $\mathbb{R}^{4}$ 中的 $\mathbf{x}=(x,y,z,t)$，我们定义 $H(\mathbf{x})$ 为：
+
+\begin{equation}
+H(\mathbf{x}) = \begin{pmatrix}
+t - z\,\ii & -y - x\,\ii \\
+y - x\,\ii & t + z\,\ii
+\end{pmatrix}
+\end{equation}
+
+若令 $g(t)=\exp(t\mathbf{v})$、$h(t)=\exp(t\mathbf{w})$，其中 $\mathbf{v},\mathbf{w}$ 是 su(2) 的元素，则我们可以对 $t$ 求导再令 $t=0$，得到映射 $df_4:\mathrm{su}(2)\oplus\mathrm{su}(2)\to\mathrm{so}(4)$，定义为：
+
+\begin{equation}
+df_4(\mathbf{v},\mathbf{w})\,\mathbf{x} = H^{-1}\!\left(\mathbf{v}\,H(\mathbf{x}) - H(\mathbf{x})\,\mathbf{w}\right)
+\end{equation}
+
+利用下面的乘法表（表中第 $i$ 行第 $j$ 列为 $H_i H_j$）：
+
+\begin{equation}
+\begin{array}{c|cccc}
+ & H_x & H_y & H_z & H_t \\ \hline
+H_x & -H_t & H_z & -H_y & H_x \\
+H_y & -H_z & -H_t & H_x & H_y \\
+H_z & H_y & -H_x & -H_t & H_z \\
+H_t & H_x & H_y & H_z & H_t
+\end{array}
+\end{equation}
+
+我们发现：
+
+\begin{align}
+df_4(0, H_x/2)\,\mathbf{e}_x &= H^{-1}\!\left(-H_x^{2}/2\right) = \half\,\mathbf{e}_t \\
+df_4(0, H_x/2)\,\mathbf{e}_y &= H^{-1}\!\left(-H_y H_x/2\right) = \half\,\mathbf{e}_z \\
+df_4(0, H_x/2)\,\mathbf{e}_z &= H^{-1}\!\left(-H_z H_x/2\right) = -\half\,\mathbf{e}_y \\
+df_4(0, H_x/2)\,\mathbf{e}_t &= H^{-1}\!\left(-H_t H_x/2\right) = -\half\,\mathbf{e}_x
+\end{align}
+
+换言之，$df_4(0,H_x/2)=A_x$。依此类推，我们得到：
+
+\begin{align}
+df_4(0, H_x/2) &= A_x, \quad df_4(0, H_y/2) = A_y, \quad df_4(0, H_z/2) = A_z \\
+df_4(H_x/2, 0) &= B_x, \quad df_4(H_y/2, 0) = B_y, \quad df_4(H_z/2, 0) = B_z
+\end{align}
+
+于是 $df_4$ 把 su(2) 的一个副本映入 so(4) 的自对偶部分，把另一个副本映入反自对偶部分。
+
+\subsection{李代数表示（Lie Algebra Representations）}
+
+每当我们有李群在矢量空间 $V$ 上的一个表示 $\rho$，就可以对其求导，得到相应李代数在 $V$ 上的表示 $d\rho$。正如李群表示保持群元素之间的乘法：
+
+\begin{equation}
+\rho(gh) = \rho(g)\rho(h)
+\end{equation}
+
+李代数表示保持李括号：
+
+\begin{equation}
+d\rho([\mathbf{v},\mathbf{w}]) = [d\rho(\mathbf{v}), d\rho(\mathbf{w})]
+\end{equation}
+
+我们按通常方式求导：令 $g=\exp(t\mathbf{v})$（$\mathbf{v}$ 为李代数中某元素），对 $t$ 求导，再令 $t=0$。通过这种方法，我们可以方便地从最重要的李群表示得到李代数表示。
+
+我们先从 SU(2) 的前三个自旋-$j$ 表示出发，把它们变成 su(2) 的自旋-$j$ 表示。
+
+\subsubsection{自旋-0}
+
+su(2) 的自旋-0 表示如你所料是平凡的：由于群表示始终给出恒等算符，其导数为零。
+
+\begin{equation}
+d\rho_0(\mathbf{v}) = 0
+\end{equation}
+
+这里的右边 0 是作用在复数上、把它们乘以零的线性算符。
+
+\subsubsection{自旋-$\tfrac12$}
+
+su(2) 的自旋-$\tfrac12$ 表示作用在 $\mathbb{C}^{2}$，即二维复矢量空间上。
+
+\begin{equation}
+d\rho_{\frac12}(\mathbf{v}) = \mathbf{v}
+\end{equation}
+
+该表示就是把 su(2) 的原始元素 $\mathbf{v}$ 按通常的矩阵乘法作用在 $\mathbb{C}^{2}$ 上。
+
+\subsubsection{自旋-1}
+
+su(2) 在 $\mathbb{C}^{3}$ 上的自旋-1 表示终于需要一点工作了，但这部分工作我们大多已经做过。
+
+\begin{equation}
+d\rho_1(\mathbf{v})\,\mathbf{x} = df_3(\mathbf{v})\,\mathbf{x} = H^{-1}\!\left([\mathbf{v},H(\mathbf{x})]\right)
+\end{equation}
+
+严格说来，按 $H(\mathbf{x})$ 的定义，这给出的是 $\mathbb{R}^{3}$ 而非 $\mathbb{C}^{3}$ 上的线性算符；但与自旋-1 群表示一样，我们可以直接取该算符的实 $3\times 3$ 矩阵并作用于 $\mathbb{C}^{3}$。这一表示可以概括为：
+
+\begin{equation}
+d\rho_1(H_k/2) = J_k, \quad k=x,y,z
+\end{equation}
+
+这里的 $H_k$ 是我们先前列出的 su(2) 基元素，而 $J_k$ 是 $\mathbb{R}^{3}$ 中绕各坐标轴旋转的生成元。
+
+在以上所有情形中，我们都可以通过用同构 $df_3:\mathrm{su}(2)\to\mathrm{so}(3)$ 的逆把 so(3) 的任一元素映回 su(2)（规则为 $J_k\to H_k/2$），再对结果施以 su(2) 的表示，从而得到 so(3) 而非 su(2) 的表示。so(3) 的自旋-0 表示当然就是零，而 so(3) 的自旋-1 表示则直接把 so(3) 的矩阵元素作用于 $\mathbb{C}^{3}$。
+
+\subsubsection{so(4) 的自旋-$(j,k)$ 表示}
+
+我们之前定义了群 $\mathrm{SU}(2)\times\mathrm{SU}(2)$（即 SO(4) 的双覆盖）的自旋-$(j,k)$ 表示。对某两个半整数 $j$ 与 $k$ 的选取，我们使用 $\rho_j$ 与 $\rho_k$（SU(2) 在维数分别为 $2j+1$ 与 $2k+1$ 的空间 $V_j$ 与 $V_k$ 上的自旋-$j$ 与自旋-$k$ 表示），来定义 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 在张量积 $V_j\otimes V_k$ 上的一个不可约酉表示 $\rho_{j,k}$：
+
+\begin{equation}
+\rho_{j,k}(g,h)\;x\otimes y = (\rho_j(g)\,x)\otimes(\rho_k(h)\,y)
+\end{equation}
+
+随后我们把它按线性扩展到 $V_j\otimes V_k$ 的任意元素。
+
+这一李群表示的导数是 $\mathrm{su}(2)\oplus\mathrm{su}(2)$ 在 $V_j\otimes V_k$ 上的李代数表示：
+
+\begin{equation}
+d\rho_{j,k}(\mathbf{v},\mathbf{w})\;x\otimes y = (d\rho_j(\mathbf{v})\,x)\otimes y + x\otimes(d\rho_k(\mathbf{w})\,y)
+\end{equation}
+
+我们给出几个具体例子，使用目前已描述的 su(2) 的自旋-$j$ 表示。对 $j=\tfrac12$ 与 $k=0$，$V_j=\mathbb{C}^{2}$、$V_k=\mathbb{C}$，故 $V_j\otimes V_k$ 就是 $\mathbb{C}^{2}$，我们可以在所有张量积中略去第二个因子：
+
+\begin{align}
+d\rho_{\frac12,0}(\mathbf{v},\mathbf{w})\;x\otimes y &= (d\rho_{\frac12}(\mathbf{v})\,x)\otimes y + x\otimes(d\rho_0(\mathbf{w})\,y) \\
+d\rho_{\frac12,0}(\mathbf{v},\mathbf{w})\,x &= \mathbf{v}\,x
+\end{align}
+
+其中最后一式右边是矩阵乘法。类似地，对 $j=0$ 与 $k=\tfrac12$：
+
+\begin{equation}
+d\rho_{0,\frac12}(\mathbf{v},\mathbf{w})\,x = \mathbf{w}\,x
+\end{equation}
+
+我们目前所描述的，是 $\mathrm{su}(2)\oplus\mathrm{su}(2)$ 的表示。李代数 so(4) 与 $\mathrm{su}(2)\oplus\mathrm{su}(2)$ 同构，我们可以用函数 $df_4:\mathrm{su}(2)\oplus\mathrm{su}(2)\to\mathrm{so}(4)$
+
+\begin{equation}
+df_4(\mathbf{v},\mathbf{w})\,\mathbf{x} = H^{-1}\!\left(\mathbf{v}\,H(\mathbf{x}) - H(\mathbf{x})\,\mathbf{w}\right)
+\end{equation}
+
+来认同这两个代数。这相当于认同基元素：
+
+\begin{align}
+(0, H_k/2) &\leftrightarrow A_k, \quad k=x,y,z \\
+(H_k/2, 0) &\leftrightarrow B_k, \quad k=x,y,z
+\end{align}
+
+例如，如果我们想把自旋-$(0,\tfrac12)$ 表示用于生成元 $J_{xy}$，就要经过以下步骤：
+
+\begin{align}
+J_{xy} &= A_z + B_z \\
+df_4^{-1}(J_{xy}) &= (H_z/2, H_z/2) \\
+d\rho_{0,\frac12}(H_z/2, H_z/2)\,x &= \half H_z\,x
+\end{align}
+
+so(4) 的自旋-$(0,\tfrac12)$ 表示从 so(4) 投影到由自对偶的 $A$ 矩阵张成的 so(3) 副本，再按通常方式把它映到 su(2)。类似地，so(4) 的自旋-$(\tfrac12,0)$ 表示做同样的事情，但投影到由反自对偶的 $B$ 矩阵张成的子空间。我们把所有可能性列成表，因为在考察黎曼狄拉克方程（Riemannian Dirac equation）时它们会派上用场。
+
+\begin{equation}
+\begin{array}{c|c|c}
+ & \text{spin-}(\tfrac12,0) & \text{spin-}(0,\tfrac12) \\ \hline
+J_{xy} = A_z + B_z \;\to\; & \half H_z & \half H_z \\
+J_{yz} = A_x + B_x \;\to\; & \half H_x & \half H_x \\
+J_{zx} = A_y + B_y \;\to\; & \half H_y & \half H_y \\
+J_{xt} = A_x - B_x \;\to\; & -\half H_x & \half H_x \\
+J_{yt} = A_y - B_y \;\to\; & -\half H_y & \half H_y \\
+J_{zt} = A_z - B_z \;\to\; & -\half H_z & \half H_z
+\end{array}
+\end{equation}
+
+\section*{参考文献}
+
+\begin{itemize}
+  \item[{[1]}] \emph{Gauge Fields, Knots and Gravity}, John Baez \& Javier P. Muniain, World Scientific, 1994, pp.~179--182.
+  \item[{[2]}] \emph{Group Theory and Physics}, S. Sternberg, Cambridge University Press, 1994, Section 1.3.
+  \item[{[3]}] Sternberg, \emph{op.~cit.}, Section 3.2.
+  \item[{[4]}] Sternberg, \emph{op.~cit.}, Sections 3.3, 3.8, 3.9 and 4.9.
+  \item[{[5]}] \emph{Spinors and Trialities}, John Baez.
+  \item[{[6]}] \emph{Symplectic, Quaternionic, Fermionic}, John Baez.
+\end{itemize}

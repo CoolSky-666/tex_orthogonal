@@ -1,0 +1,602 @@
+\chapter{黎曼热力学}
+
+本章把统计力学的基本框架移植到勾股定理符号反转的黎曼宇宙（Riemannian universe）。由于动量空间中粒子可用的态数被质量频率 $\wms=mc^{2}/\hbar$ 所截断，黎曼粒子的相空间体积随能量先增后减，由此自然引入"比无限热更热"的负温度概念。以此为起点，我们计算黎曼黑体谱（同时给出纯经典与量子两版）、单粒子配分函数，以及理想气体——固定粒子数的稀薄气体与能产生粒子对的费米子气体——的能量、压强、熵与粒子分布。
+
+\section{比无限热更热（Hotter Than Infinitely Hot）}
+
+一个粒子有多少种方式拥有给定的能量 $E$？能量固定了其动量矢量 $\bp$ 的大小 $p$，但该矢量仍可指向三维空间中的任意方向，因而自由地落在某个球面上。若我们并不精确知道粒子能量，只知道它介于 $E$ 与 $E+\delta E$ 之间（$\delta E$ 很小），那么 $p$ 将介于由这些能量所确定的两值 $p$ 与 $p+\delta p$ 之间，动量矢量便会落在一个球壳内。当然该球壳内有无限多个不同矢量，所以问这个能量区间内粒子"有多少种方式"在经典力学中并不恰当；量子力学把情形变成真正离散的有限可能性。但在经典物理中，考虑粒子所在区域（动量空间、普通空间或两者）的\emph{体积}是有用的。
+
+\orthofig{images/05__001.png}{动量空间中的球壳}
+
+若把粒子的状态视为某个抽象空间（相空间，phase space）中的一点，其坐标同时包含粒子位置与三个方向上的动量，那么"能量介于 $E$ 与 $E+\delta E$ 之间"便意味着状态落在相空间的某个区域内。若假设粒子无论能量如何都被限制在体积为 $V$ 的固定普通空间区域，则它在相空间中所占的体积取决于与其能量相容的可能动量矢量——即刚刚描述的球壳内的那些矢量。
+
+为什么我们关心相空间中的体积，而不是别的状态描述？原因是一条应用数学结论——刘维尔定理（Liouville's Theorem），它描述系统状态在相空间中某一点的概率随时间的变化。借助刘维尔定理可以证明：若我们有大量系统副本，其状态均匀散布于相空间，则随着时间推移、描述各系统的点四处运动，它们仍将以同样的均匀方式分布。若另选某种随意的状态描述，这一性质并不成立；只有状态在\emph{相空间}中运动的特定数学结构才使其为真。
+
+当我们要以统计方式处理系统时，这一点很重要。对一个含数十亿粒子的复杂系统（例如把热气体与冷固体接触），我们不会去追踪每个粒子的位置与动量，而是等待一切停止变化、沉入平衡。一旦系统达到平衡，刘维尔定理告诉我们，可把它视为在与其已知信息相容的相空间任一位置\emph{等可能}。若这听起来理所当然，请记住：许多同样"理所当然"的说法其实是错的——例如，一个系统通常\emph{并非}在我们已知的能量范围内的各个取值上等可能。
+
+\orthofig{images/05__002.png}{洛伦兹与黎曼相空间体积}
+
+回到单粒子例子，我们来计算：若已知粒子能量介于 $E$ 与 $E+\delta E$ 之间、位置限于体积为 $V$ 的普通空间区域，则它必落在的相空间区域体积为多少。
+
+在\emph{洛伦兹}物理中，自由粒子的总能量大于等于其静止质量 $m$，能量与动量的关系为
+\begin{equation}
+p^{2}=E^{2}-m^{2},
+\end{equation}
+由此可得
+\begin{equation}
+\frac{dp}{dE}=\frac{E}{p}=\frac{E}{\sqrt{E^{2}-m^{2}}}.
+\end{equation}
+若粒子能量落在 $E$ 到 $E+\delta E$ 的小范围内，则粒子状态所在相空间区域的体积为
+\begin{align}
+\Omega_{\Lor}
+&= 4\pi p^{2}\,\delta p\,V \nonumber\\
+&= 4\pi p^{2}\frac{dp}{dE}\,\delta E\,V \nonumber\\
+&= 4\pi\sqrt{E^{2}-m^{2}}\,E\,\delta E\,V .
+\end{align}
+
+在\emph{黎曼}物理中，自由粒子的总能量介于零与该粒子的静止质量 $m$ 之间，我们有
+\begin{equation}
+p^{2}=m^{2}-E^{2},\qquad
+\frac{dp}{dE}=-\frac{E}{p}=-\frac{E}{\sqrt{m^{2}-E^{2}}}.
+\end{equation}
+动量随能量增大而减小这一事实本身即很重要；为求相空间体积，我们取 $\delta p=(dp/dE)\,\delta E$ 的绝对值，得
+\begin{align}
+\Omega_{\Riem}
+&= 4\pi p^{2}\left|\frac{dp}{dE}\right|\delta E\,V \nonumber\\
+&= 4\pi\sqrt{m^{2}-E^{2}}\,E\,\delta E\,V .
+\end{align}
+
+如 $\Omega$ 的曲线所示，这两个函数非常不同。但值得注意的是，当能量接近静止质量 $m$ 时，它们几乎是彼此的镜像。这是因为在低速下，两个宇宙中的粒子实际上都服从牛顿力学；黎曼宇宙的唯一区别是总能量随动能增加而减小。
+
+最显著的差别在于 $\Omega_{\Lor}$ 总是随能量增大。无论粒子能量为何，只要再加一点能量，总会使可供它使用的相空间体积更大。与此相反，$\Omega_{\Riem}$ 只在某个特定能量处达到最大可用相空间体积。计算两种情形下相空间体积对能量的变化率，得到
+\begin{align}
+\frac{d\Omega_{\Lor}}{dE}&=4\pi\,\delta E\,V\,\frac{2E^{2}-m^{2}}{\sqrt{E^{2}-m^{2}}},\\
+\frac{d\Omega_{\Riem}}{dE}&=4\pi\,\delta E\,V\,\frac{m^{2}-2E^{2}}{\sqrt{m^{2}-E^{2}}},
+\end{align}
+故黎曼相空间体积在 $E=m/\sqrt2$ 处取极大。也许有人以为最大的相空间体积应联系于最大的可能动量 $p=m$，它发生在 $E=0$ 处；但尽管那使动量空间中的球壳半径最大，我们也不能忘记球壳厚度在变化。在 $E=0$ 处 $dp/dE$ 也为零，故 $\delta p$（球壳厚度）为零。实际的极大体积是球壳半径与其厚度之间折中的结果。
+
+若改用归一化速度 $v_0$，黎曼的能量-速度关系可写为 $E=m/\sqrt{1+v_0^{2}}$（与 $E^{2}+p^{2}=m^{2}$ 相容），于是相空间体积取极大的能量 $E=m/\sqrt2$ 恰好对应 $v_0=1$。
+
+相空间体积随能量这种变化有何意义？为理解它，设有两个系统，已知其能量 $E_{1}$、$E_{2}$，以及各自相空间体积随能量的变化 $\Omega_{1}(E_{1})$、$\Omega_{2}(E_{2})$。若把两系统看作一个系统，可定义一个新的相空间，其坐标包含两系统所有粒子的位置与动量。该相空间中被复合系统占据的体积就是各自体积之积：
+\begin{equation}
+\Omega_{total}(E_{1},E_{2})=\Omega_{1}(E_{1})\,\Omega_{2}(E_{2}).
+\end{equation}
+现在假定允许能量在两系统间流动，总能量 $E_{1}+E_{2}$ 保持不变，但各系统的能量可以变化。若有一定量的能量 $Q$ 从系统 1 流向系统 2，则
+\begin{equation}
+\Omega_{total}(E_{1}-Q,\,E_{2}+Q)=\Omega_{1}(E_{1}-Q)\,\Omega_{2}(E_{2}+Q),
+\end{equation}
+它对总相空间体积的影响由下式描述：
+\begin{equation}
+\frac{d\Omega_{total}(E_{1}-Q,E_{2}+Q)}{dQ}
+=-\Bigl(\frac{d\Omega_{1}}{dE_{1}}\Bigr)\Omega_{2}+\Omega_{1}\Bigl(\frac{d\Omega_{2}}{dE_{2}}\Bigr),
+\end{equation}
+这里用到了"乘积的导数等于依次对每个因子求导再相加"的法则。
+
+若能量从系统 1 流向系统 2，总相空间体积 $\Omega_{total}$ 会上升、下降还是保持不变？若为每个子系统定义一个新量——它的\emph{温度}（temperature）$T$，就更容易判断：
+\begin{equation}
+T_{1}=\frac{\Omega_{1}}{d\Omega_{1}/dE_{1}},\qquad
+T_{2}=\frac{\Omega_{2}}{d\Omega_{2}/dE_{2}}.
+\end{equation}
+只要知道 $T_{1}$ 与 $T_{2}$ 的关系，我们便可把它们分母中的导数乘过去，判断 $d\Omega_{total}/dQ$ 的符号。先假定 $d\Omega_{1}/dE_{1}$ 与 $d\Omega_{2}/dE_{2}$ \emph{都为正}；由于 $\Omega$ 本身恒正，这等价于 $T_{1}$ 与 $T_{2}$ 都为正。于是有：
+
+\begin{itemize}
+  \item 若 $T_{1}>T_{2}>0$，则 $\Omega_{1}(d\Omega_{2}/dE_{2})>\Omega_{2}(d\Omega_{1}/dE_{1})$，故 $d\Omega_{total}/dQ$ 为正（即能量从系统 1 流向系统 2 使总相空间体积增大）；
+  \item 若 $T_{2}>T_{1}>0$，则 $\Omega_{1}(d\Omega_{2}/dE_{2})<\Omega_{2}(d\Omega_{1}/dE_{1})$，故 $d\Omega_{total}/dQ$ 为负。
+\end{itemize}
+
+也就是说，能量从高温系统流向低温系统，与热力学第二定律一致。
+
+你也许听说过温度是一种只对含大量粒子的系统才有意义的"涌现现象"，但严格说来这是不对的：我们按上述方式定义的温度对任何系统都成立，哪怕单个粒子。真正依赖于粒子数众多的是与温差相伴的能量流动方向的近乎确定性。若两个孤立的粒子相互作用，偶然出现较热的粒子实际上从较冷的粒子吸取能量并不奇怪；但在一个含 $10^{23}$ 个粒子的系统中，能量从冷流向热将是不可能的（概率小到天文数字）。
+
+拥有\emph{负}温度会有什么后果？我们为两个正温度系统所作、关于能量流动方向的论证，依赖于把一个不等式乘以 $(d\Omega_{1}/dE_{1})(d\Omega_{2}/dE_{2})$。若两个系统\emph{都}具有负温度，这两个导数的乘积仍然为正，故完全同样的论证依然成立：能量仍然从温度较高者流向温度较低者。
+
+这意味着，若两个都是负温度的系统相互作用……把它们合并后总相空间体积仍在"高 $T$ 到低 $T$"的流动方向上增大。对于黎曼粒子，$\Omega_{\Riem}$ 在 $E=m/\sqrt2$ 处取极大，故 $E<m/\sqrt2$ 时 $d\Omega/dE>0$（$T>0$），而 $E>m/\sqrt2$ 时 $d\Omega/dE<0$（$T<0$）。于是温度随能量的变化为：能量从 $0$ 增大到 $m/\sqrt2$ 时，$T$ 由 $0^{+}$ 升至 $+\infty$；越过 $E=m/\sqrt2$ 后温度变为负值，从 $-\infty$ 一路升到 $E\to m$ 时的 $0^{-}$。因此负温度并不代表"更冷"，而是比无限热\emph{更热}——这正是本节标题"比无限热更热"的含义。
+
+\begin{notebox}[比无限热更热]
+在黎曼宇宙中，相空间体积 $\Omega_{\Riem}(E)=4\pi\sqrt{m^{2}-E^{2}}\,E\,\delta E\,V$ 在 $E=m/\sqrt2$ 处达到极大。其后果是温度由 $T=\Omega/(d\Omega/dE)$ 给出时，能量高于 $m/\sqrt2$ 的部分对应\emph{负}温度：系统越接近最大可能能量 $E=m$，温度越接近 $0^{-}$，而其能量高于"无限热"所对应的状态。负温度系统会向任何正温度系统放能，故比无限热更热。
+\end{notebox}
+
+关于本主题的额外材料，提供给了不介意稍高数学门槛的读者，见以下各节。
+
+\section{黎曼黑体谱（The Riemannian Black Body Spectrum）}
+
+黑体谱（black body spectrum）描述热辐射中能量在不同频率的光之间的分布——热辐射是物体热能自由地与光交换时产生的辐射。我们不打算计算黎曼宇宙中各类物质与电磁场交换能量的性质；下文只假设一个能量可以在不同频率的光之间自由流动的情境，如同分析我们自身宇宙中同类情形时通常假定的那种完美发射体与吸收体所提供的情境。
+
+我们从某个封闭腔（cavity）内的电磁场入手，腔壁完全不透明，场与周围材料处于热平衡。沿用 Reif\textsuperscript{[1]} 对洛伦兹情形的处理，我们假定施加在场上的精确边界条件无关紧要。为简单起见，考察一个边长为 $L$、体积为 $V=L^{3}$ 的立方腔，并施加周期性边界条件：立方体任一面上场的取值，与其相对面上的对应点相同。
+
+满足这些边界条件的黎曼标量波方程（Riemannian Scalar Wave equation）的任一解，都可写成如下形式平面波的线性组合的实部：
+\begin{align}
+f_{i,j,k}(x,y,z,t)&=\exp\!\bigl(-\ii\,\bk_{i,j,k}\cdot(x,y,z,t)\bigr),\\
+\bk_{i,j,k}&=\frac{2\pi}{L}\bigl(i\,\be_{x}+j\,\be_{y}+k\,\be_{z}\bigr)+\omega_{i,j,k}\,\be_{t},\\
+\omega_{i,j,k}&=\sqrt{\wms^{2}-\frac{4\pi^{2}}{L^{2}}\bigl(i^{2}+j^{2}+k^{2}\bigr)},
+\end{align}
+其中 $i$、$j$、$k$ 为整数。它们可取正、负或零，但 $\omega_{i,j,k}$ 定义中根号内的表达式必须为正，这把可能取值限制为有限多种，对应于空间频率不得超过 $\nu_{max}$ 的限制。
+
+当然我们要的是矢量解而非标量解。对每一组整数，都能找到三个互相正交、且都垂直于传播矢量 $\bk_{i,j,k}$ 的单位矢量，从而给出每个模式的三种偏振。显式地：
+\begin{align}
+\mathbf{f}^{(1)}_{i,j,k}&=\frac{1}{\wms}\Bigl[\frac{2\pi}{L}(i\,\be_{t}-j\,\be_{z}+k\,\be_{y})-\omega_{i,j,k}\,\be_{x}\Bigr]f_{i,j,k},\\
+\mathbf{f}^{(2)}_{i,j,k}&=\frac{1}{\wms}\Bigl[\frac{2\pi}{L}(-i\,\be_{z}-j\,\be_{t}+k\,\be_{x})+\omega_{i,j,k}\,\be_{y}\Bigr]f_{i,j,k},\\
+\mathbf{f}^{(3)}_{i,j,k}&=\frac{1}{\wms}\Bigl[\frac{2\pi}{L}(-i\,\be_{y}+j\,\be_{x}+k\,\be_{t})-\omega_{i,j,k}\,\be_{z}\Bigr]f_{i,j,k},
+\end{align}
+其中每个式子里都省略了 $(x,y,z,t)$ 变量。
+
+现在，令电磁场的四维势 $\bA$ 等于这些矢量模式的线性组合：
+\begin{equation}
+\bA=A_{(1)}\mathbf{f}^{(1)}_{i,j,k}+A_{(2)}\mathbf{f}^{(2)}_{i,j,k}+A_{(3)}\mathbf{f}^{(3)}_{i,j,k},
+\end{equation}
+则利用我们此前推出的平面波能量密度公式可以证明，立方腔内的总能量为
+\begin{equation}
+U=\half V\bigl(A_{(1)}^{2}+A_{(2)}^{2}+A_{(3)}^{2}\bigr)\omega_{i,j,k}^{2}.
+\end{equation}
+若向 $\bA$ 添加其它 $i,j,k$ 取值的模式，能量简单地相加；这是不同波数三角函数正交性的结果。因此完全一般的能量表达式就是这类平方项之和，包含每个模式的系数。
+
+[若愿意，也可以改用\emph{驻波}（standing wave）模式而非行波模式。对每一对反向行进的行波模式 $\mathbf{f}^{(p)}_{i,j,k}$ 与 $\mathbf{f}^{(p)}_{-i,-j,-k}$，可构造两个驻波模式 $(\mathbf{f}^{(p)}_{i,j,k}\pm\mathbf{f}^{(p)}_{-i,-j,-k})/\sqrt2$。例外是 $i=j=k=0$，它本身已是驻波。这些模式的总能量与行波模式的相同。]
+
+角频率介于 $\omega$ 与 $\omega+d\omega$ 之间的模式有多少个？若假定腔足够大，$i$、$j$、$k$ 取值很大，可以把它们当作连续量而得到很好的近似。令 $r^{2}=i^{2}+j^{2}+k^{2}$，模式数等于三倍（三种偏振）乘半径 $r$、厚度 $|dr|$ 的球壳体积，其中
+\begin{equation}
+\omega^{2}=\wms^{2}-\frac{4\pi^{2}}{L^{2}}r^{2}.
+\end{equation}
+于是得到模式密度
+\begin{equation}
+\rho(\omega)\,d\omega=3\times 4\pi r^{2}\,|dr|
+=3V\,\frac{\omega\sqrt{\wms^{2}-\omega^{2}}}{2\pi^{2}}\,d\omega .
+\end{equation}
+
+\orthofig{images/05__004.png}{洛伦兹黑体发射谱}
+
+黑体谱的正确处理当然是量子的，稍后我们将推导其量子版本；但值得先做一个纯\emph{经典}的计算。在洛伦兹宇宙中，由于光的频率没有上限，任何腔中的模式总数都无限。在量子力学发展之前这非常令人困惑：经典统计力学中称为能均分定理（equipartition theorem）的结果提示，这类模式每一个都应分得总能量的等份，若有无限多个则毫无意义。因此高频处没有令人满意的经典黑体谱计算。而在黎曼宇宙中，有限的模式数在整个谱上都给出合理的经典结果。
+
+能均分定理指出：在温度为 $T$ 的平衡系统中，凡是其能量贡献正比于某个相空间坐标或动量平方的自由度，平均能量都是 $\half kT$，其中 $k$ 为玻尔兹曼常数（Boltzmann's constant），它只设定温度标度。然而，尽管我们腔中的每个模式看似只是单个坐标，它们实际上同时涉及一个坐标与一个动量：模式的瞬时振幅（以频率 $\omega_{i,j,k}$ 振荡）与其变化率（相应的动量）。正如谐振子（如弹簧上的质量块）中势能正比于振子位移的平方、动能正比于位移时间变化率的平方，两部分能量之和恒定；但对处于热平衡的一堆这样的振子，每个振子的平均能量是 $kT$，而不是 $\half kT$。
+
+因此，频率 $\omega$ 处腔场的能量密度为
+\begin{equation}
+u_{classical}(\omega)\,d\omega=3kT\,\frac{\omega\sqrt{\wms^{2}-\omega^{2}}}{2\pi^{2}}\,d\omega .
+\end{equation}
+经典能量密度谱总在
+\begin{equation}
+\omega_{peak}=\frac{\wms}{\sqrt2}\approx 0.707\,\wms
+\end{equation}
+处取峰，与温度无关。整个谱上的总能量密度为 $u_{classical}(\omega)$ 对 $\omega$ 从 $0$ 到 $\wms$ 的积分：
+\begin{equation}
+u_{classical,\,total}=\frac{\wms^{3}\,kT}{2\pi^{2}}.
+\end{equation}
+
+在洛伦兹情形中，从腔中发射出的辐射谱形状与腔\emph{内}的辐射谱形状完全相同，因为任何从小孔逃逸的辐射都以同一速度——光速——行进。但在黎曼宇宙中，每个频率的光以不同的速度行进，使黑体发射谱与腔内的能量分布大不相同。
+
+为计算黑体单位面积的发射功率，除了对每个角频率乘以它的速度
+\begin{equation}
+v(\omega)=\frac{\sqrt{\wms^{2}-\omega^{2}}}{\omega}
+\end{equation}
+外，还需对所有空间方向积分；对给定取向的孔，这给出额外的因子 $1/4$。于是
+\begin{align}
+I_{classical}(\omega)\,d\omega
+&=\frac14 v(\omega)\,u_{classical}(\omega)\,d\omega \nonumber\\
+&=\frac{3kT\,(\wms^{2}-\omega^{2})}{8\pi^{2}}\,d\omega .
+\end{align}
+所以经典发射谱就是一条倒置的抛物线，峰在 $\omega=0$ 处。温度的唯一作用是提高总发射功率，完全不改变谱形。这当然与我们自己宇宙的黑体谱形成鲜明对比：那里更热光源的光，其频率峰位于比更冷光源更短的波长，且总发射功率按温度的四次方标度，而非我们这里发现的线性标度。
+
+当然，我们目前为止的黎曼计算都是经典的；要作真正比较需要量子版本。我们预期黎曼光服从与光子相同的一般量子统计规律：玻色子（具体说，自旋为 1 的粒子），不带电，因而自身即其反粒子。每个频率为 $\nu$ 的黎曼光子能量为 $h\nu$（$h$ 为普朗克常数，Planck's constant），或写作 $\hbar\omega$（$\hbar=h/2\pi$，$\omega$ 为角频率）。
+
+量子统计力学中的相关计算\textsuperscript{[2]}告诉我们，腔场中每个模式平均被若干个黎曼光子占据，其数目是模式能量与温度的函数：
+\begin{equation}
+n(\omega)=\frac{1}{\exp\!\bigl(E(\omega)/kT\bigr)-1}=\frac{1}{\exp\!\bigl(\hbar\omega/kT\bigr)-1}.
+\end{equation}
+对高温（或 $\hbar\to0$ 的极限），此式变为 $n(\omega)\approx kT/(\hbar\omega)$，这恰好断言了能均分定理的同一件事：每个模式平均能量为 $kT$。注意这个表达式对负温度根本没有意义：这类系统不可能存在负温度下的热平衡。
+
+把 $n(\omega)$ 乘以能量 $\hbar\omega$ 与态密度 $\rho(\omega)$，即得腔能量密度谱的量子版本：
+\begin{equation}
+u_{quantum}(\omega)\,d\omega
+=\frac{3\hbar\omega^{2}\sqrt{\wms^{2}-\omega^{2}}}{2\pi^{2}\bigl(\exp(\hbar\omega/kT)-1\bigr)}\,d\omega .
+\end{equation}
+与经典版本一样，需再乘以同频光速的四分之一，以得到发射功率谱：
+\begin{equation}
+I_{quantum}(\omega)\,d\omega
+=\frac{3\hbar\omega\,(\wms^{2}-\omega^{2})}{8\pi^{2}\bigl(\exp(\hbar\omega/kT)-1\bigr)}\,d\omega .
+\end{equation}
+
+\orthofig{images/05__005.png}{黎曼黑体腔谱}
+\orthofig{images/05__006.png}{黎曼黑体发射谱}
+
+在这些黎曼图中，我们取 $\wms=2\pi\times10^{15}$ Hz，然后使用真实世界的普朗克常数与玻尔兹曼常数值。可以看到，随着温度升高，黎曼经典谱与量子谱\emph{按比例地}彼此靠近：在最宽间隔处绝对差大致不变，但整个谱变大，故这只占能量的更小份额。
+
+解读这些图时，务必牢记：在黎曼宇宙中，大多数物质的正温度都对应极端条件——例如气体中的相对论速度——而且正温度\emph{越低}，那些条件就\emph{越极端}。所以这里较高的温度反而代表最不奇异的态。
+
+这提示我们：量子与经典黑体谱的差异在黎曼宇宙中会是相对次要的现象，不太可能在量子力学的发展中扮演它在我们自身历史中所扮演的角色。把这里的经典/量子差异与先前洛伦兹情形的图相比，洛伦兹紫外灾难（ultraviolet catastrophe）一目了然，而黎曼的"蓝色下垂（blue sag）"并不起眼，要在整个谱上作精确测量才能探测到。
+
+然而，腔辐射还有另一种"灾难"：任何温度下辐射的平均压强都是无限的！为什么？对时间角频率 $\omega$ 接近零的腔模，为使其能量 $\half V A^{2}\omega^{2}$ 等于能均分定理确定的统一值 $kT$，其振幅 $A$ 必须变得越来越大的；而当能量被低的 $\omega$ 限制住时，它们的空间频率却接近 $\wms$，故其动量与压强（同样正比于 $A^{2}$）无界。
+
+当然，完美黑体与完美热平衡都只是理想化，所以这并不表明任何真实物理量会变成无穷。但它确实清楚表明：在光能自由地在所有可能模式之间交换能量的任何系统中，辐射压都会极高。
+
+\section{单粒子配分函数}
+
+上一节为腔辐射枚举的那些态，本质上就是任何黎曼粒子可用的态。三种偏振的因子 $3$ 可能换成另一个因子（取决于粒子的自旋），$\wms$ 的取值则取决于粒子质量；除此之外，计数单粒子可能态的方法完全相同。当然，对玻色子，每个态可有任意多粒子；对费米子，每个态至多一个；但识别态本身的第一步对玻色子与费米子并无差别。
+
+处理具有指定温度的平衡系统时，把关于系统态的信息打包到称为配分函数（partition function）的东西中很有用（另见文献\textsuperscript{[3]}）。它的一般定义为
+\begin{equation}
+Z=\sum_{r}\exp(-\beta E_{r}),\qquad \beta=\frac{1}{kT},
+\end{equation}
+指标 $r$ 只是系统态的标号，$E_{r}$ 表示各态的能量。我们定义了一个具有逆能量量纲的温度参数 $\beta$，它比温度本身更有用。$\beta$ 在无限温度处为零，而当温度从上方、下方趋近零时分别趋于 $+\infty$ 与 $-\infty$。
+
+配分函数中的每一项正比于系统处于某个态的概率。概率本身可由该项除以所有项之和（即配分函数本身）得到，故
+\begin{equation}
+P(r)=\text{系统处于态 }r\text{ 的概率}=\frac{\exp(-\beta E_{r})}{Z}.
+\end{equation}
+配分函数最有用之处在于，系统的各种平均性质都能轻易从中提取。例如，平均能量为
+\begin{align}
+E_{mean}
+&=\sum_{r}P(r)E_{r}
+=\frac{\sum_{r}\exp(-\beta E_{r})E_{r}}{Z} \nonumber\\
+&=-\frac{\partial_{\beta}Z}{Z}
+=-\partial_{\beta}\ln Z .
+\end{align}
+
+质量为 $m$（故最大角频率为 $m/\hbar$）、被限制在体积 $V$ 内的单个无自旋黎曼粒子的配分函数为
+\begin{align}
+Z_{m}
+&=\sum_{i,j,k}\exp(-\beta E_{i,j,k})
+=\sum_{i,j,k}\exp(-\beta\hbar\,\omega_{i,j,k}) \nonumber\\
+&=\sum_{i,j,k}\exp\!\left(-\beta\hbar\sqrt{(m/\hbar)^{2}-\frac{4\pi^{2}}{V^{2/3}}\bigl(i^{2}+j^{2}+k^{2}\bigr)}\right),
+\end{align}
+其中求和遍历使根号内表达式非负的所有整数 $i,j,k$（正负皆可）。我们把上一节的 $\omega_{i,j,k}$ 改用粒子质量 $m$（而非该粒子的最大角频率）表达，并把腔边长 $L$ 换成 $V^{1/3}$。在态数很大的极限下，可把它近似为 $(i,j,k)$ 空间中一个球形区域上的积分，用球极坐标、以 $r^{2}=i^{2}+j^{2}+k^{2}$ 描述最为方便：
+\begin{equation}
+Z_{m}=4\pi\int_{0}^{R}
+\exp\!\left(-\beta\hbar\sqrt{(m/\hbar)^{2}-\frac{4\pi^{2}}{V^{2/3}}r^{2}}\right)r^{2}\,dr,
+\end{equation}
+其中 $R=V^{1/3}m/(2\pi\hbar)$ 是能量为零时的 $r$ 值。
+
+作变量替换 $r=Rs$，上式变为
+\begin{equation}
+Z_{m}=3Z_{0}\int_{0}^{1}\exp\!\bigl(-\beta m\sqrt{1-s^{2}}\bigr)s^{2}\,ds,
+\end{equation}
+其中 $Z_{0}=(4/3)\pi R^{3}=Vm^{3}/(6\pi^{2}\hbar^{3})$ 为总态数。
+
+再变换到角变量 $\gamma$，令 $s=\sin\gamma$，得到
+\begin{equation}
+Z_{m}=3Z_{0}\int_{0}^{\pi/2}\exp(-\beta m\cos\gamma)\sin^{2}\gamma\,\cos\gamma\,d\gamma .
+\end{equation}
+这最后一种形式可以解释为：对粒子能量-动量矢量所在的半 3-球面（half-3-sphere）的积分。
+
+令人惊讶的是，这个积分可以写成显式公式：
+
+\begin{keybox}[单粒子配分函数（Single-Particle Partition Function）]
+\begin{equation}
+Z_{m}=Z_{0}\left[1+\frac{3\pi\bigl[L_{2}(\beta^{*})-I_{2}(\beta^{*})\bigr]}{2\beta^{*}}\right],
+\qquad
+Z_{0}=\frac{Vm^{3}}{6\pi^{2}\hbar^{3}},
+\qquad
+\beta^{*}=\beta m \quad(\text{黎曼}).
+\end{equation}
+\end{keybox}
+
+这里 $L_{2}$ 为修正斯特鲁维函数（modified Struve function），$I_{2}$ 为第一类修正贝塞尔函数（modified Bessel function of the first kind）。
+
+\orthofig{images/05__007.png}{黎曼配分函数}
+
+右图给出了配分函数，以及一个适用于 $\beta$ 的\emph{小值}（对应很高温度）的二次近似：
+\begin{equation}
+\lim_{\beta\to0}Z_{m}\approx Z_{0}\left[1-\frac{3\pi\beta^{*}}{16}+\frac{\beta^{*2}}{5}\right].
+\end{equation}
+当然，如需更高精度，完全可以把幂级数取到更高阶。此外，还有一个适用于 $\beta$ 的\emph{大负值}（对应小的负温度）的渐近形式，一旦 $\beta^{*}$ 足够大就开始有用：
+\begin{equation}
+\lim_{\beta\to-\infty}Z_{m}\approx
+\frac{3Z_{0}}{\beta^{*2}}\left[1-\frac{\exp(-\beta^{*})\,(8\beta^{*}+15)}{8\sqrt{-2\beta^{*}/\pi}}\right].
+\end{equation}
+
+\section{理想气体}
+
+\subsection{固定粒子数的稀薄气体}
+
+设有由固定数目 $N$ 个粒子组成的气体，足够稀薄，使得任一量子态的平均粒子数远小于 $1$。此时粒子是玻色子还是费米子无关紧要，我们处于一种经典极限。不过，粒子仍应被正确地视为\emph{不可分辨}（indistinguishable），这避免了真正经典处理中出现的一些问题。
+
+在此情形下，我们可以用上一节导出的单粒子配分函数来表达整团气体的配分函数 $Z_{G}$。借助 Reif\textsuperscript{[4]} 的一些一般计算，有
+\begin{equation}
+\ln Z_{G}=N-N\ln N+N\ln Z_{m}.
+\end{equation}
+我们以自然对数的形式给出配分函数，因为这在计算气体的各种宏观性质时最直接有用。
+
+\subsubsection{能量}
+
+我们首先要算的是气体的平均能量：
+\begin{align}
+E_{mean}
+&=-\partial_{\beta}\ln Z_{G}
+=-N\,\partial_{\beta}\ln Z_{m}
+=-N\,\frac{\partial_{\beta}Z_{m}}{Z_{m}} \nonumber\\
+&=3Nm\left(\frac{1}{\beta^{*}}+
+\frac{\pi L_{1}(\beta^{*})-\pi I_{1}(\beta^{*})+2}
+{3\pi I_{2}(\beta^{*})-3\pi L_{2}(\beta^{*})-2\beta^{*}}\right),
+\end{align}
+其中 $\beta^{*}=\beta m$。
+
+\orthofig{images/05__008.png}{稀薄黎曼气体的平均能量}
+
+无限温度极限可轻易从配分函数的二次近似得到：
+\begin{equation}
+\lim_{\beta\to0}E_{mean}=\frac{3\pi Nm}{16}\approx 0.589\,Nm .
+\end{equation}
+如右图所示，对大的负 $\beta$（对应小的负温度），粒子运动缓慢，平均能量接近它们静止质量能量之和；对小的 $\beta$（对应大的温度），粒子运动更快，总能量更少——正如我们从总能量与动能的关系所预期的；而对大的正 $\beta$（对应小的正温度），气体处于高度相对论态，其动能接近静止质量，使总能量几乎降到零。
+
+\subsubsection{压强}
+
+接下来计算气体的平均压强。用配分函数表示压强的通常公式\textsuperscript{[5]}利用了如下事实：当系统能量依赖其体积时，能量对体积的变化率的\emph{相反数}就是系统施加的压强。（设想系统缓慢膨胀，对外做正功。所作之功是力乘以膨胀的线性距离，也就是压强乘以体积变化。）于是
+\begin{align}
+p_{mean}
+&=\sum_{r}P(r)p_{r}
+=\frac{\sum_{r}\exp(-\beta E_{r})\,p_{r}}{Z} \nonumber\\
+&=\frac{\sum_{r}\exp(-\beta E_{r})\,(-\partial_{V}E_{r})}{Z}
+=\frac{\partial_{V}\sum_{r}\exp(-\beta E_{r})}{\beta Z}
+=\frac{\partial_{V}\ln Z}{\beta}.
+\end{align}
+
+然而，这对黎曼情形\emph{并不}正确！一个次要差别是：在黎曼物理中，能量对体积的变化率就是压强本身，而非其相反数；这本质上与如下原因是同一个——在自由粒子的哈密顿处理中，共轭于每个空间坐标的动量是通常动量的\emph{相反数}，如我们此前所讨论的。
+
+但即便在这里改一个符号，我们仍会留下一个方程：它看似熟悉，实际上却毫无意义。
+
+不妨还是把这个计算做完，看看问题出在哪里。由于 $Z_{m}$ 只是 $V$ 的线性函数（经由 $Z_{0}$），有
+\begin{equation}
+\partial_{V}\ln Z_{m}=\frac{\partial_{V}Z_{m}}{Z_{m}}=\frac{Z_{m}/V}{Z_{m}}=\frac{1}{V}.
+\end{equation}
+转到整团气体的配分函数，并用标准压强公式、同时对黎曼的能量/体积/压强关系改一个符号，得到
+\begin{equation}
+p_{mean}=-\frac{\partial_{V}\ln Z_{G}}{\beta}
+=-\frac{N\,\partial_{V}\ln Z_{m}}{\beta}
+=-\frac{N}{\beta V}\qquad[\text{错误！}]
+\end{equation}
+这与下式等价：
+\begin{equation}
+p_{mean}V=-NkT\qquad[\text{错误！}]
+\end{equation}
+这只是理想气体的标准状态方程，差一个符号。虽然对低负温度而言这差不多是我们所\emph{预期}的，而且"温度趋于无限时压强应趋于无限"表面上似乎也说得通……但这个方程意味着一旦跨入正温度，压强就会变成负的！生活在一个用相对论粒子轰击容器壁、反而让容器处于\emph{张力}而非压强之下的世界里固然有趣，但那完全不合物理。
+
+这个谜题的解答是：我们的配分函数 $Z_{m}$ 带有一种对容器体积的额外依赖，而在导出"用配分函数表示压强"的标准公式时所依据的洛伦兹物理中，这种依赖根本不存在。当我们改变容器的体积时，改变的不仅是各粒子态的能量，还有态的\emph{数目}。在黎曼情形下，更大的容器允许在达到最小波长之前有更多（有限个）粒子态；而在洛伦兹情形下，由于没有最小波长，态的数目永远是无限的。
+
+解决此问题最简单的办法，是回到 $Z_{m}$ 的某个早期形式：
+\begin{equation}
+Z_{m}=4\pi\int_{0}^{R}
+\exp\!\left(-\beta\hbar\sqrt{(m/\hbar)^{2}-\frac{4\pi^{2}}{V^{2/3}}r^{2}}\right)r^{2}\,dr,
+\qquad R=\frac{V^{1/3}m}{2\pi\hbar}.
+\end{equation}
+由此我们可以找出并减去 $V$ 经由积分上限 $R$ 所产生的影响，只留下我们想要的效应：能级的变化。$\partial_{V}Z_{m}$ 中来自积分上限的项，就是被积函数（含整体常数 $4\pi$）在 $r=R$ 处的值乘以 $\partial_{V}R$。它等于
+\begin{equation}
+4\pi\exp(0)\,R^{2}\times\frac13 V^{-2/3}\frac{m}{2\pi\hbar}
+=\frac{(4/3)\pi R^{3}}{V}
+=\frac{Z_{0}}{V},
+\qquad Z_{0}=\frac{(4/3)\pi R^{3}}{1}=\frac{Vm^{3}}{6\pi^{2}\hbar^{3}}.
+\end{equation}
+
+\orthofig{images/05__009.png}{稀薄黎曼气体的压强}
+
+若重复我们原来的计算，但从 $\partial_{V}Z_{m}$ 中减去这个虚假贡献、只留下平均压强，则得到
+\begin{align}
+p_{mean}
+&=-N\,\frac{(Z_{m}/V)-(Z_{0}/V)}{Z_{m}\,\beta} \nonumber\\
+&=-\frac{N}{\beta V}\left[1-\frac{Z_{0}}{Z_{m}}\right],
+\end{align}
+这等价于
+\begin{equation}
+p_{mean}V=-NkT\left[1-\frac{Z_{0}}{Z_{m}}\right]\qquad[\text{正确！}]
+\end{equation}
+当温度为负时 $Z_{m}>Z_{0}$，方括号中的修正因子为正，故压强为正。事实上，对低负温度，$Z_{m}$ 极大，修正因子非常接近 $1$，于是我们得到传统的理想气体定律，只是按 $T$ 的符号作了调整。
+
+但当温度为正时 $Z_{m}<Z_{0}$，方括号中的修正因子为负；不过此时 $-1/\beta$ 也（因 $\beta>0$）为负，两者相乘使压强重新保持为正，从而恢复了物理上合理的结论。取 $\beta\to0$ 的极限，即无限温度，得
+\begin{equation}
+\lim_{\beta\to0}p_{mean}=\frac{3\pi Nm}{16V}.
+\end{equation}
+当 $\beta$ 趋于正无穷时，温度从上方趋近零，进入越来越极端的相对论粒子速度领域，压强随之趋于无穷，正如你所预期的。
+
+\subsubsection{熵}
+
+系统的熵也可以从配分函数得到\textsuperscript{[6]}：
+\begin{equation}
+S=k(\ln Z+\beta E_{mean}).
+\end{equation}
+对我们的稀薄气体，
+\begin{equation}
+S_{G}=k(\ln Z_{G}+\beta E_{mean}),\qquad
+\ln Z_{G}=N-N\ln N+N\ln Z_{m},\qquad
+E_{mean}=-N\frac{\partial_{\beta}Z_{m}}{Z_{m}}.
+\end{equation}
+
+\orthofig{images/05__010.png}{稀薄黎曼气体的熵}
+
+我们不再把熵完整地写成含对数、贝塞尔与斯特鲁维函数的表达式；如图所示，它在 $\beta=0$（即无限温度）处有一个有限的峰。
+
+在不同温度下，$N$ 个粒子如何按能量分布？在我们稀薄气体的假设下，标号为 $r$ 的任一态的平均粒子数可证为\textsuperscript{[4]}
+\begin{equation}
+n_{r}=\frac{N\exp(-\beta E_{r})}{\sum_{s}\exp(-\beta E_{s})}=\frac{N\exp(-\beta E_{r})}{Z_{m}}.
+\end{equation}
+我们关心按能量 $E=\hbar\omega$ 的分布，因此可以利用我们为腔辐射计算过的、对 $\omega$ 的态密度，只须去掉偏振因子 $3$（因为我们为理想气体设想的是一个无自旋粒子）：
+\begin{equation}
+\rho(\omega)\,d\omega=\frac{V\,\omega\sqrt{\wms^{2}-\omega^{2}}}{2\pi^{2}}\,d\omega,
+\qquad
+\rho(E)\,dE=\frac{V\,E\sqrt{m^{2}-E^{2}}}{2\pi^{2}\hbar^{3}}\,dE .
+\end{equation}
+
+\orthofig{images/05__011.png}{稀薄黎曼气体按能量的粒子数分布}
+
+把它乘以该能量下每个态的平均占据数，得到
+\begin{align}
+n(E)\,dE
+&=N\,\frac{V}{2\pi^{2}\hbar^{3}}\,E\sqrt{m^{2}-E^{2}}\,\frac{\exp(-\beta E)}{Z_{m}}\,dE \nonumber\\
+&=N\,\frac{3Z_{0}}{m^{3}Z_{m}}\,E\sqrt{m^{2}-E^{2}}\,\exp(-\beta E)\,dE .
+\end{align}
+用粒子质量 $m$ 的倍数 $\varepsilon$ 来表示能量更为方便，即 $E=\varepsilon m$：
+\begin{equation}
+n(\varepsilon)\,d\varepsilon
+=N\,\frac{3Z_{0}}{Z_{m}}\,\varepsilon\sqrt{1-\varepsilon^{2}}\,\exp(-\beta^{*}\varepsilon)\,d\varepsilon .
+\end{equation}
+右图给出了三个 $\beta^{*}$ 取值下的分布。在较低温度——无论正负——粒子的能量相对受限，而在无限温度下它们的分布更宽。
+
+无限温度的稀薄气体有一个有趣的性质：它的应力-能量张量（stress-energy tensor）是 SO(4) 不变的，因此在这种气体内部\emph{以任意速度}运动的任何观测者，测得周围环境完全相同的压强与能量密度。我们可以这样看出这一点：无限温度下，气体的平均能量密度与平均压强都等于 $3\pi Nm/(16V)$。于是应力-能量张量只是单位矩阵的一个倍数，坐标变换不会改变它。
+
+不过，细看按能量的粒子分布会发现，这种 SO(4) 不变性是以相当微妙的方式达成的。$\beta=0$（即无限温度）时的分布为
+\begin{equation}
+n_{\infty}(\varepsilon)\,d\varepsilon=3N\,\varepsilon\sqrt{1-\varepsilon^{2}}\,d\varepsilon .
+\end{equation}
+若改用角变量 $\gamma$（粒子 4-速度与时间轴的夹角），则 $\varepsilon=\cos\gamma$，于是
+\begin{equation}
+n_{\infty}(\gamma)\,|d\gamma|=3N\,\cos\gamma\,\sin^{2}\gamma\,|d\gamma| .
+\end{equation}
+3-球面上旋转不变的测度（在对其余与三维空间中不同方向有关的坐标积分掉之后）正是 $\sin^{2}\gamma\,d\gamma$，所以这说明粒子的 4-速度\emph{并非}如人们对 SO(4) 不变态所预期的那样均匀分布在 3-球面上。与均匀分布相比，粒子更倾向于分布在较低速度、即更靠近时间轴、$\cos\gamma$ 较大之处。
+
+那么无限温度气体又是如何变得 SO(4) 不变的呢？考察一个能量为 $E=m\cos\gamma$ 的粒子，其 4-速度 $\bu$ 的时间分量 $u^{t}$ 将是 $\cos\gamma$。若粒子静止系中的能量密度为 $\rho$，则其应力-能量张量为 $\rho\,\bu\otimes\bu$。这意味着该粒子对静止容器系中总能量的贡献为 $V\rho\,(u^{t})^{2}=V\rho\cos^{2}\gamma$。令其等于 $E=m\cos\gamma$，就得到一个随粒子速度升高、$\cos\gamma$ 下降而增大的静止系能量密度：
+\begin{equation}
+\rho=\frac{m}{V\cos\gamma}.
+\end{equation}
+这个因子看似费解，因为在那运动粒子的静止系中，测得的容器宽度是\emph{增大}的；这是黎曼版的、更熟悉的洛伦兹相对论长度收缩（length contraction）的对应物。但同理，若有若干粒子以相同速度穿越容器，在它们的共同静止系中，测得它们比容器静止的观测者所测的更靠拢。
+
+所以，对一个快速穿越气体的观测者而言，低 $\cos\gamma$ 粒子相对稀少这一情况，被它们看起来更密集这一点所补偿。尽管粒子速度的分布看起来不同，总的能量密度（与压强）却保持不变。
+
+\subsection{含粒子对产生的费米子气体}
+
+对缓慢运动的粒子气体，自然假设其粒子数保持固定。但当粒子以相对论速度运动时，这是一个相当人为的约束，因为随机的高速碰撞有时可能把粒子散射到过去（我们此前考察过的一类碰撞）。这是否需要反粒子存在，取决于粒子的本性（有些粒子自身即其反粒子，如同我们宇宙中的光子），但它必定涉及粒子总数的\emph{变化}。
+
+设有由自旋为 $\tfrac12$ 的粒子组成的理想气体。它们是费米子，服从费米-狄拉克统计（Fermi-Dirac statistics）：每个量子态至多被一个粒子占据。假设存在一种机制可以产生粒子-反粒子\emph{对}，所需能量由气体内能的变化来平衡。这里我们不关心粒子对产生与湮灭过程的具体细节；我们的目标只是弄清这样的系统能否在正、负温度两个区域都处于热力学平衡。在腔辐射的处理中，我们发现由数目不定、可自由产生的玻色子构成的系统总有\emph{正}温度。我们的费米子气体能产生新粒子，是否也会如此？
+
+由于粒子与反粒子成对地产生和湮灭，它们数目之差将保持恒定。我们把波动的粒子数与反粒子数分别记为 $N_{P}$ 与 $N_{A}$，固定的粒子超出量记为 $N$：
+\begin{equation}
+N=N_{P}-N_{A}.
+\end{equation}
+我们容器中可供粒子使用的每个单粒子量子态 $r$，都或被 $0$、或被 $1$ 个粒子占据，以及或被 $0$、或被 $1$ 个反粒子占据；泡利不相容原理（Pauli Exclusion principle）禁止每种粒子在同一态中多于一个，但并不阻止一个粒子与一个反粒子处于同一态。我们把态 $r$ 中粒子与反粒子的数目分别记为 $n_{P,r}$ 与 $n_{A,r}$。
+
+整团气体的一个态，就是对每个 $n_{P,r}$ 与 $n_{A,r}$ 赋以 $0$ 或 $1$，并使得粒子对反粒子的总超出量为 $N$。我们把给定 $N$ 值的气体配分函数记为 $Z_{G}(N)$：
+\begin{equation}
+Z_{G}(N)=\sum_{\{n_{P,r},\,n_{A,r}\}:\,N_{P}-N_{A}=N}
+\exp\!\left(-\beta\sum_{r}E_{r}\,(n_{P,r}+n_{A,r})\right).
+\end{equation}
+这里外层求和遍历粒子超出量为 $N$ 的所有气体态，而每个气体态的总能量取为其中所有粒子能量之和。
+
+体积为 $V$ 的容器中单粒子态数是有限的；我们在计算单粒子配分函数时已求出这个数，即 $Z_{0}$，但在此精确地说应取其两倍，以计入我们费米子的两个自旋态：
+\begin{equation}
+N_{max}=2Z_{0}=\frac{Vm^{3}}{3\pi^{2}\hbar^{3}}.
+\end{equation}
+若我们为粒子备有 $N_{max}$ 个可用态、为反粒子同样的数目，则粒子超出量为 $N$ 的态数可通过对反粒子数求和得到：
+\begin{align}
+\bigl|\{n_{P,r},n_{A,r}:N_{P}-N_{A}=N\}\bigr|
+&=\sum_{i=0}^{N_{max}-N}\binom{N_{max}}{N+i}\binom{N_{max}}{i} \nonumber\\
+&=\binom{2N_{max}}{N_{max}+N} \nonumber\\
+&\approx\frac{2^{2N_{max}}}{\sqrt{\pi N_{max}}}\exp\!\left(-\frac{N^{2}}{N_{max}}\right).
+\end{align}
+
+假定我们固定 $\beta$，只考虑气体配分函数 $Z_{G}(N)$ 随 $N$ 变化的方式。外层求和的项数由上面导出的高斯函数给出。而求和中各项的平均值不会随 $N$ 迅速变化，因为无论 $N$ 取何值，它们都以大致相同的方式取样各态的能量。于是我们可以\emph{非常粗略}地说，$Z_{G}(N)$ 本身将表现得像计数项数的高斯函数的一个倍数，即
+\begin{equation}
+Z_{G}(N)\approx C(\beta)\exp\!\left(-\frac{N^{2}}{N_{max}}\right),
+\end{equation}
+其中常数 $C(\beta)$ 依赖 $\beta$，我们已把其它依赖 $N_{max}$ 的因子吸收进了它。
+
+现在，若把 $Z_{G}(N)$ 乘以一个关于 $N$ 的指数函数 $\exp(\alpha N)$，那会使高斯峰发生位移：
+\begin{align}
+Z_{G}(N)\exp(\alpha N)
+&\approx C(\beta)\exp\!\left(-\frac{N^{2}}{N_{max}}+\alpha N\right) \nonumber\\
+&=C(\beta)\exp\!\left(\frac{N_{max}\alpha^{2}}{4}\right)
+\exp\!\left(-\frac{(N-N_{max}\alpha/2)^{2}}{N_{max}}\right).
+\end{align}
+若我们想让它例如在 $N_{0}$ 处取峰，则令
+\begin{equation}
+\alpha=\frac{2N_{0}}{N_{max}}.
+\end{equation}
+我们可以用一个对 $N$ 不加约束的求和、并借助高斯峰的位置挑出 $N=N_{0}$ 这一点，来近似配分函数 $Z_{G}(N_{0})$：
+\begin{equation}
+\sum_{N=0}^{N_{max}}Z_{G}(N)\exp(\alpha N)\approx Z_{G}(N_{0})\exp(\alpha N_{0})\,\Delta N,
+\end{equation}
+其中 $\Delta N$ 度量峰的宽度。我们把左端的求和称为"巨配分函数（grand partition function）"\textsuperscript{[7]}；它对气体所有可能态求和，不论粒子数如何，只在每个能量上附加一项。由于没有了约束，我们可以把它的计算进行得相当远：
+\begin{align}
+Z_{GRAND}
+&=\sum_{N=0}^{N_{max}}Z_{G}(N)\exp(\alpha N) \nonumber\\
+&=\sum_{\{n_{P,r},n_{A,r}\}}
+\exp\!\left(-\beta\sum_{r}E_{r}(n_{P,r}+n_{A,r})\right)\exp(\alpha N) \nonumber\\
+&=\sum_{\{n_{P,r},n_{A,r}\}}
+\exp\!\left(-\sum_{r}\bigl[n_{P,r}(\beta E_{r}-\alpha)+n_{A,r}(\beta E_{r}+\alpha)\bigr]\right) \nonumber\\
+&=\prod_{r}\left[
+\left(\sum_{n_{P,r}=0}^{1}\exp(-n_{P,r}(\beta E_{r}-\alpha))\right)
+\left(\sum_{n_{A,r}=0}^{1}\exp(-n_{A,r}(\beta E_{r}+\alpha))\right)\right] \nonumber\\
+&=\prod_{r}\left[
+\bigl(1+\exp(-(\beta E_{r}-\alpha))\bigr)
+\bigl(1+\exp(-(\beta E_{r}+\alpha))\bigr)\right].
+\end{align}
+
+我们可以这样近似气体配分函数的对数：
+\begin{align}
+\ln Z_{G}(N_{0})
+&\approx-\alpha N_{0}-\ln\Delta N+\ln Z_{GRAND} \nonumber\\
+&\approx-\alpha N_{0}+\sum_{r}\Bigl[
+\ln\bigl(1+\exp(-(\beta E_{r}-\alpha))\bigr)
++\ln\bigl(1+\exp(-(\beta E_{r}+\alpha))\bigr)\Bigr].
+\end{align}
+再作一些类似文献\textsuperscript{[7]}中的计算，可以证明各态的平均占据数，对粒子与反粒子分别为
+\begin{equation}
+n_{P,r,mean}=\frac{1}{\exp(\beta E_{r}-\alpha)+1},
+\qquad
+n_{A,r,mean}=\frac{1}{\exp(\beta E_{r}+\alpha)+1}.
+\end{equation}
+与黎曼光子态占据数的情形不同，这些表达式不会对负温度变得无意义；事实上，无论 $\alpha$ 与 $\beta$ 取何值，它们都介于 $0$ 与 $1$ 之间，正是费米子所要求的。要为给定的 $\beta$ 与 $N_{0}$ 求出 $\alpha$，我们需要解
+\begin{equation}
+N_{0}=\sum_{r}\bigl(n_{P,r,mean}-n_{A,r,mean}\bigr)
+=\sum_{r}\frac{\sinh\alpha}{\cosh\alpha+\cosh(\beta E_{r})},
+\end{equation}
+以定出 $\alpha$。由于这个求和的积分形式似乎没有闭式解析解，一般需要数值求解。我们的初始近似 $\alpha=2N_{0}/N_{max}$ 可以作为迭代求解的起点。
+
+不过，若取 $N_{0}=0$，考虑粒子与反粒子数\emph{精确相等}的气体，我们就能展示这类系统的主要定性特征。由对称性，此时对所有 $\beta$ 值都有 $\alpha=0$，于是
+\begin{equation}
+\ln Z_{G}\approx 2\sum_{r}\ln\bigl(1+\exp(-\beta E_{r})\bigr),
+\qquad
+n_{P,r,mean}=n_{A,r,mean}=\frac{1}{\exp(\beta E_{r})+1}.
+\end{equation}
+
+\orthofig{images/05__012.png}{费米子对气体的总能量}
+
+右图给出系统的平均能量，其形状大致与稀薄气体的平均能量曲线相同，但涉及的能量与粒子质量乘以单粒子态总数可比。
+
+平均能量由数值积分算出，采用与单粒子配分函数相同的那组变量 $r$ 与 $s$：
+\begin{align}
+E_{mean}
+&=\int_{0}^{R}\bigl(-\partial_{\beta}\ln Z_{G}\bigr)\,4\pi r^{2}\,dr \nonumber\\
+&=2\int_{0}^{R}\bigl(-\partial_{\beta}\ln(1+\exp(-\beta E_{r}))\bigr)\,4\pi r^{2}\,dr \nonumber\\
+&=6N_{max}m\int_{0}^{1}
+\frac{s^{2}\sqrt{1-s^{2}}}{\exp(\beta^{*}\sqrt{1-s^{2}})+1}\,ds .
+\end{align}
+对 $\beta^{*}=0$ 与 $\beta^{*}\to-\infty$，指数分别趋于 $1$ 与 $0$，该积分可精确求出，分别给出 $3\pi N_{max}m/16$ 与 $3\pi N_{max}m/8$。
+
+\orthofig{images/05__013.png}{费米子对气体的总粒子数}
+
+下一张图给出平均总粒子数（含反粒子）。在低负温度下系统接近饱和，几乎每一个量子态都被一个粒子和一个反粒子填满。在无限温度下这些态平均半满，而随着我们进入越来越低的正温度，数目逐渐下降。这里所绘的积分为
+\begin{align}
+N_{total,mean}
+&=\int_{0}^{R}\bigl(n_{P,r,mean}+n_{A,r,mean}\bigr)\,4\pi r^{2}\,dr \nonumber\\
+&=2\int_{0}^{R}\frac{1}{1+\exp(\beta E_{r})}\,4\pi r^{2}\,dr \nonumber\\
+&=6N_{max}\int_{0}^{1}
+\frac{s^{2}}{\exp(\beta^{*}\sqrt{1-s^{2}})+1}\,ds .
+\end{align}
+同样，对 $\beta^{*}=0$ 与 $\beta^{*}\to-\infty$，指数趋于 $1$ 与 $0$，积分可精确求出，分别给出 $N_{max}$ 与 $2N_{max}$。
+
+\orthofig{images/05__014.png}{费米子对气体的平均单粒子能量}
+
+第三张图给出平均单粒子能量，它就是第一条曲线除以第二条曲线。对从负温度一直到无限温度，它几乎保持不变，约为 $3\pi m/16$，即对所有态的平均能量。在小的负温度下，这是因为几乎所有态都被永久占据；而在较大的负温度下，平均占据数虽下降，但粒子仍均匀分布在各态之间。
+
+只有当我们进入低正温度时，才不仅粒子数下降，而且粒子开始占据较低能量的态。若处理的系统比反粒子多出 $N_{0}$ 个粒子（或反之），则能量将趋于一个渐近值，即 $N_{0}$ 个粒子填满了最低的 $N_{0}$ 个能态。但由于我们取 $N_{0}=0$，低正温度下的渐近能量为零。
+
+务必记住：这里没有任何东西告诉我们任何粒子对产生过程的机制或速率；这些结果只是把该过程的存在并已达平衡视作理所当然。粒子对产生发生的速率很可能强烈依赖温度；若在某个温度 $T$ 下速率很低，那么该温度下的平衡态可能完全不能说明我们会实际观测到什么。所以我们不应把这些负温度费米子对气体——其中几乎每一个量子态都被占据——的存在，当作任意负温度费米子气体的近期命运！
+
+\orthofig{images/05__015.png}{费米子对气体的平均压强}
+
+不过，对一个具有正温度的高度相对论气体，即便粒子之间的经典碰撞也能导致粒子数变化，所以这里的描述更可能是适用的。
+
+系统的平均压强为
+\begin{equation}
+p_{mean}=-\frac{1}{\beta}\,\partial_{V}\ln Z_{G},
+\end{equation}
+但有一个提醒：我们必须避免在求稀薄气体压强时已识别的那个陷阱，要在对单粒子态积分\emph{之前}就对 $V$ 求导。具体计算从略。
+
+在无限温度下，我们求得的压强换算到每个粒子，与稀薄气体的结果相同。所以至少在高温度下，当原气体含 $N$ 个粒子时，含粒子对产生的费米子气体给出的每粒子压强与稀薄气体一致。
+
+\section{参考文献}
+
+\begin{itemize}
+  \item[{[1]}] \emph{Fundamentals of Statistical and Thermal Physics}, Frederick Reif, McGraw-Hill, 1965, 第 9.13、9.14、9.15 节。
+  \item[{[2]}] Reif, \emph{op. cit.}, 第 9.3、9.5 节。
+  \item[{[3]}] Reif, \emph{op. cit.}, 第 6.5、6.6 节。
+  \item[{[4]}] Reif, \emph{op. cit.}, 第 9.8 节。
+  \item[{[5]}] Reif, \emph{op. cit.}, 第 6.5 节，方程 (6.5.12)。
+  \item[{[6]}] Reif, \emph{op. cit.}, 第 6.6 节，方程 (6.6.5)。
+  \item[{[7]}] Reif, \emph{op. cit.}, 第 9.6 节。
+\end{itemize}

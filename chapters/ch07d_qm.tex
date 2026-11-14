@@ -1,0 +1,1154 @@
+% 本节局部宏（preamble 未定义，用 \providecommand 以防重复定义）
+\providecommand{\bchi}{\boldsymbol{\chi}}
+\providecommand{\bdelta}{\boldsymbol{\delta}}
+\providecommand{\by}{\mathbf{y}}
+\providecommand{\Chi}{\mathcal{X}}
+
+\section{进阶：黎曼量子场论（Riemannian Quantum Field Theory）}
+
+本节讨论黎曼宇宙中量子场论（quantum field theory, QFT）的构造。核心思路是：
+把谐振子（harmonic oscillator）的算符代数推及自由标量场（scalar field）与自由 Dirac 场，
+并借助四维环面 $T^{4}$ 上有限的传播模式集合来完成正则量子化（canonical quantisation）。
+我们将看到，与洛伦兹情形最深刻的差别在于：黎曼宇宙中模式的数目是\emph{有限}的，
+因而真空能是有限值；同时“粒子”与“反粒子”的划分依赖于观测者的时间轴，
+使得建立在三维球面上的 $SO(4)$ 不变描述比通常的洛伦兹描述更为自然。
+
+\subsection{量子力学谐振子（The Quantum Mechanical Harmonic Oscillator）}
+
+我们从最简单的非相对论量子力学谐振子出发，先回顾其经典与量子版本的关键结果，
+为后续场论量子化提供算符代数的模板。
+
+\subsubsection*{经典力学准备}
+
+设一个质量为 $M$ 的质点在一维坐标 $x$ 上运动，受到回复力 $F=-Kx$。
+该力与质点到原点的距离成正比，对应势能 $V=\tfrac12 Kx^{2}$，即一个抛物线形的“能量谷”。
+质点将在谷中以角频率
+\begin{equation*}
+\omega=\sqrt{\frac{K}{M}}
+\end{equation*}
+来回振动。以坐标 $x$ 与相应动量 $p$ 表示的哈密顿量为
+\begin{equation}
+H_{\text{SHO}}=\frac{p^{2}}{2M}+\tfrac12 M\omega^{2}x^{2},
+\tag{Hamiltonian}
+\end{equation}
+其中我们把“弹簧常数” $K$ 写成 $M\omega^{2}$，因为二者完全等同，而 $\omega$ 比 $K$ 更值得我们关心。
+
+以量上加点表示其对时间的导数，本系统的哈密顿方程（Hamilton's equations）为
+\begin{equation*}
+p^{\bullet}=-\partial_{x}H_{\text{SHO}}=-M\omega^{2}x,
+\qquad
+x^{\bullet}=\partial_{p}H_{\text{SHO}}=\frac{p}{M}.
+\end{equation*}
+合起来便得到
+\begin{equation*}
+\partial_{t}^{2}x=-\omega^{2}x,
+\end{equation*}
+其通解为
+\begin{equation*}
+x(t)=A\cos(\omega t)+B\sin(\omega t).
+\end{equation*}
+
+若改用拉格朗日量（Lagrangian）——动能减势能，以坐标 $x$ 及其时间变化率 $x^{\bullet}$ 表示：
+\begin{equation}
+L_{\text{SHO}}=\tfrac12 M\bigl(x^{\bullet}{}^{2}-\omega^{2}x^{2}\bigr),
+\tag{Lagrangian}
+\end{equation}
+则运动方程由欧拉-拉格朗日方程（Euler-Lagrange equation）给出：
+\begin{equation*}
+\partial_{t}\bigl(\partial_{x^{\bullet}}L_{\text{SHO}}\bigr)=\partial_{x}L_{\text{SHO}}
+\;\Longrightarrow\;
+\partial_{t}(M x^{\bullet})=-M\omega^{2}x
+\;\Longrightarrow\;
+\partial_{t}^{2}x=-\omega^{2}x,
+\end{equation*}
+与由哈密顿量所得方程自然一致。
+
+\subsubsection*{量子化与阶梯算符}
+
+在量子力学中，描述质点位置与动量的数 $x$、$p$ 被替换为“可观测量”：
+希尔伯特空间上的自伴算符。一种看法是把该希尔伯特空间视为复值波函数 $\psi(x,t)$ 的空间。
+数 $x$ 被替换为“乘以 $x$”的算符，而数 $p$ 被替换为微分算符 $-\ii\partial_{x}$。
+（这里做的是\emph{非相对论}量子力学，故不像黎曼相对论量子力学那样改变动量算符的符号。）
+要求系统由某给定哈密顿量描述，即要求波函数满足薛定谔方程（Schrödinger equation）：
+\begin{equation*}
+\ii\partial_{t}\psi(x,t)=H\psi(x,t)
+=\Bigl(\frac{p^{2}}{2M}+\tfrac12 M\omega^{2}x^{2}\Bigr)\psi(x,t)
+=-\frac{1}{2M}\partial_{x}^{2}\psi(x,t)+\tfrac12 M\omega^{2}x^{2}\psi(x,t).
+\end{equation*}
+不过，与其直接求该微分方程的解，对我们更有用的是把量子化后谐振子的希尔伯特空间
+看作由具有确定能量的矢量（即哈密顿量的\emph{本征矢量}）张成的，而不去操心对应波函数的细节。
+
+首先注意到动量与位置算符的对易子为
+\begin{equation}
+[x,p]=xp-px=\ii .
+\tag{commutator}
+\end{equation}
+这在波函数表示中极易检验：对任意 $x$ 的函数 $f$，
+\begin{equation*}
+[x,p]f=[x,-\ii\partial_{x}]f
+=x(-\ii\partial_{x}f)-(-\ii\partial_{x}(xf))
+=-\ii x\partial_{x}f+\ii(f+x\partial_{x}f)=\ii f .
+\end{equation*}
+
+由 $x$ 与 $p$ 可构造两个新算符，称为\emph{阶梯算符}（ladder operators）：
+\begin{equation}
+a=\frac{\ii\,(p-\ii M\omega x)}{\sqrt{2M\omega}},
+\qquad
+a^{\dagger}=\frac{-\ii\,(p+\ii M\omega x)}{\sqrt{2M\omega}}.
+\tag{ladder}
+\end{equation}
+这里 $a^{\dagger}$ 是 $a$ 的厄米共轭；由于 $p$、$x$ 自伴，求 $a^{\dagger}$ 只需把 $a$ 的定义中
+每个 $\ii$ 反号。由 $x$ 与 $p$ 的对易子不难证明
+\begin{equation*}
+[a,a^{\dagger}]=aa^{\dagger}-a^{\dagger}a=1 .
+\end{equation*}
+由此可轻松导出若干我们将反复用到的结果：
+\begin{equation*}
+aa^{\dagger}=a^{\dagger}a+1,\qquad
+a^{\dagger}aa^{\dagger}=a^{\dagger}(a^{\dagger}a+1),\qquad
+a^{\dagger}a=aa^{\dagger}-1,\qquad
+a^{\dagger}aa=(aa^{\dagger}-1)a=a(a^{\dagger}a-1).
+\end{equation*}
+哈密顿量可用阶梯算符极为简洁地表示：
+\begin{equation*}
+H_{\text{SHO}}=\frac{p^{2}}{2M}+\tfrac12 M\omega^{2}x^{2}=\omega\bigl(a^{\dagger}a+\tfrac12\bigr).
+\end{equation*}
+
+设 $\psi_{E}$ 为哈密顿量的任一本征矢量，满足 $H_{\text{SHO}}\psi_{E}=E\psi_{E}$。于是
+\begin{align*}
+H_{\text{SHO}}(a^{\dagger}\psi_{E})
+&=\omega(a^{\dagger}a+\tfrac12)(a^{\dagger}\psi_{E})
+=a^{\dagger}\omega(a^{\dagger}a+\tfrac12+1)\psi_{E}\\
+&=a^{\dagger}H_{\text{SHO}}\psi_{E}+\omega(a^{\dagger}\psi_{E})
+=(E+\omega)(a^{\dagger}\psi_{E}),
+\end{align*}
+即 $a^{\dagger}$ 把哈密顿量的任一本征矢量变为能量高出 $\omega$ 的另一本征矢量。类似地
+\begin{align*}
+H_{\text{SHO}}(a\psi_{E})
+&=\omega(a^{\dagger}a+\tfrac12)(a\psi_{E})
+=a\,\omega(a^{\dagger}a+\tfrac12-1)\psi_{E}\\
+&=aH_{\text{SHO}}\psi_{E}-\omega(a\psi_{E})
+=(E-\omega)(a\psi_{E}),
+\end{align*}
+即 $a$ 把任一本征矢量变为能量低 $\omega$ 的另一本征矢量。但这一过程不能无限进行下去，
+因为能量本征值必须非负。故必存在某态 $\psi_{0}$ 使
+\begin{equation*}
+a\psi_{0}=0 .
+\end{equation*}
+这是谐振子的“基态”（ground state）。尽管用了下标 $0$，该基态的能量并不为零，而是
+\begin{equation*}
+H_{\text{SHO}}\psi_{0}=\omega\bigl(a^{\dagger}a+\tfrac12\bigr)\psi_{0}=\tfrac{\omega}{2}\,\psi_{0}.
+\end{equation*}
+故 $\psi_{0}$ 的能量为 $\omega/2$，其上还有无穷多个高能本征态，能量为 $\omega$ 的半整数倍：
+\begin{equation*}
+\psi_{n}=(a^{\dagger})^{n}\psi_{0},\qquad
+H_{\text{SHO}}\psi_{n}=\bigl(n+\tfrac12\bigr)\omega\,\psi_{n}.
+\end{equation*}
+当振子处于能量本征态（即具有确定能量）时，该能量可看作基态能量 $\omega/2$
+加上某整数 $n$ 个额外“量子”（quanta），每个能量为 $\omega$。
+（若你习惯把量子看作具有能量 $\hbar\omega$，请记住我们用的是 $\hbar=1$ 的单位制。）
+算符 $a$ 可视为“湮灭”掉一个量子，因为它把能量本征态变为少一个量子的态；
+类似地 $a^{\dagger}$ 可视为“产生”一个量子。因此我们称 $a$ 为\emph{湮灭算符}（annihilation operator），
+$a^{\dagger}$ 为\emph{产生算符}（creation operator）。这些名称虽形象生动，却不可按字面理解：
+它们\emph{不}描述随时间发生的物理过程，只提供一种把确定量子数的态映射到少一个或多一个量子的态的简便方法。
+
+上述全部分析虽然针对一个作简谐运动的非相对论点粒子，但只要系统的自由度由同一类哈密顿量
+（坐标平方与相应动量平方的线性组合）支配，同样的分析便可套用。由于我们将大量使用这些结果，
+现将其汇总如下。
+
+\begin{keybox}[简谐振子汇总]
+$M$ 为粒子质量，$\omega$ 为振动频率，取 $\hbar=1$ 的单位制。
+\begin{align*}
+H_{\text{SHO}}&=\frac{p^{2}}{2M}+\tfrac12 M\omega^{2}x^{2}
+&&\text{(Hamiltonian)}\\
+L_{\text{SHO}}&=\tfrac12 M\bigl(x^{\bullet}{}^{2}-\omega^{2}x^{2}\bigr)
+&&\text{(Lagrangian)}\\
+\partial_{t}^{2}x&=-\omega^{2}x
+&&\text{(Equation of Motion)}\\
+a&=\frac{\ii\,(p-\ii M\omega x)}{\sqrt{2M\omega}}
+&&\text{(Annihilation Operator)}\\
+a^{\dagger}&=\frac{-\ii\,(p+\ii M\omega x)}{\sqrt{2M\omega}}
+&&\text{(Creation Operator)}
+\end{align*}
+用产生、湮灭算符表示的可观测量：
+\begin{equation*}
+H_{\text{SHO}}=\omega\bigl(a^{\dagger}a+\tfrac12\bigr),\qquad
+x=\frac{a+a^{\dagger}}{\sqrt{2M\omega}},\qquad
+p=-\ii\sqrt{\frac{M\omega}{2}}\,(a-a^{\dagger});
+\end{equation*}
+对易子：
+\begin{equation*}
+[x,p]=\ii,\qquad [a,a^{\dagger}]=1 .
+\end{equation*}
+\end{keybox}
+
+\subsection{自由黎曼标量场的正则量子化（Canonical Quantisation of a Free Riemannian Scalar Field）}
+
+我们要“量子化”的第一个经典场，由黎曼标量波方程的复值解组成。
+事实上，“黎曼标量波方程”（Riemannian Scalar Wave equation, RSW）就是通常所称
+Klein-Gordon 方程的黎曼版本；几乎所有量子场论教材都讨论过其洛伦兹版本的量子化，
+或针对实值解、或针对复值解。
+
+如前面所论，驯服黎曼波方程、避免出现指数增长解的唯一办法，是假定黎曼宇宙在四个维度上都是有限的：
+例如四维环面 $T^{4}$ 或四维球面 $S^{4}$。为简单起见，我们假定一个平坦的四维环面，
+但结论不会过分依赖具体的形状或拓扑。我们在有关电磁学的章节中已描述过这类宇宙的若干方面。
+
+自由（即无源）RSW 方程若要有解，四维环面的尺寸 $L_{x},L_{y},L_{z},L_{t}$
+与最大频率 $\nu_{\max}$ 之间须有特殊关系，使得存在整数 $n_{x},n_{y},n_{z},n_{t}$ 满足
+\begin{equation*}
+\Bigl(\frac{n_{x}}{L_{x}}\Bigr)^{2}+\Bigl(\frac{n_{y}}{L_{y}}\Bigr)^{2}
++\Bigl(\frac{n_{z}}{L_{z}}\Bigr)^{2}+\Bigl(\frac{n_{t}}{L_{t}}\Bigr)^{2}=\nu_{\max}^{2}.
+\end{equation*}
+这允许波沿各维呈现整数个周期，且各频率平方之和等于所需值。对一般的环面尺寸与 $\nu_{\max}$，
+此类解不存在；但若尺寸恰好选得使解\emph{存在}，且宇宙相对于最小波长远为巨大，
+则会有大量而有限的整数解。
+
+我们不深入计数这类解所需的数论；只假定解数极多，以致对多数目的而言其离散性无法被实验察觉，
+并假定相应频率的平面波方向在一切方向上均匀分布。换言之，自由波的可传播四矢量 $\bk$
+是 $\mathbb{R}^{4}$ 中一个三维球面上均匀散布的有限离散集合，球半径为 $\omega_{m}$。
+我们将利用该集合的离散性来简化某些公式与计算，也会在有用时放心地把对这些矢量的求和近似为积分。
+
+我们称自由波全部可能传播四矢量的集合为 $K_{4}$，并记 $N_{\text{modes}}$ 为该集合中矢量的个数。
+在环面上选取某一特定坐标作为我们的时间坐标，并把 $K_{4}$ 中矢量投影到除 $t$ 外的三个维度所得的集合
+命名为 $K_{3}$。对 $K_{3}$ 中每个 $\bk$，$K_{4}$ 中有两个矢量投影到它，一个时间分量为正、
+一个为负。我们把 $K_{4}$ 中时间分量为正的子集记为 $K_{4}^{+}$、为负的记为 $K_{4}^{-}$，
+且为简单起见假定没有时间分量为零的模式。我们把时间分量的绝对值记为 $E_{\bk}$：
+\begin{equation}
+E_{\bk}=|k^{t}|,\quad \bk\in K_{4};
+\qquad
+E_{\bk}=\sqrt{\omega_{m}^{2}-|\bk|^{2}}=\sqrt{m^{2}-|\bk|^{2}},\quad \bk\in K_{3}.
+\tag{E\_k}
+\end{equation}
+这里 $m$ 是与该标量场相联系的粒子质量，在我们的单位制下
+$m=\hbar\omega_{m}=\omega_{m}=2\pi\nu_{\max}$。
+
+首先，我们把黎曼标量波方程及相应的拉格朗日量与哈密顿量写成两种形式：
+第一种以空间、时间坐标的函数 $\phi(\bx,t)$ 表示，第二种以在某些空间周期函数上作模式展开的
+（含时）系数 $\phi_{\bk}(t)$ 表示。
+
+\subsubsection*{四维坐标形式}
+
+复值波函数 $\phi(\bx,t)$ 的经典黎曼标量波方程及其拉格朗日量、动量与哈密顿量为
+\begin{align}
+0&=\partial_{\mu}\partial^{\mu}\phi(\bx,t)+m^{2}\phi(\bx,t)
+&&\text{(Equation of Motion)}\\
+L_{\text{RSW}}&=\int\bigl(\partial_{\mu}\phi(\bx,t)\bigr)\bigl(\partial^{\mu}\phi^{*}(\bx,t)\bigr)
+-m^{2}\phi(\bx,t)\phi^{*}(\bx,t)\,\dd^{3}\bx
+&&\text{(Lagrangian)}\\
+\Pi(\bx,t)&=\partial_{t}\phi^{*}(\bx,t),\qquad
+\Pi^{*}(\bx,t)=\partial_{t}\phi(\bx,t)
+&&\text{(Momenta)}\\
+H_{\text{RSW}}&=\int\Pi(\bx,t)\Pi^{*}(\bx,t)-\bigl(\partial_{i}\phi(\bx,t)\bigr)\bigl(\partial^{i}\phi^{*}(\bx,t)\bigr)
++m^{2}\phi(\bx,t)\phi^{*}(\bx,t)\,\dd^{3}\bx
+&&\text{(Hamiltonian)}
+\end{align}
+第一组方程中，我们把 $\phi(\bx,t)$ 与其复共轭 $\phi^{*}(\bx,t)$ 当作两个独立场，
+而拉格朗日密度 $L_{\text{RSW}}(\bx)$（对空间积分即得总拉格朗日量的量）经由复共轭场的
+欧拉-拉格朗日方程直接给出运动方程：
+\begin{equation*}
+\partial^{\mu}\bigl(\partial_{\partial_{\mu}\phi^{*}(\bx,t)}L_{\text{RSW}}(\bx)\bigr)
+=\partial_{\phi^{*}(\bx,t)}L_{\text{RSW}}(\bx)
+\;\Longrightarrow\;
+\partial^{\mu}\partial_{\mu}\phi(\bx,t)=-m^{2}\phi(\bx,t).
+\end{equation*}
+与场及其复共轭相联系的动量，定义为拉格朗日密度对相应场时间导数的导数：
+\begin{equation*}
+\Pi(\bx,t)=\partial_{\partial_{t}\phi(\bx,t)}L_{\text{RSW}}(\bx)=\partial_{t}\phi^{*}(\bx,t),
+\qquad
+\Pi^{*}(\bx,t)=\partial_{\partial_{t}\phi^{*}(\bx,t)}L_{\text{RSW}}(\bx)=\partial_{t}\phi(\bx,t).
+\end{equation*}
+哈密顿密度由对两个场 $\phi(\bx,t)$ 及其复共轭求“动量乘场的时间导数”之和，再减去拉格朗日密度得到：
+\begin{equation*}
+H_{\text{RSW}}(\bx)=\Pi(\bx,t)\partial_{t}\phi(\bx,t)+\Pi^{*}(\bx,t)\partial_{t}\phi^{*}(\bx,t)-L_{\text{RSW}}(\bx)
+=2\Pi(\bx,t)\Pi^{*}(\bx,t)-L_{\text{RSW}}(\bx).
+\end{equation*}
+在上表哈密顿量的公式中，重复指标 $i$ 只对空间坐标求和，时间导数已由动量承担。
+
+\subsubsection*{模式展开形式}
+
+接下来把 $\phi(\bx,t)$ 写成空间周期函数 $f_{\bk}(\bx)$ 的有限和，
+对每个 $\bk\in K_{3}$ 有 $f_{\bk}(\bx)\propto\exp(-\ii\,\bk\cdot\bx)$，并称展开系数为 $\phi_{\bk}(t)$。
+我们用因子 $\sqrt{1/V}$ 归一化 $f_{\bk}$，其中 $V$ 是四维环面上空间的体积，
+$V=L_{x}L_{y}L_{z}$，于是
+\begin{equation*}
+\int f_{\bk}(\bx)f_{\bq}^{*}(\bx)\,\dd^{3}\bx=\delta_{\bk,\bq}.
+\end{equation*}
+把模式展开代入 $L_{\text{RSW}}$ 的积分，再利用模式函数的正交性，即得模式系数形式的拉格朗日量：
+对每一模式而言，空间导数平方之和恰为 $\bk^{2}$，它与 $m^{2}$ 项合并给出 $E_{\bk}^{2}$。
+动量与哈密顿量随后可由拉格朗日量求得。汇总如下：
+\begin{align}
+f_{\bk}(\bx)&=\sqrt{\tfrac{1}{V}}\exp(-\ii\,\bk\cdot\bx),&
+\phi(\bx,t)&=\sum_{\bk\in K_{3}}\phi_{\bk}(t)f_{\bk}(\bx)
+&&\text{(Mode Expansion)}\\
+\partial_{t}^{2}\phi_{\bk}(t)&=-E_{\bk}^{2}\phi_{\bk}(t)
+&&\text{(Equation of Motion)}\\
+L_{\text{RSW}}&=\sum_{\bk\in K_{3}}\bigl(\partial_{t}\phi_{\bk}(t)\partial_{t}\phi^{*}_{\bk}(t)
+-E_{\bk}^{2}\phi_{\bk}(t)\phi^{*}_{\bk}(t)\bigr)
+&&\text{(Lagrangian)}\\
+\Pi_{\bk}(t)&=\partial_{t}\phi^{*}_{\bk}(t),\qquad
+\Pi^{*}_{\bk}(t)=\partial_{t}\phi_{\bk}(t)
+&&\text{(Momenta)}\\
+H_{\text{RSW}}&=\sum_{\bk\in K_{3}}\bigl(\Pi_{\bk}(t)\Pi^{*}_{\bk}(t)
++E_{\bk}^{2}\phi_{\bk}(t)\phi^{*}_{\bk}(t)\bigr)
+&&\text{(Hamiltonian)}
+\end{align}
+
+\subsubsection*{实值自由度}
+
+模式系数版哈密顿量的每一项都\emph{几乎}与简谐振子的哈密顿量形式一致，
+但这些自由度 $\phi_{\bk}(t)$、$\phi^{*}_{\bk}(t)$ 及其动量是复数，
+而简谐振子的位置与动量是实数。故需把哈密顿量改写为实值自由度的函数。
+这并不难：每一项都是一个复数与其共轭之积，等于该复数模的平方，
+也就等于实部平方与虚部平方之和（其中我们把虚部当作实数，即除掉因子 $\ii$）。于是可用
+\begin{equation*}
+\operatorname{Re}_{\bk}(t)=\operatorname{Re}\phi_{\bk}(t),\qquad
+\operatorname{Im}_{\bk}(t)=\bigl[\operatorname{Im}\phi_{\bk}(t)\bigr]/\ii
+\end{equation*}
+重述一切。先在拉格朗日量中做此改写，再求出相应的动量，最终得到\emph{恰为}谐振子形式的哈密顿量，
+且每一模式有两个实自由度：
+\begin{align}
+\phi_{\bk}(t)&=\operatorname{Re}_{\bk}(t)+\ii\,\operatorname{Im}_{\bk}(t)
+&&\text{(Real Variables)}\\
+\partial_{t}^{2}\operatorname{Re}_{\bk}(t)&=-E_{\bk}^{2}\operatorname{Re}_{\bk}(t),\qquad
+\partial_{t}^{2}\operatorname{Im}_{\bk}(t)=-E_{\bk}^{2}\operatorname{Im}_{\bk}(t)
+&&\text{(Equations of Motion)}\\
+L_{\text{RSW}}&=\sum_{\bk\in K_{3}}\bigl((\partial_{t}\operatorname{Re}_{\bk}(t))^{2}
+-E_{\bk}^{2}\operatorname{Re}_{\bk}(t)^{2}
++(\partial_{t}\operatorname{Im}_{\bk}(t))^{2}-E_{\bk}^{2}\operatorname{Im}_{\bk}(t)^{2}\bigr)
+&&\text{(Lagrangian)}\\
+\Pi_{\operatorname{Re}\bk}(t)&=2\partial_{t}\operatorname{Re}_{\bk}(t),\qquad
+\Pi_{\operatorname{Im}\bk}(t)=2\partial_{t}\operatorname{Im}_{\bk}(t)
+&&\text{(Momenta)}\\
+H_{\text{RSW}}&=\sum_{\bk\in K_{3}}\bigl(\tfrac14\Pi_{\operatorname{Re}\bk}(t)^{2}
++E_{\bk}^{2}\operatorname{Re}_{\bk}(t)^{2}
++\tfrac14\Pi_{\operatorname{Im}\bk}(t)^{2}+E_{\bk}^{2}\operatorname{Im}_{\bk}(t)^{2}\bigr)
+&&\text{(Hamiltonian)}
+\end{align}
+把上表末行哈密顿量的每一项与简谐振子的哈密顿量比对，可见只要把谐振子的粒子质量 $M$ 取为 $2$
+（这个 $M$ 与我们用标量场描述的粒子质量无关），把谐振子频率 $\omega$ 对每一模式取为 $E_{\bk}$，
+并令谐振子的坐标 $x$ 对应 $\operatorname{Re}_{\bk}$ 或 $\operatorname{Im}_{\bk}$、
+动量 $p$ 对应 $\Pi_{\operatorname{Re}\bk}$ 或 $\Pi_{\operatorname{Im}\bk}$，二者便精确吻合。
+于是我们对每个 $\bk$ 的实部与虚部自由度都定义产生、湮灭算符。
+
+\begin{keybox}[量子化后的黎曼标量场]
+实值自由度 $\operatorname{Re}_{\bk}$ 与 $\operatorname{Im}_{\bk}$，$\bk\in K_{3}$：
+\begin{align*}
+a_{\operatorname{Re}\bk}&=\frac{\ii}{2\sqrt{E_{\bk}}}
+\bigl(\Pi_{\operatorname{Re}\bk}-2\ii E_{\bk}\operatorname{Re}_{\bk}\bigr),&
+a_{\operatorname{Im}\bk}&=\frac{\ii}{2\sqrt{E_{\bk}}}
+\bigl(\Pi_{\operatorname{Im}\bk}-2\ii E_{\bk}\operatorname{Im}_{\bk}\bigr)\\
+a^{\dagger}_{\operatorname{Re}\bk}&=\frac{-\ii}{2\sqrt{E_{\bk}}}
+\bigl(\Pi_{\operatorname{Re}\bk}+2\ii E_{\bk}\operatorname{Re}_{\bk}\bigr),&
+a^{\dagger}_{\operatorname{Im}\bk}&=\frac{-\ii}{2\sqrt{E_{\bk}}}
+\bigl(\Pi_{\operatorname{Im}\bk}+2\ii E_{\bk}\operatorname{Im}_{\bk}\bigr)
+\end{align*}
+用产生、湮灭算符表示的可观测量与坐标：
+\begin{align*}
+H_{\text{RSW}}&=\sum_{\bk\in K_{3}}E_{\bk}
+\bigl(a^{\dagger}_{\operatorname{Re}\bk}a_{\operatorname{Re}\bk}
++a^{\dagger}_{\operatorname{Im}\bk}a_{\operatorname{Im}\bk}+1\bigr),\\
+\operatorname{Re}_{\bk}&=\frac{a_{\operatorname{Re}\bk}+a^{\dagger}_{\operatorname{Re}\bk}}{2\sqrt{E_{\bk}}},&
+\Pi_{\operatorname{Re}\bk}&=-\ii\sqrt{E_{\bk}}\bigl(a_{\operatorname{Re}\bk}-a^{\dagger}_{\operatorname{Re}\bk}\bigr),\\
+\operatorname{Im}_{\bk}&=\frac{a_{\operatorname{Im}\bk}+a^{\dagger}_{\operatorname{Im}\bk}}{2\sqrt{E_{\bk}}},&
+\Pi_{\operatorname{Im}\bk}&=-\ii\sqrt{E_{\bk}}\bigl(a_{\operatorname{Im}\bk}-a^{\dagger}_{\operatorname{Im}\bk}\bigr);
+\end{align*}
+对易子：
+\begin{equation*}
+[\operatorname{Re}_{\bk},\Pi_{\operatorname{Re}\bq}]=\ii\delta_{\bk,\bq},\quad
+[a_{\operatorname{Re}\bk},a^{\dagger}_{\operatorname{Re}\bq}]=\delta_{\bk,\bq},\quad
+[\operatorname{Im}_{\bk},\Pi_{\operatorname{Im}\bq}]=\ii\delta_{\bk,\bq},\quad
+[a_{\operatorname{Im}\bk},a^{\dagger}_{\operatorname{Im}\bq}]=\delta_{\bk,\bq}.
+\end{equation*}
+\end{keybox}
+
+这里的产生、湮灭算符与简谐振子的作用方式完全相同：产生算符
+$a^{\dagger}_{\operatorname{Re}\bk}$、$a^{\dagger}_{\operatorname{Im}\bk}$
+把能量为 $E$ 的哈密顿量本征态变为能量为 $E+E_{\bk}$ 的新本征态，
+而湮灭算符 $a_{\operatorname{Re}\bk}$、$a_{\operatorname{Im}\bk}$
+把能量为 $E$ 的本征态变为能量为 $E-E_{\bk}$ 的新本征态。
+我们定义系统的基态 $\psi_{0}$ 为满足
+\begin{equation*}
+a_{\operatorname{Re}\bk}\psi_{0}=0,\qquad
+a_{\operatorname{Im}\bk}\psi_{0}=0
+\qquad(\text{对一切 }\bk\in K_{3})
+\end{equation*}
+的矢量。把这些方程与哈密顿量结合，可见 $\psi_{0}$ 的能量为
+\begin{equation}
+E_{0}=\sum_{\bk\in K_{3}}E_{\bk}
+\approx\Bigl[\frac{\tfrac12 N_{\text{modes}}}{\pi^{2}}\Bigr]
+\int_{\gamma=0}^{\pi/2}m\cos\gamma\;4\pi\sin^{2}\gamma\,\dd\gamma
+=\frac{2N_{\text{modes}}m}{3\pi},
+\tag{E\_0}
+\end{equation}
+其中近似是把 $K_{3}$ 中的 $\tfrac12 N_{\text{modes}}$ 个矢量当作半径 $m$ 的三维球面 $t>0$ 半球上
+均匀分布矢量连续统的投影。洛伦兹情形下 $E_{0}$ 为无限大，需要把它减去、重新定义能量零点；
+这听起来可疑，但由于量子力学中多数量子化问题里真正重要的只是能量\emph{差}，所以效果尚可。
+在我们的情形中并不真的需要这么做；无论描述量子态能量时是否计入 $E_{0}$，
+它取的具体数值都会以自身的形式出现在某些公式中。
+
+场中各个模式——对应 $K_{3}$ 中的各个矢量 $\bk$ 及实部、虚部——的作用恰似完全独立的谐振子。
+量子力学中，独立系统由各系统希尔伯特空间的张量积所描述的希尔伯特空间来刻画，
+故可把本场的希尔伯特空间视为 $N_{\text{modes}}$ 份谐振子希尔伯特空间的张量积。
+所有带 $\operatorname{Re}\bk$ 或 $\operatorname{Im}\bk$ 指标的算符都只作用在其特定的因子上，
+而在其余因子上充当恒等算符。任何模式都不影响其它模式的演化。
+
+这当然极不现实，因为我们最终要处理的电磁场与 Dirac 型场彼此耦合。
+但处理一个无源场，是攻克更难问题前有用的热身练习。
+
+在找到可按谐振子类比量子化的自由度之后，我们现把一切译回更易作物理解释的原始复值自由度。
+实值与复值自由度之间的关系此前已定；这虽不完全告诉我们如何为复值模式定义产生、湮灭算符，
+但可以检验以下选择确实给出正确的对易子并把哈密顿量化为正确形式。
+（虽然直接取 $a_{\bk}=(1/\sqrt2)(a_{\operatorname{Re}\bk}+\ii\,a_{\operatorname{Im}\bk})$
+与 $b_{\bk}=(1/\sqrt2)(a_{\operatorname{Re}\bk}-\ii\,a_{\operatorname{Im}\bk})$
+也许更简洁，但下面诸式的右端额外乘了一个 $-\ii$ 的相位因子，
+这是为了与 Weinberg 的场变量约定一致，便于对照。）
+
+\begin{keybox}[量子化后的黎曼标量场（复值自由度）]
+复值自由度 $\phi_{\bk}$ 与 $\phi^{\dagger}_{\bk}$，$\bk\in K_{3}$：
+\begin{align*}
+a_{\bk}&=\frac{1}{\sqrt2}\bigl(a_{\operatorname{Im}\bk}-\ii\,a_{\operatorname{Re}\bk}\bigr)
+=\frac{1}{\sqrt{2E_{\bk}}}\bigl(\Pi^{\dagger}_{\bk}-\ii E_{\bk}\phi_{\bk}\bigr),\\
+b_{\bk}&=-\frac{1}{\sqrt2}\bigl(a_{\operatorname{Im}\bk}+\ii\,a_{\operatorname{Re}\bk}\bigr)
+=\frac{1}{\sqrt{2E_{\bk}}}\bigl(\Pi_{\bk}-\ii E_{\bk}\phi^{\dagger}_{\bk}\bigr),\\
+a^{\dagger}_{\bk}&=\frac{1}{\sqrt2}\bigl(a^{\dagger}_{\operatorname{Im}\bk}+\ii\,a^{\dagger}_{\operatorname{Re}\bk}\bigr)
+=\frac{1}{\sqrt{2E_{\bk}}}\bigl(\Pi_{\bk}+\ii E_{\bk}\phi^{\dagger}_{\bk}\bigr),\\
+b^{\dagger}_{\bk}&=-\frac{1}{\sqrt2}\bigl(a^{\dagger}_{\operatorname{Im}\bk}-\ii\,a^{\dagger}_{\operatorname{Re}\bk}\bigr)
+=\frac{1}{\sqrt{2E_{\bk}}}\bigl(\Pi^{\dagger}_{\bk}+\ii E_{\bk}\phi_{\bk}\bigr)
+\end{align*}
+可观测量（哈密顿量与坐标）：
+\begin{align*}
+H_{\text{RSW}}&=\sum_{\bk\in K_{3}}E_{\bk}
+\bigl(a^{\dagger}_{\bk}a_{\bk}+b^{\dagger}_{\bk}b_{\bk}+1\bigr),\\
+\phi_{\bk}&=\frac{\ii\,(a_{\bk}-b^{\dagger}_{\bk})}{\sqrt{2E_{\bk}}},&
+\phi^{\dagger}_{\bk}&=\frac{-\ii\,(a^{\dagger}_{\bk}-b_{\bk})}{\sqrt{2E_{\bk}}},\\
+\Pi_{\bk}&=\sqrt{\frac{E_{\bk}}{2}}\bigl(a^{\dagger}_{\bk}+b_{\bk}\bigr),&
+\Pi^{\dagger}_{\bk}&=\sqrt{\frac{E_{\bk}}{2}}\bigl(a_{\bk}+b^{\dagger}_{\bk}\bigr);
+\end{align*}
+对易子：
+\begin{equation*}
+[\phi_{\bk},\Pi_{\bq}]=\ii\delta_{\bk,\bq},\quad
+[a_{\bk},a^{\dagger}_{\bq}]=\delta_{\bk,\bq},\quad
+[\phi^{\dagger}_{\bk},\Pi^{\dagger}_{\bq}]=\ii\delta_{\bk,\bq},\quad
+[b_{\bk},b^{\dagger}_{\bq}]=\delta_{\bk,\bq}.
+\end{equation*}
+\end{keybox}
+
+此时 $\phi_{\bk}$ 与 $\Pi_{\bk}$ 是我们希尔伯特空间上的\emph{非厄米算符}，
+而不再是一般的含时复值函数；与这些函数的复共轭相联系的算符即厄米共轭 $\phi^{\dagger}_{\bk}$
+与 $\Pi^{\dagger}_{\bk}$。我们通常认为可观测量是厄米算符，但这只在它们测量实值量时成立；
+对这些为经典场引入的复值模式系数而言，非厄米算符完全可以是合适的可观测量。
+
+我们现以名为 $a_{\bk}$、$b_{\bk}$ 的湮灭算符及其厄米共轭（产生算符）取代原先两种实值自由度的算符。
+哈密顿量用这些新算符表示时，与用旧算符时形式完全相同，故同样会有能量为 $E_{0}$ 的基态 $\psi_{0}$。
+与先前一样，用任一产生算符 $a^{\dagger}_{\bk}$ 或 $b^{\dagger}_{\bk}$ 作用于能量本征态，
+都给出能量增加 $E_{\bk}$ 的新本征态。
+
+\subsubsection{守恒荷、粒子与反粒子（Conserved Charge, Particles and Antiparticles）}
+
+用 $a^{\dagger}_{\bk}$ 或 $b^{\dagger}_{\bk}$ 往基态上添加一个能量量子，所得到的态有何物理含义？
+为回答此问题，需回看以复模式系数表示的经典场拉格朗日量：
+\begin{equation*}
+L_{\text{RSW}}=\sum_{\bk\in K_{3}}\bigl(\partial_{t}\phi_{\bk}(t)\partial_{t}\phi^{*}_{\bk}(t)
+-E_{\bk}^{2}\phi_{\bk}(t)\phi^{*}_{\bk}(t)\bigr).
+\end{equation*}
+若把每个 $\phi_{\bk}$ 乘以相位 $\exp(-\ii\alpha)$，则每个 $\phi^{*}_{\bk}$ 乘以 $\exp(\ii\alpha)$，
+拉格朗日量本身不变。因此，对整个场作均匀相旋转是\emph{拉格朗日量的对称性}。
+任何此类对称性都给出一个守恒量；适用于离散变量的诺特定理（Noether's theorem）告诉我们该量为
+\begin{align*}
+C&=\sum_{\bk\in K_{3}}\Bigl[
+\bigl(\partial_{\partial_{t}\phi_{\bk}}L_{\text{RSW}}\bigr)
+\bigl(\partial_{\alpha}\exp(-\ii\alpha)\phi_{\bk}(t)\bigr)\big|_{\alpha=0}
++\bigl(\partial_{\partial_{t}\phi^{*}_{\bk}}L_{\text{RSW}}\bigr)
+\bigl(\partial_{\alpha}\exp(\ii\alpha)\phi^{*}_{\bk}(t)\bigr)\big|_{\alpha=0}\Bigr]\\
+&=-\ii\sum_{\bk\in K_{3}}\bigl(\partial_{t}\phi^{*}_{\bk}(t)\,\phi_{\bk}(t)
+-\partial_{t}\phi_{\bk}(t)\,\phi^{*}_{\bk}(t)\bigr)
+=-\ii\sum_{\bk\in K_{3}}\bigl(\Pi_{\bk}(t)\phi_{\bk}(t)-\Pi^{*}_{\bk}(t)\phi^{*}_{\bk}(t)\bigr).
+\end{align*}
+把 $C$ 译成用产生、湮灭算符表示的算符，得
+\begin{equation*}
+C=\sum_{\bk\in K_{3}}\bigl(a^{\dagger}_{\bk}a_{\bk}-b^{\dagger}_{\bk}b_{\bk}\bigr).
+\end{equation*}
+用与求能量本征态十分类似的论证容易证明，$a^{\dagger}_{\bk}a_{\bk}$ 计数以 $a^{\dagger}_{\bk}$
+添加到基态上的量子数，即
+\begin{equation*}
+(a^{\dagger}_{\bk}a_{\bk})\psi_{0}=0,\qquad
+(a^{\dagger}_{\bk}a_{\bk})(a^{\dagger}_{\bk})^{n}\psi_{0}=n\,(a^{\dagger}_{\bk})^{n}\psi_{0}.
+\end{equation*}
+类似地，$b^{\dagger}_{\bk}b_{\bk}$ 计数以 $b^{\dagger}_{\bk}$ 添加到基态上的量子数：
+\begin{equation*}
+(b^{\dagger}_{\bk}b_{\bk})(b^{\dagger}_{\bk})^{n}\psi_{0}=n\,(b^{\dagger}_{\bk})^{n}\psi_{0}.
+\end{equation*}
+二者之差对所有 $\bk$ 求和，即是以 $a^{\dagger}$ 算符产生的量子总数减去以 $b^{\dagger}$ 算符产生的量子总数。
+该数守恒；要检验它在量子版本中成立，只需验证 $C$ 与哈密顿量对易。
+（事实上两个数算符各自都守恒，但那是因为我们处理的是几乎不发生什么事的自由场论。
+数算符之差源于 $\phi$ 的均匀相位变化，即使在相互作用场论中也守恒——只要相互作用项同时含
+$\phi$ 与 $\phi^{*}$ 的因子。）
+
+这告诉我们，$a^{\dagger}_{\bk}$ 算符产生粒子，而 $b^{\dagger}_{\bk}$ 算符产生相应的\emph{反粒子}
+（antiparticles），其含义是：这两类量子携带的“荷”符号相反，且其净值随时间保持不变。
+若 $\phi$ 与电磁场耦合，此荷便是\emph{电}荷；但此刻它只是一个尚无更广含义的守恒量子数。
+对最一般的能量本征态 $\psi$，有
+\begin{align*}
+\psi&=(a^{\dagger}_{\bk_{1}})^{q_{1}}(a^{\dagger}_{\bk_{2}})^{q_{2}}(a^{\dagger}_{\bk_{3}})^{q_{3}}\cdots
+(b^{\dagger}_{\bk_{1}})^{n_{1}}(b^{\dagger}_{\bk_{2}})^{n_{2}}(b^{\dagger}_{\bk_{3}})^{n_{3}}\cdots\psi_{0},\\
+H\psi&=\bigl(E_{0}+(q_{1}+n_{1})E_{\bk_{1}}+(q_{2}+n_{2})E_{\bk_{2}}
++(q_{3}+n_{3})E_{\bk_{3}}+\cdots\bigr)\psi,\\
+C\psi&=\bigl((q_{1}+q_{2}+q_{3}+\cdots)-(n_{1}+n_{2}+n_{3}+\cdots)\bigr)\psi .
+\end{align*}
+回过头看，现在可以明白算符 $a^{\dagger}_{\operatorname{Re}\bk}$ 与 $a^{\dagger}_{\operatorname{Im}\bk}$
+所产生的是何种量子：它们是粒子态与反粒子态的等量组合，净荷为零！
+
+在洛伦兹宇宙中，相对运动的观测者对粒子与反粒子的分类会取得一致，但黎曼宇宙并非如此。
+设 $\bk$ 是一个三矢量，使 $E_{\bk}$ 相当小；这意味着在测量这些量的参考系中，
+四矢量 $\bk=(E_{\bk},\bk)$ 指向几乎纯空间的方向，故稍有一点相对运动，
+另一观测者便会使其时间分量变为负。
+
+我们可以通过定义以 $K_{4}$ 中四矢量为指标、较少依赖参考系的湮灭算符来表述：
+\begin{equation*}
+c_{(E,\bk)}=
+\begin{cases}
+a_{\bk}, & E>0,\\
+b_{-\bk}, & E<0,
+\end{cases}
+\qquad
+c^{\dagger}_{(E,\bk)}=
+\begin{cases}
+a^{\dagger}_{\bk}, & E>0,\\
+b^{\dagger}_{-\bk}, & E<0,
+\end{cases}
+\qquad
+\langle\psi_{0},\psi_{0}\rangle=1 .
+\end{equation*}
+
+那么，态 $\psi_{\bq}=c^{\dagger}_{\bq}\psi_{0}$（对某模式 $\bq\in K_{4}$ 往场中放入一个量子）
+的归一性如何？计算
+\begin{align*}
+\langle\psi_{\bq},\psi_{\bq}\rangle
+&=\langle c^{\dagger}_{\bq}\psi_{0},c^{\dagger}_{\bq}\psi_{0}\rangle
+=\langle\psi_{0},c_{\bq}c^{\dagger}_{\bq}\psi_{0}\rangle\\
+&=\langle\psi_{0},(c^{\dagger}_{\bq}c_{\bq}+1)\psi_{0}\rangle
+=\langle\psi_{0},\psi_{0}\rangle=1,
+\end{align*}
+其中用到了伴随与内积的一般性质 $\langle A^{\dagger}u,v\rangle=\langle u,Av\rangle$、
+湮灭与产生算符的对易子，以及任何湮灭算符作用于基态都为零这一事实。
+
+此刻我们先略过如下细节：这些态（薛定谔绘景）或算符（海森堡绘景）应被视为随时间变化；
+在我们所考察的情形中，时间变化只相当于一个振荡相位，对期望值没有影响。
+
+态 $\psi_{\bq}$ 下 $\phi_{\bk}$ 的期望值为
+\begin{align*}
+\langle\psi_{\bq},\phi_{\bk}\psi_{\bq}\rangle
+&=\langle c^{\dagger}_{\bq}\psi_{0},\phi_{\bk}c^{\dagger}_{\bq}\psi_{0}\rangle
+=\langle\psi_{0},c_{\bq}\phi_{\bk}c^{\dagger}_{\bq}\psi_{0}\rangle\\
+&=\frac{\ii}{\sqrt{2E_{\bk}}}\langle\psi_{0},c_{\bq}(c_{\bk}-c^{\dagger}_{-\bk})c^{\dagger}_{\bq}\psi_{0}\rangle=0 .
+\end{align*}
+这必然为零，因为任何\emph{奇数}个产生、湮灭算符都无法把基态带回基态。
+此外，这个期望值为零也不足为奇，因为它有点像问简谐振子中粒子的平均位置，自然应是 $x=0$。
+但位置的\emph{平方}应有非零平均值；对本复值场振幅而言，
+即 $\phi^{\dagger}_{\bk}\phi_{\bk}$（也可写作 $\phi_{-\bk}\phi_{\bk}$）的期望值应非零。
+
+先对基态计算。注意 $\phi_{\bk}$ 与 $\phi^{\dagger}_{\bk}$ 对易，故书写次序无关：
+\begin{align*}
+\langle\psi_{0},\phi_{-\bk}\phi_{\bk}\psi_{0}\rangle
+&=\Bigl\langle\psi_{0},
+\Bigl(\tfrac{\ii(c_{-\bk}-c^{\dagger}_{\bk})}{\sqrt{2E_{\bk}}}\Bigr)
+\Bigl(\tfrac{\ii(c_{\bk}-c^{\dagger}_{-\bk})}{\sqrt{2E_{\bk}}}\Bigr)\psi_{0}\Bigr\rangle\\
+&=-\frac{1}{2E_{\bk}}\langle\psi_{0},(c_{-\bk}-c^{\dagger}_{\bk})(c_{\bk}-c^{\dagger}_{-\bk})\psi_{0}\rangle
+=\frac{1}{2E_{\bk}} .
+\end{align*}
+再对态 $\psi_{\bq}$ 计算：
+\begin{align*}
+\langle\psi_{\bq},\phi_{-\bk}\phi_{\bk}\psi_{\bq}\rangle
+&=\langle\psi_{0},c_{\bq}\phi_{-\bk}\phi_{\bk}c^{\dagger}_{\bq}\psi_{0}\rangle\\
+&=-\frac{1}{2E_{\bk}}\langle\psi_{0},
+c_{\bq}(c_{-\bk}-c^{\dagger}_{\bk})(c_{\bk}-c^{\dagger}_{-\bk})c^{\dagger}_{\bq}\psi_{0}\rangle
+=\frac{1+\delta_{\bq,\bk}+\delta_{\bq,-\bk}}{2E_{\bk}} .
+\end{align*}
+与模式相联系的动量平方，其期望值与上述只差因子 $E_{\bk}^{2}$：
+\begin{equation*}
+\langle\psi_{0},\Pi_{-\bk}\Pi_{\bk}\psi_{0}\rangle=\frac{E_{\bk}}{2},\qquad
+\langle\psi_{\bq},\Pi_{-\bk}\Pi_{\bk}\psi_{\bq}\rangle
+=\frac{E_{\bk}}{2}\bigl(1+\delta_{\bq,\bk}+\delta_{\bq,-\bk}\bigr).
+\end{equation*}
+这里我们看到，这些平方振幅与平方动量可观测量对基态能量敏感：
+即使场在该可观测量所调谐的模式中\emph{没有}量子，它们的期望值也非零。
+而诸如 $\psi_{\bq}$ 这样的能量本征态高度非经典：能量被锐确定，代价是该模式的相位完全不确定。
+
+虽不展开细节，但值得简述半经典态（semi-classical state）如何构造。
+对简谐振子，可取基态波函数——一个高斯波包——并把它中心任意偏离能量谷中心。
+平移后的波包含无穷多个能量本征函数的成分，但随其随时间演化，波包只是在谷中来回运动而不改变形状，
+极像经典粒子。我们对复标量场的某一模式也可做类似的事；若改用实部与虚部，便易于模仿谐振子的构造。
+通过在实部与虚部设置相位相差 $90^{\circ}$ 振荡的高斯波包，结果是一个在复平面中旋转的复模式振幅：
+一个以恒定距离绕原点旋转的二维高斯。振幅平方足够大时，该态将酷似相位良好的经典波。
+
+\subsubsection{定域态与可观测量（Localised States and Observables）}
+
+在洛伦兹量子场论中，本学科的常规发展包括把场 $\phi$、其厄米共轭及其共轭动量写成空间坐标的算符值函数，
+使用原始的空间模式与量子化后的模式系数算符。黎曼情形同样可行，但结果须谨慎对待——
+因为这样定义的 $\phi(\bx)$ 会涉及对 $K_{3}$ 的求和，从而依赖于观测者对 $t$ 坐标的选取。
+洛伦兹对应物是正质量双曲面（满足 $\bk\cdot\bk=-m^{2}$ 且 $k^{t}>0$ 的类时矢量集合）上一切传播矢量的积分，
+它只与时间坐标整体\emph{符号}的选取有关，且在相对运动的观测者之间变换合理。
+而黎曼场 $\phi(\bx)$ 却被锁定于特定的时间\emph{轴}，因为即使时间轴只有微小差异的观测者，
+也会对何为粒子、何为反粒子意见不一。
+
+黎曼情形还有一个麻烦，甚至在经典版本中也可见。理想情况下，我们希望空间各点的场与模式系数之间的变量变换
+是正则变换（canonical transformation）。哈密顿力学中，泊松括号（Poisson bracket）定义为作用于函数对的微分算符：
+\begin{equation*}
+\{f,g\}_{\text{PB}}=(\partial_{q_{j}}f)(\partial_{p_{j}}g)-(\partial_{p_{j}}f)(\partial_{q_{j}}g),
+\end{equation*}
+其中对重复指标 $j$ 求和。坐标 $q_{i}$ 与动量 $p_{i}$ 满足泊松括号
+\begin{equation*}
+\{q_{i},q_{k}\}_{\text{PB}}=0,\qquad
+\{p_{i},p_{k}\}_{\text{PB}}=0,\qquad
+\{q_{i},p_{k}\}_{\text{PB}}=\delta_{ik}.
+\end{equation*}
+对场值这类连续自由度，离散指标被空间坐标取代、求和被积分取代、克罗内克 $\delta$ 被狄拉克 $\delta$ 函数取代。
+在变量间的正则变换中，\emph{新}坐标与动量在泊松括号用\emph{原}变量定义时也应满足这些关系。
+具体地，若新坐标为 $Q_{i}$、新动量为 $P_{i}$，则应有
+\begin{equation*}
+\{Q_{i},Q_{k}\}_{\text{PB}}=0,\qquad
+\{P_{i},P_{k}\}_{\text{PB}}=0,\qquad
+\{Q_{i},P_{k}\}_{\text{PB}}=\delta_{ik}.
+\end{equation*}
+当一组变量连续、另一组离散时情况稍棘手，但有时仍完美奏效。
+例如，若我们按仅对空间满足周期边界条件的可数无穷傅里叶模式展开，
+配以适当归一化，从空间坐标变为模式系数时上述方程组中出现克罗内克 $\delta$
+（对指标 $j$ 的求和换为对空间坐标的积分），反向变换时则出现狄拉克 $\delta$ 函数。
+
+但在本情形中我们会得到什么？新坐标、动量用旧变量表示为
+\begin{equation*}
+\phi(\bx,t)=\sum_{\bk\in K_{3}}\phi_{\bk}(t)f_{\bk}(\bx),\qquad
+\Pi(\bx,t)=\partial_{t}\phi^{*}(\bx,t)
+=\sum_{\bk\in K_{3}}\Pi_{\bk}(t)f^{*}_{\bk}(\bx),
+\end{equation*}
+于是新旧变量间的偏导数为（为简洁起见此后略去显式的含时性）
+\begin{equation*}
+\partial_{\phi_{\bk}}\phi(\bx)=f_{\bk}(\bx),\qquad
+\partial_{\Pi_{\bk}}\Pi(\bx)=f^{*}_{\bk}(\bx),
+\end{equation*}
+坐标与动量间的泊松括号则为
+\begin{align*}
+\{\phi(\bx),\Pi(\by)\}_{\text{PB}}
+&=\sum_{\bk\in K_{3}}\bigl[(\partial_{\phi_{\bk}}\phi(\bx))(\partial_{\Pi_{\bk}}\Pi(\by))
+-(\partial_{\Pi_{\bk}}\phi(\bx))(\partial_{\phi_{\bk}}\Pi(\by))\bigr]\\
+&=\sum_{\bk\in K_{3}}f_{\bk}(\bx)f^{*}_{\bk}(\by)
+=\frac{1}{V}\sum_{\bk\in K_{3}}\exp\bigl(\ii\,\bk\cdot(\by-\bx)\bigr)\\
+&=\frac{1}{V}\sum_{\bk\in K_{4}^{+}}\exp\bigl(\ii\,\bk\cdot(\by-\bx)\bigr)
+\approx\frac{N_{\text{modes}}}{2\pi^{2}V}\int_{\bu\in S^{3+}}\exp\bigl(\ii m\,\bu\cdot(\by-\bx)\bigr),
+\end{align*}
+其中倒数第二行用了 $\bx$、$\by$ 纯属空间向量，故与 $K_{3}$ 中某 $\bk$ 或投影到它的 $K_{4}^{+}$ 中 $\bk$
+作点积并无差别；最后一行把对 $K_{4}^{+}$ 中矢量的求和近似为对 $\mathbb{R}^{4}$ 中单位三维球面正半部分的积分。
+我们可以利用该积分对三空间旋转的不变性，选取坐标使 $\by-\bx=|\bx-\by|\be_{z}$。
+在 $S^{3+}$ 上的极坐标 $(\gamma,\theta,\phi)$ 中（$0\le\gamma\le\pi/2$ 等），有
+\begin{equation*}
+\bu=\bigl(\cos\gamma,\ \sin\gamma\sin\theta\cos\phi,\ \sin\gamma\sin\theta\sin\phi,\ \sin\gamma\cos\theta\bigr),
+\end{equation*}
+故所需点积为
+\begin{equation*}
+\bu\cdot(|\bx-\by|\be_{z})=|\bx-\by|\sin\gamma\cos\theta .
+\end{equation*}
+由于被积函数与方位角坐标 $\phi$（注意勿与场振幅混淆）无关，可立即把它积掉，余下
+\begin{align*}
+\{\phi(\bx),\Pi(\by)\}_{\text{PB}}
+&\approx\frac{N_{\text{modes}}}{\pi V}
+\int_{\theta=0}^{\pi}\int_{\gamma=0}^{\pi/2}
+\exp\bigl(\ii m|\bx-\by|\sin\gamma\cos\theta\bigr)\sin^{2}\gamma\sin\theta\,\dd\gamma\,\dd\theta\\
+&=\frac{2N_{\text{modes}}}{\pi V}\frac{1}{m|\bx-\by|}
+\int_{\gamma=0}^{\pi/2}\sin\bigl(m|\bx-\by|\sin\gamma\bigr)\sin\gamma\,\dd\gamma\\
+&=\frac{N_{\text{modes}}}{V}\frac{J_{1}(m|\bx-\by|)}{m|\bx-\by|},
+\end{align*}
+这里 $J_{1}$ 是第一类贝塞尔函数（Bessel function）。$J_{1}$ 大致呈周期振荡，在原点为零；
+但除以自变量后得到的函数在原点取峰、随后在振荡中衰减。其第一个零点出现在 $m|\bx-\by|\approx 4$；
+回忆 $m=\omega_{m}$，可见峰的宽度与 RSW 方程相关的最小波长为同一量级。
+然而尽管该函数有峰，它显然不是狄拉克 $\delta$ 函数，因此我们\emph{不}拥有变量的正则变换。
+
+问题在于：我们可用的模式无法组合成完全定域的场。这与量子力学无关，也不是因为模式集合有限；
+即便假装拥有一个传播矢量铺满三维球面半边的连续模式集合，这些模式仍有最小波长，
+故不能指望由它们构造出任意的窄峰函数。
+
+因此，与其试图处理空间中每一点的场值，不如为模式函数 $f_{\bk}(\bx)$ 张成的空间寻找一个新基，
+由在该空间内尽可能定域的新函数组成。定义一族函数 $g_{\bchi}(\bx)$：
+\begin{equation*}
+g_{\bchi}(\bx)=\sum_{\bk\in K_{3}}\sqrt{\frac{E_{\bk}}{E_{0}}}\,f_{\bk}(\bx-\bchi)
+=\sum_{\bk\in K_{3}}\sqrt{\frac{E_{\bk}}{E_{0}}}\,\exp(\ii\,\bk\cdot\bchi)f_{\bk}(\bx),
+\end{equation*}
+其中 $\bchi$ 暂时是任意三矢量。任何 $g_{\bchi}$ 都是模式函数 $f_{\bk}$ 的线性组合，
+故与狄拉克 $\delta$ 函数不同，它落在我们真能构造的函数子空间内。可用积分近似 $g_{\bzero}$：
+\begin{align*}
+g_{\bzero}(\bx)&=\sum_{\bk\in K_{3}}\sqrt{\frac{E_{\bk}}{E_{0}}}f_{\bk}(\bx)
+\approx\frac{N_{\text{modes}}}{2\pi^{2}\sqrt{VE_{0}}}\int_{\bu\in S^{3+}}\exp(-\ii m\,\bu\cdot\bx)\sqrt{m\,u^{t}}\\
+&=\sqrt{\frac{3N_{\text{modes}}}{2\pi V}}\int_{\theta=0}^{\pi}\int_{\gamma=0}^{\pi/2}
+\exp\bigl(-\ii m|\bx|\sin\gamma\cos\theta\bigr)\sin^{2}\gamma\sqrt{\cos\gamma}\sin\theta\,\dd\gamma\,\dd\theta\\
+&=\sqrt{\frac{6N_{\text{modes}}}{\pi V}}\frac{1}{m|\bx|}
+\int_{\gamma=0}^{\pi/2}\sin\bigl(m|\bx|\sin\gamma\bigr)\sin\gamma\sqrt{\cos\gamma}\,\dd\gamma\\
+&=\sqrt{\frac{3N_{\text{modes}}}{V}}\Bigl[\frac{\Gamma(3/4)}{2^{1/4}}\Bigr]
+\frac{J_{5/4}(m|\bx|)}{(m|\bx|)^{5/4}} .
+\end{align*}
+
+\orthofig{images/07__010.png}{空间定域的波（Spatially localised wave）}
+
+该贝塞尔函数除以其自变量的幂次，形状与我们为泊松括号所求的函数非常相似，
+峰的宽度与最小波长同量级。因此它是一个相当定域的函数，
+我们不应指望用任何模式线性组合做得更好。
+
+至于 $g_{\bchi}(\bx)=g_{\bzero}(\bx-\bchi)$ 只是把这个峰从原点平移到另一位置，
+故所有此类函数在空间中同样定域。现假定可选取 $\tfrac12 N_{\text{modes}}$ 个不同的点 $\bchi$，
+使所有这些 $g_{\bchi}$ 互相正交；我们把这一组点的选取记为 $\Chi$。
+若把这些函数归一化，它们便构成 $f_{\bk}$ 张成函数空间的另一个正交基。
+
+若该假定不成立又如何？我们确实知道，若选取\emph{任何} $\tfrac12 N_{\text{modes}}$ 个互异的点 $\bchi$，
+$g_{\bchi}$ 仍给出函数空间的一个基。随后可用 Gram-Schmidt 正交化过程把它化为正交基。
+所得函数不再全部取 $g_{\bchi}(\bx)$ 的形式，但若把点均匀散布于空间，结果仍应是一组与 $g_{\bchi}$
+定性上非常相似的定域函数。
+
+由于 $f_{\bk}$ 确实正交，$g_{\bchi}$ 的正交性假定等价于
+\begin{equation*}
+\langle g_{\bchi_{1}},g_{\bchi_{2}}\rangle
+=\sum_{\bk\in K_{3}}\frac{E_{\bk}}{E_{0}}\exp\bigl(\ii\,\bk\cdot(\bchi_{2}-\bchi_{1})\bigr)
+=\delta_{\bchi_{1},\bchi_{2}}\Bigl[\sum_{\bk\in K_{3}}\frac{E_{\bk}}{E_{0}}\Bigr]
+=\delta_{\bchi_{1},\bchi_{2}} .
+\end{equation*}
+我们以 $\phi_{\bchi}$ 表示场中 $g_{\bchi}(\bx)$ 的系数，替代任意点处的场 $\phi(\bx)$：
+\begin{equation*}
+\sum_{\bk\in K_{3}}\phi_{\bk}f_{\bk}(\bx)=\sum_{\bchi\in\Chi}\phi_{\bchi}g_{\bchi}(\bx).
+\end{equation*}
+利用 $g_{\bchi}$ 的正交归一性，用相应 $g_{\bchi}$ 取内积便可提取一个系数：
+\begin{equation*}
+\phi_{\bchi}=\sum_{\bk\in K_{3}}\sqrt{\frac{E_{\bk}}{E_{0}}}\exp(-\ii\,\bk\cdot\bchi)\phi_{\bk},
+\end{equation*}
+逆公式为
+\begin{equation*}
+\phi_{\bk}=\sum_{\bchi\in\Chi}\sqrt{\frac{E_{\bk}}{E_{0}}}\exp(\ii\,\bk\cdot\bchi)\phi_{\bchi}.
+\end{equation*}
+由这些公式与正交性假定不难证明，经典变量从模式系数 $\phi_{\bk}$ 到空间系数 $\phi_{\bchi}$ 的变换是正则变换：
+\begin{equation*}
+\{\phi_{\bchi_{1}},\Pi_{\bchi_{2}}\}_{\text{PB}}=\delta_{\bchi_{1},\bchi_{2}} .
+\end{equation*}
+现在，只需使用 $\phi_{\bk}$ 的算符形式，便可写出这些新变量对应的算符。
+
+\begin{keybox}[量子化后的黎曼标量场（薛定谔绘景）]
+$\bchi$ 是取自集合 $\Chi$ 的空间三矢量。算符不随时间变化，作用于含时态矢量。
+\begin{align*}
+\phi_{\bchi}&=\sum_{\bk\in K_{3}}\sqrt{\frac{E_{\bk}}{E_{0}}}\exp(-\ii\,\bk\cdot\bchi)\phi_{\bk}
+=\frac{\ii}{\sqrt{2E_{0}}}\sum_{\bk\in K_{4}^{+}}\bigl(c_{\bk}-c^{\dagger}_{-\bk}\bigr)
+\exp(-\ii\,\bk\cdot\bchi),\\
+\phi^{\dagger}_{\bchi}&=\sum_{\bk\in K_{3}}\sqrt{\frac{E_{\bk}}{E_{0}}}\exp(\ii\,\bk\cdot\bchi)\phi^{\dagger}_{\bk}
+=\frac{\ii}{\sqrt{2E_{0}}}\sum_{\bk\in K_{4}^{-}}\bigl(c_{\bk}-c^{\dagger}_{-\bk}\bigr)
+\exp(-\ii\,\bk\cdot\bchi);
+\end{align*}
+平面波模式系数的逆公式与正交性假定：
+\begin{equation*}
+\phi_{\bk}=\sum_{\bchi\in\Chi}\sqrt{\frac{E_{\bk}}{E_{0}}}\exp(\ii\,\bk\cdot\bchi)\phi_{\bchi},
+\qquad
+\sum_{\bk\in K_{3}}E_{\bk}\exp\bigl(\ii\,\bk\cdot(\bchi_{2}-\bchi_{1})\bigr)
+=\delta_{\bchi_{1},\bchi_{2}}E_{0}.
+\end{equation*}
+\end{keybox}
+
+在写出以 $K_{4}^{+}$ 与 $K_{4}^{-}$ 中四矢量为指标的求和时，我们利用了纯空间矢量 $\bchi$
+与这些四矢量的点积，等于与其在 $K_{3}$ 中投影的点积这一事实；
+而在写出厄米共轭 $\phi^{\dagger}_{\bchi}$ 的第二种形式时，我们把指标矢量从 $K_{4}^{+}$ 中的 $\bk$
+换成其在 $K_{4}^{-}$ 中的相反矢量。
+
+你会注意到，模式系数算符中出现的因子 $1/\sqrt{E_{\bk}}$ 在这些空间定域算符中被抵消了。
+把因子 $\sqrt{E_{\bk}}$ 插入函数 $g_{\bchi}$ 的定义，正是为了实现这一抵消！
+洛伦兹理论中的相应公式是对一切空间三矢量的积分，它们需要因子 $1/\sqrt{E_{\bk}}$
+以确保某些乘积为洛伦兹不变量——因子 $1/E_{\bk}$ 恰好能把对空间矢量的积分变成对质量双曲面的洛伦兹不变积分。
+但我们的求和是对\emph{已经}均匀分布于三维球面半边的四矢量进行的，
+故不希望留下任何依赖参考系的能量函数，以免使表述 $SO(4)$ 不变量的量变得困难。
+
+这组算符场定义于薛定谔绘景，其中某些算符被视为不随时间变化（如我们原初谐振子中的 $x$ 与 $p$），
+而态矢量随时间变化。但在量子场论中更常用海森堡绘景，其中态矢量被视为固定不变，一切算符都成为时间的函数。
+
+为切换到海森堡绘景，若态 $\psi$ 须固定为 $\psi(0)$，则算符须随时间按
+\begin{equation*}
+A(t)=\exp(\ii Ht)A(0)\exp(-\ii Ht)
+\end{equation*}
+变化。现考虑湮灭算符 $a_{\bk}$ 与我们的哈密顿量 $H_{\text{RSW}}$ 的具体情形。
+除 $E_{\bk}a^{\dagger}_{\bk}a_{\bk}$ 一项外，算符 $a_{\bk}$ 与 $H_{\text{RSW}}$ 中其它一切对易，故
+\begin{equation*}
+[a_{\bk},H_{\text{RSW}}]=[a_{\bk},E_{\bk}a^{\dagger}_{\bk}a_{\bk}]
+=E_{\bk}[a_{\bk},a^{\dagger}_{\bk}]a_{\bk}
+\;\Longrightarrow\;
+a_{\bk}H_{\text{RSW}}-H_{\text{RSW}}a_{\bk}=E_{\bk}a_{\bk},
+\end{equation*}
+从而
+\begin{equation*}
+H_{\text{RSW}}a_{\bk}=a_{\bk}\bigl(H_{\text{RSW}}-E_{\bk}\bigr),
+\qquad
+H_{\text{RSW}}^{n}a_{\bk}=a_{\bk}\bigl(H_{\text{RSW}}-E_{\bk}\bigr)^{n}.
+\end{equation*}
+把哈密顿量的指数视为幂级数，即知
+\begin{equation*}
+\exp(\ii H_{\text{RSW}}t)a_{\bk}=a_{\bk}\exp\bigl(\ii(H_{\text{RSW}}-E_{\bk})t\bigr),
+\qquad
+\exp(\ii H_{\text{RSW}}t)a_{\bk}\exp(-\ii H_{\text{RSW}}t)=a_{\bk}\exp(-\ii E_{\bk}t).
+\end{equation*}
+对上式两端取厄米共轭，得到相应产生算符的变换性质：
+\begin{equation*}
+\exp(\ii H_{\text{RSW}}t)a^{\dagger}_{\bk}\exp(-\ii H_{\text{RSW}}t)=a^{\dagger}_{\bk}\exp(\ii E_{\bk}t).
+\end{equation*}
+显然 $b_{\bk}$ 与 $b^{\dagger}_{\bk}$ 以同样方式变换。我们全部 $c$ 算符不过是 $a$ 或 $b$ 的更名；
+只要明确 $E_{\bk}$ 是与 $K_{4}$ 中四矢量 $\bk$ 相联系时间分量的\emph{绝对值}，
+同样的规则也适用于 $c_{\bk}$ 与 $c^{\dagger}_{\bk}$。利用这些变换规则，
+便可把场算符及相应的动量写成海森堡绘景中空间与时间两者的函数。
+
+\begin{keybox}[量子化后的黎曼标量场（海森堡绘景）]
+$\bchi$ 是取自集合 $\Chi$ 的空间三矢量。算符含时，作用于不变的态矢量。
+\begin{align*}
+\phi_{\bchi}(t)&=\frac{\ii}{\sqrt{2E_{0}}}\sum_{\bk\in K_{4}^{+}}
+\bigl(c_{\bk}\exp(-\ii E_{\bk}t)-c^{\dagger}_{-\bk}\exp(\ii E_{\bk}t)\bigr)\exp(-\ii\,\bk\cdot\bchi),\\
+\phi^{\dagger}_{\bchi}(t)&=\frac{\ii}{\sqrt{2E_{0}}}\sum_{\bk\in K_{4}^{-}}
+\bigl(c_{\bk}\exp(-\ii E_{\bk}t)-c^{\dagger}_{-\bk}\exp(\ii E_{\bk}t)\bigr)\exp(-\ii\,\bk\cdot\bchi),\\
+\Pi_{\bchi}(t)&=\partial_{t}\phi^{\dagger}_{\bchi}(t)
+=\frac{1}{\sqrt{2E_{0}}}\sum_{\bk\in K_{4}^{-}}E_{\bk}
+\bigl(c_{\bk}\exp(-\ii E_{\bk}t)+c^{\dagger}_{-\bk}\exp(\ii E_{\bk}t)\bigr)\exp(-\ii\,\bk\cdot\bchi)\\
+&=\frac{1}{\sqrt{2E_{0}}}\sum_{\bk\in K_{4}^{+}}E_{\bk}
+\bigl(c_{-\bk}\exp(-\ii E_{\bk}t)+c^{\dagger}_{\bk}\exp(\ii E_{\bk}t)\bigr)\exp(\ii\,\bk\cdot\bchi),\\
+\Pi^{\dagger}_{\bchi}(t)&=\partial_{t}\phi_{\bchi}(t)
+=\frac{1}{\sqrt{2E_{0}}}\sum_{\bk\in K_{4}^{+}}E_{\bk}
+\bigl(c_{\bk}\exp(-\ii E_{\bk}t)+c^{\dagger}_{-\bk}\exp(\ii E_{\bk}t)\bigr)\exp(-\ii\,\bk\cdot\bchi)\\
+&=\frac{1}{\sqrt{2E_{0}}}\sum_{\bk\in K_{4}^{-}}E_{\bk}
+\bigl(c_{-\bk}\exp(-\ii E_{\bk}t)+c^{\dagger}_{\bk}\exp(\ii E_{\bk}t)\bigr)\exp(\ii\,\bk\cdot\bchi).
+\end{align*}
+\end{keybox}
+
+我们来看 $\phi_{\bchi}(t)$ 这类算符的一些期望值。由于它们是模式振幅的线性组合，
+它们会有与模式振幅相同的某些性质：每个算符自身在 $\psi_{0}$、$\psi_{\bq}$ 这类态上的期望值为零。
+故再次考察平方振幅，它由 $\phi^{\dagger}_{\bchi}(t)\phi_{\bchi}(t)$ 给出：
+\begin{equation*}
+\langle\psi_{0},\phi^{\dagger}_{\bchi}(t)\phi_{\bchi}(t)\psi_{0}\rangle
+=\frac{N_{\text{modes}}}{4E_{0}}\approx\frac{3\pi}{8m} .
+\end{equation*}
+故与模式振幅一样，这些空间系数算符对基态能量敏感。对在模式 $\bq$ 中含一个量子的态，有
+\begin{equation*}
+\langle\psi_{\bq},\phi^{\dagger}_{\bchi}(t)\phi_{\bchi}(t)\psi_{\bq}\rangle
+=\frac{N_{\text{modes}}+2}{4E_{0}}\approx\frac{3\pi(1+2/N_{\text{modes}})}{8m}.
+\end{equation*}
+可见空间系数完全分辨不出存在的是\emph{哪一个}单量子平面波模式，几乎无法把这些态与基态区分开。
+
+这并不太令人意外；我们期望这些空间算符能分辨的，是空间定域态之间的差别。
+我们可以模仿由平面波模式 $f_{\bk}$ 构造空间定域模式 $g_{\bchi}$ 的方式，
+构造一组正交归一的空间定域态，定义 $\psi_{\bchi}$ 为
+\begin{equation*}
+\psi_{\bchi}\overset{?}{=}\sum_{\bk\in K_{3}}\sqrt{\frac{E_{\bk}}{E_{0}}}\exp(\ii\,\bk\cdot\bchi)\psi_{\bk}.
+\end{equation*}
+然而这些态给不出平方空间系数算符的简单期望值，也不易由此构造 $SO(4)$ 不变量。
+但事实证明，把空间系数算符本身作用于基态，可以得到一些有用的定域态：
+\begin{align*}
+\psi^{(+)}_{\bchi,t}&=2\sqrt{\frac{E_{0}}{N_{\text{modes}}}}\,\phi^{\dagger}_{\bchi}(t)\psi_{0}
+=-\ii\sqrt{\frac{2}{N_{\text{modes}}}}\sum_{\bk\in K_{4}^{+}}
+\exp\bigl(\ii(E_{\bk}t+\bk\cdot\bchi)\bigr)\psi_{\bk},\\
+\psi^{(-)}_{\bchi,t}&=2\sqrt{\frac{E_{0}}{N_{\text{modes}}}}\,\phi_{\bchi}(t)\psi_{0}
+=-\ii\sqrt{\frac{2}{N_{\text{modes}}}}\sum_{\bk\in K_{4}^{-}}
+\exp\bigl(\ii(E_{\bk}t+\bk\cdot\bchi)\bigr)\psi_{\bk}.
+\end{align*}
+其意图是该态在特定时刻 $t$ 定域于三矢量 $\bchi$ 附近，在其他时刻预期会空间弥散开来；
+上标 $(\pm)$ 标记粒子或反粒子。
+
+我们来计算粒子态之间的内积：
+\begin{align*}
+\langle\psi^{(+)}_{\bchi_{1},t_{1}},\psi^{(+)}_{\bchi_{2},t_{2}}\rangle
+&=\frac{4E_{0}}{N_{\text{modes}}}\langle\psi_{0},
+\phi_{\bchi_{1}}(t_{1})\phi^{\dagger}_{\bchi_{2}}(t_{2})\psi_{0}\rangle\\
+&=\frac{2}{N_{\text{modes}}}\sum_{\bk\in K_{4}^{+}}
+\exp\bigl(\ii\bigl(E_{\bk}(t_{2}-t_{1})+\bk\cdot(\bchi_{2}-\bchi_{1})\bigr)\bigr)
+=\frac{2}{N_{\text{modes}}}\sum_{\bk\in K_{4}^{+}}\exp(\ii\,\bk\cdot\bdelta),
+\end{align*}
+其中定义了四矢量
+\begin{equation*}
+\bdelta=(t_{2}-t_{1},\ \bchi_{2}-\bchi_{1}).
+\end{equation*}
+不同 $\bchi$ 或 $t$ 的态并不正交，但内积在位置与时间都相同时取峰，
+并随空间间隔增大而呈 $J_{1}(m|\bchi_{2}-\bchi_{1}|)/(m|\bchi_{2}-\bchi_{1}|)$ 的衰减。
+
+反粒子态之间则给出
+\begin{align*}
+\langle\psi^{(-)}_{\bchi_{1},t_{1}},\psi^{(-)}_{\bchi_{2},t_{2}}\rangle
+&=\frac{4E_{0}}{N_{\text{modes}}}\langle\psi_{0},
+\phi^{\dagger}_{\bchi_{1}}(t_{1})\phi_{\bchi_{2}}(t_{2})\psi_{0}\rangle\\
+&=\frac{2}{N_{\text{modes}}}\sum_{\bk\in K_{4}^{-}}
+\exp\bigl(\ii\bigl(E_{\bk}(t_{2}-t_{1})+\bk\cdot(\bchi_{2}-\bchi_{1})\bigr)\bigr)\\
+&=\frac{2}{N_{\text{modes}}}\sum_{\bk\in K_{4}^{-}}
+\exp\bigl(\ii\bigl((-k^{t})(t_{2}-t_{1})-\bk_{(3)}\cdot(\bchi_{2}-\bchi_{1})\bigr)\bigr)\\
+&=\frac{2}{N_{\text{modes}}}\sum_{\bk\in K_{4}^{-}}\exp(-\ii\,\bk\cdot\bdelta),
+\end{align*}
+其中从倒数第三行到倒数第二行，用到了对 $K_{4}^{-}$ 中每个四矢量，
+取相反空间部分、相同时间分量的矢量仍在 $K_{4}^{-}$ 中这一事实。该结果与粒子态间内积完全相同。
+
+全部粒子态与反粒子态彼此正交：
+\begin{equation*}
+\langle\psi^{(+)}_{\bchi_{2},t_{2}},\psi^{(-)}_{\bchi_{1},t_{1}}\rangle=0 .
+\end{equation*}
+
+\subsubsection{标量场的传播子（Propagator for a Scalar Field）}
+
+量子场论中最重要的事情之一是场的传播子（propagator），
+它给出“已知粒子在 $t_{1}$ 时刻确定位于 $\bx_{1}$，则在 $t_{2}$ 时刻位于 $\bx_{2}$”的振幅。
+洛伦兹 QFT 中，这以清楚区分粒子与反粒子的方式完成，并可表述为遵从通常时间之箭的形式。
+例如，事件 $(t_{1},\bx_{1})$ 与 $(t_{2},\bx_{2})$ 的\emph{费曼传播子}（Feynman propagator）
+定义如下：若 $t_{2}>t_{1}$，它是粒子从 $(t_{1},\bx_{1})$ 到 $(t_{2},\bx_{2})$ 的振幅；
+若 $t_{2}<t_{1}$，则是反粒子沿相反方向传播的振幅。黎曼情形中并无时间之箭的类似概念，
+故我们简单地把传播子取为两种可能性的对称组合：
+\begin{align*}
+&\tfrac12\Bigl(\langle\psi^{(+)}_{\bchi_{1},t_{1}},\psi^{(+)}_{\bchi_{2},t_{2}}\rangle
++\langle\psi^{(-)}_{\bchi_{2},t_{2}},\psi^{(-)}_{\bchi_{1},t_{1}}\rangle\Bigr)\\
+&=\frac{2E_{0}}{N_{\text{modes}}}\Bigl\langle\psi_{0},
+\bigl(\phi_{\bchi_{1}}(t_{1})\phi^{\dagger}_{\bchi_{2}}(t_{2})
++\phi^{\dagger}_{\bchi_{2}}(t_{2})\phi_{\bchi_{1}}(t_{1})\bigr)\psi_{0}\Bigr\rangle\\
+&=\frac{1}{N_{\text{modes}}}\sum_{\bk\in K_{4}}\exp(\ii\,\bk\cdot\bdelta)
+\approx\frac{2J_{1}(m|\bdelta|)}{m|\bdelta|},\qquad
+\bdelta=(t_{2}-t_{1},\ \bchi_{2}-\bchi_{1}).
+\end{align*}
+
+\orthofig{images/07__011.png}{$SO(4)$-不变的传播子（SO(4)-invariant propagator）}
+
+显然它是 $SO(4)$ 不变的：它只是四矢量 $\bdelta$ 长度的函数，而这一量所有观测者都会认同。
+若把 $\bchi_{1}$ 与 $t_{1}$ 视为固定、把 $\bchi_{2}$ 与 $t_{2}$ 当作坐标，
+则它是绕 $(t_{1},\bchi_{1})$ 具有四维旋转对称性的无源 RSW 方程的解。
+
+当然，贝塞尔函数近似仅是近似。它有 $SO(4)$ 不变性与易计算的优势，但不满足 $T^{4}$ 边界条件，
+故若沿不同方向绕环面走一圈会得到不同的值。实践中，取任意两个事件间最短的四维距离会给出恰当的答案。
+
+若我们在传播子中交换“粒子”与“反粒子”的定义，这相当于交换两个内积中两项的次序，
+从而取整个表达式的复共轭。但由于最终值是实数，这样做没有差别。基于同样的理由，
+交换两个事件上的标签也没有差别。
+
+\orthofig{images/07__012.png}{传播子的物理解释（Propagator interpreted）}
+
+左图说明了传播子所测量的是什么。两个事件由传播矢量指向一切可能方向的平面波相连，
+把这些波分为粒子态与反粒子态并无不变的意义。
+
+然而，\emph{对给定观测者}而言，我们可以把传播矢量指向时间背向的波描述为沿时间正向行进的反粒子，
+把传播矢量指向时间正向的波描述为同样沿时间正向行进的粒子。
+
+关键在于我们始终把两种可能性都计入。若照搬洛伦兹对费曼传播子的处方，
+因某观测者把事件 1 判为早于事件 2 而不计入反粒子态，
+那么即便另一个认同该顺序的观测者，也会选出不同的半三维球面上的粒子态（图中红箭头所示），
+从而得到一个不同的振幅。
+
+\subsection{自由黎曼狄拉克场的正则量子化（Canonical Quantisation of a Free Riemannian Dirac Field）}
+
+假设我们把为量子化复标量场所作的初步构造重做一遍，只是用黎曼狄拉克方程取代黎曼标量波方程。
+在此前讨论狄拉克方程时，我们把它当作描述量子波函数的方程；但眼下我们先假装在研究一个“经典”狄拉克场，
+其中场由四个复分量组成并满足狄拉克方程，却与量子力学无关。
+满足该方程的场构成欧几里得群的一个表示；我们实际上正是按群表示的观点\emph{推导}出狄拉克方程的。
+故起初我们只是为这个新表示模仿先前对标量表示所做的一切。
+
+为记号简洁，我们再次把场的最大角频率（很快会成为粒子质量）记作 $m$，
+并把与该质量及 $T^{4}$ 宇宙尺寸相兼容的全部可能传播四矢量集合记作 $K_{4}$，
+把 $K_{4}$ 中矢量投影到三维所得集合记作 $K_{3}$，
+把与 $K_{3}$ 中任一 $\bk$ 相联系的唯一正能量记作 $E_{\bk}$：
+\begin{equation*}
+E_{\bk}=\sqrt{m^{2}-|\bk|^{2}} .
+\end{equation*}
+若我们要描述不止一种场的情形，就需区分各场对应的所有这些量的不同版本，
+因为它们在各种情形下当然没有理由相同。
+
+为把狄拉克场 $\psi$ 作傅里叶模式展开，我们将使用下列狄拉克方程的解，
+它们是此前讨论过的平面波解的推广：
+
+\begin{keybox}[黎曼狄拉克方程在 Weyl 基中的平面波解]
+$\bk\in K_{3}$，$\{\xi_{s}\}$ 是 $\mathbb{C}^{2}$ 的一组正交归一基，
+$H_{\mu}$ 是作为矩阵的单位四元数，$\sum k^{j}H_{j}$ 对空间指标 $x,y,z$ 求和。
+
+正频解：
+\begin{align*}
+\psi_{+,\bk,s}(\bx,t)&=u(\bk,s)\exp\bigl(-\ii(\bk\cdot\bx+E_{\bk}t)\bigr)
+&&\text{(Plane wave)}\\
+u(\bk,s)&=\frac{\bigl([(m+E_{\bk})H_{t}+k^{j}H_{j}]\xi_{s},\
+[(m+E_{\bk})H_{t}-k^{j}H_{j}]\xi_{s}\bigr)}{2\sqrt{m(m+E_{\bk})}},\\
+u(\bk,s_{1})^{\dagger}u(\bk,s_{2})&=\delta_{s_{1},s_{2}},\qquad
+u(\bk,s_{1})^{\dagger}\gamma^{t}u(\bk,s_{2})=\delta_{s_{1},s_{2}}\frac{E_{\bk}}{m}.
+\end{align*}
+负频解：
+\begin{align*}
+\psi_{-,\bk,s}(\bx,t)&=v(\bk,s)\exp\bigl(+\ii(\bk\cdot\bx+E_{\bk}t)\bigr)
+&&\text{(Plane wave)}\\
+v(\bk,s)&=\frac{\bigl([(m+E_{\bk})H_{t}+k^{j}H_{j}]\xi_{s},\
+-[(m+E_{\bk})H_{t}-k^{j}H_{j}]\xi_{s}\bigr)}{2\sqrt{m(m+E_{\bk})}},\\
+v(\bk,s_{1})^{\dagger}v(\bk,s_{2})&=\delta_{s_{1},s_{2}},\qquad
+v(\bk,s_{1})^{\dagger}\gamma^{t}v(\bk,s_{2})=-\delta_{s_{1},s_{2}}\frac{E_{\bk}}{m}.
+\end{align*}
+$u$ 与 $v$ 旋量的乘积：
+\begin{align*}
+u(\bk,s_{1})^{\dagger}v(\bk,s_{2})=0,&\qquad
+v(\bk,s_{1})^{\dagger}u(\bk,s_{2})=0,\\
+u(\bk,s_{1})^{\dagger}\gamma^{t}v(-\bk,s_{2})=0,&\qquad
+v(-\bk,s_{1})^{\dagger}\gamma^{t}u(\bk,s_{2})=0 .
+\end{align*}
+\end{keybox}
+
+若你学过这些内容通常的洛伦兹版本，这些正交关系会显得有些奇怪！
+洛伦兹 QFT 中，你需要在任意一对狄拉克旋量之间插入 $\gamma^{t}$ 才能得到洛伦兹不变的内积，此时有
+\begin{equation*}
+u(\bk,s_{1})^{\dagger}\gamma^{t}u(\bk,s_{2})=\delta_{s_{1},s_{2}}\quad\text{[Lorentzian]}.
+\end{equation*}
+但在这里，由于旋转群 $SO(4)$ 在狄拉克旋量上有一个酉表示，
+我们可以简单地在 $u$ 旋量之间或 $v$ 旋量之间取普通内积，它便是 $SO(4)$ 不变的。
+
+在下面给出的场的模式展开中，我们把这两个平面波解 $\psi_{\pm,\bk,s}(\bx,t)$ 的纯空间部分
+提取为两组函数 $f_{\bk,s}(\bx)$ 与 $g_{\bk,s}(\bx)$，
+然后把一般解 $\psi(\bx,t)$ 展开为这些函数乘以含时系数之和。
+为使 $\psi(\bx,t)$ 是狄拉克方程的解，这些含时系数应满足与 $\psi_{\pm,\bk,s}(\bx,t)$
+的含时部分相同的方程，即 $\exp(-\ii(\pm E_{\bk}t))$。
+
+\begin{keybox}[“经典”黎曼狄拉克方程]
+$\sum\gamma^{j}\partial_{j}$ 对空间指标 $x,y,z$ 求和。
+\begin{align*}
+0&=\ii\gamma^{\mu}\partial_{\mu}\psi(\bx,t)-m\psi(\bx,t)
+&&\text{(Equation of Motion)}\\
+L_{\text{RD}}&=\int\psi^{\dagger}(\bx,t)\bigl(\ii\gamma^{\mu}\partial_{\mu}\psi(\bx,t)-m\psi(\bx,t)\bigr)\dd^{3}\bx
+&&\text{(Lagrangian)}\\
+\Pi(\bx,t)&=\ii\psi^{\dagger}(\bx,t)\gamma^{t},\qquad
+\Pi^{\dagger}(\bx,t)=0
+&&\text{(Momenta)}\\
+H_{\text{RD}}&=\int\psi^{\dagger}(\bx,t)\bigl(-\ii\gamma^{j}\partial_{j}\psi(\bx,t)+m\psi(\bx,t)\bigr)\dd^{3}\bx
+&&\text{(Hamiltonian)}
+\end{align*}
+模式展开形式（$\bk\in K_{3}$，$s$ 为自旋 $\pm\tfrac12$）：
+\begin{align*}
+f_{\bk,s}(\bx)&=\sqrt{\tfrac{1}{V}}\,u(\bk,s)\exp(-\ii\,\bk\cdot\bx),\\
+&\qquad g_{\bk,s}(\bx)=\sqrt{\tfrac{1}{V}}\,v(\bk,s)\exp(+\ii\,\bk\cdot\bx)
+&&\text{(Spatial modes)}\\
+\psi(\bx,t)&=\sum_{\bk\in K_{3},\ s=\pm\tfrac12}
+\bigl(A_{\bk,s}(t)f_{\bk,s}(\bx)+B_{\bk,s}(t)g_{\bk,s}(\bx)\bigr)
+&&\text{(Mode Expansion)}\\
+\partial_{t}A_{\bk,s}(t)&=-\ii E_{\bk}A_{\bk,s}(t),\\
+&\qquad\partial_{t}B_{\bk,s}(t)=+\ii E_{\bk}B_{\bk,s}(t)
+&&\text{(Equations of Motion)}\\
+L_{\text{RD}}&=\sum_{\bk\in K_{3},\ s=\pm\tfrac12}\frac{E_{\bk}}{m}
+\Bigl[\ii\bigl(A^{*}_{\bk,s}(t)\partial_{t}A_{\bk,s}(t)-B^{*}_{\bk,s}(t)\partial_{t}B_{\bk,s}(t)\bigr)\\
+&\qquad -E_{\bk}\bigl(A^{*}_{\bk,s}(t)A_{\bk,s}(t)+B^{*}_{\bk,s}(t)B_{\bk,s}(t)\bigr)\Bigr]
+&&\text{(Lagrangian)}\\
+\Pi_{A,\bk,s}(t)&=\ii\frac{E_{\bk}}{m}A^{*}_{\bk,s}(t),\\
+&\qquad\Pi_{B,\bk,s}(t)=-\ii\frac{E_{\bk}}{m}B^{*}_{\bk,s}(t),\\
+\Pi_{A^{*},\bk,s}(t)&=0,\qquad
+\Pi_{B^{*},\bk,s}(t)=0
+&&\text{(Momenta)}\\
+H_{\text{RD}}&=\sum_{\bk\in K_{3},\ s=\pm\tfrac12}\frac{E_{\bk}^{2}}{m}
+\bigl(A^{*}_{\bk,s}(t)A_{\bk,s}(t)+B^{*}_{\bk,s}(t)B_{\bk,s}(t)\bigr)\\
+&=-\ii\sum_{\bk\in K_{3},\ s=\pm\tfrac12}E_{\bk}
+\bigl[\Pi_{A,\bk,s}(t)A_{\bk,s}(t)\\
+&\qquad-\Pi_{B,\bk,s}(t)B_{\bk,s}(t)\bigr]
+&&\text{(Hamiltonian)}
+\end{align*}
+\end{keybox}
+
+用模式系数 $A_{\bk,s}(t)$、$B_{\bk,s}(t)$ 导出拉格朗日量与哈密顿量需要相当多的工作，
+但验证结果并不难：只需检验它们分别经欧拉-拉格朗日方程与哈密顿方程给出所需的运动方程。
+
+要把经典哈密顿量化为场量子态希尔伯特空间上的算符，我们需要修改量子化谐振子与标量场模式时所用的程序。
+在那里我们发现产生、湮灭算符之间的对易子为
+\begin{equation*}
+[a_{\alpha},a^{\dagger}_{\beta}]=\delta_{\alpha,\beta},\qquad
+[a_{\alpha},a_{\beta}]=0,\qquad
+[a^{\dagger}_{\alpha},a^{\dagger}_{\beta}]=0,
+\end{equation*}
+其中 $\alpha$、$\beta$ 标记模式。但由于狄拉克场描述费米子（fermions），
+我们希望把产生算符作用于真空态 $\psi_{0}$ 所得的态对模式指标反对称：
+\begin{equation*}
+a^{\dagger}_{\alpha}a^{\dagger}_{\beta}\psi_{0}=-a^{\dagger}_{\beta}a^{\dagger}_{\alpha}\psi_{0}.
+\end{equation*}
+只要把其中一个对易子换成反对易子（anticommutator）便可实现：
+\begin{equation*}
+\{a^{\dagger}_{\alpha},a^{\dagger}_{\beta}\}
+=a^{\dagger}_{\alpha}a^{\dagger}_{\beta}+a^{\dagger}_{\beta}a^{\dagger}_{\alpha}=0 .
+\end{equation*}
+对上式取厄米共轭，得
+\begin{equation*}
+\{a_{\alpha},a_{\beta}\}=0 .
+\end{equation*}
+沿用 Zee 的做法，我们还可为第三个反对易子给出理由：
+\begin{equation*}
+\{a_{\alpha},a^{\dagger}_{\beta}\}=\delta_{\alpha,\beta},
+\end{equation*}
+其办法是要求数算符 $N=\sum_{\alpha}a^{\dagger}_{\alpha}a_{\alpha}$ 满足
+\begin{equation*}
+N a^{\dagger}_{\beta}=a^{\dagger}_{\beta}N+a^{\dagger}_{\beta}.
+\end{equation*}
+这是一个合理的要求：把它作用于含 $n$ 个量子（其中尚无一个处于模式 $\beta$，
+故 $a^{\dagger}_{\beta}\psi_{n}=\psi_{n+1}$）的态 $\psi_{n}$，便化为
+\begin{equation*}
+N a^{\dagger}_{\beta}\psi_{n}=a^{\dagger}_{\beta}N\psi_{n}+a^{\dagger}_{\beta}\psi_{n}
+\;\Longrightarrow\;
+N\psi_{n+1}=(n+1)\psi_{n+1}.
+\end{equation*}
+给定所提议的反对易子，连同前面“一切产生算符都反交换”的论断，便可导出所需恒等式：
+\begin{align*}
+N a^{\dagger}_{\beta}
+&=\sum_{\alpha}a^{\dagger}_{\alpha}a_{\alpha}a^{\dagger}_{\beta}
+=\sum_{\alpha}a^{\dagger}_{\alpha}\bigl(\delta_{\alpha,\beta}-a^{\dagger}_{\beta}a_{\alpha}\bigr)
+=a^{\dagger}_{\beta}-\sum_{\alpha}a^{\dagger}_{\alpha}a^{\dagger}_{\beta}a_{\alpha}\\
+&=a^{\dagger}_{\beta}+a^{\dagger}_{\beta}\sum_{\alpha}a^{\dagger}_{\alpha}a_{\alpha}
+=a^{\dagger}_{\beta}N+a^{\dagger}_{\beta}.
+\end{align*}
+
+我们已求得的经典哈密顿量
+\begin{equation*}
+H_{\text{RD}}=-\ii\sum_{\bk\in K_{3},\ s=\pm\tfrac12}E_{\bk}
+\bigl[\Pi_{A,\bk,s}(t)A_{\bk,s}(t)-\Pi_{B,\bk,s}(t)B_{\bk,s}(t)\bigr]
+\end{equation*}
+这一形式，若把这些坐标与动量或多或少直接等同于各模式的湮灭、产生算符，便说得通：
+\begin{equation*}
+A_{\bk,s}(t)\to\sqrt{\frac{m}{E_{\bk}}}\,a_{\bk,s},\qquad
+B_{\bk,s}(t)\to\sqrt{\frac{m}{E_{\bk}}}\,b^{\dagger}_{\bk,s},
+\end{equation*}
+\begin{equation*}
+\Pi_{A,\bk,s}=\ii\frac{E_{\bk}}{m}A^{*}_{\bk,s}(t)\to\ii\sqrt{\frac{E_{\bk}}{m}}\,a^{\dagger}_{\bk,s},
+\qquad
+\Pi_{B,\bk,s}=-\ii\frac{E_{\bk}}{m}B^{*}_{\bk,s}(t)\to-\ii\sqrt{\frac{E_{\bk}}{m}}\,b_{\bk,s}.
+\end{equation*}
+不过，由此产生一个问题：在把坐标与动量的乘积化为算符时，我们是否有权随意选取乘积的次序？
+更少一点\emph{特设}（ad hoc）的做法是取某种对称形式，把两种非对易算符次序都包含进来——
+或者，由于场是费米性的，取某种\emph{反}对称形式。故我们采用规则
+\begin{align*}
+\Pi_{A,\bk,s}(t)A_{\bk}&\to\frac{\ii}{2}\bigl(a^{\dagger}_{\bk,s}a_{\bk,s}-a_{\bk,s}a^{\dagger}_{\bk,s}\bigr)
+=\ii\bigl(a^{\dagger}_{\bk,s}a_{\bk,s}-\tfrac12\bigr),\\
+\Pi_{B,\bk,s}(t)B_{\bk}&\to\frac{-\ii}{2}\bigl(b^{\dagger}_{\bk,s}b_{\bk,s}-b_{\bk,s}b^{\dagger}_{\bk,s}\bigr)
+=-\ii\bigl(b^{\dagger}_{\bk,s}b_{\bk,s}-\tfrac12\bigr).
+\end{align*}
+把所有部分合起来，最终得到
+
+\begin{keybox}[量子化后的黎曼狄拉克场]
+\begin{equation*}
+H_{\text{RD}}=\sum_{\bk\in K_{3},\ s=\pm\tfrac12}E_{\bk}
+\bigl[a^{\dagger}_{\bk,s}a_{\bk,s}+b^{\dagger}_{\bk,s}b_{\bk,s}-1\bigr]
+\qquad\text{(Hamiltonian)}.
+\end{equation*}
+\end{keybox}
+
+坦率地说，我们这里所做的一切远非严格！但无论如何，我们得到的哈密顿量算符确实为添加到场中的每个量子
+赋予正确的能量 $E_{\bk}$。
+
+若认真对待该结果，则（仅就该场而言）真空态的能量将是\emph{负}的：
+\begin{equation*}
+H_{\text{RD}}\psi_{0}=E_{0}\psi_{0},\qquad
+E_{0}=-\sum_{\bk\in K_{3},\ s=\pm\tfrac12}E_{\bk}
+\approx-\frac{4N_{\text{modes}}m}{3\pi},
+\end{equation*}
+这里 $N_{\text{modes}}$ 是与粒子质量及宇宙几何相兼容的\emph{标量}模式数，
+我们在其它因子中计入一倍，以计及两种自旋。
+
+费米子的负真空能并非黎曼物理独有；洛伦兹 QFT 中也出现同样情形。
+与标量场一样，黎曼情形的差别在于我们只有有限个模式，故真空能是有限的。
+
+\section*{参考文献（References）}
+\addcontentsline{toc}{section}{参考文献（References）}
+\begin{itemize}[leftmargin=2em]
+  \item[{[1]}] \emph{An Introduction to Quantum Field Theory}, Michael E. Peskin and Daniel V. Schroeder,
+        Westview Press, 1995. 第 3.2 节。
+  \item[{[2]}] 例如 \emph{Quantum Mechanics}, Leonard I. Schiff, McGraw-Hill, 1968.
+        第 13 节推导谐振子波函数，第 25 节使用阶梯算符方法。
+  \item[{[3]}] Peskin and Schroeder, \emph{op. cit.}, 第 2 章。
+  \item[{[4]}] \emph{The Quantum Theory of Fields, Volume I: Foundations}, Steven Weinberg,
+        Cambridge University Press, 1995. 第 1.2、5.2 节。
+  \item[{[5]}] \emph{Mechanics}, L. D. Landau and E. M. Lifshitz, Butterworth-Heinemann, 1976.
+        第 45 节。\textbf{注意}：Landau 与 Lifshitz 在其 (42.5) 式中定义的泊松括号
+        与我们所用约定相反。
+  \item[{[6]}] \emph{Quantum Mechanics and Path Integrals}, Richard P. Feynman, Albert R. Hibbs
+        and Daniel F. Styer, Dover, 2010.
+  \item[{[7]}] \emph{Spinors and Trialities}, John Baez.
+  \item[{[8]}] \emph{Quantum Field Theory in a Nutshell}, A. Zee, Princeton University Press, 2010.
+        第 II.2 章。
+\end{itemize}

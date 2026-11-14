@@ -1,0 +1,724 @@
+\section{进阶：黎曼 Dirac 方程（The Riemannian Dirac Equation）}
+
+在我们自身的宇宙中，Dirac 方程（Dirac equation）是描述电子、正电子这类粒子的相对论性波动方程：这些粒子具有质量、电荷以及 $\half$ 自旋。这类粒子的波函数有四个分量，但它们并不是时空矢量的分量，而且在洛伦兹群的对称变换下，其变换方式与时空矢量截然不同。黎曼宇宙中对应的方程极为相似，事实上用\textbf{伽马矩阵}（gamma matrices）表述时可以写成完全一样的形式：伽马矩阵是四个 $4\times4$ 矩阵，作用在波函数分量上。但两类时空的号差（signature）不同，所要求的伽马矩阵的精确性质也不同。
+
+Dirac 方程本身为
+\begin{equation}
+i\gamma^{\mu}\partial_{\mu}\psi - m\psi = 0 \tag{Dirac Equation}
+\end{equation}
+其中 $m$ 为粒子质量，$\psi$ 为四分量波函数，$I_{4}$ 为 $4\times4$ 单位矩阵，且我们采用 $\hbar=1$ 的单位制。我们对伽马矩阵施加的条件是
+\begin{equation}
+\{\gamma^{\mu},\gamma^{\nu}\}\equiv\gamma^{\mu}\gamma^{\nu}+\gamma^{\nu}\gamma^{\mu}=2g^{\mu\nu}I_{4} \tag{Common}
+\end{equation}
+其中在黎曼情形 $g^{\mu\nu}=\delta^{\mu\nu}$ 为
+\begin{equation}
+g^{\mu\nu}=\delta^{\mu\nu}=
+\begin{pmatrix}
+1&0&0&0\\
+0&1&0&0\\
+0&0&1&0\\
+0&0&0&1
+\end{pmatrix}
+\qquad(\text{黎曼})
+\end{equation}
+而在洛伦兹情形 $g^{\mu\nu}=\eta^{\mu\nu}$，采用 $(+{}-{}-{}-)$ 号差：
+\begin{equation}
+\eta^{\mu\nu}=
+\begin{pmatrix}
+1&0&0&0\\
+0&-1&0&0\\
+0&0&-1&0\\
+0&0&0&-1
+\end{pmatrix}
+\qquad(\text{洛伦兹})
+\end{equation}
+
+\begin{notebox}[关于度规号差的约定]
+在本编注的绝大部分内容中，洛伦兹情形的类空维度取正号，从而 $\eta$ 具有 $(-+++)$ 号差。但由于几乎所有的量子场论文献都使用 $(+---)$ 号差，为便于比较，此处我们改用该约定。
+\end{notebox}
+
+在 Dirac 方程中，我们对指标 $\mu$ 施行爱因斯坦求和约定（Einstein summation convention）；$\mu$ 遍历四个时空维度，把四个伽马矩阵分别与对应方向上的导数组合起来。时空任意一点处的波函数 $\psi$ 是一个四分量复矢量，每个伽马矩阵按普通的矩阵乘法作用于 $\psi$ 的一个导数。但 $\psi$ 的四个分量\textbf{并不}由四个时空维度来编号。我们可以用若干附加指标（\textbf{旋量}（spinor）指标，区别于 $\mu$ 这样的时空指标）显式地写出这个矩阵乘法：
+\begin{equation}
+i(\gamma^{\mu})^{s}_{\,r}\,\partial_{\mu}\psi^{r}-m\psi^{s}=0
+\end{equation}
+这里求和约定同时应用于 $r$ 与 $\mu$；对旋量指标 $s$ 的四个取值，我们显式地得到四个方程。
+
+在陈述对伽马矩阵施加的条件时，记号 $\{\gamma^{\mu},\gamma^{\nu}\}$ 称为一个\textbf{反交换子}（anticommutator）。它只是一个方便的简写，其定义为
+\begin{equation}
+\{A,B\}\equiv AB+BA
+\end{equation}
+在定义反交换子时 $A$、$B$ 可以是任意对象，但对我们而言它们通常是矩阵或其它线性算符（例如微分算符）。我们很快还会用到更常见的\textbf{交换子}（commutator）记号：
+\begin{equation}
+[A,B]\equiv AB-BA
+\end{equation}
+
+若 $\psi$ 是黎曼 Dirac 方程的一个解，我们便有
+\begin{align*}
+i\gamma^{\mu}\partial_{\mu}\psi - m\psi &= 0,\\
+(i\gamma^{\mu}\partial_{\mu}-m)\psi &= 0,\\
+(-i\gamma^{\nu}\partial_{\nu}-m)(i\gamma^{\mu}\partial_{\mu}-m)\psi &= 0,\\
+(\gamma^{\nu}\gamma^{\mu}\partial_{\nu}\partial_{\mu}+m^{2})\psi &= 0,\\
+\bigl(\tfrac12(\gamma^{\mu}\gamma^{\nu}+\gamma^{\nu}\gamma^{\mu})\partial_{\nu}\partial_{\mu}+m^{2}\bigr)\psi &= 0,\\
+(\delta^{\nu\mu}\partial_{\nu}\partial_{\mu}+m^{2})\psi &= 0 .
+\end{align*}
+倒数第三行到倒数第二行之所以成立，是因为尽管\textbf{单项} $\gamma^{\mu}\gamma^{\nu}\neq\gamma^{\nu}\gamma^{\mu}$，但由求和约定得到的、遍历所有此类项的总和在交换 $\mu$ 与 $\nu$ 时是对称的。最后一行告诉我们：四分量场 $\psi$ 的每个分量都将服从黎曼标量波方程（Riemannian Scalar Wave equation）。
+
+\subsection{黎曼伽马矩阵（Riemannian Gamma Matrices）}
+
+满足条件 $\{\gamma^{\mu},\gamma^{\nu}\}=2\delta^{\mu\nu}I_{4}$ 的伽马矩阵有无穷多种选法，因为给定任何一组满足该性质的四个矩阵，我们总可以换到 $\mathbb{C}^{4}$（这些矩阵所作用的四维复空间）的另一组基，从而得到四个新矩阵。
+
+但某些选法会使事情更简单。我们将给出两个例子，即所谓的 Weyl 基（Weyl basis）与 Dirac 基（Dirac basis）。首先，回顾一下在角动量与三维转动的量子力学中出现的泡利自旋矩阵（Pauli spin matrices）是方便的：
+\begin{equation}
+\sigma_{x}=
+\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+\sigma_{y}=
+\begin{pmatrix}0&-i\\ i&0\end{pmatrix},\qquad
+\sigma_{z}=
+\begin{pmatrix}1&0\\0&-1\end{pmatrix}
+\qquad(\text{Common})
+\end{equation}
+半个泡利矩阵之间的交换子为
+\begin{equation}
+[\tfrac12\sigma_{i},\tfrac12\sigma_{j}]=i\varepsilon_{ijk}\,\tfrac12\sigma_{k}.
+\end{equation}
+这里的 $\varepsilon_{ijk}$ 所做的是：挑出与 $i$、$j$ 都不同的那个 $k$，并选取适当的符号，从而给出
+\begin{equation}
+[\tfrac12\sigma_{x},\tfrac12\sigma_{y}]=i\,\tfrac12\sigma_{z},
+\end{equation}
+以及它的循环置换。正如我们在关于李代数 $\mathrm{so}(3)$ 的一节中所讨论的，绕坐标轴转动的生成元 $J_{i}$ 具有交换子代数
+\begin{equation}
+[J_{i},J_{j}]=\varepsilon_{ijk}J_{k}.
+\end{equation}
+在描述李代数 $\mathrm{su}(2)$ 与 $\mathrm{so}(3)$ 之间的同构时，我们用了 $\mathrm{su}(2)$ 的一组基 $\{H_{x},H_{y},H_{z}\}$，由三个无迹反厄米矩阵（其伴随等于原矩阵的相反数）组成。在做量子力学时，更常见的是使用厄米矩阵，因为量子力学中任何实值可观测量都对应一个厄米算符。泡利矩阵是厄米矩阵，与我们那组 $\mathrm{su}(2)$ 基的关系为
+\begin{equation}
+\sigma_{k}=iH_{k},\qquad H_{k}=-i\sigma_{k}.
+\end{equation}
+由于 $H_{k}$ 是 $\mathrm{su}(2)$ 的元素，它们的任意实系数线性组合都可以取指数，得到 $\mathrm{SU}(2)$ 的一个元素。厄米矩阵 $\tfrac12\sigma_{k}$ 就是那些本征矢为确定自旋态的量子力学算符（对非相对论量子力学中的 $\half$ 自旋粒子而言），相应的本征值为 $\pm\tfrac12$。若想把一个厄米矩阵取指数后得到一个酉算符（即保持量子波函数范数的算符），我们需要先把它乘以 $\pm i$，例如
+\begin{equation}
+U_{x}(\theta)=\exp(-i\theta\sigma_{x}/2),
+\end{equation}
+这是非相对论量子力学中 $\half$ 自旋粒子绕 $x$ 轴转动角 $\theta$ 的酉算符。
+
+当我们从三维转到四维时，李代数 $\mathrm{so}(4)$ 有六个生成元 $J_{\mu\nu}$，对应由坐标方向 $\mu$ 与 $\nu$ 张成的六个平面内的转动。为固定矩阵 $J_{\mu\nu}$ 的符号，我们采用如下约定：把 $J_{\mu\nu}$ 的正数倍取指数，得到 $\mathrm{SO}(4)$ 中把 $\mu$ 轴转向 $\nu$ 轴的元素。这些生成元的交换子为
+\begin{equation}
+[J_{\mu\nu},J_{\rho\nu}]=J_{\mu\rho}
+\end{equation}
+（适用于两平面恰好共用一根坐标轴 $\nu$ 的情形）。除去此式及其带适当符号变化的置换之外，所有其它交换子都为零。这是合理的：若两平面\textbf{没有}公共轴，则在两者中的转动完全独立；若它们共享两根轴，则二者是同一平面，而同一平面内的转动可交换。
+
+从非相对论量子力学转向\textbf{黎曼}相对论量子力学时，还有一个关键改动。正如我们需要对线动量使用不同于通常的算符，我们也需要对角动量这样做。我们此前讨论过，对于轨道角动量，只要用线动量来定义它，这一改动会自动出现；但对于内禀角动量，我们需要选取通常泡利矩阵的\textbf{相反数}，才能得到粒子自旋的正确符号。我们将在关于自旋与角动量守恒的一节中看到这一点的确认。
+
+我们的第一组黎曼伽马矩阵可以借助泡利矩阵写成如下形式（\textbf{Weyl 基}）：
+\begin{align}
+\gamma^{t} &=
+\begin{pmatrix}0&I_{2}\\ I_{2}&0\end{pmatrix}
+=\sigma_{x}\otimes I_{2}, \nonumber\\
+\gamma^{x} &=
+\begin{pmatrix}0&-i\sigma_{x}\\ i\sigma_{x}&0\end{pmatrix}
+=\sigma_{y}\otimes\sigma_{x}, \nonumber\\
+\gamma^{y} &=
+\begin{pmatrix}0&-i\sigma_{y}\\ i\sigma_{y}&0\end{pmatrix}
+=\sigma_{y}\otimes\sigma_{y}, \nonumber\\
+\gamma^{z} &=
+\begin{pmatrix}0&-i\sigma_{z}\\ i\sigma_{z}&0\end{pmatrix}
+=\sigma_{y}\otimes\sigma_{z}, \nonumber\\
+\gamma^{\mu} &=
+\begin{pmatrix}0&H_{\mu}\\ H_{\mu}^{*}&0\end{pmatrix}
+\tag{Riemannian}
+\end{align}
+这里记号 $\sigma_{x}\otimes I_{2}$ 表示把第一个矩阵 $\sigma_{x}$ 中的每个元素替换为该元素与第二个矩阵 $I_{2}$ 的乘积，从而得到一个 $4\times4$ 矩阵。最后一行给出了适用于任意指标 $\mu$ 的一般形式（此时我们按之前的定义取 $H_{t}=I_{2}$；但注意，与另外三个 $H$ 矩阵不同，$H_{t}$ 不属于 $\mathrm{su}(2)$）。
+
+这些伽马矩阵全都是厄米的、无迹的，且行列式为 $1$。每个矩阵的平方都是单位矩阵，而所有不相同的矩阵对都反交换：即它们的反交换子为零。若把它们与 Peskin 和 Schroeder 那本广为使用的量子场论教科书中 Weyl 基的伽马矩阵选择\textsuperscript{[1]}相比较，我们的 $\gamma^{t}$ 相同，而这里其它矩阵是洛伦兹版本的 $-i$ 倍。这反映了这样一个事实：Peskin 与 Schroeder 对度规采用 $(+---)$ 号差，故按我们的约定，他们的 $t$ 坐标已具有类空标志差。
+
+我们可以用这些伽马矩阵导出群 $\mathrm{SO}(4)$ 的一个表示，所用公式取自文献\textsuperscript{[1]}：
+\begin{equation}
+S^{\mu\nu}=(i/4)\,[\gamma^{\mu},\gamma^{\nu}].
+\end{equation}
+这里每个 $S^{\mu\nu}$ 都是作用在波函数 $\psi$ 在各点处所属四维复矢量空间上的厄米矩阵。它是 $\mathrm{so}(4)$ 元素 $J_{\mu\nu}$ 在某个尚待确定的四维李代数表示中的像，再乘以一个使其成为厄米矩阵所需的因子 $\pm i$。当然，在这里看到泡利矩阵的相反数并不令我们意外，因为我们知道那个负号对于使内禀自旋与其它一切相容是必要的。
+
+在 Weyl 基中，相应的（黎曼）自旋矩阵为
+\begin{align}
+S^{xy} &=
+\begin{pmatrix}-\sigma_{z}/2&0\\ 0&-\sigma_{z}/2\end{pmatrix}
+=-\tfrac12 I_{2}\otimes\sigma_{z}, \nonumber\\
+S^{yz} &=
+\begin{pmatrix}-\sigma_{x}/2&0\\ 0&-\sigma_{x}/2\end{pmatrix}
+=-\tfrac12 I_{2}\otimes\sigma_{x}, \nonumber\\
+S^{zx} &=
+\begin{pmatrix}-\sigma_{y}/2&0\\ 0&-\sigma_{y}/2\end{pmatrix}
+=-\tfrac12 I_{2}\otimes\sigma_{y}, \nonumber\\
+S^{xt} &=
+\begin{pmatrix}\sigma_{x}/2&0\\ 0&-\sigma_{x}/2\end{pmatrix}
+=\tfrac12\sigma_{z}\otimes\sigma_{x}, \nonumber\\
+S^{yt} &=
+\begin{pmatrix}\sigma_{y}/2&0\\ 0&-\sigma_{y}/2\end{pmatrix}
+=\tfrac12\sigma_{z}\otimes\sigma_{y}, \nonumber\\
+S^{zt} &=
+\begin{pmatrix}\sigma_{z}/2&0\\ 0&-\sigma_{z}/2\end{pmatrix}
+=\tfrac12\sigma_{z}\otimes\sigma_{z}
+\tag{Riemannian}
+\end{align}
+从这些矩阵是分块对角的这一事实可以看出，它们所定义的四维表示是\textbf{可约的}（reducible）：它可以分裂为两个二维子空间，该表示的作用永远不会把它们混合起来。
+
+那么，这里被粘在一起的两个 $\mathrm{so}(4)$ 表示是什么呢？考察我们此前描述过的自旋-$(\tfrac12,0)$ 与自旋-$(0,\tfrac12)$ 表示（其详细表格列于那一节末尾），我们看到：作用于 $\psi$ 前两个分量的表示对应于自旋-$(\tfrac12,0)$，作用于后两个分量的表示对应于自旋-$(0,\tfrac12)$；唯一的差别是那一讨论中 $\mathrm{su}(2)$ 的 $H$ 矩阵被换成了泡利 $\sigma$ 矩阵的相反数。
+
+李代数表示只是群表示的导数，因此 $\mathrm{SO}(4)$ 的双覆盖应通过群表示自旋-$(\tfrac12,0)\oplus$自旋-$(0,\tfrac12)$ 作用在 $\psi$ 上。而正如我们在讨论包含宇称的表示时所见，这可以推广为 $\mathrm{O}(4)$ 双覆盖的一个表示，其中宇称运算（把 $x$、$y$、$z$ 变号）会交换该表示的两个二维子空间。
+
+若用 $\rho$ 作为自旋-$(\tfrac12,0)\oplus$自旋-$(0,\tfrac12)$ 表示的缩写，则（在来源于 $\mathrm{SO}(4)$ 双覆盖中两个元素之选择的符号不确定度之内）有 $\rho:\mathrm{SO}(4)\to\mathrm{SU}(4)$。也就是说，在不计符号的意义下，$\rho$ 为 $\mathrm{SO}(4)$ 中的每个转动指定一个行列式为 $1$ 的 $4\times4$ 酉矩阵。熟悉洛伦兹情形 Dirac 方程的读者会记得，$\mathrm{SO}(3,1)$ 的对应表示中，“推动”（boost，即涉及相对运动的坐标变换）的表示\textbf{不是}酉的；但在黎曼情形中我们不面临这一麻烦。
+
+显式地，$\rho$ 把 $\mathrm{SO}(4)$ 中的转动 $R$ 映为 $\mathrm{SU}(4)$ 中的酉算符 $\rho(R)$，使得
+\begin{equation}
+\rho(\exp(J^{\mu\nu}))=\exp(iS^{\mu\nu}).
+\end{equation}
+该映射的导数是 $\mathrm{so}(4)$ 到 $\mathrm{su}(4)$ 的李代数同构：
+\begin{equation}
+d\rho(J^{\mu\nu})=iS^{\mu\nu}.
+\end{equation}
+有了这个定义，就不难验证：对 $\mathrm{SO}(4)$ 中的任意转动 $R$，
+\begin{equation}
+\rho(R^{-1})\,\gamma^{\nu}\,\rho(R)=R^{\nu}_{\ \zeta}\,\gamma^{\zeta} \tag{1}
+\end{equation}
+或者，用指标记号把这个矩阵乘法完全展开：
+\begin{equation}
+\rho(R^{-1})^{q}_{\,p}\,(\gamma^{\nu})^{p}_{\,r}\,\rho(R)^{r}_{\,s}
+=(R^{\nu}_{\ \zeta}\gamma^{\zeta})^{q}_{\,s} \tag{2}
+\end{equation}
+验证此式最容易的办法是求导，并利用公式 $(J^{\alpha\beta})^{\nu}_{\ \zeta}=\delta^{\alpha\zeta}\delta^{\beta\nu}-\delta^{\alpha\nu}\delta^{\beta\zeta}$：
+\begin{align*}
+[\gamma^{\nu},S^{\alpha\beta}] &= -i\,(J^{\alpha\beta})^{\nu}_{\ \zeta}\,\gamma^{\zeta},\\
+[\gamma^{\nu},(i/4)[\gamma^{\alpha},\gamma^{\beta}]] &= i\,(\delta^{\alpha\nu}\gamma^{\beta}-\delta^{\beta\nu}\gamma^{\alpha}),\\
+\tfrac14[\gamma^{\nu},[\gamma^{\alpha},\gamma^{\beta}]] &= \delta^{\alpha\nu}\gamma^{\beta}-\delta^{\beta\nu}\gamma^{\alpha},\\
+\tfrac14[\gamma^{\nu},\,2\delta^{\alpha\beta}I_{4}-2\gamma^{\beta}\gamma^{\alpha}]
+&= \tfrac14\bigl((\gamma^{\alpha}\gamma^{\nu}+\gamma^{\nu}\gamma^{\alpha})\gamma^{\beta}
++\gamma^{\beta}(\gamma^{\alpha}\gamma^{\nu}+\gamma^{\nu}\gamma^{\alpha})\\
+&\qquad-(\gamma^{\beta}\gamma^{\nu}+\gamma^{\nu}\gamma^{\beta})\gamma^{\alpha}
+-\gamma^{\alpha}(\gamma^{\beta}\gamma^{\nu}+\gamma^{\nu}\gamma^{\beta})\bigr),\\
+-\tfrac12(\gamma^{\nu}\gamma^{\beta}\gamma^{\alpha}-\gamma^{\beta}\gamma^{\alpha}\gamma^{\nu})
+&= \tfrac14\bigl(\gamma^{\nu}\gamma^{\alpha}\gamma^{\beta}
++\gamma^{\beta}\gamma^{\alpha}\gamma^{\nu}\\
+&\qquad-\gamma^{\nu}\gamma^{\beta}\gamma^{\alpha}
+-\gamma^{\alpha}\gamma^{\beta}\gamma^{\nu}\bigr),\\
+0 &= \gamma^{\nu}\gamma^{\alpha}\gamma^{\beta}
++\gamma^{\nu}\gamma^{\beta}\gamma^{\alpha}
+-\gamma^{\alpha}\gamma^{\beta}\gamma^{\nu}
+-\gamma^{\beta}\gamma^{\alpha}\gamma^{\nu},\\
+0 &= \gamma^{\nu}(2\delta^{\alpha\beta}I_{4})-(2\delta^{\alpha\beta}I_{4})\gamma^{\nu},\\
+0 &= 0 .
+\end{align*}
+倒着走这些步骤，就得到原命题的推导。
+
+方程 (1) 与 (2) 告诉我们：若用 $\rho(R)$ 变换 $\gamma$ 矩阵的旋量坐标，其结果等同于把这四个 $\gamma$ 矩阵彼此之间作旋转——就好像它们是受 $\mathrm{SO}(4)$ 元素 $R$ 作用的时空矢量的分量一样。
+
+这样做的目的在于理解当我们旋转坐标时 Dirac 方程会发生什么。若我们做坐标变换，从 $x^{\mu}$ 变到 $x'^{\nu}=R^{\nu}_{\ \mu}x^{\mu}$，则坐标导数 $\partial_{\mu}$ 被替换为 $\partial'_{\nu}=(R^{-1})^{\mu}_{\ \nu}\partial_{\mu}$，而旋量波函数 $\psi^{s}$ 被变换为 $\psi'^{p}=\rho(R)^{p}_{\,s}\psi^{s}$。把这些都用新坐标写出 Dirac 方程，有
+\begin{equation}
+i(\gamma^{\nu})^{p}_{\,r}\,\partial'_{\nu}\psi'^{r}-m\psi'^{p}=0. \tag{3}
+\end{equation}
+把变换后的导数与波函数用原来的量表示代入：
+\begin{equation}
+i(\gamma^{\nu})^{p}_{\,r}(R^{-1})^{\mu}_{\ \nu}\,\partial_{\mu}\,\rho(R)^{r}_{\,s}\psi^{s}
+-m\rho(R)^{p}_{\,s}\psi^{s}=0. \tag{4}
+\end{equation}
+在左边乘以 $\rho(R^{-1})$，得
+\begin{align*}
+&\rho(R^{-1})^{q}_{\,p}\Bigl[i(\gamma^{\nu})^{p}_{\,r}(R^{-1})^{\mu}_{\ \nu}\partial_{\mu}\rho(R)^{r}_{\,s}\psi^{s}
+-m\rho(R)^{p}_{\,s}\psi^{s}\Bigr]=0,\\
+&i\rho(R^{-1})^{q}_{\,p}(\gamma^{\nu})^{p}_{\,r}(R^{-1})^{\mu}_{\ \nu}\partial_{\mu}\rho(R)^{r}_{\,s}\psi^{s}
+-m\rho(R^{-1})^{q}_{\,p}\rho(R)^{p}_{\,s}\psi^{s}=0,\\
+&i\rho(R^{-1})^{q}_{\,p}(\gamma^{\nu})^{p}_{\,r}(R^{-1})^{\mu}_{\ \nu}\partial_{\mu}\rho(R)^{r}_{\,s}\psi^{s}
+-m\psi^{q}=0 .
+\end{align*}
+利用 \textbf{(2)}，上式变为
+\begin{align}
+&i(R^{\nu}_{\ \zeta}\gamma^{\zeta})^{q}_{\,s}(R^{-1})^{\mu}_{\ \nu}\partial_{\mu}\psi^{s}-m\psi^{q}=0, \nonumber\\
+&i(\gamma^{\mu})^{q}_{\,s}\partial_{\mu}\psi^{s}-m\psi^{q}=0. \tag{5}
+\end{align}
+方程 \textbf{(5)} 就是原来 $\psi$ 的 Dirac 方程。于是我们证明了 Dirac 方程是 \textbf{$\mathrm{SO}(4)$ 不变的}：用 $R$ 旋转坐标后得到的解，正是原方程的解经 $\rho(R)$ 变换后的结果。
+
+值得强调的一点是：当我们变换 $\psi$ 时，并不把 $\gamma$ 矩阵当作某种本身也该被变换的场。相反，伽马矩阵把导数的时空坐标变换与 $\psi$ 相应的旋量变换精巧地结合起来，使得所有变化彼此抵消。理解伽马矩阵的最佳方式是把它看成一个\textbf{缠绕算符}（intertwiner）：它是从一个矢量空间到另一个矢量空间的线性映射，且与同一群在这两个空间上的表示相交换。项 $\partial_{\mu}\psi^{s}$ 在两个表示的张量积下变换：一个是来自时空坐标导数的、基本矢量表示的对偶表示，另一个是自旋-$(\tfrac12,0)\oplus$自旋-$(0,\tfrac12)$ 的 Dirac 旋量表示。把方程 \textbf{(2)} 的两边都乘以 $(R^{-1})^{\mu}_{\ \nu}\rho(R)^{w}_{\,q}$，重新排列某些项的顺序（此处可以随意进行，因为带全部指标的项只是标量），再把所得结果的两边都作用于 $\partial_{\mu}\psi^{s}$，我们得到
+\begin{equation}
+(\gamma^{\nu})^{w}_{\,r}\,\rho(R)^{r}_{\,s}\,(R^{-1})^{\mu}_{\ \nu}\,\partial_{\mu}\psi^{s}
+=\rho(R)^{w}_{\,q}\,(\gamma^{\mu})^{q}_{\,s}\,\partial_{\mu}\psi^{s}. \tag{6}
+\end{equation}
+在右边，$\gamma$ 先把张量积中的一个项 $\partial_{\mu}\psi^{s}$ 映为带指标 $q$ 的 Dirac 旋量，然后 $\rho(R)$ 作用于它，给出另一个带指标 $w$ 的 Dirac 旋量。在左边，$R^{-1}$ 作用于对偶坐标指标 $\mu$，而 $\rho(R)$ 作用于旋量坐标 $s$，\textbf{然后} $\gamma$ 接过结果（此时它仍位于张量积空间中），把它映为带指标 $w$ 的 Dirac 旋量。我们既可以先作用表示、再作用映射 $\gamma$，也可以先作用 $\gamma$、再作用表示，而得到完全相同的结果，这正是我们说 $\gamma$ 是一个缠绕算符的含义。
+
+我们选择 Weyl 基作为伽马矩阵，是为了尽可能容易地看出 $\psi$ 所受的是 $\mathrm{SO}(4)$ 的哪个表示。另一个将用于下一节的基是 Dirac 基。在这个基中，只有 $\gamma^{t}$ 改变，其它矩阵与 Weyl 基中完全相同（\textbf{Dirac 基}）：
+\begin{align}
+\gamma^{t} &=
+\begin{pmatrix}I_{2}&0\\ 0&-I_{2}\end{pmatrix}
+=\sigma_{z}\otimes I_{2}, \nonumber\\
+\gamma^{x} &=
+\begin{pmatrix}0&-i\sigma_{x}\\ i\sigma_{x}&0\end{pmatrix}
+=\sigma_{y}\otimes\sigma_{x}, \nonumber\\
+\gamma^{y} &=
+\begin{pmatrix}0&-i\sigma_{y}\\ i\sigma_{y}&0\end{pmatrix}
+=\sigma_{y}\otimes\sigma_{y}, \nonumber\\
+\gamma^{z} &=
+\begin{pmatrix}0&-i\sigma_{z}\\ i\sigma_{z}&0\end{pmatrix}
+=\sigma_{y}\otimes\sigma_{z}
+\tag{Riemannian}
+\end{align}
+由此得到的自旋矩阵在只涉及空间坐标时不变，因此它们同样是分块对角的；但生成涉及 $t$ 坐标之转动的那些矩阵会混合旋量的两半。这并不意味着 $\mathrm{SO}(4)$ 的表示变了：Dirac 基中的表示与 Weyl 基中的表示等价。Dirac 基中的（黎曼）自旋矩阵为
+\begin{align}
+S^{xy} &=
+\begin{pmatrix}-\sigma_{z}/2&0\\ 0&-\sigma_{z}/2\end{pmatrix}
+=-\tfrac12 I_{2}\otimes\sigma_{z}, \nonumber\\
+S^{yz} &=
+\begin{pmatrix}-\sigma_{x}/2&0\\ 0&-\sigma_{x}/2\end{pmatrix}
+=-\tfrac12 I_{2}\otimes\sigma_{x}, \nonumber\\
+S^{zx} &=
+\begin{pmatrix}-\sigma_{y}/2&0\\ 0&-\sigma_{y}/2\end{pmatrix}
+=-\tfrac12 I_{2}\otimes\sigma_{y}, \nonumber\\
+S^{xt} &=
+\begin{pmatrix}0&-\sigma_{x}/2\\ -\sigma_{x}/2&0\end{pmatrix}
+=-\tfrac12\sigma_{x}\otimes\sigma_{x}, \nonumber\\
+S^{yt} &=
+\begin{pmatrix}0&-\sigma_{y}/2\\ -\sigma_{y}/2&0\end{pmatrix}
+=-\tfrac12\sigma_{x}\otimes\sigma_{y}, \nonumber\\
+S^{zt} &=
+\begin{pmatrix}0&-\sigma_{z}/2\\ -\sigma_{z}/2&0\end{pmatrix}
+=-\tfrac12\sigma_{x}\otimes\sigma_{z}
+\tag{Riemannian}
+\end{align}
+
+\subsection{平面波解（Plane Wave Solutions）}
+
+\subsubsection{Dirac 基下的平面波解}
+
+假设我们寻找如下形式的 Dirac 方程平面波解：
+\begin{equation}
+\psi(x)=u\,\exp(-ik\cdot x),
+\end{equation}
+其中 $\bx$ 是坐标四矢量。在我们的单位制下，传播矢量 $\bk$ 恰与平面波对应的能量-动量矢量相同，当然 $|\bk|=m$。旋量 $u$ 是 $\mathbb{C}^{4}$ 的常元素。
+
+Dirac 方程随即变为关于 $u$ 的线性方程：
+\begin{equation}
+(k_{\mu}\gamma^{\mu}-mI_{4})u=0.
+\end{equation}
+只要 $|\bk|=m$，这里的矩阵行列式总为零，因此总存在非平凡解。找解最容易的办法是取 $\bk=m\be_{t}$，即静止波的能量-动量矢量。在 Dirac 基中，这给出
+\begin{equation}
+\begin{pmatrix}0&0\\ 0&-2mI_{2}\end{pmatrix}u=0,
+\end{equation}
+它被任何后两个分量为零的旋量所满足，例如
+\begin{equation}
+u_{0}=(\xi,0),
+\end{equation}
+其中 $\xi$ 是 $\mathbb{C}^{2}$ 的任意元素，而此处的 $\mathbf{0}$ 也应视为位于 $\mathbb{C}^{2}$ 中。
+
+若我们用 $\mathrm{SO}(4)$ 矩阵 $\exp(-\theta J_{zt})$ 变换 $zt$ 平面内的坐标，则在新坐标中，原矢量 $m\be_{t}$ 将变成沿正 $z$ 方向、以速度 $\tan\theta$ 运动的波的能量-动量矢量。为求出与之相伴的旋量，我们把 $u_{0}$ 乘以 $\exp(-i\theta S^{zt})$：
+\begin{align*}
+k &= \exp(-\theta J_{zt})\,m\be_{t}=m(\cos\theta\,\be_{t}+\sin\theta\,\be_{z}),\\
+u(k) &= \exp(-i\theta S^{zt})\,u_{0}
+=\bigl(\xi\cos(\theta/2),\; i\sigma_{z}\xi\sin(\theta/2)\bigr).
+\end{align*}
+平面波运动得越快，Dirac 旋量的前一半越小、后一半越大。在无限速度 $\theta=\pi/2$ 处，两半大小相等。
+
+现在，人们容易设想可以干脆把转动推到 $\theta=\pi/2$ 之外，以获得用坐标变换把一个黎曼电子变成一个黎曼正电子的描述，但 Dirac 方程还应付不了这一点。问题在于：传播矢量指向时间反方向的平面波会给出负能量，而对正电子我们理应与对电子一样测到正能量。要正确处理粒子与反粒子的关系，我们确实需要更精细的量子场论形式。
+
+\subsubsection{Weyl 基下的平面波解}
+
+换到 Weyl 基又会怎样？我们寻找如下形式的解：
+\begin{equation}
+\psi(x)=(\xi_{L},\xi_{R})\exp(-ik\cdot x).
+\end{equation}
+把它代入 Dirac 方程，得到关于 $\xi_{L}$、$\xi_{R}$ 的线性方程：
+\begin{equation}
+(k_{\mu}\gamma^{\mu}-mI_{4})(\xi_{L},\xi_{R})=0,
+\end{equation}
+利用用 $H$ 矩阵表示的 Weyl 基伽马矩阵形式，可把它写成
+\begin{align}
+k^{\mu}H_{\mu}\,\xi_{R}-m\xi_{L}&=0,\\
+k^{\mu}H_{\mu}^{*}\,\xi_{L}-m\xi_{R}&=0.
+\end{align}
+正如我们从 Dirac 基中的情形所预期的那样，这两个方程并不独立。由于 $k^{\mu}H_{\mu}$ 是 $|\bk|$ 乘以一个酉矩阵（即逆等于厄米伴随的矩阵），我们有
+\begin{equation}
+(k^{\mu}H_{\mu})(k^{\mu}H_{\mu}^{*})=|\bk|^{2}I_{2}=m^{2}I_{2}.
+\end{equation}
+因此，若把第二个矩阵 Dirac 方程左边乘以 $k^{\mu}H_{\mu}$，再整体除以 $m$，我们便重新得到第一个方程。
+
+对静止粒子，$\bk=m\be_{t}$，解具有形式
+\begin{equation}
+\psi(x)=(\xi,\xi)\exp(-imt).
+\end{equation}
+若在 $zt$ 平面内推动它（当然要用 Weyl 基的自旋矩阵），我们有
+\begin{align*}
+k &= \exp(-\theta J_{zt})\,m\be_{t}=m(\cos\theta\,\be_{t}+\sin\theta\,\be_{z}),\\
+(\xi_{L},\xi_{R}) &= \exp(-i\theta S^{zt})(\xi,\xi)
+=\bigl(\exp(-\tfrac12 i\theta\sigma_{z})\xi,\ \exp(\tfrac12 i\theta\sigma_{z})\xi\bigr).
+\end{align*}
+矩阵 $\exp(\pm\tfrac12 i\theta\sigma_{z})$ 是对角的，其元素等于相位 $\exp(\pm\tfrac12 i\theta)$，因此与 Dirac 基的情形不同，推动不改变旋量两半的范数。
+
+在 Weyl 基中，我们可以轻松地为任意 $\bk$ 构造平面波解：
+\begin{equation}
+(\xi_{L}(k),\xi_{R}(k))
+=\Bigl(\sqrt{\frac{k^{\mu}H_{\mu}}{m}}\,\xi,\
+\sqrt{\frac{k^{\mu}H_{\mu}^{*}}{m}}\,\xi\Bigr).
+\end{equation}
+把它代入第一个矩阵 Dirac 方程 $k^{\mu}H_{\mu}\xi_{R}-m\xi_{L}=0$，并把两边乘以 $\sqrt m$，得
+\begin{align*}
+k^{\mu}H_{\mu}\sqrt{k^{\mu}H_{\mu}^{*}}\,\xi-m\sqrt{k^{\mu}H_{\mu}}\,\xi &= 0,\\
+\sqrt{k^{\mu}H_{\mu}}\sqrt{(k^{\mu}H_{\mu})(k^{\mu}H_{\mu}^{*})}\,\xi-m\sqrt{k^{\mu}H_{\mu}}\,\xi &= 0,\\
+m\sqrt{k^{\mu}H_{\mu}}\,\xi-m\sqrt{k^{\mu}H_{\mu}}\,\xi &= 0,
+\end{align*}
+从而证实它确实是解。如果你对不得不对矩阵开平方感到头疼，其实这类平方根可以很容易地写出：
+\begin{equation}
+\sqrt{k^{\mu}H_{\mu}}=\frac{k^{\mu}H_{\mu}+mH_{t}}{\sqrt{2(m+k^{t})}}.
+\end{equation}
+
+假设我们选取 $\mathbb{C}^{2}$ 的一组正交归一基 $\{\xi_{s}\}$。一个有用的例子是某个泡利自旋矩阵的归一化本征矢——按惯例通常选 $\sigma_{z}$，此时我们用标记 $s=\pm\tfrac12$。于是对任意四动量，我们可以写出黎曼 Dirac 方程的一对归一化平面波解：
+
+\begin{keybox}[Weyl 基下黎曼 Dirac 方程的平面波解]
+$\bk$ 为四动量，$|\bk|=m$；$\{\xi_{s}\}$ 是 $\mathbb{C}^{2}$ 的一组正交归一基；$H_{\mu}$ 是作为矩阵的单位四元数（定义见此）；求和 $\sum_j k^{j}H_{j}$ 遍历空间指标 $x$、$y$、$z$。
+\begin{equation}
+\psi_{\bk,s}(\bx)=u(\bk,s)\exp(-i\bk\cdot\bx) \tag{Plane wave}
+\end{equation}
+\begin{equation}
+u(\bk,s)=\frac{\bigl([(m+k^{t})H_{t}+k^{j}H_{j}]\xi_{s},\ [(m+k^{t})H_{t}-k^{j}H_{j}]\xi_{s}\bigr)}{2\sqrt{m(m+k^{t})}} \tag{4-spinor part}
+\end{equation}
+\begin{equation}
+u(\bk,s_{1})^{\dagger}u(\bk,s_{2})=\xi_{s_{1}}^{\dagger}\xi_{s_{2}}=\delta_{s_{1}s_{2}} \tag{Orthonormality}
+\end{equation}
+\end{keybox}
+
+\subsection{四元数形式的 Dirac 方程（The Dirac Equation For Quaternions）}
+
+如果我们沿用上一节关于 Weyl 基平面波的结果，并把由 $H_{\mu}$ 张成的 $2\times2$ 复矩阵空间 $\mathbb{H}$ 与二复维空间 $\mathbb{C}^{2}$ 都等同于我们此前描述过的四元数，那么就可以把联系旋量 $\xi_{L}$、$\xi_{R}$ 与能量-动量矢量 $\bk$ 的第一个方程，当作三个四元数之间的方程：
+\begin{equation}
+k^{\mu}H_{\mu}\,\xi_{R}-m\xi_{L}=0
+\quad\longrightarrow\quad
+Q_{V}\,q_{R}-m\,q_{L}=0,
+\end{equation}
+其中 $Q_{V}=k^{\mu}H_{\mu}$ 是像矢量那样变换的四元数，$q_{L}$ 是像左手旋量那样变换的四元数，$q_{R}$ 是像右手旋量那样变换的四元数。换言之，$\mathrm{SU}(2)\times\mathrm{SU}(2)$ 的元素 $(g,h)$ 对这三个四元数的作用为
+\begin{align}
+\rho_{(\tfrac12,\tfrac12)}(g,h)\,Q_{V} &= g\,Q_{V}\,h^{-1},\\
+\rho_{(\tfrac12,0)}(g,h)\,q_{L} &= g\,q_{L},\\
+\rho_{(0,\tfrac12)}(g,h)\,q_{R} &= h\,q_{R}.
+\end{align}
+乘积 $Q_{V}q_{R}$ 的变换方式与 $q_{L}$ 相同，从而使该方程不变。沿用此前的讨论，若在 $\mathbb{C}^{2}$ 中选取一个单位矢量 $\bv_{0}$，我们可以显式地把 $\xi_{L}=q_{L}\bv_{0}$、$\xi_{R}=q_{R}\bv_{0}$ 等同起来。此时，把我们这个四元数方程右乘以 $\bv_{0}$，就得到相应的旋量方程。
+
+于是我们看到：平面波的 Dirac 方程可以解释为三个四元数之间极其简单的线性关系，这三个四元数分别在不同的 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 表示下变换，一个矢量代表粒子的能量-动量，一对左手、右手旋量代表波本身。
+
+\begin{keybox}[四元数形式的黎曼 Dirac 方程]
+$(q_{L},q_{R})$ 是作为一对四元数的 Dirac 旋量；$Q_{V}$ 是平面波解的能量-动量矢量：$\psi(\bx)=(q_{L},q_{R})\exp(-iQ_{V}\cdot\bx)$。
+\begin{equation}
+Q_{V}\,q_{R}-m\,q_{L}=0 \tag{Riemannian}
+\end{equation}
+\end{keybox}
+
+为更好地理解这一四元数描述，我们来看看通常二分旋量形式下 $\half$ 自旋粒子的角动量如何用四元数语言翻译。首先要选定一个\textbf{复结构}（complex structure）：即 $\mathbb{H}$ 上的一个线性算符 $J$，它对应于 $\mathbb{C}^{2}$ 上乘以 $i$。$J$ 的平方必须等于乘以 $-1$，且 $J$ 应与 $\mathbb{H}$ 上任何对应于 $\mathbb{C}^{2}$ 复线性算符的线性算符相交换。要满足这些要求，我们可以令 $J$ 等于\textbf{右}乘某个平方为 $-1$ 的四元数，而把其它线性算符实现为\textbf{左}乘。具体地，我们取
+\begin{equation}
+J(q)=q\,H_{z}.
+\end{equation}
+给定这一选择，我们取 $\bv_{0}=(0,1)$，它是 $H_{z}$ 的、本征值为 $i$ 的本征矢。随后我们通过 $T:\mathbb{H}\to\mathbb{C}^{2}$ 把 $\mathbb{H}$ 与 $\mathbb{C}^{2}$ 等同起来，其中
+\begin{align*}
+T(q) &= q\,\bv_{0},\\
+T(J(q)) &= qH_{z}(0,1)=i\,q(0,1)=i\,T(q).
+\end{align*}
+$J$ 的选择在 $\mathbb{H}$ 中挑出两个平面，我们可以把它们看成通常旋量的两个分量所在的复平面：$zt$ 平面与 $xy$ 平面。用一个四元数 $q$ 右乘任意复数 $a+bi$（$a$、$b$ 为实数），即实现为右乘 $a+bH_{z}$，而这一运算把这两个平面各自映入自身。
+
+我们给 $\mathbb{H}$ 配备旋量内积 $\langle\cdot,\cdot\rangle_{S}$：
+\begin{equation}
+\langle p,q\rangle_{S}=\operatorname{Re}_{H}(p^{*}q)-\operatorname{Re}_{H}(p^{*}J(q))\,i
+=\operatorname{Re}_{H}(p^{*}q)-\operatorname{Re}_{H}(p^{*}qH_{z})\,i,
+\end{equation}
+其中 $\operatorname{Re}_{H}$ 表示四元数的实部，以区别于复数的实部（后者记作 $\operatorname{Re}_{\mathbb{C}}$）。我们用 “$*$” 表示四元数的共轭，用 “conj” 表示普通复共轭。若把四元数表示为 $2\times2$ 复矩阵，则四元数共轭就是取这些矩阵的厄米伴随或复共轭转置，故 $q^{*}=\operatorname{conj}(q^{T})$。
+
+我们的旋量内积实际上就是把 $\mathbb{C}^{2}$ 上的标准内积搬到 $\mathbb{H}$ 上，使得
+\begin{equation}
+\langle p,q\rangle_{S}=\langle T(p),T(q)\rangle.
+\end{equation}
+为看出这一点，先看实部：
+\begin{align*}
+\operatorname{Re}_{\mathbb{C}}\langle T(p),T(q)\rangle
+&= \tfrac12\bigl(\langle T(p),T(q)\rangle+\langle T(q),T(p)\rangle\bigr)\\
+&= \tfrac12\bigl(\langle p\bv_{0},q\bv_{0}\rangle+\langle q\bv_{0},p\bv_{0}\rangle\bigr)\\
+&= \tfrac12\bigl(\langle \bv_{0},p^{*}q\bv_{0}\rangle+\langle \bv_{0},q^{*}p\bv_{0}\rangle\bigr)\\
+&= \bigl\langle \bv_{0},\tfrac12(p^{*}q+q^{*}p)\bv_{0}\bigr\rangle\\
+&= \operatorname{Re}_{H}(p^{*}q)\,\langle \bv_{0},\bv_{0}\rangle\\
+&= \operatorname{Re}_{H}(p^{*}q).
+\end{align*}
+从倒数第三行到倒数第二行，是因为 $\tfrac12(p^{*}q+q^{*}p)=\operatorname{Re}_{H}(p^{*}q)$ 只是一个纯实数——用矩阵来说，就是同一个实数乘以 $2\times2$ 单位矩阵。至于虚部：
+\begin{align*}
+\operatorname{Im}_{\mathbb{C}}\langle T(p),T(q)\rangle
+&= \operatorname{Re}_{\mathbb{C}}\bigl(-i\langle T(p),T(q)\rangle\bigr)\,i\\
+&= -\operatorname{Re}_{\mathbb{C}}\langle T(p),iT(q)\rangle\,i\\
+&= -\operatorname{Re}_{\mathbb{C}}\langle T(p),T(qH_{z})\rangle\,i\\
+&= -\operatorname{Re}_{H}(p^{*}qH_{z})\,i.
+\end{align*}
+
+现在，二分旋量形式中通常的自旋本征态 $\xi_{k\pm}$ 满足方程（对 $k=x,y,z$）：
+\begin{equation}
+-\sigma_{k}\,\xi_{k\pm}=\pm\xi_{k\pm}.
+\end{equation}
+注意此处我们用了泡利矩阵的\textbf{相反数}，原因如前所述。在四元数形式中，我们需要把泡利矩阵 $\sigma_{k}$（它们不是 $\mathbb{H}$ 的元素）替换为基四元数 $H_{k}=-i\sigma_{k}$，并把 $\mathbb{C}^{2}$ 旋量 $\xi_{k\pm}$ 替换为满足 $\xi_{k\pm}=q_{k\pm}\bv_{0}$ 的四元数旋量 $q_{k\pm}$。这把我们引向四元数方程
+\begin{equation}
+H_{k}\,q_{k\pm}=\pm\,q_{k\pm}H_{z}.
+\end{equation}
+若把此式乘以 $-i$，把 $\bv_{0}$ 分别右乘两边，并利用 $\bv_{0}$ 是 $H_{z}$ 的、本征值为 $i$ 的本征矢这一事实，我们就重新得到此前关于 $\mathbb{C}^{2}$ 中旋量的方程。
+
+这些四元数方程对每一种符号选择都有解，其解是 $\mathbb{H}$ 中的整张平面；当然，这些平面在与任意复数相乘时映入自身，对应 $\mathbb{C}^{2}$ 中的一复维本征空间。
+
+对 $H_{x}$，正本征空间由 $H_{t}+H_{y}$ 与 $H_{x}+H_{z}$ 张成；负本征空间由 $H_{t}-H_{y}$ 与 $H_{x}-H_{z}$ 张成。
+
+对 $H_{y}$，正本征空间由 $H_{t}-H_{x}$ 与 $H_{y}+H_{z}$ 张成；负本征空间由 $H_{t}+H_{x}$ 与 $H_{y}-H_{z}$ 张成。
+
+对 $H_{z}$，正本征空间由 $H_{t}$ 与 $H_{z}$ 张成；负本征空间由 $H_{x}$ 与 $H_{y}$ 张成。
+
+（所有这一切都可推广到 $\mathrm{SO}(4)$ 双覆盖的左右手旋量表示；在那里我们在 $\mathbb{R}^{4}$ 的各个坐标平面内测量自旋。各种自旋算符都是（半）$H$ 矩阵或其相反数，如本节末尾所列举，因此我们所需的一切都能从上文描述的本征空间中取得。例如，对自旋-$(\tfrac12,0)$ 左手旋量表示，$zt$ 坐标平面内的自旋由 $-\tfrac12 H_{z}$ 测量，故其正、负本征空间恰是上文 $H_{z}$ 的负、正本征空间。）
+
+$\mathbb{C}^{2}$ 中的任意旋量都会成为沿空间中\textbf{某个}方向所测自旋的正本征态。在四元数形式中，对四元数 $q$ 而言，这个方向极易描述。按我们所选的复结构，它就是
+\begin{equation}
+s(q)=q\,H_{z}\,q^{-1}.
+\end{equation}
+显然它满足
+\begin{equation}
+s(q)\,q=q\,H_{z}.
+\end{equation}
+自旋轴 $s(q)$ 永远是纯空间矢量，因为 $H_{z}$ 一开始就是空间性的，而由 $\rho_{(\tfrac12,\tfrac12)}(g,g)Q_{V}=gQ_{V}g^{-1}$ 产生的所有 $\mathrm{SO}(4)$ 转动都保持时间轴不变，因而实际上都是 $\mathrm{SO}(3)$ 中的转动。我们还能极容易地找到自旋恰与 $q$ 相反的自旋旋量四元数，记作 $\operatorname{rev}_{S}(q)$：
+\begin{align*}
+\operatorname{rev}_{S}(q) &= q\,H_{y},\\
+s\bigl(\operatorname{rev}_{S}(q)\bigr)
+&= qH_{y}H_{z}H_{y}^{-1}q^{-1}
+= qH_{y}H_{z}(-H_{y})q^{-1}\\
+&= -qH_{x}H_{y}q^{-1}
+= -s(q).
+\end{align*}
+按我们“用右乘 $H_{z}$ 实现乘以 $i$”的复结构，自旋反转函数 $\operatorname{rev}_{S}$ 是共轭线性的：
+\begin{align*}
+\operatorname{rev}_{S}(iq) &= \operatorname{rev}_{S}(qH_{z})=qH_{z}H_{y}\\
+&= -qH_{y}H_{z}=-i\,\operatorname{rev}_{S}(q).
+\end{align*}
+容易看出 $\operatorname{rev}_{S}$ 与 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 的作用相交换，因为该作用从左边乘四元数，而 $\operatorname{rev}_{S}$ 从右边乘。
+
+$\mathrm{SO}(3)$ 中任何保持矢量 $s(q)$ 不变的转动，都可以由 $\rho_{(\tfrac12,\tfrac12)}(g,g)$ 产生，其中 $g=\cos(\theta)H_{t}+\sin(\theta)s(q)$。这样的转动会以左乘 $g$ 的方式作用于旋量 $q$（无论它是左手还是右手），给出
+\begin{align*}
+g\,q &= \bigl(\cos(\theta)H_{t}+\sin(\theta)s(q)\bigr)q\\
+&= \bigl(\cos(\theta)H_{t}+\sin(\theta)\,qH_{z}q^{-1}\bigr)q\\
+&= \cos(\theta)\,q+\sin(\theta)\,qH_{z}\\
+&= \bigl(\cos(\theta)+i\sin(\theta)\bigr)q
+= \exp(i\theta)\,q .
+\end{align*}
+换言之，这个转动仅仅改变旋量 $q$ 的整体相位。
+
+在粒子可以以某个任意速度运动的相对论情境中，我们不能再把转动看成具有一根轴。取而代之，我们用一个单位四元数对 $(s_{L},s_{R})$ 来标识一个转动，它通过 $v\to s_{L}\,v\,s_{R}^{-1}$ 作用。若我们做一次对应转动 $(g,h)$ 的任意坐标变换，则原来的转动被变换为 $(g\,s_{L}\,g^{-1},\;h\,s_{R}\,h^{-1})$。这来自三个操作的复合：(1) 反演坐标变换，回到原转动所在的坐标；(2) 施行原转动；(3) 施加坐标变换，回到新坐标。
+
+若某粒子的状态是 Dirac 旋量 $(q_{L},q_{R})$ 且 $q_{L}\neq0$、$q_{R}\neq0$，我们可以定义一对用于转动的单位四元数：
+\begin{align}
+s_{L}(q_{L}) &= q_{L}H_{z}q_{L}^{-1},\\
+s_{R}(q_{R}) &= q_{R}H_{z}q_{R}^{-1}.
+\end{align}
+注意，若施行一次对应 $(g,h)$ 的坐标变换，并使用旋量变换律 $q_{L}\to gq_{L}$、$q_{R}\to hq_{R}$，则转动 $\bigl(s_{L}(q_{L}),s_{R}(q_{R})\bigr)$ 的变换方式恰如一个转动在坐标变换下应有的方式。由这些定义还可推出 $s_{L}(q_{L})^{2}=s_{R}(q_{R})^{2}=-H_{t}$，故把该转动施行两次，$v\to s_{L}(q_{L})^{2}\,v\,s_{R}(q_{R})^{-2}$，恰好给出恒等变换。
+
+显然，$s_{L}(q_{L})$ 与 $s_{R}(q_{R})$ 将满足
+\begin{align*}
+s_{L}(q_{L})\,q_{L} &= q_{L}H_{z},\\
+s_{R}(q_{R})\,q_{R} &= q_{R}H_{z}.
+\end{align*}
+其物理含义是：由 $(s_{L}(q_{L}),s_{R}(q_{R}))$ 这一对产生的矢量转动，将伴随 Dirac 旋量的一次变换 $(q_{L},q_{R})\to(s_{L}(q_{L})q_{L},\,s_{R}(q_{R})q_{R})=(q_{L}H_{z},q_{R}H_{z})$，而这仅仅相当于按我们设在 $\mathbb{H}$ 上的复结构把整个 Dirac 旋量乘以 $i$。
+
+在粒子静止的参照系中，能量-动量矢量 $Q_{V}=mH_{t}$，于是方程
+\begin{equation}
+Q_{V}\,q_{R}-m\,q_{L}=0
+\end{equation}
+给出 $q_{R}=q_{L}$，进而有 $s_{L}(q_{L})=s_{R}(q_{R})$，相应的转动就是三维的。因为我们知道该转动的平方是恒等变换，所以它必定是某个特定平面内的半周转动。这一事实在我们换到粒子运动的参照系时不会改变，因此一般而言，我们可以把 $(s_{L}(q_{L}),s_{R}(q_{R}))$ 视为标识出粒子自旋所关联的\textbf{转动平面}，用以取代三维情境中所用的自旋轴 $s(q)$。
+
+更进一步，我们可以辨认出两个与该平面正交（且彼此正交）、并为该转动所保持不变的矢量：能量-动量矢量 $Q_{V}=m\,q_{L}q_{R}^{-1}$，以及矢量
+\begin{equation}
+s_{LR}(q_{L},q_{R})=q_{L}H_{z}q_{R}^{-1}.
+\end{equation}
+当粒子静止且 $q_{R}=q_{L}$ 时，后者与自旋轴 $s(q)$ 重合。
+
+若把自旋反转函数 $\operatorname{rev}_{S}$ 应用于 Dirac 旋量中的两个四元数，则与自旋几何相关的全部四个四元数都被反转：$s_{L}(q_{L})$、$s_{R}(q_{R})$、$Q_{V}$ 以及 $s_{LR}(q_{L},q_{R})$。
+
+\subsection{拉格朗日量（The Lagrangian）}
+
+构造一个能给出黎曼 Dirac 方程的拉格朗日量是容易的。
+
+\begin{keybox}[Dirac 方程的拉格朗日量]
+\begin{align}
+L_{RD} &= \psi^{\dagger}(i\gamma^{\mu}\partial_{\mu}\psi-m\psi)
+=i\psi^{\dagger}\gamma^{\mu}\partial_{\mu}\psi-m\psi^{\dagger}\psi \tag{Riemannian}\\
+L_{LD} &= \psi^{\dagger}\gamma^{t}(i\gamma^{\mu}\partial_{\mu}\psi-m\psi)
+=i\psi^{\dagger}\gamma^{t}\gamma^{\mu}\partial_{\mu}\psi-m\psi^{\dagger}\gamma^{t}\psi \tag{Lorentzian}
+\end{align}
+\end{keybox}
+
+这里 $\psi^{\dagger}$ 是 $4\times1$ 列矢量 $\psi$ 的厄米伴随（即共轭转置），因此它是一个 $1\times4$ 行矢量，我们按矩阵乘法把它乘进其右侧的对象中。
+
+在洛伦兹情形中，代表 $\psi$ 上洛伦兹变换的矩阵一般不是酉的，其后果是 $\psi^{\dagger}\psi$ 不是一个标量：它在洛伦兹变换下不不变。因此有必要把 $\psi^{\dagger}$ 换成 $\psi^{\dagger}\gamma^{t}$；这给出一个洛伦兹不变的内积 $\psi^{\dagger}\gamma^{t}\psi$，并使我们能构造出一个洛伦兹不变的拉格朗日量。（在量子场论文献中，$\psi^{\dagger}\gamma^{t}$ 被简写为顶上加一横的 $\psi$。）但这些小麻烦只属于洛伦兹情形。在黎曼情形中，所有自旋矩阵都是厄米的，$\mathrm{SO}(4)$ 的表示是酉的，且 $\psi^{\dagger}\psi$ 是 $\mathrm{SO}(4)$ 不变的：
+\begin{align*}
+\psi &\to U\psi,\\
+\psi^{\dagger} &\to (U\psi)^{\dagger}=\psi^{\dagger}U^{\dagger}=\psi^{\dagger}U^{-1},\\
+\psi^{\dagger}\psi &\to \psi^{\dagger}U^{-1}U\psi=\psi^{\dagger}\psi.
+\end{align*}
+$L_{RD}$ 的第一项也是 $\mathrm{SO}(4)$ 不变的，这借助伽马矩阵那节的方程 \textbf{(2)} 可以很容易地证明。
+
+我们借助欧拉-拉格朗日方程（Euler-Lagrange equations）从拉格朗日量得到 Dirac 方程。我们把 $\psi^{\dagger}$ 视为独立场，写出
+\begin{align*}
+\partial_{\mu}\bigl[\partial_{\partial_{\mu}\psi^{\dagger}}L_{RD}\bigr] &= \partial_{\psi^{\dagger}}L_{RD},\\
+0 &= i\gamma^{\mu}\partial_{\mu}\psi-m\psi,
+\end{align*}
+其中方括号里的表达式为零，因为拉格朗日量不依赖 $\psi^{\dagger}$ 的任何导数。改用 $\psi$ 本身作为场做对应的计算会得到相同结果，只是更麻烦：
+\begin{align*}
+\partial_{\mu}\bigl[\partial_{\partial_{\mu}\psi}L_{RD}\bigr] &= \partial_{\psi}L_{RD},\\
+\partial_{\mu}\bigl[i\psi^{\dagger}\gamma^{\mu}\bigr] &= -m\psi^{\dagger},\\
+i\,\partial_{\mu}\psi^{\dagger}\,\gamma^{\mu}+m\psi^{\dagger} &= 0,\\
+-\bigl(i\,\partial_{\mu}\psi^{\dagger}\,\gamma^{\mu}+m\psi^{\dagger}\bigr)^{\dagger} &= 0,\\
+i\gamma^{\mu}\partial_{\mu}\psi-m\psi &= 0 .
+\end{align*}
+
+\subsection{守恒流（Conserved Current）}
+
+现在我们有了 Dirac 方程的拉格朗日量，便可以用诺特定理（Noether's Theorem）来找出一个守恒流。假设我们把 Dirac 旋量 $\psi$ 乘以任意一个模为 $1$ 的复数，即一个“相位” $\exp(i\alpha)$（$\alpha$ 为实值）。由于 $\psi^{\dagger}$ 最终带上相反的相位，拉格朗日量不变。
+
+诺特定理为拉格朗日量的每一种这样的对称性配一个守恒流：
+\begin{align*}
+j^{\mu} &= \bigl(\partial_{\partial_{\mu}\psi}L_{RD}\bigr)\,\bigl(\partial_{\alpha}\exp(i\alpha)\psi\bigr)\big|_{\alpha=0}\\
+&= -\psi^{\dagger}\gamma^{\mu}\psi .
+\end{align*}
+我们可以把它乘以任意常数，该流仍是守恒的。具体地，我们定义
+
+\begin{keybox}[Dirac 方程的流]
+$e$ 为粒子所带电荷。
+\begin{align}
+j^{\mu} &= e\,\psi^{\dagger}\gamma^{\mu}\psi \tag{Riemannian}\\
+j^{\mu} &= e\,\psi^{\dagger}\gamma^{t}\gamma^{\mu}\psi \tag{Lorentzian}
+\end{align}
+\end{keybox}
+
+称它为“守恒流”，意思是其散度为零，因而它不会凭空产生或消失：
+\begin{align*}
+\partial_{\mu}j^{\mu}
+&= e\,\partial_{\mu}(\psi^{\dagger}\gamma^{\mu}\psi)\\
+&= e\bigl((\partial_{\mu}\psi^{\dagger})\gamma^{\mu}\psi+\psi^{\dagger}\gamma^{\mu}(\partial_{\mu}\psi)\bigr)\\
+&= e\bigl((im\psi^{\dagger})\psi+\psi^{\dagger}(-im\psi)\bigr)\\
+&= 0 .
+\end{align*}
+
+考察 Dirac 基下的静止平面波解：
+\begin{equation}
+\psi(x)=(\xi,0)\exp(-im\be_{t}\cdot x),
+\end{equation}
+其中 $\xi$ 是任意二分量旋量。对这个解，我们简单地有
+\begin{equation}
+\bj=e(\xi^{\dagger}\xi)\,\be_{t},
+\end{equation}
+因为除 $\gamma^{t}$ 之外的伽马矩阵的结构使得所有其它分量都为零。当然，对无限平面波我们面临通常的归一化问题，但眼下我们忽略它，只关注 $\bj$ 的方向：在这个特定情形中它与粒子的传播矢量同向——并且若换到一个波在其中运动的参照系，它仍将同向。因此 $\bj$ 的行为恰如我们期待的电流密度。
+
+\subsection{与电磁学的耦合（Coupling With Electromagnetism）}
+
+我们可以把 Dirac 方程的拉格朗日量与先前为黎曼 Proca 方程（Riemannian Proca equation，即支配电磁学的方程）导出的拉格朗日量结合起来。然后，利用用 Dirac 场表示的电流密度表达式，我们便得到一个完全以基本场表示的总拉格朗日量。[注意：对洛伦兹版本，为便于与量子场论教科书比较，本页采用 $(+---)$ 号差。这意味着其中一些洛伦兹方程与电磁学注记里的版本并不完全一致。]
+
+\begin{keybox}[量子电动力学的拉格朗日量]
+$m_{ph}$ 为光子质量，$m$ 为 Dirac 粒子的质量，$e$ 为其电荷；电磁场 $F_{\mu\nu}=\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu}$。
+\begin{align}
+L_{RQED} &= \psi^{\dagger}(i\gamma^{\mu}\partial_{\mu}\psi-m\psi)+\tfrac14 F_{\mu\nu}F^{\mu\nu}-\tfrac12 m_{ph}^{2}A_{\mu}A^{\mu}-A_{\mu}j^{\mu} \nonumber\\
+&= \psi^{\dagger}(i\gamma^{\mu}\partial_{\mu}\psi-m\psi)+\tfrac14 F_{\mu\nu}F^{\mu\nu}-\tfrac12 m_{ph}^{2}A_{\mu}A^{\mu}-eA_{\mu}\psi^{\dagger}\gamma^{\mu}\psi \tag{Riemannian}\\[4pt]
+L_{LQED} &= \psi^{\dagger}\gamma^{t}(i\gamma^{\mu}\partial_{\mu}\psi-m\psi)-\tfrac14 F_{\mu\nu}F^{\mu\nu}-A_{\mu}j^{\mu} \nonumber\\
+&= \psi^{\dagger}\gamma^{t}(i\gamma^{\mu}\partial_{\mu}\psi-m\psi)-\tfrac14 F_{\mu\nu}F^{\mu\nu}-eA_{\mu}\psi^{\dagger}\gamma^{t}\gamma^{\mu}\psi \tag{Lorentzian}
+\end{align}
+\end{keybox}
+
+这些拉格朗日量的欧拉-拉格朗日方程同时给出耦合到 Dirac 源的电磁场方程，以及存在电磁场时的 Dirac 方程。
+
+\begin{keybox}[量子电动力学的场方程]
+$m_{ph}$ 为光子质量，$m$ 为 Dirac 粒子的质量，$e$ 为其电荷；电磁场 $F_{\mu\nu}=\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu}$。
+\begin{align}
+&\partial_{\mu}\partial^{\mu}A^{\nu}+m_{ph}^{2}A^{\nu}+e\,\psi^{\dagger}\gamma^{\nu}\psi=0, \nonumber\\
+&i\gamma^{\mu}\partial_{\mu}\psi-m\psi-eA_{\mu}\gamma^{\mu}\psi=0 \tag{Riemannian}\\[4pt]
+&\partial_{\mu}F^{\mu\nu}-e\,\psi^{\dagger}\gamma^{t}\gamma^{\nu}\psi=0, \nonumber\\
+&i\gamma^{\mu}\partial_{\mu}\psi-m\psi-eA_{\mu}\gamma^{\mu}\psi=0 \tag{Lorentzian}
+\end{align}
+\end{keybox}
+
+\subsection{自旋与角动量守恒（Spin and Conservation of Angular Momentum）}
+
+电磁场中的黎曼 Dirac 方程为
+\begin{equation}
+i\gamma^{\mu}\partial_{\mu}\psi-m\psi-eA_{\mu}\gamma^{\mu}\psi=0.
+\end{equation}
+让我们把它改写为显式的哈密顿形式：在左边乘以 $\gamma^{t}$（其平方，如同所有黎曼伽马矩阵的平方一样，是单位矩阵），并把时间导数分离出来：
+\begin{align}
+i\partial_{t}\psi &= H\psi,\\
+H &= -i\gamma^{t}\gamma^{j}\partial_{j}+m\gamma^{t}+eA_{\mu}\gamma^{t}\gamma^{\mu}.
+\end{align}
+这里对重复指标 $j$ 的求和只遍历空间坐标，而对 $\mu$ 的求和遍历全部四维。
+
+我们把在左边乘以 $\gamma^{t}$ 后得到的伽马矩阵称为 \textbf{alpha 矩阵}（alpha matrices）；与伽马矩阵一样，它们在 Weyl 基下形式非常简单。
+
+\begin{keybox}[Weyl 基下的黎曼 alpha 矩阵]
+\begin{align}
+\alpha^{\mu} &= \gamma^{t}\gamma^{\mu}
+=\begin{pmatrix}H_{\mu}^{*}&0\\ 0&H_{\mu}\end{pmatrix} \tag{Riemannian}
+\end{align}
+\end{keybox}
+
+现在，若一个可观测量的算符与哈密顿量相交换，它就描述一个守恒量。若我们有一个处于径向对称静电场中的黎曼电子，我们预期其角动量守恒，因此让我们计算该情形下的哈密顿量与轨道角动量算符 $\mathbf{L}=\mathbf{r}\times\mathbf{p}$ 之间的交换子。在势为 $V(r)$ 的静电场中，$A_{t}=-V(r)$，其余所有 $A_{j}=0$，从而给出哈密顿量
+\begin{align*}
+H &= -i\alpha^{j}\partial_{j}+m\gamma^{t}-eV(r)\\
+&= -\alpha^{j}p_{j}+m\gamma^{t}-eV(r),
+\end{align*}
+其中 $p_{j}=i\partial_{j}$ 是线动量的第 $j$ 个分量；别忘了，对黎曼相对论动量，我们必须使用不同的算符约定。轨道角动量算符的分量为
+\begin{equation}
+L_{i}=\varepsilon_{ijk}x^{j}p_{k}.
+\end{equation}
+为求它与哈密顿量的交换子，我们先计算：
+\begin{align*}
+[x^{j}p_{k},p_{s}]
+&= -[x^{j}\partial_{k},\partial_{s}]\\
+&= -\bigl(x^{j}\partial_{k}\partial_{s}-\partial_{s}(x^{j}\partial_{k})\bigr)\\
+&= -\bigl(x^{j}\partial_{k}\partial_{s}-x^{j}\partial_{s}\partial_{k}-\delta_{s}^{j}\partial_{k}\bigr)\\
+&= -i\,\delta_{s}^{j}\,p_{k}.
+\end{align*}
+这给出
+\begin{equation}
+[L_{i},p_{s}]=-i\,\varepsilon_{isk}\,p_{k}.
+\end{equation}
+$L_{i}$ 显然与哈密顿量的第二项相交换，因为那一项只涉及乘以一个固定矩阵。第三项呢？对任何只依赖径向距离平方 $r^{2}=x^{2}+y^{2}+z^{2}=x^{l}x^{l}$ 的函数 $f$，以及任意函数 $g$，我们有
+\begin{align*}
+[x^{j}p_{k},f(x^{l}x^{l})]\,g
+&= i\,[x^{j}\partial_{k},f(x^{l}x^{l})]\,g\\
+&= i\bigl(x^{j}\partial_{k}(f(x^{l}x^{l})g)-f(x^{l}x^{l})x^{j}\partial_{k}g\bigr)\\
+&= i\bigl(2g\,x^{j}x^{k}\,f'(x^{l}x^{l})+f(x^{l}x^{l})x^{j}\partial_{k}g-f(x^{l}x^{l})x^{j}\partial_{k}g\bigr)\\
+&= 2i\,x^{j}x^{k}\,f'(x^{l}x^{l})\,g .
+\end{align*}
+把结果写成不含函数 $g$ 的线性算符：
+\begin{equation}
+[x^{j}p_{k},f(x^{l}x^{l})]=2i\,x^{j}x^{k}\,f'(x^{l}x^{l}).
+\end{equation}
+由于该表达式在指标 $j$ 与 $k$ 上对称，而 $L_{i}=\varepsilon_{ijk}x^{j}p_{k}$ 中的 $\varepsilon$ 是反对称的，故 $[L_{i},f(x^{l}x^{l})]$ 的总和为零；又因为哈密顿量的第三项可以写成形如 $f$ 的函数，所以该项与 $L_{i}$ 相交换。
+
+这样一来，只剩下哈密顿量的第一项。于是我们有
+\begin{align*}
+[L_{i},H] &= [L_{i},-\alpha^{j}p_{j}]\\
+&= -\alpha^{j}[L_{i},p_{j}]\\
+&= i\,\varepsilon_{ijk}\,\alpha^{j}p_{k}.
+\end{align*}
+由于此式非零，轨道角动量将不守恒。然而，如果我们以正确的方式把自旋角动量归给电子本身，\textbf{总}角动量仍然可以守恒。
+
+我们此前描述过代表转动生成元的厄米自旋矩阵 $S^{\mu\nu}$。若定义空间自旋矩阵 $\mathbf{S}=(S^{yz},S^{zx},S^{xy})$，则在 Weyl 基中有 $S_{i}=-\tfrac12 I_{2}\otimes\sigma_{i}=-\tfrac12 i\,I_{2}\otimes H_{i}$。
+
+\begin{keybox}[Weyl 基下的空间自旋矩阵]
+\begin{align}
+S_{i} &= \begin{pmatrix}-\tfrac12 iH_{i}&0\\ 0&-\tfrac12 iH_{i}\end{pmatrix} \tag{Riemannian}
+\end{align}
+\end{keybox}
+
+带空间指标的 $H$ 矩阵之间的交换子为
+\begin{equation}
+[H_{j},H_{k}]=2\,\varepsilon_{jkl}\,H_{l}.
+\end{equation}
+现在，在带\textbf{空间指标}的 alpha 矩阵中，伴随矩阵 $H_{j}^{*}=-H_{j}$。由此我们可以轻松算出空间自旋矩阵与空间 alpha 矩阵的交换子：
+\begin{equation}
+[S_{i},\alpha^{j}]=-i\,\varepsilon_{ijl}\,\alpha^{l}.
+\end{equation}
+矩阵 $S_{i}$ 将与哈密顿量除第一项之外的所有项相交换，因此
+\begin{align*}
+[S_{i},H] &= -[S_{i},\alpha^{j}]\,p_{j}\\
+&= i\,\varepsilon_{ijl}\,\alpha^{l}p_{j}\\
+&= i\,\varepsilon_{ikj}\,\alpha^{j}p_{k}\quad[\text{重标指标}]\\
+&= -i\,\varepsilon_{ijk}\,\alpha^{j}p_{k}.
+\end{align*}
+这正是轨道角动量分量 $L_{i}$ 的交换子的相反数，于是对总角动量我们有
+\begin{equation}
+[L+S,H]=0.
+\end{equation}
+我们最终为总角动量得到了一个守恒量，这一事实确认了我们对自旋矩阵所作的选法是正确的！

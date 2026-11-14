@@ -1,0 +1,663 @@
+\section{进阶：电子-光子自旋耦合（Electron-Photon Spin Coupling with Quaternions）}
+
+我们此前讨论过，\emph{四元数对}（pairs of quaternions）$(q_L,q_R)$ 如何可被解释为 Dirac 旋量，以及 $\tfrac12$ 自旋粒子的角动量如何在该形式中描述。我们把每一份四元数视为一个二复维的希尔伯特空间，用以取代通常的旋量空间 $\mathbb{C}^{2}$，办法是给它配备一个\emph{复结构}（complex structure）——而我们具体的选择是用四元数 $H_z$ 的\emph{右乘}来实现乘以 $\ii$（即 $-1$ 的平方根）。在这些约定下，Weyl 基中自由平面波的 Dirac 方程变得异常简单：
+\begin{equation*}
+q_V\,q_R - m\,q_L = 0 .
+\end{equation*}
+这里 $(q_L,q_R)$ 是 Dirac 旋量，其第一个分量按左手旋量变换、第二个按右手旋量变换，而 $q_V$ 是给出平面波 4-动量的矢量四元数。四元数值的平面波为
+\begin{equation*}
+\psi(x)=(q_L,q_R)\exp(-\ii\,q_V\cdot x).
+\end{equation*}
+
+我们也能发展出一套用四元数描述自旋为 1 的粒子（例如黎曼光子）的角动量的理论。$\mathrm{SU}(2)\times\mathrm{SU}(2)$（即 $\mathrm{SO}(4)$ 的双覆盖）的矢量表示其实就是一个作用在四元数上的表示，其中群 $\mathrm{SU}(2)$ 对应单位四元数，而 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 中的一对单位四元数 $(g,h)$ 通过
+\begin{equation*}
+(g,h):\ q\mapsto g\,q\,h^{-1}=g\,q\,h^*
+\end{equation*}
+作用在四元数自身之上。若把四元数 $\mathbb{H}$ 与四维欧氏空间 $\mathbb{R}^{4}$ 等同，则该表示对应于用 $\mathrm{SO}(4)$ 的元素（行列式为 $1$ 的实正交 $4\times4$ 矩阵）去乘 $\mathbb{R}^{4}$ 中的矢量。这在做经典物理、只想谈论旋转实四矢量时是没问题的，但自旋为 1 的粒子的角动量是复希尔伯特空间中的矢量。我们如何把两者联系起来？
+
+答案是给四元数\emph{复化}（complexify）。正如把一般复数写成 $a+b\,\ii$（$a$、$b$ 为实数），我们把一般的\emph{复化四元数}（complexified quaternion）写成 $q+s\,\ii$，其中 $q$、$s$ 为四元数。这里的 $\ii$ \emph{不}应被当作四元数内部任何一个 $-1$ 的平方根，也不等同于我们在\emph{旋量}四元数上所用的「右乘 $H_z$」。（只有当我们把一个复化矢量四元数乘以一个旋量以得到另一个旋量时，才把因子 $\ii$ 换算成右乘 $H_z$。）在复化四元数本身内部，$\ii$ 只是一个与一切相交换、并满足 $\ii^{2}=-1$ 的符号。于是若把两个复化四元数相乘，便有
+\begin{equation*}
+(q+s\,\ii)(p+r\,\ii)=(qp-sr)+(sp+qr)\,\ii .
+\end{equation*}
+
+处理复化四元数时，我们采用如下约定：「$\operatorname{Re}_H$」表示四元数的实部，以区别于复数的实部（后者记作「$\operatorname{Re}_{\mathbb{C}}$」）；用「$*$」表示四元数的共轭，用「$\operatorname{conj}$」表示普通复共轭。例如在下面这个式子中，我们把所有与 $H_t$ 正交的四元数分量取相反数，却\emph{不}改变 $\ii$ 的系数的符号：
+\begin{equation*}
+\bigl((H_t+H_x)+(H_t+H_y)\,\ii\bigr)^*=(H_t-H_x)+(H_t-H_y)\,\ii .
+\end{equation*}
+
+四元数上定义有一个实内积（即点积）：
+\begin{equation*}
+q\cdot s=\operatorname{Re}_H(q^*s)=\tfrac12(q^*s+s^*q).
+\end{equation*}
+它在 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 的作用下不变；若用单位四元数对 $(g,h)$ 作用，得
+\begin{align*}
+q\cdot s &\to (g\,q\,h^{-1})\cdot(g\,s\,h^{-1})\\
+&= \tfrac12\bigl((g\,q\,h^{-1})^*(g\,s\,h^{-1})+(g\,s\,h^{-1})^*(g\,q\,h^{-1})\bigr)\\
+&= \tfrac12\bigl(h\,q^*\,g^{-1}g\,s\,h^{-1}+h\,s^*\,g^{-1}g\,q\,h^{-1}\bigr)\\
+&= \tfrac12\bigl(h\,q^*\,s\,h^{-1}+h\,s^*\,q\,h^{-1}\bigr)\\
+&= \tfrac12\,h\,(q^*s+s^*q)\,h^{-1}\\
+&= h\,\operatorname{Re}_H(q^*s)\,h^{-1}\\
+&= \operatorname{Re}_H(q^*s)\\
+&= q\cdot s .
+\end{align*}
+
+我们把这个点积延拓到复化四元数上，只须要求它对每个向量复线性：
+\begin{equation*}
+(q+s\,\ii)\cdot(p+r\,\ii)=(q\cdot p-s\cdot r)+(s\cdot p+q\cdot r)\,\ii .
+\end{equation*}
+我们还需要复化四元数的希尔伯特空间上的一个内积，它对第二个变量线性、而对第一个变量\emph{共轭线性}（在复结构的意义上！）：
+\begin{align*}
+\langle q+s\,\ii,\,p+r\,\ii\rangle_V
+&= \operatorname{conj}(q+s\,\ii)\cdot(p+r\,\ii)\\
+&= (q-s\,\ii)\cdot(p+r\,\ii)\\
+&= (q\cdot p+s\cdot r)+(q\cdot r-s\cdot p)\,\ii .
+\end{align*}
+我们给这个内积加上下标「$V$」，意为矢量（vector），以区别于旋量四元数上的内积：
+\begin{equation*}
+\langle p,q\rangle_S=\operatorname{Re}_H(p^*q)-\operatorname{Re}_H(p^*qH_z)\,\ii .
+\end{equation*}
+既然已证明点积在 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 作用下不变，我们的复内积 $\langle\cdot,\cdot\rangle_V$ 也将不变——换言之，$\mathrm{SU}(2)\times\mathrm{SU}(2)$ 的这个表示是酉的，正如它必须如此。
+
+到目前为止，我们大体上采取了一种纯粹主义的做法，把四元数当作基本的数学对象处理，这给出许多计算中有用的公式。但有时值得回想：我们可以把普通四元数视为 $2\times2$ 复矩阵的一个子空间，它由四个矩阵 $H_\mu$ 的实线性组合张成——在这个语境中，我们可以把\emph{复化}四元数视为任意的 $2\times2$ 复矩阵，它们可由 $H_\mu$ 的复线性组合得到。
+
+把复化矢量四元数看作 $2\times2$ 复值矩阵、把旋量四元数看作位于由 $H_\mu$ 的实线性组合所张成的较小子空间中，则矢量和旋量内积可写成
+\begin{align*}
+\langle p,q\rangle_V &= \tfrac12\operatorname{tr}\bigl(\operatorname{conj}(p^{T})\,q\bigr),\\
+\langle p,q\rangle_S &= \bigl\langle p,\,q-\ii\,qH_z\bigr\rangle_V
+= \tfrac12\operatorname{tr}\bigl(\operatorname{conj}(p^{T})(q-\ii\,qH_z)\bigr).
+\end{align*}
+
+当我们把复化四元数用作黎曼光子自旋的希尔伯特空间时，我们把不含 $\ii$ 因子的「纯」四元数取为线偏振（linear polarisation）态，对应经典黎曼矢量平面波中四维势矢量 $\bA$ 的方向。在光子静止的参照系中，四元数 $H_x$、$H_y$、$H_z$ 是平面波三种线偏振的态矢量，它们全都与其传播矢量正交（在此情形传播矢量为 $H_t$，因为我们处于静止系）。
+
+三个矢量 $H_x$、$H_y$、$H_z$ 也可视为一个自旋为 1 的粒子的态，其自旋在 $x$、$y$、$z$ 方向上的分量分别为\emph{零}。这与自旋为 1 的粒子（有质量，不同于我们宇宙中的光子）的非相对论量子力学精确吻合：那里选取 $\mathbb{C}^{3}$ 的一组基，由在三个正交方向上自旋分量均为零的态组成，就可使 $\mathrm{SU}(2)$ 在 $\mathbb{C}^{3}$ 上的自旋-1 表示与 $\mathrm{SO}(3)$ 在 $\mathbb{R}^{3}$ 上的矢量表示等同。在这组基下，作用在 $\mathbb{C}^{3}$ 上、代表转动的自旋-1 酉矩阵变为实值——事实上变得与转动的 $\mathrm{SO}(3)$ 矩阵完全相同。
+
+粒子沿某根轴自旋分量为 $+1$ 或 $-1$ 的态又如何？我们可以模仿经典波中圆偏振（circular polarisation）与线偏振之间的关系来找出这些态。在经典平面波中，比方说绕 $z$ 轴的圆偏振，出现在沿 $x$ 轴线偏振的波与另一个沿 $y$ 轴线偏振、且与前者相差 $90^\circ$ 相位的波相叠加之时。对复指数而言，$90^\circ$ 的相移可由乘以 $\ii$ 产生。于是我们预期沿 $z$ 轴自旋为一个单位的归一化光子态为 $(H_x\pm\ii H_y)/\sqrt2$。不过，由于那个促使我们为费米子采用泡利自旋矩阵\emph{相反数}的扭转，我们在这里必须仔细选择符号：\emph{和}是负自旋本征态，而\emph{差}是正自旋本征态。
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+复化矢量四元数 & 角动量分量 \\
+\midrule
+$H_x$ & $m_x=0$ \\
+$H_y$ & $m_y=0$ \\
+$H_z$ & $m_z=0$ \\
+$(H_y\pm\ii H_z)/\sqrt2$ & $m_x=-1,\,1$ \\
+$(H_z\pm\ii H_x)/\sqrt2$ & $m_y=-1,\,1$ \\
+$(H_x\pm\ii H_y)/\sqrt2$ & $m_z=-1,\,1$ \\
+$H_t$ & $m_x=m_y=m_z=0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+从这些态出发，我们可以通过投影到各自旋本征态并乘以自旋，来构造沿每根轴的自旋算符。例如：
+\begin{align*}
+J_z(v)
+&= -\frac{H_x+\ii H_y}{\sqrt2}\Bigl\langle\frac{H_x+\ii H_y}{\sqrt2},\,v\Bigr\rangle_V
++\frac{H_x-\ii H_y}{\sqrt2}\Bigl\langle\frac{H_x-\ii H_y}{\sqrt2},\,v\Bigr\rangle_V\\
+&= \ii\bigl(H_x\langle H_y,v\rangle_V-H_y\langle H_x,v\rangle_V\bigr)\\
+&= \ii\bigl(H_x(H_y\cdot v)-H_y(H_x\cdot v)\bigr).
+\end{align*}
+从倒数第二行到最后一行的过渡中，我们利用了这样一个事实：当第一个自变量不含虚部时，复内积与点积变得完全相同。
+
+我们将上式写作
+\begin{equation*}
+J_z=\ii\,(H_x\otimes H_y-H_y\otimes H_x),
+\end{equation*}
+并约定它通过每个张量积中右端项的点积作用于任何复化四元数。类似地有
+\begin{align*}
+J_x &= \ii\,(H_y\otimes H_z-H_z\otimes H_y),\\
+J_y &= \ii\,(H_z\otimes H_x-H_x\otimes H_z).
+\end{align*}
+除去一个因子 $-\ii$ 外，若把这些算符视为作用在 $\mathbb{R}^{3}$ 上的矩阵，它们就正是生成绕各自轴转动的 $\mathrm{so}(3)$ 元素。
+
+当然，我们所在的完整希尔伯特空间有四复维，而非三复维。无论我们为静止光子可用的三维自旋子空间选取什么基，都需要第四个矢量（例如 $H_t$），以便处理光子运动的普遍情形。
+
+为了描述黎曼光子与电子之间的相互作用，我们需要能够构造出适用于这些粒子的 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 表示之间的缠绕算符（intertwiner），无论是单个粒子，还是比方说由一个光子和一个电子组成的系统。当我们处理这样的复合系统时，适用于粒子联合量子态的表示是分别适用于各粒子的表示的张量积：
+\begin{equation*}
+\rho_{\text{photon and electron}}(g,h)\,\phi_{\text{photon}}\otimes\psi_{\text{electron}}
+=(\rho_{\text{photon}}(g,h)\phi_{\text{photon}})\otimes(\rho_{\text{electron}}(g,h)\psi_{\text{electron}}).
+\end{equation*}
+适用于单个粒子的表示是不可约的，但这些张量积表示不是。确切地说，它们等价于两个或更多不可约表示的直和（direct sum）。这意味着张量积矢量空间内将存在在表示下不变的子空间——表示不会把其中任何矢量移出该子空间——而每个子空间都将等价于某个不可约表示。最简单的例子是 $\mathrm{SU}(2)$ 的两个自旋-$\tfrac12$ 表示的张量积，它包含一个等价于 $\mathrm{SU}(2)$ 的自旋-0 表示的子空间，以及另一个等价于 $\mathrm{SU}(2)$ 的自旋-1 表示的子空间。我们可以用一种简写把它写成 $\tfrac12\otimes\tfrac12=0\oplus1$。我们实际上是把自旋-$j$ 表示定义为位于 $2j$ 份自旋-$\tfrac12$ 表示张量积之内，因此那段讨论是更详细地看清这一想法的好地方。
+
+更一般地，若把 $\mathrm{SU}(2)$ 的自旋-$j$ 表示与自旋-$k$ 表示作张量积，所得空间会分裂为自旋从 $|j-k|$ 到 $j+k$、以 $1$ 为步长的一系列子空间：
+\begin{equation*}
+j\otimes k=|j-k|\oplus|j-k|+1\oplus\cdots\oplus j+k .
+\end{equation*}
+对于 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 的表示（由一对自旋描述），我们有
+\begin{equation*}
+(j_1,j_2)\otimes(k_1,k_2)
+=(|j_1-k_1|,|j_2-k_2|)\oplus(|j_1-k_1|+1,|j_2-k_2|)\oplus\cdots\oplus(j_1+k_1,j_2+k_2),
+\end{equation*}
+其中左手自旋以整数步长取遍 $|j_1-k_1|$ 与 $j_1+k_1$ 之间的每一个值，右手自旋独立地以整数步长取遍 $|j_2-k_2|$ 与 $j_2+k_2$ 之间的每一个值。
+
+现在，我们的目标是描述诸如电子吸收光子这类过程，即从由电子和光子组成的复合系统出发，最终只剩下电子。我们可以从更基本的构件出发把它搭建起来：不从光子和完整的 Dirac 旋量开始，而从光子和一个左手或右手旋量开始。在这些情形中，四元数乘法给出一个极其简单的缠绕算符，连接初始复合系统的表示与适用于相反手性旋量的表示。换言之，我们可以描述一个左手旋量吸收光子变成右手旋量，或一个右手旋量吸收光子变成左手旋量。
+
+在继续之前，我们把基四元数作为自旋量的解释列成表格。复结构为右乘 $H_z$。
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+基四元数 & 作为自旋量态的解释 & 角动量分量 \\
+\midrule
+$H_t$ & UP & $m_z=\tfrac12$ \\
+$H_z$ & $\ii$ UP & $m_z=\tfrac12$ \\
+$H_y$ & $-\text{DOWN}$ & $m_z=-\tfrac12$ \\
+$H_x$ & $-\ii\,\text{DOWN}$ & $m_z=-\tfrac12$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+整体相位的选取是任意的，但这个指定给出了一个一致的方案，可把所有这些四元数解释为 $\tfrac12$ 自旋粒子的自旋态。回忆一下，由 $H_t$ 和 $H_z$ 张成的整个二维实平面应被看成一个复平面，由 $H_x$ 和 $H_y$ 张成的平面也是如此。
+
+\subsection{电子吸收光子（Electron Absorbs Photon）}
+
+\orthofig{images/07__013.png}{自旋量吸收光子}
+
+我们先假定由一个右手旋量 $q_R$ 描述的粒子吸收一个光子 $q_V$，变成左手旋量 $q_L$。眼下我们探索的只是自旋，所以完全不关心这些粒子的能量与动量。在由单位四元数对 $(g,h)$ 描述的转动下，这些四元数各自以不同方式变换：
+\begin{equation*}
+q_R\to h\,q_R,\qquad q_V\to g\,q_V\,h^{-1},\qquad q_L\to g\,q_L .
+\end{equation*}
+然而可以看到，\emph{乘积} $q_V q_R$ 恰好像左手旋量那样变换：
+\begin{equation*}
+(q_V q_R)\to(g\,q_V\,h^{-1})(h\,q_R)=g\,(q_V q_R).
+\end{equation*}
+如果「右手旋量变成左手旋量」这件事用四元数做起来显得有点神秘，我们可以通过考察 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 的表示来看清\emph{为什么}这是必需的：
+\begin{equation*}
+(\tfrac12,\tfrac12)\otimes(0,\tfrac12)=(\tfrac12,0)\oplus(\tfrac12,1).
+\end{equation*}
+$(\tfrac12,\tfrac12)$ 表示是光子，$(0,\tfrac12)$ 表示是右手旋量，而 $(\tfrac12,0)$ 表示是张量积中恰好像左手旋量那样变换的一个子空间。张量积中剩下的子空间按 $(\tfrac12,1)$ 表示变换，涉及总自旋 $3/2$；我们假定不存在具有该自旋的基本粒子，因此这一表示只能由右手旋量与光子保持为分离实体来实现。
+
+作为从描述「光子与右手旋量系统」的空间到描述左手旋量的空间的缠绕算符的候选者，我们提出
+\begin{equation*}
+T_1(q_V\otimes q_R)=q_V q_R/2 .
+\end{equation*}
+那个特定的归一化因子 $\tfrac12$ 的理由稍后说明。我们来看看这个缠绕算符对各种初始复合系统给出什么。
+\begin{align*}
+T_1(\text{Photon with }m_z=0,\ \text{UP spinor})
+&= T_1(H_z\otimes H_t)\\
+&= H_z H_t/2=H_z/2\\
+&= [\ii/2]\ \text{UP}.
+\end{align*}
+从而，一个自旋 UP 的右手旋量可以吸收一个沿 $z$ 轴自旋为零的光子，产生一个自旋 UP 的左手旋量，该过程的振幅为 $\ii/2$。
+\begin{align*}
+T_1(\text{Photon with }m_z=0,\ \text{DOWN spinor})
+&= T_1(H_z\otimes(-H_y))\\
+&= -H_z H_y/2=H_x/2\\
+&= [-\ii/2]\ \text{DOWN}.
+\end{align*}
+从而，一个自旋 DOWN 的右手旋量可以吸收一个沿 $z$ 轴自旋为零的光子，产生一个自旋 DOWN 的左手旋量，振幅为 $-\ii/2$。
+\begin{align*}
+T_1(\text{Photon with }m_z=-1,\ \text{UP spinor})
+&= T_1\bigl((H_x+\ii H_y)/\sqrt2\otimes H_t\bigr)\\
+&= (H_x+\ii H_y)H_t/(2\sqrt2)\\
+&= (H_x+\ii H_y)/(2\sqrt2)\\
+&= (H_x+H_y H_z)/(2\sqrt2)\\
+&= (2H_x)/(2\sqrt2)\\
+&= [-\ii/\sqrt2]\ \text{DOWN}.
+\end{align*}
+从第四行到第五行，我们利用了旋量四元数的复结构，把最初作为复化\emph{矢量}四元数中一个独立数字出现的因子 $\ii$，换算成了右乘 $H_z$。结论是：一个自旋 UP 的右手旋量可以吸收一个沿 $z$ 轴自旋为 $-1$ 的光子，产生一个自旋 DOWN 的左手旋量，振幅为 $-\ii/\sqrt2$。
+\begin{align*}
+T_1(\text{Photon with }m_z=-1,\ \text{DOWN spinor})
+&= T_1\bigl((H_x+\ii H_y)/\sqrt2\otimes(-H_y)\bigr)\\
+&= -(H_x+\ii H_y)H_y/(2\sqrt2)\\
+&= -(H_z-\ii H_t)/(2\sqrt2)\\
+&= -(H_z-H_z)/(2\sqrt2)\\
+&= 0 .
+\end{align*}
+一个自旋 DOWN 的右手旋量与一个沿 $z$ 轴自旋为 $-1$ 的光子，产生任何左手旋量的振幅\emph{为零}。
+\begin{align*}
+T_1(\text{Photon with }m_z=1,\ \text{UP spinor})
+&= T_1\bigl((H_x-\ii H_y)/\sqrt2\otimes H_t\bigr)\\
+&= (H_x-\ii H_y)/(2\sqrt2)\\
+&= (H_x-H_y H_z)/(2\sqrt2)\\
+&= (H_x-H_x)/(2\sqrt2)\\
+&= 0 .
+\end{align*}
+一个自旋 UP 的右手旋量与一个沿 $z$ 轴自旋为 $1$ 的光子，产生任何左手旋量的振幅\emph{为零}。
+\begin{align*}
+T_1(\text{Photon with }m_z=1,\ \text{DOWN spinor})
+&= T_1\bigl((H_x-\ii H_y)/\sqrt2\otimes(-H_y)\bigr)\\
+&= -(H_x-\ii H_y)H_y/(2\sqrt2)\\
+&= -(H_z+\ii H_t)/(2\sqrt2)\\
+&= -(H_z+H_t H_z)/(2\sqrt2)\\
+&= -(2H_z)/(2\sqrt2)\\
+&= [-\ii/\sqrt2]\ \text{UP}.
+\end{align*}
+一个自旋 DOWN 的右手旋量可以吸收一个沿 $z$ 轴自旋为 $1$ 的光子，产生一个自旋 UP 的左手旋量，振幅为 $-\ii/\sqrt2$。
+
+最后我们注意到：
+\begin{equation*}
+T_1(H_t\otimes\text{UP})=\tfrac12\,\text{UP},\qquad
+T_1(H_t\otimes\text{DOWN})=\tfrac12\,\text{DOWN}.
+\end{equation*}
+$H_t$ 对于静止光子的自旋而言并非一个可能的状态，但它确实具有 $z$ 分量为零的自旋，即 $J_z(H_t)=0$，因此它能让我们自旋量的自旋方向保持不变是合理的。
+
+正如我们希望的那样，凡是无法在守恒 $z$ 分量自旋的同时产生某个左手旋量的情形，我们得到的振幅都为零。不过对于其余情形，概率——振幅的模平方——并不为 $1$。例如，一个自旋 UP 的自旋量与一个沿 $z$ 轴自旋为零的光子，并不一定以概率 $1$ 产生另一个自旋 UP 的自旋量。为什么不是？因为这个态\emph{并非}总自旋的本征态。它\emph{是}自旋 $z$ 分量 $m_z=\tfrac12$ 的本征态，但复合系统总自旋 $j$ 取 $3/2$ 而非 $\tfrac12$ 的振幅并不为零，这从张量积空间的分解即可看出：
+\begin{equation*}
+(\tfrac12,\tfrac12)\otimes(0,\tfrac12)=(\tfrac12,0)\oplus(\tfrac12,1).
+\end{equation*}
+我们为缠绕算符选取的归一化，使得产生一个自旋 UP 自旋量的所有不同方式的振幅模平方之和为 $1$：
+\begin{align*}
+&|T_1(\text{Photon with }m_z=0,\ \text{UP spinor})|^{2}
++|T_1(\text{Photon with }m_z=1,\ \text{DOWN spinor})|^{2}
++|T_1(H_t\otimes\text{UP})|^{2}\\
+&\quad= |\ii/2|^{2}+|-\ii/\sqrt2|^{2}+|\tfrac12|^{2}
+=\tfrac14+\tfrac12+\tfrac14=1 .
+\end{align*}
+对产生自旋 DOWN 的不同方式，同样成立。这让我们可以把从缠绕算符得到的每一个振幅，看作我们的某个初始态与复合系统希尔伯特空间（在按 $(\tfrac12,0)$ 表示变换的子空间内）中两个归一化矢量之一的\emph{内积}。对于这两个矢量，总自旋 $j$ 都是 $\tfrac12$，而 $z$ 分量 $m_z$ 分别为 $\tfrac12$ 或 $-\tfrac12$。所以按这种方式归一化的缠绕算符，给出的是测量 $j$ 与 $m_z$ 并发现它们取这些特定值的振幅。
+
+对一个左手旋量吸收光子、变成右手旋量的情形，我们可以做类似处理。定义
+\begin{equation*}
+T_2(q_V\otimes q_L)=-q_V^*\,q_L/2 .
+\end{equation*}
+负号在稍后会证明是一个方便的选取。记住这里的 $*$ 运算共轭四元数，但对我们复化四元数中的数字 $\ii$ 没有影响。在转动 $(g,h)$ 下，结果像右手旋量那样变换：
+\begin{align*}
+(q_V^*\,q_L) &\to (g\,q_V\,h^{-1})^*(g\,q_L)\\
+&= (h\,q_V^*\,g^{-1})(g\,q_L)\\
+&= h\,(q_V^*\,q_L),
+\end{align*}
+其中用了 $g^{-1}=g^*$、$h^{-1}=h^*$，因为它们是单位四元数。
+
+我们可以把左手和右手旋量的两个缠绕算符组合起来，给出一个黎曼 Dirac 粒子吸收光子的缠绕算符：
+\begin{equation*}
+T_3\bigl(q_V\otimes(q_L,q_R)\bigr)=\bigl(q_V q_R,\ -q_V^*\,q_L\bigr)/2 .
+\end{equation*}
+由于 Dirac 粒子同时具有左手和右手分量，它在吸收光子之前与之后适用相同的表示。不过请记住，这仍然与能量和动量的守恒无关；我们只看\emph{自旋}。
+
+\subsection{与自旋零的耦合（Coupling With Spin Zero）}
+
+在继续考察其它涉及光子和电子的相互作用之前，我们描述一些把光子与电子的表示连到 $\mathrm{SO}(4)$ 平凡表示的缠绕算符。平凡表示（trivial representation）描述自旋为 0 的粒子如何变换：它在坐标变换下完全不变。与其自旋相联系的希尔伯特空间是一复维的，即它就是复数 $\mathbb{C}$。因此，一个描述两个光子合并产生一个自旋-0 粒子的缠绕算符，将是从两份复化四元数的张量积到复数的函数，且当把同一个转动施加于这两个光子时函数值不变。
+
+这样的函数极容易找到：它就是点积！加上一个合适的归一化因子，我们定义
+\begin{equation*}
+T_4(q_{V1}\otimes q_{V2})=q_{V1}\cdot q_{V2}/2 .
+\end{equation*}
+「当把同一个转动施加于 $q_{V1}$ 与 $q_{V2}$ 时点积的值不变」这一点几乎就是转动是什么的\emph{定义}。而且容易验证：两个光子沿同一根轴自旋分量为零的态（如 $H_z\otimes H_z$）给出非零结果，一个光子与另一个光子自旋相反的态也如此，而两个光子具有相同非零自旋的态则给出零。
+
+描述反方向的缠绕算符也不难多少：它取一个自旋为 0 的粒子，给出两光子系统希尔伯特空间中的一个态，该态像自旋-0 粒子一样在转动下不变：
+\begin{equation*}
+T_5(z)=\frac{z}{2}\bigl(H_x\otimes H_x+H_y\otimes H_y+H_z\otimes H_z+H_t\otimes H_t\bigr).
+\end{equation*}
+我们选取归一化，使得当 $z$ 是单位复数时，$T_5(z)$ 是单位矢量。看出 $T_5(z)$ 在转动下不变的最简办法，是把它想成平坦欧氏空间中的度规张量：一个对角线上全是 $1$ 的矩阵。正如度规在转动下不变，这个态也不变。（严格地说，若把四元数看作矢量，这个张量态就像矢量线性函数之对偶空间上的度规；但那也像矢量空间上的度规一样在转动下不变。）
+
+我们此前的缠绕算符 $T_4$，可以看成给出归一化不变矢量 $T_5(1)$ 与其自变量之间的内积：
+\begin{equation*}
+T_4(q_{V1}\otimes q_{V2})=\bigl\langle T_5(1),\ q_{V1}\otimes q_{V2}\bigr\rangle_{V\otimes V}.
+\end{equation*}
+我们把每个张量中各项之间的内积相乘，就得到张量积空间上的一个内积：
+\begin{equation*}
+\langle a\otimes b,\ c\otimes d\rangle_{V\otimes V}=\langle a,c\rangle_V\,\langle b,d\rangle_V .
+\end{equation*}
+把这两个缠绕算符复合，得到
+\begin{align*}
+T_4\bigl(T_5(z)\bigr)
+&= \tfrac14\,z\,(H_x\cdot H_x+H_y\cdot H_y+H_z\cdot H_z+H_t\cdot H_t)\\
+&= z .
+\end{align*}
+
+两个自旋量的不变态又如何？我们定义
+\begin{align*}
+T_6(z) &= \frac{z}{\sqrt2}\,(\text{UP}\otimes\text{DOWN}-\text{DOWN}\otimes\text{UP})\\
+&= \frac{z}{\sqrt2}\,(H_y\otimes H_t-H_t\otimes H_y).
+\end{align*}
+这个态既可解释为两个左手旋量，也可解释为两个右手旋量；无论哪种情形，它都在 $\mathrm{SO}(4)$ 下不变。转动的作用是把这里的每个四元数都在左侧乘以同一个单位四元数；我们把不变性的一般证明留作练习，只完整走一个具体例子，其中来自转动的四元数为 $H_x$。
+\begin{align*}
+& H_y\otimes H_t-H_t\otimes H_y\\
+&\to (H_x H_y)\otimes(H_x H_t)-(H_x H_t)\otimes(H_x H_y)\\
+&= (H_z)\otimes(H_x)-(H_x)\otimes(H_z)\\
+&= -(H_z H_z)\otimes(H_x H_z)+(H_x H_z)\otimes(H_z H_z)
+\quad[\text{把第一个张量因子乘以 }-\ii\text{、第二个乘以 }\ii]\\
+&= -H_t\otimes H_y+H_y\otimes H_t .
+\end{align*}
+
+最后，我们需要一个缠绕算符，它取一对相同手性的自旋量（都是左手或都是右手），给出一个在转动自旋量时不变的复数。一个显然的候选者是该双自旋量态与我们那个转动不变的态 $T_6(1)$ 的内积：
+\begin{align*}
+T_7(q_{L1}\otimes q_{L2})
+&= \bigl\langle T_6(1),\ q_{L1}\otimes q_{L2}\bigr\rangle_{S\otimes S}\\
+&= \frac{1}{\sqrt2}\Bigl[\langle H_y,q_{L1}\rangle_S\,\langle H_t,q_{L2}\rangle_S
+-\langle H_t,q_{L1}\rangle_S\,\langle H_y,q_{L2}\rangle_S\Bigr].
+\end{align*}
+虽然逐步变换地化简成下面这个形式颇为费力，但它容易验证。两个表达式对 $q_{L1}$ 与 $q_{L2}$ 都是复线性的，且在四个基矢量 $H_t\otimes H_t$、$H_y\otimes H_y$、$H_y\otimes H_t$、$H_t\otimes H_y$ 上求值都给出相同结果。
+\begin{align*}
+T_7(q_{L1}\otimes q_{L2})
+&= \frac{1}{\sqrt2}\bigl\langle q_{L2} H_y,\ q_{L1}\bigr\rangle_S\\
+&= \frac{1}{\sqrt2}\Bigl[\operatorname{Re}_H(q_{L1}^*\,q_{L2} H_y)+\ii\,\operatorname{Re}_H(q_{L1}^*\,q_{L2} H_x)\Bigr].
+\end{align*}
+若把自旋 0 与自旋 $\tfrac12\otimes$ 自旋 $\tfrac12$ 之间的这两个缠绕算符复合，得到
+\begin{align*}
+T_7\bigl(T_6(z)\bigr)
+&= \tfrac12\,z\,\Bigl[\operatorname{Re}_H(H_y^* H_t H_y)+\ii\,\operatorname{Re}_H(H_y^* H_t H_x)
+-\operatorname{Re}_H(H_t^* H_y H_y)-\ii\,\operatorname{Re}_H(H_t^* H_y H_x)\Bigr]\\
+&= \tfrac12\,z\,\bigl[1+0-(-1)-0\bigr]\\
+&= z .
+\end{align*}
+
+\subsection{电子发射光子（Electron Emits Photon）}
+
+\orthofig{images/07__014.png}{自旋量发射光子}
+
+若要描述一个自旋量发射光子的过程，我们可以利用如下技巧：我们假装这个自旋量伴随一个自旋-0 粒子，后者衰变为两个光子。自旋量吸收其中一个光子，另一个则径自离去。由于我们只关心自旋表示、而不关心能量与动量，一个自旋量与一个自旋-0 粒子的初始态正好像单个自旋量那样变换，而我们最终得到一个光子和一个相反手性的自旋量，就仿佛是这个自旋量发射了光子。我们不必把这一切\emph{按字面}当真；关键在于它给出了我们所需空间之间一个具有恰好正确变换性质（transformation properties）的映射。
+
+于是我们定义
+\begin{equation*}
+T_8(q_R)=T'_1\bigl(T_5(1)\otimes q_R\bigr).
+\end{equation*}
+$T_5(1)$ 给出了一对光子，我们把它与右手旋量作张量积，然后用一个新的缠绕算符 $T'_1$ 描述其中任一光子的吸收，另一个则不受触动。我们通过扩展 $T_1$ 的定义以容纳一个额外的光子，来得到 $T'_1$：
+\begin{equation*}
+T'_1(q_{V1}\otimes q_{V2}\otimes q_R)=\tfrac12\bigl(q_{V1}\otimes(q_{V2} q_R)+q_{V2}\otimes(q_{V1} q_R)\bigr).
+\end{equation*}
+把它写开，得到
+\begin{align*}
+T_8(q_R)
+&= \tfrac12\,T'_1\bigl((H_x\otimes H_x+H_y\otimes H_y+H_z\otimes H_z+H_t\otimes H_t)\otimes q_R\bigr)\\
+&= \tfrac12\bigl[H_x\otimes(H_x q_R)+H_y\otimes(H_y q_R)+H_z\otimes(H_z q_R)+H_t\otimes(H_t q_R)\bigr]\\
+&= \tfrac12\sum_\mu\bigl[H_\mu\otimes(H_\mu q_R)\bigr].
+\end{align*}
+这里最终张量积中的第一个空间是被发射的光子，第二个空间是此时已变为左手性的自旋量。
+
+例如，假定我们原来的自旋量自旋为 UP，$q_R=H_t$，则结果为
+\begin{align*}
+T_8(\text{UP})
+&= \tfrac12\bigl[H_x\otimes H_x+H_y\otimes H_y+H_z\otimes H_z+H_t\otimes H_t\bigr]\\
+&= \tfrac12\bigl[-\ii\,H_x\otimes\text{DOWN}-H_y\otimes\text{DOWN}+\ii\,H_z\otimes\text{UP}+H_t\otimes\text{UP}\bigr]\\
+&= \tfrac12\bigl[-\ii\,(H_x-\ii H_y)\otimes\text{DOWN}+\ii\,(H_z-\ii H_t)\otimes\text{UP}\bigr].
+\end{align*}
+这里第一项 $(H_x-\ii H_y)\otimes\text{DOWN}$ 描述一个 $m_z=1$ 的光子和一个自旋 DOWN（即 $m_z=-\tfrac12$）的自旋量，所以它们总自旋 $z$ 分量为 $\tfrac12$，与原自旋量相同。第二项 $(H_z-\ii H_t)\otimes\text{UP}$ 中，光子部分是 $J_z$ 的一个本征态、本征值为零，因此我们再次得到自旋 $z$ 分量的守恒，尽管这种光子偏振只对运动中的粒子才可能。
+
+要描述一个 Dirac 自旋量发射光子，我们把使用 $T'_1$ 与一个类似定义的 $T'_2$ 的两种构造组合起来：
+\begin{align*}
+T_9(q_L,q_R)
+&= \tfrac12\Bigl(T'_1\bigl((H_x\otimes H_x+H_y\otimes H_y+H_z\otimes H_z+H_t\otimes H_t)\otimes q_R\bigr),\\
+&\qquad\quad T'_2\bigl((H_x\otimes H_x+H_y\otimes H_y+H_z\otimes H_z+H_t\otimes H_t)\otimes q_L\bigr)\Bigr)\\
+&= \tfrac12\sum_\mu\bigl[H_\mu\otimes(H_\mu q_R,\ -H_\mu^* q_L)\bigr].
+\end{align*}
+如果我们让一个 Dirac 自旋量用 $T_9$ 发射一个光子，再把结果喂给 $T_3$，使该自旋量重新吸收它自己发射的光子，会怎样？
+\begin{align*}
+T_3\bigl(T_9(q_L,q_R)\bigr)
+&= \tfrac14\sum_\mu\bigl(-H_\mu H_\mu^*\,q_L,\ -H_\mu^* H_\mu\,q_R\bigr)\\
+&= -(q_L,q_R).
+\end{align*}
+于是我们重新得到原来的 Dirac 自旋量乘以 $-1$。
+
+\subsection{电子与正电子湮灭（Electron and Positron Annihilate）}
+
+\orthofig{images/07__015.png}{两个自旋量湮灭产生光子}
+
+当一个电子与一个正电子湮灭时，守恒能量和动量的唯一方式是产生\emph{两个}光子。事实上，同样的判据也适用于自由电子吸收或发射光子：电子必须散射一个入射光子，它不能吸收或发射单个光子。
+
+但在本节中我们只关心自旋，而不关心能量和动量，所以我们就着手构造一个描述电子与正电子相合产生单个光子的缠绕算符。这其实是一件有用的事，因为这种只涉及三个基本粒子的相互作用，可以看作一个能量与动量\emph{确实}守恒的更大过程（一个更大费曼图中的一个顶点）中的一步。
+
+要把两个自旋量组合成一个矢量，必须一个自旋量是左手、另一个是右手。我们可以用此前构造的两个缠绕算符来满足需要：$T_8$ 把右手旋量变成左手旋量和光子，然后 $T_7$ 把这个新的左手旋量与原来的左手旋量组合成一个自旋-0 粒子——一个我们可以直接乘进结果的复数。
+
+回顾：
+\begin{align*}
+T_8(q_R) &= \tfrac12\sum_\mu\bigl[H_\mu\otimes(H_\mu q_R)\bigr],\\
+T_7(q_{L1}\otimes q_{L2})
+&= \Bigl\langle (H_y\otimes H_t-H_t\otimes H_y)/\sqrt2,\ q_{L1}\otimes q_{L2}\Bigr\rangle_{S\otimes S}.
+\end{align*}
+不过，与其简单地组合这两个缠绕算符，我们将构造一个平等对待左手和右手旋量的版本，让最初为左手的旋量也在发射光子中起作用。
+\begin{align*}
+T_{10}(q_L\otimes q_R)
+&= \frac{1}{2\sqrt2}\sum_\mu
+\Bigl\langle H_y\otimes H_t-H_t\otimes H_y,\ q_L\otimes(H_\mu q_R)-q_R\otimes(H_\mu^* q_L)\Bigr\rangle_{S\otimes S}H_\mu\\
+&= \frac{1}{2\sqrt2}\sum_\mu\Bigl[
+\langle H_y,q_L\rangle_S\,\langle H_t,H_\mu q_R\rangle_S
+-\langle H_t,q_L\rangle_S\,\langle H_y,H_\mu q_R\rangle_S\\
+&\qquad\qquad\qquad
+-\langle H_y,q_R\rangle_S\,\langle H_t,H_\mu^* q_L\rangle_S
++\langle H_t,q_R\rangle_S\,\langle H_y,H_\mu^* q_L\rangle_S\Bigr]H_\mu .
+\end{align*}
+化简上式是件费力的事，但我们其实可以根据一些基本原理走得很远，来预判答案。唯一能像复化矢量四元数那样变换的左手、右手旋量组合，将是
+\begin{equation*}
+q_L\,(a+\ii\,b)\,q_R^* .
+\end{equation*}
+为使该表达式复线性，若把 $q_L$ 或 $q_R$ 右乘 $H_z$，结果必须与整体乘以 $\ii$ 相同，于是有
+\begin{equation*}
+H_z\,b=-b\,H_z=a,\qquad H_z\,a=-a\,H_z=-b .
+\end{equation*}
+在第一式中令 $b=H_x$，得 $a=H_y$，而这两个值也满足第二式。取同一选择的任意实倍数都可行，而且不难验证：若令
+\begin{equation*}
+T_{10}(q_L\otimes q_R)=-\frac{\ii}{\sqrt2}\,q_L\,(H_x-\ii H_y)\,q_R^*,
+\end{equation*}
+就能精确地与我们原来的定义吻合。例如：
+\begin{equation*}
+T_{10}(\text{UP}\otimes\text{UP})=T_{10}(H_t\otimes H_t)=-\frac{\ii}{\sqrt2}(H_x-\ii H_y).
+\end{equation*}
+结果是 $-\ii$ 乘以我们那个 $m_z=1$ 的归一化光子态。我们还有
+\begin{align*}
+T_{10}(\text{DOWN}\otimes\text{DOWN})
+&= T_{10}\bigl((-H_y)\otimes(-H_y)\bigr)\\
+&= \frac{\ii}{\sqrt2}\,H_y\,(H_x-\ii H_y)\,H_y\\
+&= \frac{\ii}{\sqrt2}\,(H_x+\ii H_y),
+\end{align*}
+所以结果恰为 $\ii$ 乘以我们那个 $m_z=-1$ 的归一化光子态。对于其它旋量组合，我们得到
+\begin{align*}
+T_{10}(\text{UP}\otimes\text{DOWN})
+&= T_{10}\bigl(H_t\otimes(-H_y)\bigr)\\
+&= -\frac{\ii}{\sqrt2}\,(H_x-\ii H_y)\,H_y
+= -\frac{\ii}{\sqrt2}\,(H_z+\ii H_t),\\
+T_{10}(\text{DOWN}\otimes\text{UP})
+&= T_{10}\bigl((-H_y)\otimes H_t\bigr)\\
+&= \frac{\ii}{\sqrt2}\,H_y\,(H_x-\ii H_y)
+= -\frac{\ii}{\sqrt2}\,(H_z-\ii H_t).
+\end{align*}
+两种情形下结果都是 $m_z=0$ 的归一化本征态。乍看上去，下面这个结果似乎是个错误或麻烦：
+\begin{equation*}
+T_{10}\bigl((\text{UP}\otimes\text{DOWN}-\text{DOWN}\otimes\text{UP})/\sqrt2\bigr)=H_t,
+\end{equation*}
+因为那个初始态看起来应当是一个总自旋为 0 而非 $1$ 的本征态！但一个自旋量是左手、另一个是右手这一事实在此起了关键区别；手性表示的张量积是 $(\tfrac12,0)\otimes(0,\tfrac12)=(\tfrac12,\tfrac12)$，即整个空间的总自旋为 $1$。
+
+$T_{10}$ 是两个单个自旋量的缠绕算符。对于两个 Dirac 粒子，我们有
+\begin{equation*}
+T_{11}\bigl((q_{L1},q_{R1})\otimes(q_{L2},q_{R2})\bigr)
+=-\frac{\ii}{\sqrt2}\Bigl(q_{L1}(H_x-\ii H_y)q_{R2}^*+q_{L2}(H_x-\ii H_y)q_{R1}^*\Bigr).
+\end{equation*}
+
+\subsection{对产生（Pair Production）}
+
+\orthofig{images/07__016.png}{对产生}
+
+上一节过程的逆过程涉及一个光子变成两个自旋量，一个左手、一个右手。与我们其它例子一样，这不是自由光子能在守恒能量和动量的同时做到的事，但我们仍然有兴趣理解这些自旋之间的关系。
+
+我们用来得到这个缠绕算符的技巧，是想象一个自旋-0 粒子衰变成一对右手旋量，其中一个径自离去，另一个吸收我们的光子并变成左手旋量。我们再把它与一个版本组合：那里得到一对左手旋量，其中一个径自离去，另一个吸收光子并变成右手。与我们其它构造一样，这不应按字面理解；我们只是利用了一个事实：把初始态与一个自旋-0 表示作张量积，不会影响它的变换方式。
+
+来自我们虚构的自旋-0 粒子的那对自旋量（无论都是左手还是都是右手），由如下归一化态给出：
+\begin{align*}
+T_6(1)
+&= \frac{1}{\sqrt2}(\text{UP}\otimes\text{DOWN}-\text{DOWN}\otimes\text{UP})\\
+&= \frac{1}{\sqrt2}(H_y\otimes H_t-H_t\otimes H_y).
+\end{align*}
+我们以模仿缠绕算符 $T_1$ 与 $T_2$ 的过程吸收光子，留下一个含一个左手自旋量和一个右手自旋量的态：
+\begin{equation*}
+T_{12}(q_V)=\frac{1}{2\sqrt2}\Bigl((q_V H_y)\otimes H_t-(q_V H_t)\otimes H_y
++H_y\otimes(q_V^* H_t)-H_t\otimes(q_V^* H_y)\Bigr).
+\end{equation*}
+一些例子：
+\begin{align*}
+T_{12}(\text{Photon with }m_z=1)
+&= T_{12}\bigl((H_x-\ii H_y)/\sqrt2\bigr)\\
+&= \tfrac14\Bigl[((H_x-\ii H_y)H_y)\otimes H_t-((H_x-\ii H_y)H_t)\otimes H_y\\
+&\qquad\qquad -H_y\otimes((H_x-\ii H_y)H_t)+H_t\otimes((H_x-\ii H_y)H_y)\Bigr]\\
+&= \tfrac14\Bigl[(H_z+H_z)\otimes H_t-(H_x-H_x)\otimes H_y\\
+&\qquad\qquad -H_y\otimes(H_x-H_x)+H_t\otimes(H_z+H_z)\Bigr]\\
+&= \tfrac12\bigl[H_z\otimes H_t+H_t\otimes H_z\bigr]\\
+&= \ii\,\text{UP}\otimes\text{UP}.
+\end{align*}
+\begin{align*}
+T_{12}(\text{Photon with }m_z=-1)
+&= T_{12}\bigl((H_x+\ii H_y)/\sqrt2\bigr)\\
+&= \tfrac14\Bigl[((H_x+\ii H_y)H_y)\otimes H_t-((H_x+\ii H_y)H_t)\otimes H_y\\
+&\qquad\qquad -H_y\otimes((H_x+\ii H_y)H_t)+H_t\otimes((H_x+\ii H_y)H_y)\Bigr]\\
+&= \tfrac14\Bigl[(H_z-H_z)\otimes H_t-(H_x+H_x)\otimes H_y\\
+&\qquad\qquad -H_y\otimes(H_x+H_x)+H_t\otimes(H_z-H_z)\Bigr]\\
+&= -\tfrac12\bigl[H_x\otimes H_y+H_y\otimes H_x\bigr]\\
+&= -\ii\,\text{DOWN}\otimes\text{DOWN}.
+\end{align*}
+\begin{align*}
+T_{12}(\text{Photon with }m_z=0)
+&= T_{12}(H_z)\\
+&= \frac{1}{2\sqrt2}\Bigl[(H_z H_y)\otimes H_t-(H_z H_t)\otimes H_y
+-H_y\otimes(H_z H_t)+H_t\otimes(H_z H_y)\Bigr]\\
+&= -\frac{1}{2\sqrt2}\Bigl[H_x\otimes H_t+H_z\otimes H_y+H_y\otimes H_z+H_t\otimes H_x\Bigr]\\
+&= -\frac{1}{2\sqrt2}\Bigl[(-\ii\,\text{DOWN})\otimes\text{UP}+(\ii\,\text{UP})\otimes(-\text{DOWN})\\
+&\qquad\qquad\qquad +(-\text{DOWN})\otimes(\ii\,\text{UP})+\text{UP}\otimes(-\ii\,\text{DOWN})\Bigr]\\
+&= \frac{\ii}{\sqrt2}\bigl(\text{DOWN}\otimes\text{UP}+\text{UP}\otimes\text{DOWN}\bigr).
+\end{align*}
+\begin{align*}
+T_{12}(H_t)
+&= \frac{1}{\sqrt2}(H_y\otimes H_t-H_t\otimes H_y)\\
+&= \frac{1}{\sqrt2}(\text{UP}\otimes\text{DOWN}-\text{DOWN}\otimes\text{UP}).
+\end{align*}
+
+若把缠绕算符 $T_{10}$ 作用于以上任何具体结果，我们都会重新得到原来的光子态。由于这些结果构成一组基矢量，这一点对任何态都必定成立：
+\begin{equation*}
+T_{10}\bigl(T_{12}(q_V)\bigr)=q_V .
+\end{equation*}
+
+\subsection{缠绕算符的不变性（Invariance of the Intertwiners）}
+
+\orthofig{images/07__017.png}{三价自旋量-自旋量-光子顶点}
+
+我们已经构造出可以用来描述以下过程的缠绕算符：
+\begin{itemize}
+  \item 一个电子吸收光子；
+  \item 一个电子发射光子；
+  \item 一个电子与一个正电子湮灭产生一个光子；
+  \item 一个光子衰变成一个电子与一个正电子。
+\end{itemize}
+我们应当再次强调，我们只看这些粒子的\emph{自旋}；守恒能量和动量是另一回事。
+
+现在，从一个拒绝偏爱任何特定观测者的完全客观的观点来看，所有这些过程都是同一件事的例子：两个自旋量和一个光子之间的相互作用。通过转动我们的参照系，我们可以把这些过程中的任何一个变成其它任何一个。
+
+在两个观测者对相互作用前后存在哪些粒子拥有一致描述的情形中，结果的转动不变性很容易看出。例如，假定一个观测者 Carla 说一个电子吸收了一个光子，并把态 $q_V$ 归给光子、把 Dirac 旋量 $(q_{L1},q_{R1})$ 归给电子。如果她关心电子最终成为 Dirac 旋量 $(q_{L2},q_{R2})$ 的振幅，她将用缠绕算符 $T_3$ 把它算作
+\begin{align*}
+A &= \bigl\langle (q_{L2},q_{R2}),\ T_3\bigl(q_V\otimes(q_{L1},q_{R1})\bigr)\bigr\rangle_D\\
+&= \tfrac12\bigl\langle (q_{L2},q_{R2}),\ (q_V q_{R1},\ q_V^* q_{L1})\bigr\rangle_D\\
+&= \tfrac12\Bigl[\langle q_{L2},q_V q_{R1}\rangle_S+\langle q_{R2},q_V^* q_{L1}\rangle_S\Bigr].
+\end{align*}
+这里我们在 Dirac 旋量上定义了一个内积 $\langle\cdot,\cdot\rangle_D$，即左手与右手旋量之间旋量内积 $\langle\cdot,\cdot\rangle_S$ 之和。
+
+若另一个观测者 Patrizia 同意是一个光子吸收了一个电子，但使用一组相对于 Carla 的坐标转动了单位四元数对 $(g,h)$ 的坐标，她将把不同的自旋态归给这些粒子：
+\begin{equation*}
+q'_V=g\,q_V\,h^{-1},\qquad
+(q'_{L1},q'_{R1})=(g\,q_{L1},\ h\,q_{R1}),\qquad
+(q'_{L2},q'_{R2})=(g\,q_{L2},\ h\,q_{R2}).
+\end{equation*}
+使用同一个缠绕算符，但应用于她自己版本的自旋态，Patrizia 将预言一个与 Carla 完全相同的振幅：
+\begin{align*}
+A' &= \tfrac12\Bigl[\langle q'_{L2},q'_V q'_{R1}\rangle_S+\langle q'_{R2},q'^*_V q'_{L1}\rangle_S\Bigr]\\
+&= \tfrac12\Bigl[\langle g\,q_{L2},g\,q_V h^{-1}h\,q_{R1}\rangle_S+\langle h\,q_{R2},h\,q_V^* g^{-1}g\,q_{L1}\rangle_S\Bigr]\\
+&= \tfrac12\Bigl[\langle g\,q_{L2},g\,q_V q_{R1}\rangle_S+\langle h\,q_{R2},h\,q_V^* q_{L1}\rangle_S\Bigr]\\
+&= \tfrac12\Bigl[\langle q_{L2},q_V q_{R1}\rangle_S+\langle q_{R2},q_V^* q_{L1}\rangle_S\Bigr]\\
+&= A .
+\end{align*}
+从倒数第三行到倒数第二行，我们用了一个此前已确立的事实：当两个自变量都在左侧乘以同一个单位四元数时，旋量内积不变。
+
+\orthofig{images/07__018.png}{离开相互作用时的自旋}
+
+不过，当不同观测者对相互作用\emph{之前}存在哪些粒子、\emph{之后}存在哪些粒子出现分歧时，情形就变得棘手了。要比较这类观测者的测量与预言，我们不仅需要从我们四个缠绕算符中的一个切换到另一个，还需要做比用通常表示去变换粒子自旋态更多的事情。
+
+为什么？经典地看，\emph{自旋}取决于当你看着物体\emph{随时间向前运动}时它旋转的方向。正如不存在绝对的能动量矢量，也不存在绝对的自旋矢量（或张量）；一个从上方看绕 $z$ 轴逆时针旋转的物体，在具有相反时间箭头的观测者看来将是顺时针旋转的。
+
+然而，我们\emph{确实}可以客观地谈论一个物体在接近某个特定相互作用时其旋转的方向。这会与把该物体视为存在于相互作用\emph{之前}的观测者的自旋方向一致，但会与把它视为存在于相互作用\emph{之后}的观测者的自旋方向相反。如果我们同意用这种措辞来表达\emph{所有}自旋，那么（颇像处理能动量守恒时那种观测者无关的做法）我们可以看到角动量在每一个相互作用处都守恒。
+
+量子力学上，我们可以用此前描述过的 $\operatorname{rev}_S$ 函数来反转我们四元数自旋量的自旋：
+\begin{equation*}
+\operatorname{rev}_S(q)=q\,H_y .
+\end{equation*}
+对于用作光子态的复化矢量四元数，要反转自旋，我们只需在复结构意义上共轭它们：
+\begin{equation*}
+\operatorname{rev}_V(p+q\,\ii)=\operatorname{conj}(p+q\,\ii)=p-q\,\ii .
+\end{equation*}
+一旦我们把原来看作\emph{离开}相互作用而非接近相互作用的所有态都作了自旋反转，我们就应发现三个态的整个张量积具有总自旋 $0$。我们可以用一个从该张量积到自旋 0 的缠绕算符来量化这一点，其构造办法是想象这两个自旋量湮灭，然后取所得光子与原来光子的点积：
+\begin{align*}
+T_{\mathrm{vert}}(q_V\otimes q_L\otimes q_R)
+&= T_4\bigl(q_V\otimes T_{10}(q_L\otimes q_R)\bigr)\\
+&= -\frac{\ii}{2\sqrt2}\,q_V\cdot\bigl(q_L\,(H_x-\ii H_y)\,q_R^*\bigr).
+\end{align*}
+我们这样构造的缠绕算符 $T_{\mathrm{vert}}$ 是这样归一化的：对张量积空间的任何正交归一基求和，结果的模平方之和为 $1$。这些结果可以被看作张量积空间中位于此处的单个归一化矢量（一个总自旋本征值为 $j=0$ 的本征态）与我们喂给缠绕算符的任何三粒子态之间的内积。不过，当我们把 $T_{\mathrm{vert}}$ 与其它缠绕算符比较时，会得到一些额外的因子：
+\begin{align*}
+\langle q_L,\ T_1(q_V\otimes q_R)\rangle_S
+&= (\sqrt2)\,T_{\mathrm{vert}}\bigl(q_V\otimes\operatorname{rev}_S(q_L)\otimes q_R\bigr)
+&&\text{[右手旋量吸收光子变成左手旋量]}\\
+\langle q_R,\ T_2(q_V\otimes q_L)\rangle_S
+&= (\sqrt2)\,T_{\mathrm{vert}}\bigl(q_V\otimes q_L\otimes\operatorname{rev}_S(q_R)\bigr)
+&&\text{[左手旋量吸收光子变成右手旋量]}\\
+\langle q_V\otimes q_L,\ T_8(q_R)\rangle_{V\otimes S}
+&= (\sqrt2)\,T_{\mathrm{vert}}\bigl(\operatorname{rev}_V(q_V)\otimes\operatorname{rev}_S(q_L)\otimes q_R\bigr)
+&&\text{[右手旋量发射光子变成左手旋量]}\\
+\langle q_V\otimes q_R,\ T_{8L}(q_L)\rangle_{V\otimes S}
+&= (\sqrt2)\,T_{\mathrm{vert}}\bigl(\operatorname{rev}_V(q_V)\otimes q_L\otimes\operatorname{rev}_S(q_R)\bigr)
+&&\text{[左手旋量发射光子变成右手旋量]}\\
+\langle q_V,\ T_{10}(q_L\otimes q_R)\rangle_V
+&= 2\,T_{\mathrm{vert}}\bigl(\operatorname{rev}_V(q_V)\otimes q_L\otimes q_R\bigr)
+&&\text{[左手与右手旋量湮灭产生光子]}\\
+\langle q_L\otimes q_R,\ T_{12}(q_V)\rangle_{S\otimes S}
+&= 2\,T_{\mathrm{vert}}\bigl(q_V\otimes\operatorname{rev}_S(q_L)\otimes\operatorname{rev}_S(q_R)\bigr)
+&&\text{[光子变成一对左手与右手旋量]}
+\end{align*}
+[我们在此没有费心去显式构造上面称为 $T_{8L}$ 的东西，即 $T_8$ 的一个以左手旋量开始的版本；但其精确定义可见于完整 Dirac 旋量的 $T_9$ 的右手分量，就在「电子发射光子」一节的末尾。]
+
+$\sqrt2$ 与 $2$ 这些因子出现，是因为我们根据\emph{初始}存在哪些粒子来归一化这些不同的缠绕算符。例如，我们归一化 $T_1$ 与 $T_2$ 使其给出初始态总自旋为 $\tfrac12$、末态为某个特定自旋量的振幅。由于初始态空间中总自旋为 $\tfrac12$ 的子空间维数为 $2$，若对\emph{所有}初始态与末态的正交归一基求和，我们得到所有模平方之和为 $2$。但 $T_{\mathrm{vert}}$ 给出的是总自旋为 $0$ 的振幅，而初始态空间中只有一维子空间满足该条件，于是同类的求和只给出 $1$。因子 $\sqrt2$ 就是这两者之比的平方根。
+
+为了从中提取出某种完全\emph{观测者无关}的东西，假定一个观测者看到一个确实涉及一个左手旋量、一个右手旋量以及一个光子的相互作用。他们测量了所有三个粒子的态，然后对他们视为出射的态施加自旋反转函数。给定三次测量所用的基，以及其中任意两个粒子的实际结果，我们应当能够为第三个粒子的所有基元素计算相对概率，无论原观测者把它看作入射粒子还是出射粒子。
+
+我们计算相对概率为 $|T_{\mathrm{vert}}(q_V\otimes q_L\otimes q_R)|^{2}$，固定三个态中的两个为已知结果，同时把第三个态依次取为测量基的每个元素。然后我们除以这些值之和，以得到真正的概率。由于归一化中任何整体因子都会抵消，用上面列出的六个缠绕算符中的任何一个执行同样的程序，都会给出与 $T_{\mathrm{vert}}$ 完全相同的概率。缠绕算符之间除整体归一化外的所有差别，都由自旋反转来处理掉了。
+
+\subsection{四元数拉格朗日量（Quaternionic Lagrangian）}
+
+既然我们已经看到如何把矢量和旋量都当作四元数处理，把黎曼量子电动力学中其它定义和方程转成四元数形式就不难了。作为一个简单的例子，我们来看黎曼 QED 拉格朗日量中的相互作用项：
+\begin{equation*}
+L_{\mathrm{inter}}=-e\,A_\mu\,\psi^\dagger\,\gamma^\mu\,\psi .
+\end{equation*}
+用四元数并且工作在 Weyl 基中，我们有
+\begin{equation*}
+\psi=(q_L\bv_0,\ q_R\bv_0),\qquad
+\psi^\dagger=(\bv_0^\dagger q_L^*,\ \bv_0^\dagger q_R^*),\qquad
+q_V=A_\mu H_\mu,\qquad
+\gamma^\mu=\begin{pmatrix}0&H_\mu\\ H_\mu^*&0\end{pmatrix}.
+\end{equation*}
+这里 $\bv_0$ 是 $\mathbb{C}^{2}$ 中一个单位矢量，我们用它把 $\mathbb{C}^{2}$ 映射到四元数；我们通常的选择是 $\bv_0=(0,1)$，以与「右乘 $H_z$ 作为四元数上的复结构」相容。我们用 $\dagger$ 表示复矢量与复矩阵的共轭转置，而我们所用于四元数共轭的 $*$，若把四元数看作 $2\times2$ 复矩阵，实际上与之相同。
+
+于是我们有
+\begin{align*}
+L_{\mathrm{inter}}
+&= -e\,A_\mu\Bigl[\bv_0^\dagger q_L^* H_\mu q_R \bv_0+\bv_0^\dagger q_R^* H_\mu^* q_L \bv_0\Bigr]\\
+&= -e\,\bv_0^\dagger\Bigl[q_L^* q_V q_R+q_R^* q_V^* q_L\Bigr]\bv_0 .
+\end{align*}
+上一行方括号里的量作为一个四元数是纯实数，因为它等于自身的四元数共轭，所以作为一个 $2\times2$ 矩阵，它只是单位矩阵的一个倍数。于是我们有
+\begin{align*}
+L_{\mathrm{inter}}
+&= -e\,(\bv_0^\dagger \bv_0)\Bigl[q_L^* q_V q_R+q_R^* q_V^* q_L\Bigr]\\
+&= -e\Bigl[q_L^* q_V q_R+q_R^* q_V^* q_L\Bigr].
+\end{align*}
+不难看出，给定 $\mathrm{SU}(2)\times\mathrm{SU}(2)$ 中的单位四元数对 $(g,h)$，它在通常的变换下不变：
+\begin{equation*}
+q_V\to g\,q_V\,h^{-1},\qquad q_L\to g\,q_L,\qquad q_R\to h\,q_R .
+\end{equation*}
+你也许会疑惑，为什么我们不能把这个函数 $L_{\mathrm{inter}}$ 用作从「光子与两个自旋量」态到自旋 0 的缠绕算符。但拉格朗日量是一个实数，而在这一语境中 $q_V$ 只是一个普通四元数，而非复化四元数。我们此前构造的缠绕算符 $T_{\mathrm{vert}}$ 对三个自旋态都是复线性的。它是唯一的（至多相差一个整体常数因子），我们不能用拉格朗日量来代替它。
+
+作为对结果的检验，假定左右手旋量四元数确实满足能动量矢量为 $Q_V=k^\mu H_\mu$ 的平面波四元数 Dirac 方程，即
+\begin{equation*}
+Q_V q_R-m q_L=0 .
+\end{equation*}
+我们可以把相互作用能写成拉格朗日量的相反数，然后作代换 $q_L=Q_V q_R/m$：
+\begin{align*}
+H_{\mathrm{inter}}
+&= -L_{\mathrm{inter}}
+= e\Bigl[q_L^* q_V q_R+q_R^* q_V^* q_L\Bigr]\\
+&= \frac{e}{m}\Bigl[q_R^* Q_V^* q_V q_R+q_R^* q_V^* Q_V q_R\Bigr]\\
+&= \frac{e}{m}\,q_R^*\Bigl[Q_V^* q_V+q_V^* Q_V\Bigr]q_R\\
+&= (q_R^* q_R)\,\frac{e}{m}\Bigl[Q_V^* q_V+q_V^* Q_V\Bigr]\\
+&= \tfrac12\,\frac{e}{m}\Bigl[k^\mu H_\mu^* A_\nu H_\nu+A_\nu H_\nu^* k^\mu H_\mu\Bigr]\\
+&= \tfrac12\,\frac{e}{m}\,k^\mu A_\nu\Bigl[H_\mu^* H_\nu+H_\nu^* H_\mu\Bigr]\\
+&= \tfrac12\,\frac{e}{m}\,k^\mu A_\nu\,(2\delta^{\nu}_{\ \mu})\\
+&= \frac{e}{m}\,k^\mu A_\mu,
+\end{align*}
+其中从第四行到第五行，我们用了方括号中的表达式是实数这一事实（它是 $Q_V^* q_V$ 与其共轭之和），因而与 $q_R$ 相交换，随后我们又用了 $q_R^* q_R=|q_R|^{2}=\tfrac12$，这是当我们想要 $\psi^\dagger\psi=1$ 时所应取的归一化。
+
+这个结果显然是不变量，而在电子静止、$\bk=m\be_t$ 的参照系中它变为
+\begin{equation*}
+H_{\mathrm{inter}}=e\,A_t=-e\,V,
+\end{equation*}
+其中 $V$ 是势能。我们预期会出现一个负号，因为在黎曼宇宙中，真实的相对论能量是势能的相反数。

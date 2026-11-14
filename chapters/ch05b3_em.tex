@@ -1,0 +1,695 @@
+\section{由静电解导出的振荡解（Oscillating Solutions Derived From Electrostatic Ones）}
+
+本节沿用与上一节平行的思路，把\emph{静电}解改造成振荡解。与静磁情形不同的是：静电势来自四维势的时间分量，当我们把一个纯静电势乘以 $\cos(\omega t)$ 时，它自身会产生非零的时间导数，而四维势若只有时间分量，就没有空间分量来抵消这一导数，于是不能直接满足横波条件（transverse condition）。因此需要额外引入一个空间分量。我们先处理振荡电偶极子，再处理带交流电流的球形电容器。
+
+\subsection{振荡电偶极子（Oscillating Electric Dipoles）}
+
+我们把纯静电势 $\phi_{\text{ES}}$ 改用一个新常数 $k$（而非 $\wms$）重新标定，再乘以 $\cos(\omega t)$；这样得到的解会以原电荷密度乘以 $\cos(\omega t)$ 为源满足黎曼矢量波方程（Riemannian Vector Wave equation, RVWS），其中照例有 $k^{2}+\omega^{2}=\wms^{2}$。但它\emph{不}满足横波条件：此时四维势的时间分量为 $-\phi_{\text{ES},k}\cos(\omega t)$，具有非零的时间导数，而四维势没有空间分量，其自身的导数不足以使散度之和为零。
+
+对静态电偶极子，有一个简单的办法绕过这一困难。静态偶极势恰是库仑势沿偶极轴（取为 $z$ 轴）方向空间导数的相反数。于是，若令四维势的 $z$ 分量等于库仑势（同样用常数 $k$ 而非 $\wms$ 标定）乘以 $\omega\sin(\omega t)$，它在 $z$ 方向的空间导数便恰好抵消时间分量带来的时间导数，从而满足横波条件。新添的项也以同样方式修改后的源满足 RVWS，且电荷自动守恒。具体而言，这给源增添了一个\emph{点状振荡电流}（pointlike oscillating current），其相位比偶极强度的振荡落后九十度。
+
+与之前一样，可用此法构造两个驻波，再组合为出射行波；也同样可以改造成洛伦兹解。
+
+\medskip
+\noindent\textbf{振荡电偶极子·出射行波解}：电偶极矩为 $\bp\cos(\omega t)$；对黎曼解，$k^{2}+\omega^{2}=\wms^{2}$。
+
+对应的四维势为
+\begin{align}
+\text{（Riemannian）}\quad
+\phi(\mathbf{r}) &= -\frac{\bp\cdot\mathbf{r}}{4\pi r^{3}}\bigl[\cos(kr+\omega t)+kr\sin(kr+\omega t)\bigr] \nonumber\\
+A_{(3)}(\mathbf{r}) &= -\frac{\bp\,\omega}{4\pi r}\sin(kr+\omega t)\\
+\text{（Lorentzian）}\quad
+\phi(\mathbf{r}) &= \frac{\bp\cdot\mathbf{r}}{4\pi r^{3}}\bigl[\cos\bigl(\omega(r-t)\bigr)+\omega r\sin\bigl(\omega(r-t)\bigr)\bigr] \nonumber\\
+A_{(3)}(\mathbf{r}) &= \frac{\bp\,\omega}{4\pi r}\sin\bigl(\omega(r-t)\bigr)
+\end{align}
+
+相应的电场与磁场为
+\begin{align}
+\text{（Riemannian）}\quad
+\bE(\mathbf{r}) &= -\frac{3(\bp\cdot\mathbf{r})\mathbf{r}-r^{2}\bp}{4\pi r^{5}}\bigl[\cos(kr+\omega t)+kr\sin(kr+\omega t)\bigr] \nonumber\\
+&\quad + \frac{k^{2}(\bp\cdot\mathbf{r})\mathbf{r}+\omega^{2}r^{2}\bp}{4\pi r^{3}}\cos(kr+\omega t) \nonumber\\
+\bB(\mathbf{r}) &= \frac{\omega\,\bp\times\mathbf{r}}{4\pi r^{3}}\bigl[kr\cos(kr+\omega t)-\sin(kr+\omega t)\bigr]\\
+\text{（Lorentzian）}\quad
+\bE(\mathbf{r}) &= \frac{3(\bp\cdot\mathbf{r})\mathbf{r}-r^{2}\bp}{4\pi r^{5}}\bigl[\cos\bigl(\omega(r-t)\bigr)+\omega r\sin\bigl(\omega(r-t)\bigr)\bigr] \nonumber\\
+&\quad - \frac{\omega^{2}(\bp\times\mathbf{r})\times\mathbf{r}}{4\pi r^{3}}\cos\bigl(\omega(r-t)\bigr) \nonumber\\
+\bB(\mathbf{r}) &= \frac{\omega\,\bp\times\mathbf{r}}{4\pi r^{3}}\bigl[\sin\bigl(\omega(r-t)\bigr)-\omega r\cos\bigl(\omega(r-t)\bigr)\bigr]
+\end{align}
+
+一个周期上平均的坡印廷矢量（Poynting vector）与总功率为
+\begin{align}
+\text{（Riemannian）}\quad
+\langle\mathbf{S}(r)\rangle &= \frac{k\omega^{3}(\bp\cdot\bp)+k^{3}\omega(\bp\cdot\be_{r})^{2}}{32\pi^{2}r^{2}}\,\be_{r}\\
+\text{（Lorentzian）}\quad
+\langle\mathbf{S}(r)\rangle &= \frac{\omega^{4}\bigl[(\bp\cdot\bp)-(\bp\cdot\be_{r})^{2}\bigr]}{32\pi^{2}r^{2}}\,\be_{r}
+\end{align}
+\begin{align}
+\text{（Riemannian）}\quad
+\langle P\rangle &= \frac{(k^{3}\omega+3k\omega^{3})(\bp\cdot\bp)}{24\pi}\\
+\text{（Lorentzian）}\quad
+\langle P\rangle &= \frac{\omega^{4}(\bp\cdot\bp)}{12\pi}
+\end{align}
+
+\orthofig{images/04__016.png}{振荡电偶极子的辐射功率随频率的变化}
+
+黎曼解在这里的功率-频率关系与振荡磁偶极子略有不同。它也是我们迄今见到的第一个能产生\emph{纵向偏振波}（longitudinally polarised waves）的显式源。
+
+对于很大的 $r$，黎曼四维势可写成
+\begin{equation}
+\bA(\mathbf{r}) \approx \frac{\sin(kr+\omega t)}{4\pi r}\bigl[k(\bp\cdot\be_{r})\be_{t}-\omega\,\bp\bigr].
+\end{equation}
+可把它分解为横波与纵波两部分：
+\begin{align}
+\bA_{T}(\mathbf{r}) &\approx \frac{\sin(kr+\omega t)}{4\pi r}\,\omega\bigl[(\bp\cdot\be_{r})\be_{r}-\bp\bigr],\\
+\bA_{L}(\mathbf{r}) &\approx \frac{\sin(kr+\omega t)}{4\pi r}(\bp\cdot\be_{r})\bigl[k\,\be_{t}-\omega\,\be_{r}\bigr].
+\end{align}
+横波部分没有时间分量，且与波在空间中的传播方向 $\be_{r}$ 正交。利用我们对平面波能量的分析，记 $\theta$ 为偶极矢量与波在空间中传播方向之间的夹角，则横模与纵模中一个时间周期上平均的局部能量密度为
+\begin{align}
+\langle u_{T}(r)\rangle &\approx \frac{1}{32\pi^{2}r^{2}}(\bp\cdot\bp)\,\omega^{4}\sin^{2}\theta,\\
+\langle u_{L}(r)\rangle &\approx \frac{1}{32\pi^{2}r^{2}}(\bp\cdot\bp)(\omega^{2}+k^{2})\,\omega^{2}\cos^{2}\theta.
+\end{align}
+由此可见，横波在垂直于偶极轴的方向最强，在轴上降为零；纵波则相反：在轴上最强，垂直方向降为零。横波的能量角分布与洛伦兹情形一致。
+
+把这两个能量密度乘以波速 $k/\omega$ 并对整个球面积分，得到两种形式各自的总功率：
+\begin{align}
+\langle P_{T}\rangle &= \frac{k\omega^{3}(\bp\cdot\bp)}{12\pi},\\
+\langle P_{L}\rangle &= \frac{(k\omega^{3}+k^{3}\omega)(\bp\cdot\bp)}{24\pi}.
+\end{align}
+两者相加正是表中给出的总辐射功率。
+
+\subsection{电容器中的交流电流（Alternating Current in a Capacitor）}
+
+为了考察球形电容器由交流电流对两壳层充放电时的行为，我们须把电流放进图像中。在不破坏球对称的前提下，唯一可行的做法是让电流对称地从一壳层直接流到另一壳层、穿过二者之间的空隙。字面意义上这样做显然会破坏电容器的功能，但可以把这一模型看作如下装置的近似：大量平板电容器通过位于器件\emph{旁侧}（而非真正穿过器件内部）的导线充放电；把大量此类电路排列成围绕某一中心点扇形展开的样式，将产生与本模型非常相似的场。
+
+我们先由球壳上的振荡电荷求黎曼四维势：改造静电解，把 $\wms$ 换成 $k$ 并乘以 $\cos(\omega t)$。然后再加入一项四维势，描述在两壳层之间往返流动的电流；它可先用毕奥-萨伐尔定律作为静磁解求出，再用标准方法转成振荡解。由于所加电流恰好对应球壳上的振荡电荷，电荷守恒成立，故四维势满足横波条件，给出合法解。此后照例需要把它与一个无源驻波组合，得到出射行波解。
+
+由于四维势是径向对称的，不存在磁场。在洛伦兹情形下，这意味着根本不可能有辐射；而在黎曼情形下，存在纯横波的辐射。
+
+\medskip
+\noindent\textbf{球形电容器（交流）·出射行波解}：内壳半径 $R_{1}$、总电荷 $-Q_{0}\cos(\omega t)$；外壳半径 $R_{2}$、总电荷 $+Q_{0}\cos(\omega t)$；对黎曼解，$k^{2}+\omega^{2}=\wms^{2}$。
+
+\paragraph{势。}
+黎曼解的四维势为
+\begin{align}
+\text{（Riemannian）}\quad
+&\varphi(r) = \frac{Q_{0}\sin(kr)}{4\pi kr R_{1}R_{2}}\bigl[R_{2}\cos(kR_{1}+\omega t) \nonumber\\
+&\qquad - R_{1}\cos(kR_{2}+\omega t)\bigr], \qquad r<R_{1}; \nonumber\\
+&\varphi(r) = \frac{Q_{0}}{4\pi kr R_{1}R_{2}}\bigl[R_{2}\sin(kR_{1})\cos(kr+\omega t) \nonumber\\
+&\qquad - R_{1}\sin(kr)\cos(kR_{2}+\omega t)\bigr], \qquad R_{1}<r<R_{2}; \nonumber\\
+&\varphi(r) = \frac{Q_{0}\cos(kr+\omega t)}{4\pi kr R_{1}R_{2}}\bigl[R_{2}\sin(kR_{1})-R_{1}\sin(kR_{2})\bigr], \qquad r>R_{2}.
+\end{align}
+\begin{align}
+\text{（Riemannian）}\quad
+&\bA_{(3)}(r) = \frac{Q_{0}\omega\bigl(kr\cos(kr)-\sin(kr)\bigr)}{4\pi k^{3}r^{2}R_{1}R_{2}} \nonumber\\
+&\qquad \bigl[R_{2}\sin(kR_{1}+\omega t)-R_{1}\sin(kR_{2}+\omega t)\bigr]\be_{r}, \qquad r<R_{1}; \nonumber\\
+&\bA_{(3)}(r) = \frac{Q_{0}\omega}{4\pi k^{3}r^{2}R_{1}R_{2}}\Bigl[\cos(\omega t)\bigl(kr\cos(kr)-\sin(kr)\bigr) \nonumber\\
+&\qquad\qquad \bigl(R_{2}\sin(kR_{1})-R_{1}\sin(kR_{2})\bigr) \nonumber\\
+&\qquad\qquad + \sin(\omega t)\Bigl(R_{1}\cos(kR_{2})\bigl(\sin(kr)-kr\cos(kr)\bigr) \nonumber\\
+&\qquad\qquad - R_{2}\sin(kR_{1})\bigl(kr\sin(kr)+\cos(kr)\bigr) \nonumber\\
+&\qquad\qquad + kR_{1}R_{2}\Bigr)\Bigr]\be_{r}, \qquad R_{1}<r<R_{2}; \nonumber\\
+&\bA_{(3)}(r) = \frac{Q_{0}\omega\bigl(kr\cos(kr+\omega t)-\sin(kr+\omega t)\bigr)}{4\pi k^{3}r^{2}R_{1}R_{2}} \nonumber\\
+&\qquad \bigl[R_{2}\sin(kR_{1})-R_{1}\sin(kR_{2})\bigr]\be_{r}, \qquad r>R_{2}.
+\end{align}
+洛伦兹解的四维势为
+\begin{align}
+\text{（Lorentzian）}\quad
+\varphi(r) &= \frac{Q_{0}(R_{1}-R_{2})\cos(\omega t)}{4\pi R_{1}R_{2}}, \qquad r<R_{1}; \nonumber\\
+\varphi(r) &= \frac{Q_{0}(r-R_{2})\cos(\omega t)}{4\pi r R_{2}}, \qquad R_{1}<r<R_{2}; \nonumber\\
+\varphi(r) &= 0, \qquad r>R_{2}; \nonumber\\
+\bA_{(3)}(r) &= 0.
+\end{align}
+
+\paragraph{电场。} 黎曼解
+\begin{align}
+\text{（Riemannian）}\quad
+&\bE(r) = \frac{Q_{0}\wms^{2}\bigl(kr\cos(kr)-\sin(kr)\bigr)}{4\pi k^{3}r^{2}R_{1}R_{2}} \nonumber\\
+&\qquad \bigl[R_{1}\cos(kR_{2}+\omega t)-R_{2}\cos(kR_{1}+\omega t)\bigr]\be_{r}, \qquad r<R_{1}; \nonumber\\
+&\bE(r) = \frac{Q_{0}}{4\pi k^{3}r^{2}R_{1}R_{2}}\Bigl[\cos(\omega t)\Bigl(\wms^{2}\bigl(R_{1}\cos(kR_{2})(kr\cos(kr)-\sin(kr)) \nonumber\\
+&\qquad\qquad + R_{2}\sin(kR_{1})(kr\sin(kr)+\cos(kr))\bigr)-\omega^{2}kR_{1}R_{2}\Bigr) \nonumber\\
+&\qquad\qquad + \wms^{2}\sin(\omega t)\bigl(kr\cos(kr)-\sin(kr)\bigr) \nonumber\\
+&\qquad\qquad \bigl(R_{2}\sin(kR_{1})-R_{1}\sin(kR_{2})\bigr)\Bigr]\be_{r}, \qquad R_{1}<r<R_{2}; \nonumber\\
+&\bE(r) = \frac{Q_{0}\wms^{2}\bigl(kr\sin(kr+\omega t)+\cos(kr+\omega t)\bigr)}{4\pi k^{3}r^{2}R_{1}R_{2}} \nonumber\\
+&\qquad \bigl[R_{2}\sin(kR_{1})-R_{1}\sin(kR_{2})\bigr]\be_{r}, \qquad r>R_{2}.
+\end{align}
+洛伦兹解
+\begin{align}
+\text{（Lorentzian）}\quad
+\bE(r) &= 0, \qquad r<R_{1}; \nonumber\\
+\bE(r) &= -\frac{Q_{0}\cos(\omega t)}{4\pi r^{2}}\,\be_{r}, \qquad R_{1}<r<R_{2}; \nonumber\\
+\bE(r) &= 0, \qquad r>R_{2}.
+\end{align}
+
+\paragraph{坡印廷矢量（一个周期上平均）。}
+\begin{align}
+\text{（Riemannian）}\quad
+\langle\mathbf{S}(r)\rangle &= 0, \qquad r<R_{1}; \nonumber\\
+\langle\mathbf{S}(r)\rangle &= \frac{Q_{0}^{2}\wms^{2}\omega}{32\pi^{2}k^{3}r^{3}R_{1}^{2}R_{2}}\bigl[\bigl(r\sin(kR_{1})-R_{1}\sin(kr)\bigr) \nonumber\\
+&\qquad \bigl(R_{2}\sin(kR_{1})-R_{1}\sin(kR_{2})\bigr)\bigr]\be_{r}, \qquad R_{1}<r<R_{2}; \nonumber\\
+\langle\mathbf{S}(r)\rangle &= \frac{Q_{0}^{2}\wms^{2}\omega}{32\pi^{2}k^{3}r^{2}R_{1}^{2}R_{2}^{2}}\bigl[R_{2}\sin(kR_{1})-R_{1}\sin(kR_{2})\bigr]^{2}\be_{r}, \qquad r>R_{2}.
+\end{align}
+\begin{equation}
+\text{（Lorentzian）}\quad \langle\mathbf{S}(r)\rangle = 0.
+\end{equation}
+
+\paragraph{总辐射功率（一个周期上平均）。}
+\begin{align}
+\text{（Riemannian）}\quad
+\langle P_{\text{Radiated}}\rangle &= \frac{Q_{0}^{2}\wms^{2}\omega}{8\pi k^{3}R_{1}^{2}R_{2}^{2}}\bigl[R_{2}\sin(kR_{1})-R_{1}\sin(kR_{2})\bigr]^{2} \nonumber\\
+&\approx \frac{Q_{0}^{2}(R_{2}^{2}-R_{1}^{2})^{2}\,\wms^{3}k^{3}}{288\pi} \qquad (\textbf{低 } k \textbf{ 极限});\\
+\text{（Lorentzian）}\quad
+\langle P_{\text{Radiated}}\rangle &= 0.
+\end{align}
+
+\paragraph{两壳层之间的电压。}
+\begin{align}
+\text{（Riemannian）}\quad
+V &= \frac{Q_{0}}{4\pi k^{3}R_{1}^{2}R_{2}^{2}}\Bigl[\wms^{2}\sin(\omega t)\bigl(R_{2}\sin(kR_{1})-R_{1}\sin(kR_{2})\bigr)^{2} \nonumber\\
+&\qquad - \cos(\omega t)\Bigl(\wms^{2}\bigl(R_{2}^{2}\sin(kR_{1})\cos(kR_{1}) \nonumber\\
+&\qquad\qquad + R_{1}\cos(kR_{2})(R_{1}\sin(kR_{2})-2R_{2}\sin(kR_{1}))\bigr) \nonumber\\
+&\qquad\qquad + \omega^{2}kR_{1}R_{2}(R_{1}-R_{2})\Bigr)\Bigr] \nonumber\\
+&\approx -\frac{Q_{0}(R_{2}-R_{1})\bigl(3+\wms^{2}R_{1}(R_{2}-R_{1})\bigr)\cos(\omega t)}{12\pi R_{1}R_{2}} \nonumber\\
+&\qquad (\textbf{低 } k \textbf{ 极限});\\
+\text{（Lorentzian）}\quad
+V &= \frac{Q_{0}(R_{2}-R_{1})\cos(\omega t)}{4\pi R_{1}R_{2}}.
+\end{align}
+
+\paragraph{平均消耗的电功率。}
+\begin{align}
+\text{（Riemannian）}\quad
+\langle P_{\text{Electrical}}\rangle &= -\frac{Q_{0}^{2}\wms^{2}\omega}{8\pi k^{3}R_{1}^{2}R_{2}^{2}}\bigl[R_{2}\sin(kR_{1})-R_{1}\sin(kR_{2})\bigr]^{2} \nonumber\\
+&\approx -\frac{Q_{0}^{2}(R_{2}^{2}-R_{1}^{2})^{2}\,\wms^{3}k^{3}}{288\pi} \qquad (\textbf{低 } k \textbf{ 极限});\\
+\text{（Lorentzian）}\quad
+\langle P_{\text{Electrical}}\rangle &= 0.
+\end{align}
+
+如常，黎曼情形下电路消耗的电功率与总辐射功率相反，因此须从电路中\emph{提取}功，才能让振荡电流的峰值振幅保持不变。电压/电流相位差与振荡频率之间的精确关系会很复杂，但电路消耗的功率始终为负（最坏也是零）这一事实意味着：电压与电流的相位差永远至少为 90 度。
+
+在洛伦兹情形下，几何结构杜绝了一切辐射损失，故电压与电流的相位差始终精确为 90 度。
+
+\section{共振电路（Resonant Circuits）}
+
+\subsection{洛伦兹电路中的共振（Resonance in Lorentzian Circuits）}
+
+在我们自身宇宙所适用的基础电路理论中，通常假定电容器与电感器具有不依赖电流频率的固定电容值与电感值。这是一个合理假设，因为在洛伦兹宇宙中，中等的\emph{时间}频率对应的波长远大于典型电子元件的尺寸。
+
+但这并不意味着含有这些元件的电路行为与频率无关。对电容器而言，电容 $C$ 固定的是器件中存储的电荷与极板间电压之比；但当我们考察电压与\emph{电流}（而非电荷）的关系时，电流频率会通过振荡电荷的导数进入关系式。下文中，我们用 $Q_{0}$、$I_{0}$、$V_{0}$ 表示瞬时值按谐波变化的一个振荡电荷、电流或电压的振幅。
+
+\begin{align}
+Q &= Q_{0}\sin(\omega t),\\
+V &= \frac{Q}{C} = \frac{Q_{0}}{C}\sin(\omega t),\\
+I &= \frac{dQ}{dt} = \omega Q_{0}\cos(\omega t),\\
+V_{0} &= \frac{I_{0}}{\omega C}.
+\end{align}
+
+对电感器，$L$ 固定电压与电流变化率之比，于是
+\begin{align}
+I &= I_{0}\cos(\omega t),\\
+\frac{dI}{dt} &= -\omega I_{0}\sin(\omega t),\\
+V &= L\frac{dI}{dt} = -L\omega I_{0}\sin(\omega t),\\
+V_{0} &= (L\omega)I_{0}.
+\end{align}
+
+若如下定义\textbf{容抗}（capacitative reactance）$X_{C}$ 与\textbf{感抗}（inductive reactance）$X_{L}$：
+\begin{align}
+X_{C} &= \frac{1}{\omega C},\\
+X_{L} &= \omega L,
+\end{align}
+则 $X_{C}$、$X_{L}$ 扮演着类似电阻的角色，有
+\begin{align}
+V_{0} &= I_{0}R, && \text{（电阻器）}\\
+V_{0} &= I_{0}X_{C}, && \text{（电容器）}\\
+V_{0} &= I_{0}X_{L}, && \text{（电感器）}.
+\end{align}
+
+然而，这三种情形中电压的瞬时值各不相同：电阻器上电压与电流同相；电容器上电压滞后电流 90 度（若电流取余弦，则电压是正弦的正倍数）；电感器上电压超前电流 90 度（若电流取余弦，则电压是正弦的负倍数）。这意味着，若三者串联、因而流过同一电流，则电容器上的电压将与电感器上的电压相差 180 度，也就是恰好与之相反。于是净电抗
+\begin{equation}
+X = X_{L}-X_{C}
+\end{equation}
+决定了这两个元件上的合成电压，它与电流相差 90 度。
+
+接着定义包含电阻效应的\textbf{阻抗}（impedance）$Z$ 以及总相位差 $\phi$：
+\begin{align}
+Z &= \sqrt{R^{2}+X^{2}},\\
+\phi &= \arctan\!\left(\frac{X}{R}\right),\\
+\cos\phi &= \frac{R}{Z},\\
+\sin\phi &= \frac{X}{Z}.
+\end{align}
+这两个量让我们能描述串联的三种元件（电容器、电感器与电阻器）上的合成电压：
+\begin{align}
+V &= RI_{0}\cos(\omega t)-XI_{0}\sin(\omega t) \nonumber\\
+&= I_{0}Z\bigl[\cos\phi\cos(\omega t)-\sin\phi\sin(\omega t)\bigr] \nonumber\\
+&= I_{0}Z\cos(\omega t+\phi).
+\end{align}
+
+\orthofig{images/04__017.png}{洛伦兹共振电路中电流随频率的变化}
+
+显然，当 $X$ 为零时阻抗取极小。若把此处的角频率记为 $\omega_{\text{res}}$，则
+\begin{align}
+X &= X_{L}-X_{C} = 0,\\
+\omega_{\text{res}}L-\frac{1}{\omega_{\text{res}}C} &= 0,\\
+\omega_{\text{res}} &= \frac{1}{\sqrt{LC}}.
+\end{align}
+在共振频率 $\omega_{\text{res}}$ 处，电感与电容恰好彼此抵消，电流振幅 $I_{0}$ 达到一个完全由电阻决定的峰值。
+
+举一例：设有一螺线管，长 10 cm、半径 5 cm、每毫米一匝。按国际单位制，其直流电感为 0.987 毫亨。与之串联一个球形电容器，内半径 5 cm、外半径 5.01 cm，其直流电容为 2.787 纳法。把螺线管、电容器与一个 1000 欧姆电阻串联。公式给出共振角频率，对应普通频率 $\nu=95.96$ 千赫兹。
+
+图中给出给定电压下、随频率变化流过这三者的电流；频率轴为对数刻度，纵轴已归一化，使单独流过 1000 欧姆电阻的电流取值为 1。正如预期，在 $10^{5}$ 赫兹附近有一个峰。在把电感与电容视为与频率无关的近似之外，还会有其它共振，但它们要到 GHz 频段才会出现，那里波长开始接近螺线管的尺寸。
+
+现在设想：我们不给这三个元件加振荡电压，而是把电容器充到电荷 $Q_{i}$，然后合上电路，让电流流过。会发生什么？
+
+回路中所有电压之和必须为零：
+\begin{align}
+V_{C}+V_{L}+V_{R} &= 0,\\
+\frac{Q}{C}+L\frac{dI}{dt}+RI &= 0,\\
+\frac{Q}{C}+L\frac{d^{2}Q}{dt^{2}}+R\frac{dQ}{dt} &= 0,\\
+\frac{d^{2}Q}{dt^{2}}+2\beta\frac{dQ}{dt}+\omega_{\text{res}}^{2}Q &= 0,
+\end{align}
+其中我们定义了 $\beta=R/(2L)$。给定 $Q=Q_{i}$、且 $t=0$ 时 $dQ/dt=0$，并假设 $\beta<\omega_{\text{res}}$，该微分方程的解为
+\begin{equation}
+Q(t) = Q_{i}\,e^{-\beta t}\left[\cos\!\bigl(\sqrt{\omega_{\text{res}}^{2}-\beta^{2}}\,t\bigr)+\frac{\beta}{\sqrt{\omega_{\text{res}}^{2}-\beta^{2}}}\sin\!\bigl(\sqrt{\omega_{\text{res}}^{2}-\beta^{2}}\,t\bigr)\right].
+\end{equation}
+它描述一个作指数衰减的振荡函数。振荡频率小于电路对驱动电压以最小阻抗响应的共振频率 $\omega_{\text{res}}$；不过随着电阻减小，振荡会趋近该频率。
+
+\subsection{黎曼电路中的共振（Resonance in Riemannian Circuits）}
+
+上一节的概念可以搬用到黎曼宇宙中的类似情形，但有若干重大变化。首先，很难再合理地假定 $L$ 与 $C$ 本身不依赖 $\omega$。在黎曼宇宙中，\emph{静态}场的波长取\emph{最小值}，且只有随时间频率增大而变长。波长的增长来得很晚，而且非常突然：直到 $\omega=0.866\,\wms$ 时波长才达到最小值的两倍，在 $\omega=0.995\,\wms$ 时达到最小值十倍，在 $\omega=0.99995\,\wms$ 时达到一百倍。因此，除极高的频率外，任何频率下工作的电感器或电容器，其电流-电压关系都由场波长与元件几何的相互作用决定，从而远比上文为洛伦兹情形给出的电抗-频率公式复杂地依赖于频率。
+
+此外，黎曼电感器与电容器发出的电磁辐射会给它们带来显著的、依赖频率的\emph{负电阻}。这就在阻抗的电阻部分与相位差中引入了依赖频率的项：
+\begin{align}
+X &= X_{L}-X_{C},\\
+R_{\text{tot}} &= R-R_{\text{rad}},\\
+Z &= \sqrt{R_{\text{tot}}^{2}+X^{2}},\\
+\phi &= \arctan\!\left(\frac{X}{R_{\text{tot}}}\right),
+\end{align}
+其中除普通电阻 $R$ 外，这里的一切都依赖频率（而就连这一点也是简化假设）。因此，我们再也无法保证 $X=0$ 处的频率会给出最小阻抗 $Z$。
+
+\orthofig{images/04__018.png}{黎曼电感器与电容器辐射的功率}
+
+尽管如此，这些额外的复杂性意味着即便一个很简单的电路也能有有趣的行为。设有一个与上一节所述完全相同的螺线管：长 10 cm、半径 5 cm、每毫米一匝。为把它代入黎曼物理，我们取 $\wms=2\pi\times10^{15}$ Hz。
+
+图中给出了该螺线管的电抗与电阻。注意这里所有的波长都对应\emph{极其}接近 $\wms$ 的时间频率。由于螺线管单独的电抗就跨越零点，电路无需再加电容器；若把这个螺线管与一个普通电阻器接成回路，使该电阻器在螺线管电抗为零的最长波长处恰好平衡它的负电阻，则仅含这两个元件的闭合回路就会在该波长处共振，原则上可无限期地维持电流。螺线管会发出电磁波，把\emph{常规}能量带入电路，而电阻器会把该能量变成热。这不会违反任何热力学定律：能量守恒，因为电磁场能量与热/动能具有相反的符号；熵增加，因为有辐射产生。
+
+令人惊讶的是，这个极简电路的行为中还内建了某种稳定性。若电流开始指数增长，那将意味着其频率展宽；而尽管共振点并不\emph{完全}位于最小电阻对应的波长处，这里时间频率的差异却如此之小，以至于只需极小的指数增长率就足以把频率展宽到使螺线管向电路馈能的速率下降。当然，若电流开始下降，同样的效应会加剧其阻尼；因此需要额外的调节机制（例如一个非线性电阻器，其电阻随电流增大而增大），才能让电路以恒定速率采集能量。
+
+\section{弯曲黎曼空间中的电磁学（Electromagnetism in Curved Riemannian Space）}
+
+以上关于电磁学的一切，都是在平坦空间（洛伦兹情形下为平坦时空）中、用笛卡尔坐标表述的。但我们并不真的指望黎曼宇宙处处完美平坦，正如不指望我们自身的宇宙如此；因此，理解如何把方程改写以适应弯曲空间会有所帮助。这还有一个附带好处：让我们能轻松处理平坦空间中的非笛卡尔坐标。
+
+若你此前没做过弯曲时空中的计算，下面这份简明小结也许会让你有点晕。这里仅给出所需的要点。
+
+在广义相对论的洛伦兹物理中，把方程从平坦时空搬到弯曲时空的经验法则是：把偏导数换成协变导数（covariant derivative）。在平坦空间中对矢量场求导时，我们默认把不同点处的矢量看作属于同一矢量空间；若说一个矢量场导数为零、因而是常量，这个断言只有在能把 A 点的矢量与 B 点的矢量作比较时才有意义。但在诸如地球曲面这样的弯曲面上，我们如何把伦敦地面上各种可能速度构成的矢量空间与内罗毕的同类矢量空间作比较？即便离开地球表面、把这些矢量视为三维的，也无法把一个位置处的所有速度与另一个位置处的速度一一配对——而在弯曲宇宙中，我们根本无从“离开表面”。
+
+解决办法是给“导数”这一概念补充一个称为列维-奇维塔联络（Levi-Civita connection）的几何结构，它给出沿曲线对矢量作\textbf{平行移动}（parallel transport）的概念：即沿一条曲线行进时，可以按该联络把起点处的一个矢量“携带”着一起走，并使之始终保持与原方向“平行”。列维-奇维塔联络的优点在于与度规相容：度规定义了弯曲空间上的点积，而列维-奇维塔联络让你在平行移动两个矢量时保持其点积不变。协变导数计算的是矢量场\emph{相对于}列维-奇维塔联络的导数：若你沿曲线用列维-奇维塔联络平行移动一个矢量，这就是判定“此矢量不变”的标准，协变导数据此识别任何变化。
+
+具体地说，设弯曲空间上有一个矢量场 $\mathbf{v}$，其在某坐标基下的分量为 $v^{b}$。则此矢量场沿某一坐标方向 $a$ 的协变导数为
+\begin{equation}
+\nabla_{a} v^{b} = \partial_{a} v^{b} + \Gamma^{b}_{\;ca} v^{c},
+\end{equation}
+其中 $\Gamma$ 就是列维-奇维塔联络，它告诉我们如何修正偏导数，以得到尊重平行移动的导数。若 $g_{ab}$ 与 $g^{ab}$ 是度规在我们的坐标系中的分量，则列维-奇维塔联络 $\Gamma$ 的分量（常称为克里斯托费尔符号，Christoffel symbols）为
+\begin{equation}
+\Gamma^{b}_{\;ca} = \tfrac12\,g^{bk}\bigl[\partial_{a}g_{kc}+\partial_{c}g_{ka}-\partial_{k}g_{ca}\bigr].
+\end{equation}
+注意 $\Gamma$ 对其后两个指标对称：$\Gamma^{b}_{\;ca}=\Gamma^{b}_{\;ac}$。
+
+我们可以把平行移动的概念从矢量推广到任何张量。例如，若用列维-奇维塔联络把矢量 $\mathbf{v}$ 与 $\mathbf{w}$ 从 A 点平行移动到 B 点，得到 B 点的 $\mathbf{v}'$ 与 $\mathbf{w}'$，则秩 (2,0) 张量的平行移动按如下方式定义：A 点的 $\mathbf{v}\otimes\mathbf{w}$ 变为 B 点的 $\mathbf{v}'\otimes\mathbf{w}'$。对偶矢量则要求：若 A 点的对偶矢量 $\bm{\alpha}$ 满足 $\bm{\alpha}(\mathbf{v})=c$，则 $\bm{\alpha}$ 从 A 到 B 的平行移动得到 $\bm{\alpha}'$，使 $\bm{\alpha}'(\mathbf{v}')=c$。
+
+这些要求给出我们所需张量的协变导数公式：
+\begin{align}
+\nabla_{a} A_{b} &= \partial_{a} A_{b} - \Gamma^{h}_{\;ba} A_{h},\\
+\nabla_{a} F_{bc} &= \partial_{a} F_{bc} - \Gamma^{h}_{\;ba} F_{hc} - \Gamma^{h}_{\;ca} F_{bh},\\
+\nabla_{a} F^{bc} &= \partial_{a} F^{bc} + \Gamma^{b}_{\;ha} F^{hc} + \Gamma^{c}_{\;ha} F^{bh}.
+\end{align}
+把第二式用于度规、并利用 $\Gamma$ 的定义，可得 $\nabla_{a} g_{bc}=0$。本质上，我们对 $\Gamma$ 的定义正是为了得到这一结果：$\Gamma$ 是使度规本身被判为常量的联络。
+
+若把电磁学方程中的偏导数换成协变导数，就得到：
+\begin{align}
+\nabla_{b} F^{ab} - \wms^{2} A^{a} - j^{a} &= 0 && \text{（Riemannian）} \tag{Proca}\\
+\partial_{a} F_{bc} + \partial_{b} F_{ca} + \partial_{c} F_{ab} &= 0 && \text{（Common）}\\
+\nabla_{b} F^{ab} - j^{a} &= 0 && \text{（Lorentzian）}\\
+\partial_{a} F_{bc} + \partial_{b} F_{ca} + \partial_{c} F_{ab} &= 0 && \text{（Common）}
+\end{align}
+
+为什么黎曼与洛伦兹电磁学共有的那条方程里仍然是偏导数，而非协变导数？若用协变导数写出该方程，并利用 $F_{bc}$ 反对称、而 $\Gamma$ 对后两个指标对称这一点，所有修正项会两两抵消，只剩下偏导数。
+
+在电磁场 $F$ 与四维势 $\bA$ 的关系中，协变导数的修正项也同样抵消：
+\begin{align}
+F_{ab} &= \nabla_{a} A_{b} - \nabla_{b} A_{a} \nonumber\\
+&= \partial_{a} A_{b} - \partial_{b} A_{a} && \text{（Common）}.
+\end{align}
+由此可见，只要这样用 $\bA$ 定义 $F$，黎曼 Proca 方程与麦克斯韦方程组中共有的那条方程就仍会自动满足，因为这里什么都没变，出现的偏导数与平坦时空情形完全相同。
+
+接下来这一步稍显微妙。在平坦空间或时空中，偏导数\emph{对易}：求两次导数时先后次序无关紧要。在弯曲空间中，协变导数则不然；事实上，“曲率”这一概念本身正与协变导数不对易这一点紧密相连。
+
+设沿两个不同坐标方向（指标为 $a$、$b$）以两种次序对矢量场 $\mathbf{v}$ 求协变导数，二者之差为
+\begin{equation}
+\nabla_{a}\nabla_{b}\mathbf{v} - \nabla_{b}\nabla_{a}\mathbf{v} = R^{h}_{\;cab}\,v^{c}\,\be_{h},
+\end{equation}
+其中 $\be_{h}$ 是指标为 $h$ 的坐标方向上的基矢量，而四指标张量 $R$ 就是所谓的黎曼曲率张量（Riemann curvature tensor）——它得名于我们一路提到的同一位 Georg Friedrich Bernhard Riemann（尽管这个张量在洛伦兹弯曲时空中与在黎曼弯曲空间中同样有用）。把协变导数用列维-奇维塔联络显式展开，即可把黎曼曲率张量的分量写成
+\begin{equation}
+R^{h}_{\;cab} = \partial_{a}\Gamma^{h}_{\;cb} - \partial_{b}\Gamma^{h}_{\;ca} + \Gamma^{h}_{\;ka}\Gamma^{k}_{\;bc} - \Gamma^{h}_{\;kb}\Gamma^{k}_{\;ca}.
+\end{equation}
+
+现在，设四维势 $\bA$ 满足横波条件或洛伦兹规范（Lorenz gauge condition）的协变导数版本：
+\begin{equation}
+\nabla_{b} A^{b} = 0,
+\end{equation}
+其中照例对重复指标使用爱因斯坦求和约定（Einstein Summation Convention）。若协变导数对易，则表达式 $\nabla_{b}\nabla_{a} A^{b}$ 将为零……但它们并不对易，于是我们得到
+\begin{equation}
+\nabla_{b}\nabla_{a} A^{b} = \nabla_{b}\nabla_{a} A^{b} - \nabla_{a}\nabla_{b} A^{b} = R^{b}_{\;cba} A^{c} = R_{ca} A^{c},
+\end{equation}
+其中二指标张量 $R$ 称为里奇曲率张量（Ricci curvature tensor），由对黎曼曲率张量“缩并”（即对其中两个指标求和）而得。
+
+若利用这一结果，用四维势 $\bA$ 来计算 $\nabla_{b} F^{ab}$——它同时出现在黎曼 Proca 方程与麦克斯韦方程组中——则得到
+\begin{align}
+\nabla_{b} F^{ab} &= g^{\alpha a} g^{\beta b}\, \nabla_{b} F_{\alpha\beta} \nonumber\\
+&= g^{\alpha a} g^{\beta b}\, \nabla_{b}(\nabla_{\alpha} A_{\beta} - \nabla_{\beta} A_{\alpha}) \nonumber\\
+&= g^{\alpha a} g^{\beta b}\, (\nabla_{b}\nabla_{\alpha} A_{\beta} - \nabla_{b}\nabla_{\beta} A_{\alpha}) \nonumber\\
+&= g^{\alpha a}\, (\nabla_{b}\nabla_{\alpha} A^{b} - \nabla_{b}\nabla^{b} A_{\alpha}) \nonumber\\
+&= g^{\alpha a}\, (R_{c\alpha} A^{c} - \nabla_{b}\nabla^{b} A_{\alpha}) \nonumber\\
+&= R_{c}^{\;a} A^{c} - \nabla_{b}\nabla^{b} A^{a}.
+\end{align}
+现在可以把一切用四维势 $\bA$ 表示：
+\begin{align}
+\nabla_{b}\nabla^{b} A^{a} - R_{c}^{\;a} A^{c} + \wms^{2} A^{a} + j^{a} &= \mathbf{0} \tag{RVWS}\\
+\nabla_{c} A^{c} &= 0 \tag{Transverse}\\
+\nabla_{b}\nabla^{b} A^{a} - R_{c}^{\;a} A^{c} + j^{a} &= \mathbf{0} \tag{LVWS}\\
+\nabla_{c} A^{c} &= 0 \tag{Lorenz}
+\end{align}
+这里前两式是弯曲空间中的黎曼矢量波方程（RVWS），后两式是弯曲时空中洛伦兹规范下的麦克斯韦方程组（LVWS）。
+
+既然谈到弯曲空间中的波方程，我们还可以给出一个修改过的标量波方程。标量的协变导数就是同方向的偏导数，标量的梯度无需借助度规或列维-奇维塔联络即可定义。然而，黎曼标量波方程中出现的、沿所有坐标方向的\emph{二阶导数}之和，只有在一般情况下把它按“梯度的散度”用协变导数计算时，才与坐标系无关：
+\begin{align}
+(\operatorname{grad} A)_{j} &= \partial_{j} A,\\
+\operatorname{div}\operatorname{grad} A &= g^{ij}\bigl(\partial_{i}\partial_{j} A - \Gamma^{k}_{\;ji}\partial_{k} A\bigr).
+\end{align}
+这个运算（拉普拉斯算符的推广）称为拉普拉斯-贝尔特拉米算符（Laplace-Beltrami operator）。当度规只有对角分量时（许多坐标系都是如此），可以很方便地把度规行列式算作各对角元之积。记 $|g|$ 为度规行列式的绝对值，可以证明拉普拉斯-贝尔特拉米算符还有一个等价表达式：
+\begin{equation}
+\operatorname{div}\operatorname{grad} A = \frac{1}{\sqrt{|g|}}\,\partial_{i}\bigl[\sqrt{|g|}\,g^{ij}\,\partial_{j} A\bigr],
+\end{equation}
+它比费力去算克里斯托费尔符号更好用。即便你此前没见过这个方程，盯着它看久了，大概也能辨认出它藏在球坐标或柱坐标下拉普拉斯算符的公式背后。
+
+于是有
+\begin{align}
+\operatorname{div}\operatorname{grad} A + \wms^{2} A + j &= \mathbf{0} \tag{RSWS}\\
+\operatorname{div}\operatorname{grad} A + j &= \mathbf{0} \tag{LSWS}
+\end{align}
+前者是弯曲空间中带源的黎曼标量波方程，后者是弯曲时空中带源的洛伦兹标量波方程。
+
+\medskip
+\noindent\textbf{延伸阅读：} \emph{Gravitation} 一书第 16.3 与 22.4 节，作者 Charles Misner、Kip Thorne 与 John Wheeler，W.H. Freeman，San Francisco，1973 年。
+
+\section{边界条件（Boundary Conditions）}
+
+正如我们初次讨论黎曼波方程时提到的，这些方程有个严重问题：它们允许在某一方向上具有高于 $\wms$ 的角频率、同时在另一方向上作指数变化的解。我们据以导出黎曼标量波方程的那些良好、行为端正的平面波，其四维频率的平方和等于一个固定总量 $\nu_{\max}^{2}$，故任何单个方向的频率都不能超过 $\nu_{\max}$；但方程本身无法排除带有指数因子的解，例如 $\cos(kx)\,e^{\alpha t}$，只要 $k^{2}-\alpha^{2}=\wms^{2}$，它就满足黎曼标量波方程。
+
+若你读过《正交》第一卷，就会知道如何避免这些指数解。若你虽未读此书、却已冒着剧透警告读到这里，那么这是你决定是否继续读下去的最后机会。
+
+若黎曼宇宙是有限而无边界的，则要求波方程的解连续、且具有连续导数，就会排除带指数因子的解。周期函数天生就能在沿闭合曲线绕行一周后与自身光滑衔接，而指数函数做不到这一点。（从真空中的自由波过渡到带源的场时，情形会略微微妙一些，我们将在以下各节看到一些例子。）
+
+至今我们大多把黎曼宇宙当作一个无限的、完全平坦的四维空间，同时指出这只是一个近似，类似于把洛伦兹宇宙近似为平坦闵可夫斯基时空这一有用的近似。本着同样的精神，我们可以考察黎曼宇宙的两个\emph{理想化}模型：它们有限，但仍对曲率作简化假设。在其一，即 4-环面（4-torus）模型中，黎曼宇宙保持完全平坦；在另一，即 4-球面（4-sphere）模型中，宇宙具有恒定正曲率。
+
+\subsection{4-环面（The 4-torus）}
+
+取平坦四维空间中一块呈矩形超棱柱（hyperprism）的区域，在其上放置坐标 $(x,y,z,t)$，取值范围分别为 $-L^{x}/2$ 到 $L^{x}/2$、$-L^{y}/2$ 到 $L^{y}/2$、$-L^{z}/2$ 到 $L^{z}/2$、$-L^{t}/2$ 到 $L^{t}/2$。然后我们宣布这个超棱柱的八个三维超面都与其对面“粘合”。例如，所有点 $(x,y,z,-L^{t}/2)$ 都与对应点 $(x,y,z,L^{t}/2)$ 等同。这是如下二维操作的四维版本：在平面上取一个矩形，把它的对边等同起来做成一个环面。
+
+不过须强调：整个四维空间仍然\emph{完全平坦}；我们并没有把超棱柱“卷进”任何更高维空间，而只是规定这个黎曼宇宙模型在所有方向上有限、且其拓扑形如所述，这种拓扑称为\textbf{4-环面}（4-torus）。我们对拓扑的选择并不要求四维空间处处曲率为零，但当然允许它。
+
+下文我们把这个模型宇宙称为 $\text{T}^{4}$。我们假定整个四维空间是平坦的，并已选用了如上所述那样的坐标。原点位置、以及坐标从 $L^{i}/2$ 跳到 $-L^{i}/2$ 的位置，当然都没有物理上的特殊性；用原坐标得到的任何黎曼物理解，若把一切整体平移一个任意位移矢量，仍然成立。然而，$\text{T}^{4}$ 宇宙的形状所施加的边界条件并不具旋转对称性，因此若取一个解并施加任意旋转，它便不再满足这些边界条件。
+
+$\text{T}^{4}$ 上任何足够好的标量函数 $A(x,y,z,t)$ 都可写成傅里叶级数
+\begin{equation}
+A(x,y,z,t) = \sum_{i,j,k,l} a_{i,j,k,l}\, f_{i,j,k,l}(x,y,z,t),
+\end{equation}
+其中求和遍历 $i,j,k,l$ 的一切整数值（正、负与零），而
+\begin{align}
+f_{i,j,k,l}(x,y,z,t) &= f_{i}\!\left(\frac{x}{L^{x}}\right) f_{j}\!\left(\frac{y}{L^{y}}\right) f_{k}\!\left(\frac{z}{L^{z}}\right) f_{l}\!\left(\frac{t}{L^{t}}\right),\\
+f_{n}(u) &= \sin(2\pi n u), && n>0,\\
+f_{n}(u) &= \cos(2\pi n u), && n<0,\\
+f_{0}(u) &= \frac{1}{\sqrt2}.
+\end{align}
+我们把函数 $f_{i,j,k,l}$ 称为 $\text{T}^{4}$ 的\textbf{傅里叶基函数}（Fourier basis functions）。以 $\text{T}^{4}$ 上的积分为函数间的内积
+\begin{equation}
+\langle f,g\rangle = \int_{\text{T}^{4}} fg,
+\end{equation}
+则不同基函数彼此正交，且都有相同的模方：$V/16$，其中 $V=L^{x}L^{y}L^{z}L^{t}$ 是 $\text{T}^{4}$ 的总体积（四维体积）。
+
+每个基函数都是一个驻波，在 $x$、$y$、$z$、$t$ 方向上绕整个宇宙宽度分别经历 $|i|$、$|j|$、$|k|$、$|l|$ 个周期。给定函数 $A(x,y,z,t)$，可以显式算出傅里叶系数 $a_{i,j,k,l}$：
+\begin{equation}
+a_{i,j,k,l} = \frac{16}{V}\int_{\text{T}^{4}} f_{i,j,k,l}(x,y,z,t)\,A(x,y,z,t).
+\end{equation}
+
+现在想知道：哪些（如果有的话）$f_{i,j,k,l}$ 满足无源黎曼标量波方程？把该微分方程作用于一个傅里叶基函数，得到一个代数方程：
+\begin{equation}
+\left(\frac{i}{L^{x}}\right)^{2}+\left(\frac{j}{L^{y}}\right)^{2}+\left(\frac{k}{L^{z}}\right)^{2}+\left(\frac{l}{L^{t}}\right)^{2} = \nu_{\max}^{2},
+\end{equation}
+其中 $\nu_{\max}=\wms/(2\pi)$。若 $L^{i}$ 与 $\nu_{\max}$ 只是随机选的数，则\emph{没有}整数 $i,j,k,l$ 能满足此式。于是有两种情形要考虑：无源 RSW 方程无解的一般情形，以及 $L^{i}$ 与 $\nu_{\max}$ 取值恰好容许某些解存在的特殊情形。
+
+\subsubsection{允许无源解的特殊情形（Special Case Allowing Sourceless Solutions）}
+
+为举出特殊情形的例子，设所有 $L^{i}=1$、$\nu_{\max}=\sqrt{90}$。于是任何平方和为 90 的整数 $i,j,k,l$ 都会给出满足 RSW 方程的傅里叶基函数 $f_{i,j,k,l}$。若把一切排列与正负号选择都算上，这样的整数四元组共有 1872 个，但它们都可从下列九个方程导出：
+\begin{align*}
+0^{2}+0^{2}+3^{2}+9^{2} &= 90, & 0^{2}+1^{2}+5^{2}+8^{2} &= 90, & 0^{2}+4^{2}+5^{2}+7^{2} &= 90,\\
+1^{2}+2^{2}+2^{2}+9^{2} &= 90, & 1^{2}+2^{2}+6^{2}+7^{2} &= 90, & 1^{2}+3^{2}+4^{2}+8^{2} &= 90,\\
+2^{2}+5^{2}+5^{2}+6^{2} &= 90, & 3^{2}+3^{2}+6^{2}+6^{2} &= 90, & 3^{2}+4^{2}+4^{2}+7^{2} &= 90.
+\end{align*}
+在一个宇宙尺度与光的最小波长之比可与我们的可观测宇宙尺度（以远紫外光波长计约为 $10^{34}$）相比拟的黎曼宇宙中，对合适的 $L^{i}$ 与 $\nu_{\max}$ 取值，解的数目会极其巨大。我们不去深究计数解所需的数论（可参阅 Mathworld 的 Sum of Squares function 页面略窥一斑），但从直观上看，在宇宙尺度上离散解的数目很容易大到看起来连续。换言之，尽管这种黎曼宇宙中的无源平面波只能取有限多个特定的传播矢量，实际可选者却多到仿佛是一个包含所有方向的连续统。
+
+由于无源解都由\emph{有限}多个傅里叶基函数构成，它们处处光滑有限。其各方向频率都不会超过 $\nu_{\max}$，而且它们同样可以写成有限多个平面波的叠加——这正是我们最初设想的构造波方程一般解的方式。
+
+对带源的标量波方程（其源记作 $H$），我们能说什么？
+\begin{equation}
+\partial_{x}^{2}A(\mathbf{x}) + \partial_{y}^{2}A(\mathbf{x}) + \partial_{z}^{2}A(\mathbf{x}) + \partial_{t}^{2}A(\mathbf{x}) + \wms^{2} A(\mathbf{x}) + H(\mathbf{x}) = 0 \tag{RSWS}
+\end{equation}
+若把函数 $A$（系数为 $a$）与标量源 $H$（系数为 $h$）都作傅里叶展开，则有
+\begin{equation}
+a_{i,j,k,l}\left[\left(\frac{i}{L^{x}}\right)^{2}+\left(\frac{j}{L^{y}}\right)^{2}+\left(\frac{k}{L^{z}}\right)^{2}+\left(\frac{l}{L^{t}}\right)^{2}-\nu_{\max}^{2}\right] = \frac{h_{i,j,k,l}}{4\pi^{2}}.
+\end{equation}
+对那些满足无源方程的 $i,j,k,l$（即使方括号中表达式为零者），源的傅里叶系数 $h_{i,j,k,l}$ 必须为零，解才可能整体存在，而 $a_{i,j,k,l}$ 可自由选取。对其它取值，解上方程得到
+\begin{equation}
+a_{i,j,k,l} = \frac{h_{i,j,k,l}}{4\pi^{2}\left[\left(\dfrac{i}{L^{x}}\right)^{2}+\left(\dfrac{j}{L^{y}}\right)^{2}+\left(\dfrac{k}{L^{z}}\right)^{2}+\left(\dfrac{l}{L^{t}}\right)^{2}-\nu_{\max}^{2}\right]}.
+\end{equation}
+因此，源将决定所有\emph{不}对应无源解的系数，之后我们可以自由地再加上任意想要的无源解。
+
+\subsubsection{无无源解的一般情形（Generic Case With No Sourceless Solutions）}
+
+对一般的 $L^{i}$ 与 $\nu_{\max}$ 取值，没有任何傅里叶基函数会解无源黎曼标量波方程。此时源的傅里叶分量没有被强制为零者，我们总可以用
+\begin{equation}
+a_{i,j,k,l} = \frac{h_{i,j,k,l}}{4\pi^{2}\left[\left(\dfrac{i}{L^{x}}\right)^{2}+\left(\dfrac{j}{L^{y}}\right)^{2}+\left(\dfrac{k}{L^{z}}\right)^{2}+\left(\dfrac{l}{L^{t}}\right)^{2}-\nu_{\max}^{2}\right]}
+\end{equation}
+得到一个解（假定傅里叶级数收敛）。
+
+\subsubsection{平面电荷（Planar Charge）}
+
+举一个极简例子：设有一片静止的、单位电荷密度的平面薄片，平分 $\text{T}^{4}$ 黎曼宇宙，位于 $yz$ 平面内。此时四维势时间分量的源就是沿 $x$ 坐标的一维狄拉克 $\delta$ 函数。由于一切都只依赖 $x$，我们把其它三个维度从傅里叶系数下标与积分中略去，并简单地把 $L^{x}$ 记作 $L$。
+
+源的（非零）傅里叶系数为
+\begin{align}
+h_{0} &= \frac{\sqrt2}{L},\\
+h_{i} &= \frac{2}{L}, && i<0.
+\end{align}
+这样的源只有在 $\nu_{\max}L$ 不是整数时才可能实现，故我们假定如此。四维势时间分量的解的非零傅里叶系数为
+\begin{align}
+a_{0} &= -\frac{1}{2\sqrt2\,\pi^{2} L\,\nu_{\max}^{2}},\\
+a_{i} &= \frac{L}{2\pi^{2}(i^{2}-L^{2}\nu_{\max}^{2})}, && i<0.
+\end{align}
+
+与其去显式求和这个傅里叶级数，我们改用另一种方法求解。利用问题的对称性以及黎曼版的推广高斯定律，很容易确定：在未加任何边界条件时，与单位平面电荷关联的四维势为
+\begin{equation}
+A_{t,\text{src}} = -\frac{\sin(\wms|x|)}{2\wms}.
+\end{equation}
+但还存在一个具有相同对称性的无源解，我们可以任意倍地加上它：
+\begin{equation}
+A_{t,\text{nsrc}} = \frac{\cos(\wms x)}{2\wms}.
+\end{equation}
+这两个函数都是 $x$ 的偶函数（即对所有 $x$，在 $\pm x$ 处取值相同），所以任何解在 $x=\pm L/2$ 处都连续。但偶函数在 $\pm x$ 处的导数\emph{相反}，故只有当该处导数为零时，解才能在 $x=\pm L/2$ 处光滑地与自己衔接。通过调节通解 $A_{t,\text{src}}+C\,A_{t,\text{nsrc}}$ 中的常数 $C$，我们可以保证在 $x=\pm L/2$ 处导数为零。结果化简为
+\begin{equation}
+A_{t,\text{bc}} = -\frac{\cos\!\bigl(\pi\nu_{\max}(L-2|x|)\bigr)}{4\pi\nu_{\max}\sin(\pi\nu_{\max}L)}.
+\end{equation}
+$A_{t,\text{bc}}$ 的傅里叶系数恰是我们上面写出的那些，故两种方法一致。这个解所描述的是势中的一个相位移动，它让势能光滑地绕过宇宙一圈，同时在平面电荷处保留恰到好处的间断，以满足该处的推广高斯定律。
+
+\subsubsection{线电荷（Linear Charge）}
+
+设有位于 $\text{T}^{4}$ 黎曼宇宙 $z$ 轴上的一条静止的、单位电荷密度的线。此时四维势时间分量的源是 $x$ 与 $y$ 坐标上的狄拉克 $\delta$ 函数。我们把 $z$ 与 $t$ 坐标从傅里叶系数中略去，为简单起见设 $L^{x}=L^{y}=L$。源的非零傅里叶系数为
+\begin{align}
+h_{0,0} &= \frac{2}{L^{2}},\\
+h_{i,0} = h_{0,i} &= \frac{2\sqrt2}{L^{2}}, && i<0,\\
+h_{i,j} &= \frac{4}{L^{2}}, && i,j<0.
+\end{align}
+这样的源只有在 $L^{2}\nu_{\max}^{2}$ 不是两个整数平方和时才可能实现，故我们假定如此。四维势时间分量的解的非零傅里叶系数为
+\begin{align}
+a_{0,0} &= -\frac{1}{2\pi^{2} L^{2}\nu_{\max}^{2}},\\
+a_{i,0} = a_{0,i} &= \frac{1}{\sqrt2\,\pi^{2}(i^{2}-L^{2}\nu_{\max}^{2})}, && i<0,\\
+a_{i,j} &= \frac{1}{\pi^{2}(i^{2}+j^{2}-L^{2}\nu_{\max}^{2})}, && i,j<0.
+\end{align}
+
+\orthofig{images/04__019.png}{$\text{T}^{4}$ 宇宙中线电荷的势：整个宇宙（$L$ 仅为几个波长），边界效应显著}
+\orthofig{images/04__020.png}{$\text{T}^{4}$ 宇宙中线电荷的势：大宇宙（宽约千倍）的局部，场已趋于径向对称}
+
+可以显式算出一个指标上的求和，把傅里叶级数化简为对另一指标的求和。整个表达式没有闭式，但指标数减半会让结果在数值上容易处理得多：
+\begin{align}
+A_{t} &= \sum_{j=0}^{\infty} f_{-j}(0)\,\beta_{j}\!\left(\frac{x}{L}\right) f_{-j}\!\left(\frac{y}{L}\right),\\
+\beta_{j}(u) &= \frac{\cosh\!\bigl(\alpha_{j}(1-2|u|)\bigr)}{2\alpha_{j}\sinh(\alpha_{j})},\\
+\alpha_{j} &= \pi\sqrt{j^{2}-L^{2}\nu_{\max}^{2}}.
+\end{align}
+注意 $\alpha_{j}$ 起初是虚数——直到 $j/L$ 超过 $\nu_{\max}$——而在它为虚数期间，函数 $\beta_{j}(u)$ 是振荡的，因为虚数 $ix$ 的 $\cosh$ 就是 $x$ 的 $\cos$。
+
+一旦 $\alpha_{j}$ 变为实数，$\beta_{j}(u)$ 便从 $u=0$ 处的正极大值单调下降到 $u=1/2$ 处（也是正的）的极小值，后者对应距源半个宇宙之遥的点。这种下降并非字面上的指数衰减——因为指数衰减绝不会平缓到一个极小值——但非常相似。因此这些非振荡项随离源距离迅速衰减。
+
+右图给出垂直于电荷线的平面内零势的等值线，展示边界条件如何使场的形状发生畸变。[由于未画出非零等值线，此处没有关于场强的信息——这里等值线的间距基本上就是波长。] \textbf{上图}展示整个宇宙，其参数选择使 $L$ 仅为几个波长，效应非常显著。\textbf{下图}展示同一尺寸（以波长计）的区域，但此时它只是一个宽一千倍的宇宙中的一小部分，靠近电荷处场已开始变得更接近径向对称。所以，尽管看场为了满足边界条件而丧失径向对称很有趣，但在一个现实尺度的宇宙中——宽度至少约 $10^{30}$ 个波长——这些效应不太可能被经验探测到。
+
+\subsubsection{线形交流电流（Linear Alternating Current）}
+
+引入这些边界条件的最初动机，是为了避免高频波中的指数暴涨。我们已经看到：若 $\text{T}^{4}$ 宇宙中能够存在无源波，则它们保证不会超过波方程中出现的名义最大频率。于是显而易见的问题是：若在 $\text{T}^{4}$ 宇宙中有某种以高于最大频率的频率振荡的源，会发生什么？
+
+\orthofig{images/04__021.png}{$\text{T}^{4}$ 宇宙中交流电流的磁势}
+
+最容易分析的源是线形交流电流。若电流沿 $\text{T}^{4}$ 黎曼宇宙的 $z$ 轴流动，并以频率 $l_{\text{AC}}/L^{t}$（对某整数 $l_{\text{AC}}$）振荡，则源与解在时间方向上共享单一的傅里叶分量，我们可以把它分离出去，并以与上一问题几乎相同的方式处理解的空间依赖。差别在于：此前只含 $j^{2}$ 项的指标平方和中，现在会额外加上一个常数项 $l_{\text{AC}}^{2}$。同前，为简单起见设宇宙在各方向（包括所选的时间方向）宽度相同，均为 $L$。于是有
+\begin{align}
+A_{z} &= \cos\!\left(\frac{2\pi l_{\text{AC}} t}{L}\right)\sum_{j=0}^{\infty} f_{-j}(0)\,\beta_{j}\!\left(\frac{x}{L}\right) f_{-j}\!\left(\frac{y}{L}\right),\\
+\beta_{j}(u) &= \frac{\cosh\!\bigl(\alpha_{j}(1-2|u|)\bigr)}{2\alpha_{j}\sinh(\alpha_{j})},\\
+\alpha_{j} &= \pi\sqrt{j^{2}+l_{\text{AC}}^{2}-L^{2}\nu_{\max}^{2}}.
+\end{align}
+若电流振荡频率 $l_{\text{AC}}/L$ 超过 $\nu_{\max}$，则 $\alpha_{j}$ 定义中根号内的表达式始终为正，故对一切 $j$，$\alpha_{j}$ 都是实数。如上一节所讨论，当 $\alpha_{j}$ 为实数时，函数 $\beta_{j}(u)$ 以一种非常类似指数衰减的方式迅速下降，同时平缓下来、在绕过宇宙一半处达到零导数。
+
+我们无法给出对 $j$ 的无限和的闭式，但图中展示了大数量项之和。可以看出，高频源伴随的场只在源附近很有限处显著，随距离下降的速度远快于频率低于 $\nu_{\max}$ 的线形交流电流周围的辐射场。
+
+\subsubsection{柯西数据与预言（Cauchy Data and Predictions）}
+
+在我们自身宇宙中，真空中的光由洛伦兹波方程支配；若我们知道某一时刻 $t_{0}$ 空间某区域 $\mathcal{R}$ 内电磁场的值及其时间导数，就能预言此后某段时间内的场值。当然，电磁波总能从侧面进入该区域，故随着时间从 $t_{0}$ 推进，我们能够预言的区域会以光速缩小；但原则上总会有一部分确定的时空，我们的初始数据能让我们预言其中场将是什么。
+
+这类数据——某时刻空间某区域上函数的值及其时间导数——称为\textbf{柯西数据}（Cauchy data）。洛伦兹波方程（二阶双曲型微分方程）的本性就在于，我们可以用柯西数据得到其解在未来某段时间的取值。
+
+另一个可用柯西数据的双曲型方程例子，是弹性弦小位移的波方程。设弦有限、两端固定，则若我们知道某时刻整条弦的位移及其时间导数，原则上就能预言弦此后运动的全部未来。更进一步，即便我们的知识仅限于弦的一部分，由于波以某一最大速度 $c_{\max}$ 传播，我们仍能自信地对一段区域作出预言，只不过该区域会从我们有数据的部分逐渐缩小，两端以速率 $c_{\max}$ 被“啃掉”。
+
+与此相反，黎曼波方程是\emph{椭圆型}微分方程。要在某区域内求解椭圆型微分方程，通常需要知道区域\emph{整个边界}上解的值。我们自身宇宙中椭圆型微分方程的例子不涉及时空区域，而涉及空间区域。例如，固体材料中达到的平衡温度服从一个椭圆型微分方程——拉普拉斯方程——要确定材料某区域内的温度，一般需要知道该区域整个边界上的温度。若只告诉你一块铁立方体某个面上的温度——再加上从该面指向立方体内部的温度导数，即柯西数据——这\emph{不}是计算立方体内各处温度的可靠办法。
+
+举例来说，设与我们有数据的那个面相对的面上布满了高低温交替、间距很小的条纹。我们的数据也许只描述这些条纹的一个极其微弱、被抹平的版本。温度从我们的面推进到对面时会伴随温差的指数式增长，从而极大地放大数据中任何不精确之处，以致仅有这些被抹平的条纹及其导数，对面温度的确切取值就变得极难把握。但若反过来\emph{给定}立方体每个面上的温度，则在该区域内插值出满足拉普拉斯方程的温度分布，将可靠得多。
+
+在一个无限的黎曼宇宙中，由柯西数据对黎曼波方程作预言，其难度就相当于只凭一个面的数据去计算立方体中的温度。既然方程是椭圆型的，我们或许会得出结论：只能对它的解作\emph{事后推断}（postdiction）——即收集某空间区域内场初值、以及过一段时间后的终值、连同该时间段内区域边界上发生的情况等数据，再用相关四维空间边界上的所有这些信息，事后来计算区域内部场的时间演化。这样的局面能让我们检验物理定律，却会让我们极难预见和筹谋未来。
+
+但在诸如 $\text{T}^{4}$ 这样的\emph{有限}黎曼宇宙中，情况没那么糟。$\text{T}^{4}$ 中的无源波只有有限多个傅里叶基函数能对总波作出贡献，因此只要我们能够确定它们全部的系数，就能知道该波的全部历史。若再纳入一个源——它本身也应服从一条同样一般形式的方程——问题会更复杂，但原理相同。
+
+为简单起见，我们处理一个无源标量波。设我们知道某一时刻整个空间上该波的值及其时间导数。我们选择坐标，使有数据的时刻为 $t=0$；当然，“时间”可以是环面可以绕行的四个方向中的任意一个。
+
+设某傅里叶基函数 $f_{i,j,k,l}$ 满足无源波方程。若 $l\le 0$，该函数依赖时间的因子 $f_{l}(t/L^{t})$ 是余弦或常数函数，因此在 $t=0$ 处非零，于是只要对 $t=0$ 的数据作三维傅里叶分析，就能确定 $f_{i,j,k,l}$ 的系数。若 $l>0$，依赖时间的因子是正弦，故它在 $t=0$ 处为零；但它的时间导数在 $t=0$ 处非零，于是可以由我们已有的 $t=0$ 时间导数数据作傅里叶分析来确定其系数。因此在数据与其时间导数之间，我们能算出对无源波有贡献的每个基函数的系数，从而能算出该波在任何时刻（将来或过去）的值。
+
+当然，指望黎曼宇宙中有人掌握整个宇宙的电磁场信息是荒唐的。但反过来说，当我们在自身宇宙中预言未来五分钟会发生什么时，我们从不曾拥有周围五光分（约九千万公里）范围内的完备信息。尽管如此，我们至今仍设法检验了科学理论，并能足够好地预言未来以存活下来。事实是，我们身处一个足够有序、平静的时间和地点，以致\emph{通常}可以假定周围最重要的电磁辐射源是像太阳这样近旁、行为已知且相当可预测的物体。物理定律\emph{允许}来自未知源的、会让我们完全措手不及的突然巨量辐射涌入，这并未摧毁我们做科学或规划未来的能力。
+
+在 Max Tegmark 的经典论文《“万有理论”是否仅仅是终极集合论？》中，Tegmark 提出：支配一个没有类时维度之宇宙的椭圆型偏微分方程将使其不可能作出预言，从而令他所称的“自省子系统”（self-aware substructures）很难有效运作。但在一个\emph{有限}黎曼宇宙中，若存在局部环境相对平静有序的区域——正是我们自身演化与繁荣所依赖的那类条件——那么，为了作出预言而严格需要横跨整个宇宙的柯西数据这一点，就不会比在我们自身宇宙中、为了知道未来五分钟将发生什么而严格需要一个半径九千万公里区域的柯西数据更能成为决定生命能达到何种成就的因素。
+
+\subsection{4-球面（The 4-sphere）}
+
+五维空间中一个实心超球面的边界，是一个有限、无边界的四维空间，称为 4-球面，或 $\text{S}^{4}$。4-球面无须嵌入任何更高维空间，也无须具有均匀曲率；但为简单起见，我们考察一个具有此拓扑的黎曼宇宙，它\emph{确实}具备一个嵌入平坦五维空间的 4-球面会从该空间继承的全部几何性质。若取超球面的半径为 $R$，这便固定了总体积（四维体积）为
+\begin{equation}
+V = \frac{8}{3}\pi^{2}R^{4},
+\end{equation}
+并把 4-球面内任何测地线的最大长度固定为 $2\pi R$。里奇标量曲率（它衡量空间内一个实心球的体积随半径增大而不如欧氏空间中增长得快这一程度）在每一点处都是 $12/R^{2}$。
+
+$\text{S}^{4}$ 作为模型宇宙的好处在于它比 $\text{T}^{4}$ 更对称。考察 $\text{S}^{4}$ 中保持某点不动的对称性，它们恰好是与欧氏四维空间中相同的群 $O(4)$。而代替欧氏空间平移的，我们只需把群扩展到 $O(5)$。
+
+代价是必须处理一个弯曲的四维空间。与 $\text{T}^{4}$ 不同，具有 $\text{S}^{4}$ 拓扑的空间不可能处处完全平坦。为什么？偶数 $n$ 的 $\text{S}^{n}$ 的欧拉数（Euler characteristic）总是 2（这可通过数一数超立方体的各部分简单地证明）。广义高斯-博内定理（Generalised Gauss-Bonnet Theorem）把空间曲率相关函数的一个积分与欧拉数等同起来，而若曲率为零，该积分就为零——与欧拉数的已知值矛盾。
+
+我们可以在 $\text{S}^{4}$ 上放置一种极坐标，含四个角坐标：
+\begin{equation}
+0\le\xi\le\pi,\qquad 0\le\psi\le\pi,\qquad 0\le\theta\le\pi,\qquad 0\le\phi\le2\pi,
+\end{equation}
+它们把平坦五维空间中半径 $R$ 的 4-球面上一点参数化为
+\begin{equation}
+\bigl(R\cos\xi,\ R\sin\xi\cos\psi,\ R\sin\xi\sin\psi\cos\theta,\ R\sin\xi\sin\psi\sin\theta\cos\phi,\ R\sin\xi\sin\psi\sin\theta\sin\phi\bigr).
+\end{equation}
+用这些坐标，度规是对角的，非零分量为
+\begin{align}
+g_{\xi\xi} &= R^{2},\\
+g_{\psi\psi} &= R^{2}\sin^{2}\xi,\\
+g_{\theta\theta} &= R^{2}\sin^{2}\xi\sin^{2}\psi,\\
+g_{\phi\phi} &= R^{2}\sin^{2}\xi\sin^{2}\psi\sin^{2}\theta,
+\end{align}
+由此得到度规行列式的平方根
+\begin{equation}
+\sqrt{|g|} = R^{4}\sin^{3}\xi\,\sin^{2}\psi\,\sin\theta.
+\end{equation}
+
+正如 $\text{T}^{4}$ 上标量函数可写成傅里叶级数，$\text{S}^{4}$ 上行为良好的标量函数可以展开为四维球谐函数（spherical harmonics）之和：
+\begin{align}
+Y^{m}_{j,k,l}(\xi,\psi,\theta,\phi) &= \Phi_{m}(\phi)\,\Theta^{m}_{j}(\theta)\,\Psi^{j}_{k}(\psi)\,\Xi^{k}_{l}(\xi)\big/R^{4},\\
+\Phi_{m}(\phi) &= \frac{\sin(m\phi)}{\sqrt\pi}, && m>0,\\
+\Phi_{m}(\phi) &= \frac{\cos(m\phi)}{\sqrt\pi}, && m<0,\\
+\Phi_{0}(\phi) &= \frac{1}{\sqrt{2\pi}},\\
+\Theta^{m}_{j}(\theta) &= \sqrt{\frac{(j+\tfrac12)(j-|m|)!}{(j+|m|)!}}\,P^{|m|}_{j}(\cos\theta),\\
+\Psi^{j}_{k}(\psi) &= \sqrt{\frac{(k+1)(k+j+1)!}{(k-j)!}}\,\frac{P^{-j-\frac12}_{k+\frac12}(\cos\psi)}{\sqrt{\sin\psi}},\\
+\Xi^{k}_{l}(\xi) &= \sqrt{\frac{(l+3/2)(l-k)!}{(l+k+2)!}}\,\frac{P^{k+1}_{l+1}(\cos\xi)}{\sin\xi}.
+\end{align}
+这里 $P$ 是第一类连带勒让德函数（associated Legendre function of the first kind）。指标 $m,j,k,l$ 为整数，受如下约束：
+\begin{equation}
+0\le|m|\le j\le k\le l.
+\end{equation}
+
+\orthofig{images/04__022.png}{球谐函数中各因子的图像}
+
+函数 $\Phi_{m}(\phi)$ 具有简单的三角形式，但另外三个坐标的函数长什么样？它们都遵循大致相同的模式：当其上方指标取其最大可能值时，它们从坐标为零时的零值，上升到 $\pi/2$ 处的单个极大或极小，再在坐标达到 $\pi$ 时回落为零。随着该指标的值下降，它们会从零回到零的过程中多出一个极值。当指标降到零时，极值的计数照旧递增，只不过此时函数在其取值范围的端点处不再为零。
+
+对给定的 $l$，这些四维球谐函数的总数可由对其它指标的约束求出：
+\begin{equation}
+N(l) = \frac{(l+1)(l+2)(2l+3)}{6}.
+\end{equation}
+指标不同的球谐函数彼此正交，即它们的乘积在 $\text{S}^{4}$ 上按体积 $\sqrt{|g|}$ 加权积分后为零。我们这里纳入的因子还确保每个球谐函数平方的积分为 1。
+
+哪些球谐函数满足我们在弯曲空间一节导出的球面上的无源黎曼标量波方程？不难证明球谐函数是拉普拉斯-贝尔特拉米算符的本征函数，即
+\begin{equation}
+\operatorname{div}\operatorname{grad} Y^{m}_{j,k,l} = \left[-\frac{l(l+3)}{R^{2}}\right] Y^{m}_{j,k,l}.
+\end{equation}
+因此，若 $\wms^{2}R^{2}$ 是形如 $l(l+3)$ 的整数，则该 $l$ 对应的全部 $N(l)$ 个球谐函数都满足无源方程。若 $\wms^{2}R^{2}$ 不是这种形式的整数，则不存在无源解。于是我们的处境与 $\text{T}^{4}$ 上非常相似：一般情况下，最大频率与宇宙尺度取一般值时不允许存在无源解；但若几何容许无源解存在，它们也由有限多个模式构成。这里我们能非常容易地数出模式数，无须操心 $\text{T}^{4}$ 所需的那类数论细节。由于当 $\wms^{2}R^{2}=l(l+3)$ 时有 $N(l)$ 个模式，对大 $l$ 有
+\begin{align}
+l &\approx \wms R,\\
+N(l) &\approx N(\wms R) \approx \frac{(\wms R)^{3}}{3}.
+\end{align}
+当然，在任何尺度哪怕大致可与我们的可观测宇宙相比的宇宙中，这都是一个极大的数目。但事实上 $\text{S}^{4}$ 的对称性意味着：若存在无源解，就存在局部看起来像传播矢量为\emph{任意}值的平面波的解，而不只是一个虽大却离散的选择集。对位于 $\xi=\psi=\theta=\pi/2$、$\phi$ 坐标为任意值的观测者，考察球谐函数 $Y^{l}_{l,l,l}$，其中 $l$ 是使 $l(l+3)=\wms^{2}R^{2}$ 的那个特定整数。观测者将处于 $\xi$、$\psi$、$\theta$ 各函数的极宽而平坦的极值处，而函数在 $\phi$ 方向按 $\cos(l\phi)\approx\cos(\wms R\phi)$ 变化，局部看起来恰是我们为欧氏四维空间描述过的那种平面波。但对观测者位置的任意选择以及任意传播矢量选择，我们都能简单地选取满足所述条件的坐标，并在那些坐标下构造同样的解。
+
+若考虑带源 $H$ 的 RSW 方程，并把源的球谐系数写作 $h^{m}_{j,k,l}$、解 $A$ 的写作 $a^{m}_{j,k,l}$，则有
+\begin{equation}
+a^{m}_{j,k,l}\bigl[l(l+3)-\wms^{2}R^{2}\bigr] = h^{m}_{j,k,l}\,R^{2}.
+\end{equation}
+若存在某个 $l$ 使 $l(l+3)=\wms^{2}R^{2}$，则源不能包含该 $l$ 值的任何球谐函数，而解可以任意多地包含这些球谐函数。对其它 $l$ 值，源的系数确定解的系数：
+\begin{equation}
+a^{m}_{j,k,l} = \frac{h^{m}_{j,k,l}\,R^{2}}{l(l+3)-\wms^{2}R^{2}}.
+\end{equation}
+
+\subsubsection{4-球面上的格林函数（A Green's Function for the 4-Sphere）}
+
+设有 $\text{S}^{4}$ 上一个点状、$\delta$ 函数式的源突发。与它关联的解是什么？我们预期它看起来有点像我们此前在欧氏四维空间中为电偶极-电荷突然脉动找到的格林函数，后者正比于 $Y_{1}(\wms s)/s$，其中 $Y_{1}$ 是第二类贝塞尔函数。
+
+为简单起见，我们只限于标量波方程。若把源放在坐标系的极点，即 $\xi=\psi=\theta=0$ 而 $\phi$ 无定义处（正如地球南北极点处经度无定义），则唯一非零的球谐系数将具有 $m=j=k=0$，因为其它取值都会使球谐函数 $Y^{m}_{j,k,l}$ 在极点处为零。于是非零系数为
+\begin{align}
+h^{0}_{0,0,l} &= -\frac{\sqrt{(l+1)(l+2)(2l+3)}}{4\pi},\\
+a^{0}_{0,0,l} &= -\frac{R^{2}\sqrt{(l+1)(l+2)(2l+3)}}{4\pi\bigl[l(l+3)-\wms^{2}R^{2}\bigr]}.
+\end{align}
+我们假定不存在使 $l(l+3)=\wms^{2}R^{2}$ 的整数 $l$。解为
+\begin{equation}
+A(\xi) = -R^{2}\sum_{l=0}^{\infty}\frac{(2l+3)\,P^{1}_{l+1}(\cos\xi)}{8\pi^{2}\bigl[l(l+3)-\wms^{2}R^{2}\bigr]\sin\xi}.
+\end{equation}
+
+\orthofig{images/04__023.png}{4-球面上的格林函数}
+
+右图给出这个求和的一个数值近似。该函数在其定义域的前半部分行为正如我们所料：随离源距离振荡并衰减；但随后在接近对极点时发生一次令人不安的复现（resurgence）。这是 $\text{S}^{4}$ 对称性的产物；在具有相同拓扑但较不均匀的空间中，这一效应会弱得多。
+
+值得注意的是，即便有这种完美对称性，对极点处的场也是\emph{有限}的，不同于源点处的场。$\xi=\pi$ 处的和可以显式算出：
+\begin{equation}
+A(\pi) = -\frac{R^{2}\bigl(\wms^{2}R^{2}+2\bigr)}{16\pi\cos\!\left(\dfrac{\pi}{2}\sqrt{4\wms^{2}R^{2}+9}\right)}.
+\end{equation}
+这里分母中的余弦只有在 $\wms^{2}R^{2}$ 违反整数假定时才可能为零，故此处的场是有限的。
+
+\subsubsection{柯西数据与预言（Cauchy Data and Predictions）}
+
+对 $\text{T}^{4}$ 宇宙，我们发现：若有单一时刻横跨宇宙宽度的柯西数据（其中时间轴可以是绕 4-环面一周的四个坐标中的任意一个），我们就能确定一个自由波的有限多个系数的值，从而重构其全部历史。
+
+对 $\text{S}^{4}$，我们可以在任何“大 3-球面”（great 3-sphere），即任何半径 $R$ 的 3-球面上，用柯西数据做同样的事。假定几何容许无源波，则满足无源波方程的全部球谐函数 $Y^{m}_{j,k,l}(\xi,\psi,\theta,\phi)$ 都共享同一个 $l$ 值。我们选取一个坐标，使有数据的那个 3-球面上 $\xi=\pi/2$。对于那些在 $\xi=\pi/2$ 处取极大或极小的球谐函数，可以由该 3-球面上的场值求出其系数；而那些在该处为零的球谐函数，其 $\xi$ 方向导数将在该处取极大或极小，于是可以由场的导数求出其系数。因此，由 3-球面上的柯西数据，我们可以重构解的全部历史。
+
+若我们的数据在一个更小的 3-球面上，即描述为超曲面 $\xi=\xi_{0}$（对某个 $\xi_{0}<\pi/2$），情况又如何？只要我们确实知道 $\xi_{0}$ 的值，因子 $\Xi^{k}_{l}(\xi)$ 与 $\partial_{\xi}\Xi^{k}_{l}(\xi)$ 在 3-球面上就是已知量（而且它们绝不会同时为零），因此原则上我们总应能算出解的全部系数。
+
+这引出如下奇特的观察：\emph{原则上}我们甚至能从最小 3-球面上的柯西数据重构整个解。毕竟，这样一个 3-球面是\emph{两个}有限区域的边界：按通常理解其内部，以及 $\text{S}^{4}$ 宇宙的其余部分——正如北极圈既是北极周围区域的边界，也是地球表面其余部分的边界。但在实践中，对远小于 $\pi/2$ 的 $\xi$，$\Xi^{k}_{l}(\xi)$ 的值相比其在 $\pi/2$ 处的取值会变得\emph{极其}小，而且球谐函数中其它各因子的峰也会越来越密，以致从小 3-球面向外外推到整个宇宙，将对数据的精度提出高得难以承受的要求。
+
+\section{参考文献（References）}
+
+\begin{itemize}
+  \item[{[1]}] \emph{Classical Electrodynamics}，John David Jackson，John Wiley \& Sons，1999 年。第 12.7 节给出普通电磁学的拉格朗日量，第 12.8 节给出\emph{洛伦兹} Proca 电动力学的拉格朗日量。（注意 Jackson 使用了与我们不同的单位制，以及洛伦兹度规的 $(+---)$ 号差，因此比较这些公式时需要小心。）
+  \item[{[2]}] \emph{Gravitation}，Charles Misner、Kip Thorne 与 John Wheeler，W.H. Freeman，San Francisco，1973 年。第 21.3 节。
+\end{itemize}

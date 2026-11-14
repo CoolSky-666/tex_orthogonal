@@ -1,0 +1,664 @@
+\section{静磁学算例（Examples from Magnetostatics）}
+
+上一节我们建立了黎曼电磁学的场方程与四维矢量势语言。本节把它用于三类最基本的静磁构型——无限长直线电流、磁偶极子与螺线管——并顺带导出毕奥-萨伐尔定律的黎曼版本。我们将反复看到同一个模式：黎曼静态解与洛伦兹振荡解的\emph{空间部分}具有相同的形状，差别只在于黎曼解在空间中以最大频率 $\wms$ 振荡，从而在宏观尺度上不断自我抵消。
+
+\subsection{线电流（Linear Current）}
+
+设有一恒定电流 $I$ 沿一根无限长、无限细的直导线流动。黎曼版安培-麦克斯韦定律（Ampère-Maxwell Law）给出磁场旋度 $\nabla\times\bB$ 作为电流密度与三维磁势 $\bA_{(3)}$ 的函数。但由于我们把电流视为集中于一根无限细的导线上，最方便的做法是借助开尔文-斯托克斯定理（Kelvin-Stokes theorem）把该定律改写为积分形式——它把一个矢量场旋度在一曲面上的积分，与该场沿曲面边界曲线的线积分联系起来：
+\begin{equation}
+\int_{\text{Surface}} (\nabla \times \bB)\cdot\mathbf{n} = \int_{\text{Boundary}} \bB\cdot\mathbf{t} \tag{19}
+\end{equation}
+其中 $\mathbf{n}$ 是曲面的单位法矢，$\mathbf{t}$ 是构成曲面边界之曲线的单位切矢；若以我们所选的 $\mathbf{n}$ 定义“上方”，则 $\mathbf{t}$ 沿曲面逆时针方向环绕。
+
+若取一个以导线为中心、垂直于导线的半径为 $r$ 的圆盘作为曲面，由对称性可预期磁势 $\bA_{(3)}$ 平行于导线，且只是到导线距离 $r$ 的函数。若令导线沿 $z$ 轴放置，我们就有：
+\begin{equation}
+\bA_{(3)}(r) = A(r)\,\be_z \tag{20}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\bB(r) &= \nabla \times \bA_{(3)}(r) \\
+       &= \partial_y A(r)\,\be_x - \partial_x A(r)\,\be_y \\
+       &= A'(r)\Big[\frac{y}{r}\,\be_x - \frac{x}{r}\,\be_y\Big] \\
+       &= -A'(r)\,\be_\phi
+\end{aligned}
+\tag{21}
+\end{equation}
+其中 $\be_\phi$ 是绕导线逆时针指向的单位矢量场。再应用开尔文-斯托克斯定理，即式 (19)，以及安培-麦克斯韦定律，得到：
+\begin{equation}
+I + 2\pi \wms^2 \int_0^r A(s)\,s\,ds = -2\pi r\,A'(r) \tag{22}
+\end{equation}
+两端同除以 $2\pi$、对 $r$ 求导并稍作整理，得：
+\begin{equation}
+A''(r) + \frac{A'(r)}{r} + \wms^2 A(r) = 0 \tag{23}
+\end{equation}
+该微分方程的通解为：
+\begin{equation}
+A(r) = C_1 J_0(\wms r) + C_2 Y_0(\wms r) \tag{24}
+\end{equation}
+其中 $J_0$、$Y_0$ 分别是第一类与第二类贝塞尔函数（Bessel function）。对这些贝塞尔函数求导给出：
+\begin{equation}
+A'(r) = -\wms\big[C_1 J_1(\wms r) + C_2 Y_1(\wms r)\big] \tag{25}
+\end{equation}
+在此结果下，式 (22) 右端在 $r\to0$ 时的极限为：
+\begin{equation}
+\lim_{r\to0}\big(-2\pi r\,A'(r)\big) = -4 C_2 \tag{26}
+\end{equation}
+而式 (22) 左端取同一极限则恰好就是电流 $I$。于是 $C_2 = -I/4$。$C_1$ 仍待定，但与推导库仑势时一样，我们把 $C_1$ 项取为来自过去、与电流 $I$ 无关的静止辐射场。
+
+\begin{align}
+\text{线电流磁势}\quad
+\bA_{(3)}(r) &= -\frac{I}{4}\,Y_0(\wms r)\,\be_z && \text{（Riemannian）}\\
+\bA_{(3)}(r) &= -\frac{I}{2\pi}\,\log(r)\,\be_z && \text{（Lorentzian）}\\[4pt]
+\text{线电流磁场}\quad
+\bB(r) &= -\frac{I\,\wms}{4}\,Y_1(\wms r)\,\be_\phi && \text{（Riemannian）}\\
+\bB(r) &= \frac{I}{2\pi r}\,\be_\phi && \text{（Lorentzian）}
+\end{align}
+
+由于贝塞尔函数是振荡的，导线周围磁场反向变化的长度尺度，与点电荷周围电场的交替尺度相仿。
+
+\orthofig{images/04__011.png}{直线导体周围的磁通量}
+
+由于在紧邻电流处洛伦兹情形与黎曼情形中磁场的方向相同，而洛伦兹力定律在两种情形下也相同，理论上两根足够靠近（且足够细）的平行载流导线之间会感受到吸引力。然而正如静电力一样，场的空间振荡会对任何宽度超过振荡波长的物体造成显著抵消。
+
+这个例子再一次体现了黎曼静态解与洛伦兹振荡解空间部分之间的联系：导线周围的黎曼场，等同于常规电磁学中一根\emph{振荡}导线周围驻波的空间部分。当然现实中的振荡电流通常伴随纯外向行波，但在存在一列等强度入射波的情况下，就会产生形状恰好如此的驻波。
+
+\subsection{毕奥-萨伐尔定律（The Biot-Savart Law）}
+
+在常规静磁学中，毕奥-萨伐尔定律（Biot-Savart Law）给出沿细导线流动的恒定电流 $I$ 所产生的磁场：
+\begin{equation}
+\bB = \frac{I}{4\pi}\int \frac{\mathbf{t} \times \mathbf{r}}{r^3}\,dl \tag{27}
+\end{equation}
+这里积分变量 $l$ 是沿导线的长度，$\mathbf{r}$ 是从导线上的一个线元指向磁场 $\bB$ 待求点的三维位移矢量，$\mathbf{t}$ 是导线的单位切矢。
+
+我们将利用此前导出的黎曼格林函数来得到其黎曼对应物。
+
+导线长度为 $dl$ 的每个线元都视为同时包含运动电荷与静止电荷，二者的电量均为 $dq = \rho\,dl$，其中 $\rho$ 是导线内的线电荷密度。运动电荷对格林函数积分的贡献为 $dq\,\bu\,d\tau$——其中 $\bu$ 是该线元中每个运动电荷的四维速度——但我们知道该矢量的时间分量会被导线中存在的等量静止电荷精确抵消，因为导线整体视为电中性。$\bu\,d\tau$ 的空间部分正是 $\bv\,dt$，其中 $\bv$ 是运动电荷的普通三维速度，而 $t$ 是导线静止参考系中的坐标时。又因为流过导线的电流 $I = \rho v$——用矢量表示为 $I\mathbf{t} = \rho\bv$，其中 $\mathbf{t}$ 是导线单位切矢——我们有：
+\begin{equation}
+\begin{aligned}
+(dq\,\bu\,d\tau)_{\text{net}} &= \rho\,dl\,\bv\,dt \\
+ &= I\,\mathbf{t}\,dt\,dl
+\end{aligned}
+\tag{28}
+\end{equation}
+于是我们可把格林函数对 $t$ 积分，而把 $I\,\mathbf{t}\,dl$ 视为常量；这个积分与我们此前用来从格林函数得到库仑势的积分相同。因此毫不意外，由该积分得到的磁势看起来就像一个库仑势，而对其取旋度得到的磁场，其大小（方向则不然）与库仑电场相同。
+
+\begin{align}
+\text{毕奥-萨伐尔定律（磁势）}\quad
+\bA_{(3)}(\mathbf{r}) &= \frac{I}{4\pi}\int \frac{\mathbf{t} \cos(\wms r)}{r}\,dl && \text{（Riemannian）}\\
+\bA_{(3)}(\mathbf{r}) &= \frac{I}{4\pi}\int \frac{\mathbf{t}}{r}\,dl && \text{（Lorentzian）}\\[4pt]
+\text{毕奥-萨伐尔定律（磁场）}\quad
+\bB(\mathbf{r}) &= \frac{I}{4\pi}\int \big[\cos(\wms r) + \wms r\sin(\wms r)\big]\frac{\mathbf{t}\times\mathbf{r}}{r^3}\,dl && \text{（Riemannian）}\\
+\bB(\mathbf{r}) &= \frac{I}{4\pi}\int \frac{\mathbf{t}\times\mathbf{r}}{r^3}\,dl && \text{（Lorentzian）}
+\end{align}
+
+用毕奥-萨伐尔定律对无限长直导线周围的磁势作显式积分，所得结果与我们此前得到的公式一致。
+
+\subsection{磁偶极子（Magnetic Dipoles）}
+
+\textbf{磁偶极子}（magnetic dipole）是产生某种简单而高度对称磁场的系统。一小圈环流电流，或具有量子力学自旋的带电粒子，都属于此类；许多具有更复杂磁场的系统，从远处看也表现为磁偶极子。
+
+\orthofig{images/04__012.png}{磁偶极子周围的磁通量}
+
+对于一圈电流环，\textbf{磁矩}（magnetic moment）——记作 $\boldsymbol\mu$——定义为垂直于电流环的矢量，其大小等于环面积与环流电流强度之积。约定是：当拇指与磁矩矢量对齐时，电流沿右手手指方向环绕。纯偶极场既可取有限电流环场中的主导项（即随距离衰减最慢的项），也可取环面积趋于零而电流趋于无穷、二者乘积保持有限这一极限情形下的场。
+
+在洛伦兹电磁学中，磁偶极子的磁场恰好取与\emph{电}偶极子的\emph{电}场相同的数学形式。然而这在黎曼情形下不可能成立，因为磁场 $\bB$ 必须在处处满足 $\nabla\cdot\bB = 0$——也就是说磁通线构成不中断的闭合回路——但这一条对黎曼电场即使在真空中也不成立，而电偶极子场的电场线会从远离偶极子本身的地方起始并终止。
+
+我们可以用毕奥-萨伐尔定律求小电流环极限下的磁偶极势。与电偶极子一样，我们对某个适当量求导以取极限。此处我们对\emph{半}个电流环积分——即对某个线元与正对其的线元（该处电流方向相反）的贡献之和积分。在小环极限下，该和式恰好是 $1/r$ 或 $\cos(\wms r)/r$ 跨过电流环的方向导数在环心处的取值，再乘以环的直径与环的切矢。
+
+\begin{align}
+\text{磁偶极势}\quad
+\bA_{(3)}(\mathbf{r}) &= \frac{\boldsymbol\mu\times\mathbf{r}}{4\pi r^3}\big[\cos(\wms r) + \wms r\sin(\wms r)\big] && \text{（Riemannian）}\\
+\bA_{(3)}(\mathbf{r}) &= \frac{\boldsymbol\mu\times\mathbf{r}}{4\pi r^3} && \text{（Lorentzian）}\\[6pt]
+\text{磁偶极场}\quad
+\bB(\mathbf{r}) &= \frac{3(\boldsymbol\mu\cdot\mathbf{r})\mathbf{r} - r^2\boldsymbol\mu}{4\pi r^5}\big[\cos(\wms r) + \wms r\sin(\wms r)\big] \nonumber\\
+ &\qquad - \frac{\wms^2(\boldsymbol\mu\times\mathbf{r})\times\mathbf{r}}{4\pi r^3}\cos(\wms r) && \text{（Riemannian）}\\
+\bB(\mathbf{r}) &= \frac{3(\boldsymbol\mu\cdot\mathbf{r})\mathbf{r} - r^2\boldsymbol\mu}{4\pi r^5} && \text{（Lorentzian）}
+\end{align}
+
+在洛伦兹电磁学中，尽管并非所有材料都能被磁化，但使大量磁偶极子（一般是电子自旋）得以联合产生强得多磁场的条件并不十分苛刻：只要一群偶极子的磁矩矢量相互平行，它们对外磁场的贡献就会彼此增强。但由于黎曼磁偶极场在极小的长度尺度上就反向，在任意一群偶极子中，它们的场之间会发生大量抵消——合成场同样呈现那种空间振荡。在黎曼宇宙中，不可能存在我们那种能在长距离上沿单一方向持续施力的永磁体。
+
+\subsection{螺线管与电感（Solenoids and Inductance）}
+
+\textbf{螺线管}（solenoid）是螺旋状盘绕的导线。当有恒定电流通过时，我们将近似求出线圈内外的磁场，假定螺线管足够长，以致可以忽略两端处究竟发生什么。实际上我们分析的是一个无限长螺线管，它比有限长更易处理，因为可以近似认为它同时具有沿轴的平移对称性与绕轴的旋转对称性。
+
+具有这种柱对称、且磁场沿 $z$ 轴指向的磁势与磁场的最一般解为：
+\begin{equation}
+\begin{aligned}
+\bA_{(3)}(r) &= \big[a J_1(\wms r) + b Y_1(\wms r)\big]\be_\phi\\
+\bB(r) &= \big[a \wms J_0(\wms r) + b \wms Y_0(\wms r)\big]\be_z
+\end{aligned}
+\tag{29a,b}
+\end{equation}
+
+\orthofig{images/04__013.png}{螺线管的磁通量}
+
+但我们需要允许线圈内外的解不同，于是有四个待定系数：$a_{\text{int}}$、$b_{\text{int}}$、$a_{\text{ext}}$、$b_{\text{ext}}$。解在 $r = 0$ 处必须有限，这要求 $b_{\text{int}} = 0$；我们又要求 $\bA_{(3)}$ 在线圈半径 $r = R$ 处连续。第三个关系来自对一条细长竖直矩形回路应用安培定律，该回路包围螺线管单位高度上 $n$ 匝绕组中的电流；它告诉我们，紧贴线圈内侧与外侧的 $\bB$ 场之差等于该电流。
+
+要完全定出解还需第四个方程，这要多花点功夫。沿线圈的一条竖直窄条对毕奥-萨伐尔定律给出的 $\bA_{(3)}$ 贡献积分并不难，但要得到\emph{绕}线圈一周积分的精确表达式却难以处理。不过我们可以先对线圈中心附近一小距离处 $\bA_{(3)}$ 的贡献求出关于 $r$ 的一阶泰勒展开，再对\emph{该展开}绕整个线圈积分；把它与由一般解得到的等价泰勒展开相匹配，便给出 $a_{\text{int}}$ 的值，然后解其余方程即可确定全部系数。结果 $a_{\text{ext}} = 0$，于是内部解与外部解都各只剩一项。
+
+在常规电磁学中，无限长螺线管外的磁场为零，但在黎曼情形下一般并非如此。
+
+\begin{align}
+\text{长螺线管（磁势）}\quad
+\bA_{(3)}(r) &= \begin{cases}
+-\tfrac12 n I \pi R\,Y_1(\wms R)\,J_1(\wms r)\,\be_\phi, & r < R\\[4pt]
+-\tfrac12 n I \pi R\,J_1(\wms R)\,Y_1(\wms r)\,\be_\phi, & r > R
+\end{cases} && \text{（Riemannian）}\\
+\bA_{(3)}(r) &= \begin{cases}
+\dfrac{n I r}{2}\,\be_\phi, & r < R\\[6pt]
+\dfrac{n I R^2}{2r}\,\be_\phi, & r > R
+\end{cases} && \text{（Lorentzian）}\\[6pt]
+\text{长螺线管（磁场）}\quad
+\bB(r) &= \begin{cases}
+-\tfrac12 n I \pi \wms R\,Y_1(\wms R)\,J_0(\wms r)\,\be_z, & r < R\\[4pt]
+-\tfrac12 n I \pi \wms R\,J_1(\wms R)\,Y_0(\wms r)\,\be_z, & r > R
+\end{cases} && \text{（Riemannian）}\\
+\bB(r) &= \begin{cases}
+n I\,\be_z, & r < R\\[4pt]
+0, & r > R
+\end{cases} && \text{（Lorentzian）}
+\end{align}
+
+\begin{align}
+\text{长螺线管（线圈内总磁通）}\quad
+\Phi &= -n I \pi^2 R^2 J_1(\wms R) Y_1(\wms R) && \text{（Riemannian）}\\
+\Phi &= n I \pi R^2 && \text{（Lorentzian）}\\[6pt]
+\text{长螺线管（电感，管长 $l$）}\quad
+L &= -n^2 \pi^2 R^2 l\,J_1(\wms R) Y_1(\wms R) && \text{（Riemannian）}\\
+L &= n^2 \pi R^2 l && \text{（Lorentzian）}
+\end{align}
+
+上表中我们给出了穿过螺线管的总磁通；它是磁场 $\bB$ 在垂直于轴的横截面上的面积分。
+
+若通过螺线管的电流开始变化，磁场也会变化，于是据麦克斯韦-法拉第定律（Maxwell-Faraday Law）将产生一个电场，其旋度正比于磁场的时间变化率。再由开尔文-斯托克斯定理，电场沿任何包围该变化磁场的回路的积分，将正比于磁场变化率在该回路所围面积上的积分。而该面积分正是穿过回路的磁通的时间变化率。因此每个包围着变化磁通的回路周围都会有一个正比于磁通变化率的电动势。事实上，比例常数恰好是 $-1$：
+\[
+\text{EMF} = -\frac{d\Phi}{dt}.
+\]
+把这一论证用于构成螺线管的各线圈，若通过螺线管的电流变化，则螺线管两端将产生正比于电流变化率的电压。其比例常数的相反数称为螺线管的\textbf{电感}（inductance）$L$：
+\[
+\text{EMF} = -L\,\frac{dI}{dt}.
+\]
+长度为 $l$（因而共有 $nl$ 匝线圈）的螺线管的黎曼电感为
+\begin{equation}
+L_{\Riem} = n l\,\frac{\Phi}{I} = -n^2 \pi^2 R^2 l\,J_1(\wms R) Y_1(\wms R),
+\end{equation}
+而洛伦兹值为
+\begin{equation}
+L_{\Lor} = n l\,\frac{\Phi}{I} = n^2 \pi R^2 l.
+\end{equation}
+黎曼电感中贝塞尔函数之积可正可负，因而电感可取两种符号。负电感如同负电容，会导致失控效应：负电感中电流的增大会产生驱动电流继续增大的电压，直到材料损坏或其他效应给电流的增长踩下刹车。
+
+但与电容器一样，我们此处的模型高度理想化。正、负电感在线圈几何上的差别约为光的一个最小波长，因此若线圈导线比这更粗、或偏离完美圆形超过这一距离，螺线管实际就将同时包含正、负电感——通常会在两者之间造成显著抵消。
+
+此外，我们此处的全部公式都假定了一种可近似为恒定电流的情形。携带交流电流的螺线管我们将在后面一节处理。
+
+\section{电磁能流（Electromagnetic Energy Flow）}
+
+我们在负电容或负电感系统中见到的那类失控效应，在我们自己的宇宙中显然会违反能量守恒；但在黎曼宇宙中，由于与物质（包括电磁场）相联系的能量与动能、势能意义相反，要精确弄清究竟发生了什么就更为棘手。我们需要能定量描述电磁场中储存与输运的能量。为此，我们得先绕道讨论黎曼电磁学的拉格朗日处理。
+
+\subsection{黎曼电磁学的拉格朗日量（Lagrangian for Riemannian Electromagnetism）}
+
+像电磁学这样的场论的拉格朗日量（Lagrangian）是一个依赖于场及其导数的量 $L$，当场满足适当方程时，它在四维空间某一区域上的积分在变分下取驻值。若对 $L$ 积分得到所谓的作用量（action）$S$：
+\[
+S(A_k) = \int L(A_k),
+\]
+则当 $\bA$ 满足场方程时，$S$ 应在 \emph{一阶}上不因 $\bA$ 的任何微小变化而改变，就像一元函数在局部极大或极小处那样。
+
+若把拉格朗日量表示为场分量 $A_k$ 及其导数 $\partial_j A_k$ 的函数，则——只要场在积分区域边界上为零、或满足循环边界条件——作用量取驻值的要求等价于欧拉-拉格朗日方程（Euler-Lagrange equation）：
+\[
+\partial_j\!\left(\frac{\partial L}{\partial(\partial_j A_k)}\right) = \frac{\partial L}{\partial A_k}.
+\]
+我们把黎曼普罗卡拉格朗日量（Riemannian Proca Lagrangian）$L_{\text{RP}}$ 分为两部分：场拉格朗日量 $L_{\text{field}}$ 与相互作用项 $L_{\text{inter}}$。下面同时给出洛伦兹对应物\footnote{脚注 [1] 见原文参考文献。}。
+
+\begin{align}
+\text{黎曼普罗卡拉格朗日量}\quad
+L_{\text{field}} &= \tfrac14 F_{ij} F^{ij} - \tfrac12 \wms^2 A_a A^a \nonumber\\
+ &= \tfrac12\big(|\bB|^2 + |\bE|^2\big) - \tfrac12 \wms^2\big(|\bA_{(3)}|^2 + \phi^2\big)\\
+L_{\text{inter}} &= -A_k j^k = -\bA_{(3)}\cdot\bj_{(3)} + \phi\rho\\
+L_{\text{RP}} &= L_{\text{field}} + L_{\text{inter}} && \text{（Riemannian）}
+\end{align}
+
+\begin{align}
+\text{麦克斯韦拉格朗日量}\quad
+L_{\text{field}} &= -\tfrac14 F_{ij} F^{ij} = -\tfrac12\big(|\bB|^2 - |\bE|^2\big)\\
+L_{\text{inter}} &= A_k j^k = \bA_{(3)}\cdot\bj_{(3)} - \phi\rho\\
+L_{\text{Maxwell}} &= L_{\text{field}} + L_{\text{inter}} && \text{（Lorentzian）}
+\end{align}
+
+完整拉格朗日量的欧拉-拉格朗日方程，分别给出黎曼普罗卡方程或麦克斯韦方程。
+
+\subsection{电磁学的应力-能量张量（The Stress-Energy Tensor for Electromagnetism）}
+
+我们可以借助下式求出黎曼电磁场的应力-能量张量（stress-energy tensor），记作 $T$\footnote{脚注 [2] 见原文参考文献。}：
+
+\begin{align}
+\text{由场拉格朗日量给出的应力-能量张量}\quad
+T_{ab} &= -L_{\text{field}}\,g_{ab} + 2\,\partial_{g^{ab}} L_{\text{field}} && \text{（Riemannian）}\\
+T_{ab} &= L_{\text{field}}\,g_{ab} - 2\,\partial_{g^{ab}} L_{\text{field}} && \text{（Lorentzian）}
+\end{align}
+
+这里 $g_{ab}$ 与 $g^{ab}$ 是四维空间\textbf{度规张量}（metric tensor）的分量，分别带两个下标或两个上标。在正交归一坐标中，这些分量的矩阵就是 $4\times4$ 单位矩阵——即 $a=b$ 时为 1，否则为 0。但若把四维势场对偶矢量形式的分量 $A_k$ 视为拉格朗日量的基本变量，则每当我们升指标以得到像 $A_a A^a$ 这样的项时，都用到了 $g^{ab}$（采用爱因斯坦求和约定）：
+\[
+A_a A^a = A_a\big(g^{ab} A_b\big).
+\]
+因此，若把拉格朗日量视为四维势分量 $A_k$ \emph{与}度规张量分量 $g^{ab}$ 的函数，则对度规求导（在\emph{实际}度规处取值）就给出应力-能量张量中的第二项。
+
+详细解释这一构造为何成立会偏离主题太远，但它最终与爱因斯坦引力方程——把一个由度规导出的张量与任何存在物质的应力-能量张量联系起来——本身可由适当拉格朗日量导出的方式相合。关键点是：如此构造出的完整应力-能量张量（包含全部物质）的散度为零，这意味着能量与动量守恒。
+
+我们将用电磁场 $F$ 与四维势 $\bA$ 来表达这一计算结果，同时也用三维场 $\bB$、$\bE$、$\phi$ 与 $\bA_{(3)}$ 来表达。
+
+\begin{equation}
+\begin{gathered}
+\textbf{[黎曼电磁应力-能量张量]}\quad
+T_{ab} = -L_{\text{field}}\,g_{ab} + F_{ac} F_b^{\ c} - \wms^2 A_a A_b\\
+\resizebox{0.98\textwidth}{!}{$\displaystyle T_{ab} = \begin{pmatrix}
+\mathcal{A} & B_y E_z - B_z E_y + \wms^2 A_x\phi & B_z E_x - B_x E_z + \wms^2 A_y\phi & B_x E_y - B_y E_x + \wms^2 A_z\phi\\[4pt]
+B_y E_z - B_z E_y + \wms^2 A_x\phi & \mathcal{B} + E_x^2 - B_x^2 - \wms^2 A_x^2 & E_x E_y - B_x B_y - \wms^2 A_x A_y & E_x E_z - B_x B_z - \wms^2 A_x A_z\\[4pt]
+B_z E_x - B_x E_z + \wms^2 A_y\phi & E_x E_y - B_x B_y - \wms^2 A_x A_y & \mathcal{B} + E_y^2 - B_y^2 - \wms^2 A_y^2 & E_y E_z - B_y B_z - \wms^2 A_y A_z\\[4pt]
+B_x E_y - B_y E_x + \wms^2 A_z\phi & E_x E_z - B_x B_z - \wms^2 A_x A_z & E_y E_z - B_y B_z - \wms^2 A_y A_z & \mathcal{B} + E_z^2 - B_z^2 - \wms^2 A_z^2
+\end{pmatrix}$}
+\end{gathered}
+\end{equation}
+其中
+\[
+\mathcal{A} = \frac{|\bE|^2 - |\bB|^2 + \wms^2\big(|\bA_{(3)}|^2 - \phi^2\big)}{2},
+\qquad
+\mathcal{B} = \frac{|\bB|^2 - |\bE|^2 + \wms^2\big(|\bA_{(3)}|^2 + \phi^2\big)}{2}.
+\]
+
+\begin{equation}
+\begin{gathered}
+\textbf{[洛伦兹电磁应力-能量张量]}\quad
+T_{ab} = L_{\text{field}}\,g_{ab} + F_{ac} F_b^{\ c}\\
+\resizebox{0.98\textwidth}{!}{$\displaystyle T_{ab} = \begin{pmatrix}
+\dfrac{|\bE|^2 + |\bB|^2}{2} & B_y E_z - B_z E_y & B_z E_x - B_x E_z & B_x E_y - B_y E_x\\[6pt]
+B_y E_z - B_z E_y & \mathcal{C} - B_x^2 - E_x^2 & -E_x E_y - B_x B_y & -E_x E_z - B_x B_z\\[4pt]
+B_z E_x - B_x E_z & -E_x E_y - B_x B_y & \mathcal{C} - B_y^2 - E_y^2 & -E_y E_z - B_y B_z\\[4pt]
+B_x E_y - B_y E_x & -E_x E_z - B_x B_z & -E_y E_z - B_y B_z & \mathcal{C} - B_z^2 - E_z^2
+\end{pmatrix}$}
+\end{gathered}
+\end{equation}
+其中 $\mathcal{C} = \dfrac{|\bE|^2 + |\bB|^2}{2}$。
+
+电磁场单独的 $T$ 在 $\bj$ 不为零时其散度并不为零，而是有：
+\[
+\partial_b T^a{}^b + F^a{}_c\,j^c = 0.
+\]
+第二项对应于作用在电流上的四维力密度，而后者又将是带电物质自身应力-能量张量的散度。因此，电磁场的应力-能量张量与它作用的物质的应力-能量张量之和将为零。
+
+\subsection{能量密度与坡印廷矢量（Energy Density and the Poynting Vector）}
+
+应力-能量张量看起来可能有点吓人，但眼下我们先忽略第一行与第一列之外的各项，它们描述压强与切应力。我们关心的项是 $T_{tt}$，它给出电磁场中的能量密度 $u$；以及矢量 $\mathbf{S} = (T^{tx}, T^{ty}, T^{tz})$，称为\textbf{坡印廷矢量}（Poynting vector），它描述单位面积上的能流率。（注意我们必须升一个 $t$ 指标才能得到坡印廷矢量，这在洛伦兹情形下会改变符号。）
+
+\begin{align}
+\text{电磁能量密度}\quad
+u &= \frac{|\bE|^2 - |\bB|^2 + \wms^2\big(|\bA_{(3)}|^2 - \phi^2\big)}{2} && \text{（Riemannian）}\\
+u &= \frac{|\bE|^2 + |\bB|^2}{2} && \text{（Lorentzian）}\\[6pt]
+\text{坡印廷矢量}\quad
+\mathbf{S} &= \bB \times \bE + \wms^2 \phi\,\bA_{(3)} && \text{（Riemannian）}\\
+\mathbf{S} &= \bE \times \bB && \text{（Lorentzian）}
+\end{align}
+
+下面我们看几个简单例子中的能量密度与能流。
+
+\subsubsection{平面波中的能量（Energy in Plane Waves）}
+
+对于平面波，我们在四维空间中有如下描述：
+\[
+\bA(\bx) = \bA_0 \sin(\bk\cdot\bx), \qquad
+F(\bx) = (\bk \wedge \bA_0)\cos(\bk\cdot\bx),
+\]
+其中 $|\bk| = \wms$ 且 $\bA_0\cdot\bk = 0$。由此可计算应力-能量张量：
+\begin{equation}
+\begin{aligned}
+T_{ab} &= L_{\text{field}}\,g_{ab} + F_{ac} F_b^{\ c} - \wms^2 A_a A_b\\
+T &= A_0^2\,\bk\otimes\bk\,\cos(\bk\cdot\bx)^2 + \wms^2\Big[\bA_0\otimes\bA_0 - \frac{A_0^2}{2} I_4\Big]\cos(2\bk\cdot\bx)
+\end{aligned}
+\end{equation}
+若把 $T$ 在一个周期上取平均，则 $\cos(2\bk\cdot\bx)$ 变为零，而 $\cos(\bk\cdot\bx)^2$ 变为 $1/2$，于是：
+\[
+\langle T\rangle = \tfrac12 A_0^2\,\bk\otimes\bk.
+\]
+这恰好是我们预期一团四维速度为 $\bu = \bk/\wms$、且在其静止系中质量-能量密度为 $\tfrac12 A_0^2\wms^2$ 的均匀物质云应有的应力-能量张量。若如此定义 $\bu$，并定义单位矢量 $\mathbf{a}_0 = \bA_0/A_0$，则应力-能量张量可写作：
+\begin{equation}
+T = A_0^2 \wms^2\Big[\bu\otimes\bu\,\cos(\bk\cdot\bx)^2 + \big(\mathbf{a}_0\otimes\mathbf{a}_0 - \tfrac12 I_4\big)\cos(2\bk\cdot\bx)\Big].
+\end{equation}
+设光具有时间角频率 $\omega = k_t = \wms u_t$。则能量密度 $u$（勿与四维速度 $\bu$ 或其任何分量混淆）为：
+\begin{equation}
+\begin{aligned}
+u = T_{tt} &= A_0^2\Big[\omega^2\cos(\bk\cdot\bx)^2 + \wms^2\big(a_{0,t}^2 - \tfrac12\big)\cos(2\bk\cdot\bx)\Big]\\
+&= \tfrac12 A_0^2\Big[\omega^2 + \Big(\omega^2 + \big(2a_{0,t}^2 - 1\big)\wms^2\Big)\cos(2\bk\cdot\bx)\Big]
+\end{aligned}
+\end{equation}
+显然存在使能量密度在某些时刻为负的 $\omega$ 与 $a_{0,t}$ 取值：例如，若 $a_{0,t} = 0$ 且 $\omega < \wms/\sqrt{2}$。但任意周期上的平均能量密度仍为正：
+\[
+\langle u\rangle = \tfrac12 A_0^2 \omega^2.
+\]
+从 $\langle T\rangle$ 可以看出，坡印廷矢量 $\mathbf{S}$ 的同类平均将平行于传播矢量 $\bk$ 的空间投影，而后者又平行于与四维速度 $\bu = \bk/\wms$ 对应的普通速度 $\bv$。具体地：
+\[
+\langle \mathbf{S}\rangle = \tfrac12 A_0^2 \omega^2\,\bv.
+\]
+
+\subsubsection{电容器中的能量（Energy in Capacitors）}
+
+我们可以把电场能量密度公式用于此前分析过的球形电容器。在洛伦兹情形下，电容器外的电场为零，能量密度只依赖于场，因此可直接积分得到有限结果。
+
+在黎曼情形下，情况稍棘手。势与电场都延伸到电容器之外，由它们算出的能量密度直到无穷远都非零。给定半径 $S \gg R_2$ 的球内所含能量关于 $S$ 是周期性的，且这些周期的峰-峰间距不随距离减小，因此到无穷远的积分未定义。但我们可以把周期部分置零、取其剩余部分的渐近值，从而得到一个合理的有限结果。
+
+\[
+\text{球形电容器：内壳半径 } R_1\text{，总电量 } -Q;\quad \text{外壳半径 } R_2\text{，总电量 } +Q.
+\]
+
+球形电容器（电容）：
+\begin{align}
+C &= \frac{8 \pi \wms R_1^2 R_2^2}{4 R_1 R_2 \sin(\wms R_1)\cos(\wms R_2) - R_1^2 \sin(2\wms R_2) - R_2^2 \sin(2\wms R_1)} && \text{（Riemannian）}\\
+C &= \frac{4 \pi R_1 R_2}{R_2 - R_1} && \text{（Lorentzian）}
+\end{align}
+
+\begin{align}
+\text{球形电容器（电场能量密度）}\quad
+u(r) &= \frac{|\bE(r)|^2 - \wms^2 \phi(r)^2}{2} \quad \text{（见电容器的场计算）} && \text{（Riemannian）}\\
+u(r) &= \begin{cases}
+0, & r < R_1\\[4pt]
+\dfrac{Q^2}{32 \pi^2 r^4}, & R_1 < r < R_2\\[6pt]
+0, & r > R_2
+\end{cases} && \text{（Lorentzian）}
+\end{align}
+
+球形电容器（电场总能量）：
+\begin{align}
+\langle U\rangle &= \int_0^{R_2} 4 \pi r^2 u(r)\,dr + \int_{R_2}^{S} 4 \pi r^2 u(r)\,dr \quad (\text{对 } S \gg R_2 \text{ 取平均}) \nonumber\\
+&= \frac{Q^2}{16 \pi \wms R_1^2 R_2^2}\Big[R_1^2 \sin(2\wms R_2) + R_2^2 \sin(2\wms R_1) - 4 R_1 R_2 \sin(\wms R_1)\cos(\wms R_2)\Big] \nonumber\\
+&= -\frac{Q^2}{2C} && \text{（Riemannian）}\\
+U &= \int_{R_1}^{R_2} 4 \pi r^2 u(r)\,dr = \frac{Q^2}{8\pi}\Big[\frac{1}{R_1} - \frac{1}{R_2}\Big] = \frac{Q^2}{2C} && \text{（Lorentzian）}
+\end{align}
+
+我们在黎曼与洛伦兹两种情形下得到的结果，都与预期的电容器势能相符——若把电容器从零电荷充到总电量 $Q$ 所需的能量积分起来：
+\[
+\text{势能} = \int_0^Q V(q)\,dq = \int_0^Q \frac{q}{C}\,dq = \frac{Q^2}{2C}.
+\]
+在洛伦兹情形下，这恰好是储存在电场中的能量。而在黎曼情形下，它恰恰相反！原因当然在于黎曼宇宙中势能与电磁场能意义相反。
+
+\subsubsection{电感器中的能量（Energy in Inductors）}
+
+螺线管中储存能量的计算与电容器遵循同一总体模式。在洛伦兹情形下，有限体积内存在恒定磁场，场的总能量极易计算。
+
+在黎曼情形下，我们不能忽略螺线管外的场，且无穷区域上的积分不收敛；但若积分到半径 $S$，所包围的总能量在极大值与极小值之间周期性变化，且在 $S$ 很大时趋近于固定值。下表中我们用余弦函数给出 $S$ 的贝塞尔函数之积的渐近表达式。对该余弦项取一个周期上的平均值（只需把该项置零即可轻易得到），所得结果便与由电感得到的能量相符。
+
+\begin{align}
+\text{长螺线管（电感）}\quad
+L &= -n^2 \pi^2 R^2 l\,J_1(\wms R) Y_1(\wms R) && \text{（Riemannian）}\\
+L &= n^2 \pi R^2 l && \text{（Lorentzian）}
+\end{align}
+
+长螺线管（磁场能量密度）：
+\begin{align}
+u(r) &= \begin{cases}
+\tfrac18 n^2 I^2 \pi^2 R^2 \wms^2 Y_1(\wms R)^2\big(J_1(\wms r)^2 - J_0(\wms r)^2\big), & r < R\\[4pt]
+\tfrac18 n^2 I^2 \pi^2 R^2 \wms^2 J_1(\wms R)^2\big(Y_1(\wms r)^2 - Y_0(\wms r)^2\big), & r > R
+\end{cases} && \text{（Riemannian）}\\
+u(r) &= \begin{cases}
+\tfrac12 n^2 I^2, & r < R\\[4pt]
+0, & r > R
+\end{cases} && \text{（Lorentzian）}
+\end{align}
+
+长螺线管（磁场总能量）：
+\begin{align}
+\langle U\rangle &= 2 \pi l\Big[\int_0^{R} u(r)\,r\,dr + \int_{R}^{S} u(r)\,r\,dr\Big] \quad (\text{对 } S \gg R \text{ 取平均}) \nonumber\\
+&= -\tfrac14 n^2 I^2 \pi^3 R^3 l \wms\Big[Y_1(\wms R)^2 J_0(\wms R) J_1(\wms R) \nonumber\\
+ &\qquad - J_1(\wms R)^2\big[Y_0(\wms R) Y_1(\wms R) - (S/R)\,Y_0(\wms S) Y_1(\wms S)\big]\Big] \nonumber\\
+&\approx -\tfrac14 n^2 I^2 \pi^3 R^3 l \wms\Big[Y_1(\wms R)^2 J_0(\wms R) J_1(\wms R) \nonumber\\
+ &\qquad - J_1(\wms R)^2\big[Y_0(\wms R) Y_1(\wms R) - \frac{\cos(2\wms S)}{\pi \wms R}\big]\Big] \nonumber\\
+&= \tfrac12 n^2 I^2 \pi^2 R^2 l\,J_1(\wms R) Y_1(\wms R) = -\tfrac12 L I^2 && \text{（Riemannian）}\\
+U &= \pi R^2 l\,u(0) = \tfrac12 n^2 I^2 \pi R^2 l = \tfrac12 L I^2 && \text{（Lorentzian）}
+\end{align}
+
+对电感器而言，势能可通过把电流从零升至某最终恒定值 $I$ 所需做的功求得。当我们在时间 $dt$ 内把电流从 $i$ 变为 $i + di$ 时，我们让电量 $i\,dt$ 逆着电压 $V = L\,di/dt$ 移动。于是：
+\[
+\text{势能} = \int_0^I V(t)\,i\,dt = \int_0^I L\,\frac{di}{dt}\,i\,dt = \tfrac12 L I^2.
+\]
+如我们所料，这样算出的势能在洛伦兹情形下与磁场中的总能量相符，但在黎曼情形下与磁场中的能量相反。
+
+\section{由静磁解导出的振荡解（Oscillating Solutions Derived From Magnetostatic Ones）}
+
+设我们有一个黎曼普罗卡方程的静磁解，四维势为 $\bA_{\text{MS}}$、源四维电流为 $\bj_{\text{MS}}$。我们说“静磁”是指 $\bA_{\text{MS}}$ 与 $\bj_{\text{MS}}$ 都不随时间变化，且场纯粹是磁性的，即 $A_{\text{MS}}^t = 0$。我们已经考察过三个这样的解：恒定线电流、磁偶极子、以及带恒定电流的螺线管。
+
+现在假设我们取该解，并把 $\wms$——黎曼光的最大角频率——替换为一个更小的值 $k$，从而得到 $\bA_{\text{MS},k}$ 与 $\bj_{\text{MS},k}$，它们满足方程
+\[
+\partial_x^2 A_{\text{MS},k} + \partial_y^2 A_{\text{MS},k} + \partial_z^2 A_{\text{MS},k} + k^2 A_{\text{MS},k} + j_{\text{MS},k} = 0.
+\]
+然后我们构造一个振荡解：
+\[
+\bA = \bA_{\text{MS},k}\,\cos(\omega t), \qquad \bj = \bj_{\text{MS},k}\,\cos(\omega t),
+\]
+其时间角频率为 $\omega$，满足
+\begin{equation}
+k^2 + \omega^2 = \wms^2.
+\end{equation}
+新的 $\bA$ 与 $\bj$ 将满足 RVWS 方程：
+\begin{equation}
+\begin{aligned}
+&\partial_x^2 \bA + \partial_y^2 \bA + \partial_z^2 \bA + \partial_t^2 \bA + \wms^2 \bA + \bj\\
+&\quad = \cos(\omega t)\Big[\partial_x^2 A_{\text{MS},k} + \partial_y^2 A_{\text{MS},k} + \partial_z^2 A_{\text{MS},k} - \omega^2 A_{\text{MS},k} + \wms^2 A_{\text{MS},k} + j_{\text{MS},k}\Big]\\
+&\quad = \cos(\omega t)\Big[\partial_x^2 A_{\text{MS},k} + \partial_y^2 A_{\text{MS},k} + \partial_z^2 A_{\text{MS},k} + k^2 A_{\text{MS},k} + j_{\text{MS},k}\Big] = 0.
+\end{aligned}
+\end{equation}
+横波条件又如何呢？我们的静磁解满足该条件，且没有时间分量：
+\[
+\partial_x A_{\text{MS},k}^x + \partial_y A_{\text{MS},k}^y + \partial_z A_{\text{MS},k}^z = 0.
+\]
+把 $\bA_{\text{MS},k}$ 乘以 $\cos(\omega t)$ 后这依然成立，且当然仍有 $A^t = 0$。因此我们的新振荡解确为黎曼普罗卡方程的真正解。
+
+在上述一切中，我们同样可以用 $\sin(\omega t)$ 而非 $\cos(\omega t)$。我们在此构造中用的是 $t$ 方向，还是四维空间中任何其他既使解不变、又使其四维势分量为零的方向，也都没有区别。
+
+我们可以用非常类似的过程，从原来的黎曼静磁解得到同类的振荡\emph{洛伦兹}解。在洛伦兹电磁学中，四维势不出现在麦克斯韦方程中，其唯一的物理意义通过电磁场 $F$ 体现。但不同的四维势 $\bA$ 可以给出完全相同的 $F$，因此我们可以在不改变物理的前提下对 $\bA$ 作某些种类的改变；这称为\textbf{规范自由度}（gauge freedom）。处理规范自由度的一种方便做法，是给 $\bA$ 额外施加一个它必须满足的条件，而在不同情境下有多种选择可使计算更简便。其中一种选择称为洛伦兹规范条件（Lorenz gauge condition）——是“Lorenz”而非“Lorentz”，这是两个完全不同的人！——它要求：
+\[
+\partial_x A^x + \partial_y A^y + \partial_z A^z + \partial_t A^t = 0.
+\]
+这是我们施加于每个黎曼矢量波的横波条件的洛伦兹版本。因此，若我们在洛伦兹规范下做洛伦兹电磁学，两类电磁学之间的联系就变得清晰得多；在那里麦克斯韦方程等价于下列关于四维势的方程：
+\begin{align}
+\partial_x^2 \bA + \partial_y^2 \bA + \partial_z^2 \bA - \partial_t^2 \bA + \bj &= \bzero \tag{LVWS}\\
+\partial_x A^x + \partial_y A^y + \partial_z A^z + \partial_t A^t &= 0 \tag{Lorenz}
+\end{align}
+若取我们原来的黎曼静磁解 $\bA_{\text{MS}}$（对应四维电流 $\bj_{\text{MS}}$），可如下得到振荡洛伦兹解。我们把 $\wms$ 替换为任意频率 $\omega$，得到 $\bA_{\text{MS},\omega}$ 与 $\bj_{\text{MS},\omega}$，再把它们乘以 $\cos(\omega t)$：
+\[
+\bA_L = \bA_{\text{MS},\omega}\,\cos(\omega t), \qquad \bj_L = \bj_{\text{MS},\omega}\,\cos(\omega t).
+\]
+这些函数将满足带源的洛伦兹矢量波方程 (LVWS)：
+\[
+\begin{aligned}
+&\partial_x^2 \bA_L + \partial_y^2 \bA_L + \partial_z^2 \bA_L - \partial_t^2 \bA_L + \bj_L\\
+&\quad = \cos(\omega t)\Big[\partial_x^2 A_{\text{MS},\omega} + \partial_y^2 A_{\text{MS},\omega} + \partial_z^2 A_{\text{MS},\omega} + \omega^2 A_{\text{MS},\omega} + j_{\text{MS},\omega}\Big] = 0.
+\end{aligned}
+\]
+由于两个四维势都没有时间分量，$\bA_{\text{MS},\omega}$ 满足横波条件这一点，足以让 $\bA_L$ 满足洛伦兹条件。
+
+\subsection{线形交流电流（Linear Alternating Current）}
+
+把刚才描述的方法用于线性导体中恒定电流的四维势，就得到一根载有交流电流的线性导体周围振荡驻波场的解。
+
+线形交流驻波解（电流 $I_0\cos(\omega t)$ 沿 $z$ 轴流动；黎曼解中 $k^2 + \omega^2 = \wms^2$）：
+\begin{align}
+\bA_{(3)}(r) &= -\frac{I_0}{4}\,Y_0(kr)\cos(\omega t)\,\be_z && \text{（Riemannian）}\\
+\bA_{(3)}(r) &= -\frac{I_0}{4}\,Y_0(\omega r)\cos(\omega t)\,\be_z && \text{（Lorentzian）}
+\end{align}
+
+\begin{align}
+\text{线形交流·磁场与电场}\quad
+\bB(r) &= -\frac{I_0 k}{4}\,Y_1(kr)\cos(\omega t)\,\be_\phi\\
+\bE(r) &= -\frac{I_0 \omega}{4}\,Y_0(kr)\sin(\omega t)\,\be_z && \text{（Riemannian）}\\
+\bB(r) &= -\frac{I_0 \omega}{4}\,Y_1(\omega r)\cos(\omega t)\,\be_\phi\\
+\bE(r) &= -\frac{I_0 \omega}{4}\,Y_0(\omega r)\sin(\omega t)\,\be_z && \text{（Lorentzian）}
+\end{align}
+
+驻波解在空间中形式固定，只在时间上振荡。这正是导线处于圆柱形腔中时我们预期的波。但若我们想要行波解呢？驻波可以写成入射行波与出射行波之和或差，反之入射波与出射波也可由这些驻波之和或差还原；因此只要我们能找到第二个驻波解，就应能构造出行波。
+
+对于第二个驻波解，我们回到最初对线电流的计算，使用那个完全与电流强度无关的无源解。这相当于把上述势中的贝塞尔函数 $Y_0$ 换成 $J_0$。若再把新解相对原解移相 90 度，即把 $\cos(\omega t)$ 因子换成 $\sin(\omega t)$，然后把两个解相加，就得到一个出射行波。由于我们加上的第二个解是无源的，无需改动电流；这只是同一根导线、同一电流在不同边界条件下的波。
+
+在洛伦兹情形下，我们需要\emph{相减}而非相加这第二个解，才能得到出射波。
+
+线形交流出射行波解（黎曼解中 $k^2 + \omega^2 = \wms^2$）：
+\begin{align}
+\bA_{(3)}(r) &= -\frac{I_0}{4}\big[Y_0(kr)\cos(\omega t) + J_0(kr)\sin(\omega t)\big]\be_z && \text{（Riemannian）}\\
+\bA_{(3)}(r) &= -\frac{I_0}{4}\big[Y_0(\omega r)\cos(\omega t) - J_0(\omega r)\sin(\omega t)\big]\be_z && \text{（Lorentzian）}
+\end{align}
+
+\begin{align}
+\text{线形交流·磁场与电场}\quad
+\bB(r) &= -\frac{I_0 k}{4}\big[Y_1(kr)\cos(\omega t) + J_1(kr)\sin(\omega t)\big]\be_\phi\\
+\bE(r) &= -\frac{I_0 \omega}{4}\big[Y_0(kr)\sin(\omega t) - J_0(kr)\cos(\omega t)\big]\be_z && \text{（Riemannian）}\\
+\bB(r) &= -\frac{I_0 \omega}{4}\big[Y_1(\omega r)\cos(\omega t) - J_1(\omega r)\sin(\omega t)\big]\be_\phi\\
+\bE(r) &= -\frac{I_0 \omega}{4}\big[Y_0(\omega r)\sin(\omega t) + J_0(\omega r)\cos(\omega t)\big]\be_z && \text{（Lorentzian）}
+\end{align}
+
+线形交流的坡印廷矢量：
+\begin{align}
+\mathbf{S}(r) &= \frac{I_0^2 k \omega}{16}\big[Y_1(kr)\cos(\omega t) + J_1(kr)\sin(\omega t)\big]\nonumber\\
+&\qquad\times\big[Y_0(kr)\sin(\omega t) - J_0(kr)\cos(\omega t)\big]\be_r && \text{（Riemannian）}\\
+\mathbf{S}(r) &= -\frac{I_0^2 \omega^2}{16}\big[Y_1(\omega r)\cos(\omega t) - J_1(\omega r)\sin(\omega t)\big]\nonumber\\
+&\qquad\times\big[Y_0(\omega r)\sin(\omega t) + J_0(\omega r)\cos(\omega t)\big]\be_r && \text{（Lorentzian）}\\
+\langle \mathbf{S}(r)\rangle &= \frac{I_0^2 \omega}{16 \pi r}\,\be_r && \text{（Common）}
+\end{align}
+
+\begin{equation}
+\text{线形交流·平均辐射功率（每单位导线长度）}\quad \langle P\rangle = \frac{I_0^2 \omega}{8} \tag{Common}
+\end{equation}
+从 $\langle \mathbf{S}(r)\rangle$——即在一个时间周期上取平均的坡印廷矢量——我们能最清楚地看出这些是出射行波：它是一个显然为正的数值乘以从导线径向向外的单位矢量。
+
+在黎曼情形下，空间角频率 $k$ 从最终结果中消失，这乍看或许有点令人困惑；毕竟我们预期这些波的速度为 $k/\omega$，而能量流密度应为该速度乘以能量密度。但事实证明，能量密度反比于 $k$，这从大 $r$ 处四维势的形式不难看出——由于贝塞尔函数的渐近展开，它反比于 $k$ 的平方根：
+\[
+\bA(r) \approx \frac{I_0 \cos(kr + \omega t + \pi/4)}{2\sqrt{2 \pi k r}}\,\be_z.
+\]
+于是我们此前对平面波能流的分析，会由这列平面波给出与精确解导出的相同的平均坡印廷矢量。
+
+在洛伦兹情形下，辐射功率意味着必须做功以维持电流幅度不变。在黎曼情形下，常规意义上的功必须\emph{由}电流来做，以阻止它变得更大！这虽然奇怪，但考虑到电磁场中的能量与动能、势能意义相反，这正是我们应当预期的。
+
+\subsection{振荡磁偶极子（Oscillating Magnetic Dipoles）}
+
+我们将用同样的方法，基于此前对静态偶极子的结果，构造振荡磁偶极子的场。我们不再展示两个驻波解，而是直接跳到出射行波。
+
+振荡磁偶极子的出射行波解（偶极矩 $\boldsymbol\mu\cos(\omega t)$；黎曼解中 $k^2 + \omega^2 = \wms^2$）：
+\begin{align}
+\bA_{(3)}(\mathbf{r}) &= \frac{\boldsymbol\mu\times\mathbf{r}}{4\pi r^3}\big[\cos(kr + \omega t) + kr\sin(kr + \omega t)\big] && \text{（Riemannian）}\\
+\bA_{(3)}(\mathbf{r}) &= \frac{\boldsymbol\mu\times\mathbf{r}}{4\pi r^3}\big[\cos(\omega(r-t)) + \omega r\sin(\omega(r-t))\big] && \text{（Lorentzian）}
+\end{align}
+
+\begin{align}
+\text{振荡磁偶极子·磁场与电场}\quad
+\bB(\mathbf{r}) &= \frac{3(\boldsymbol\mu\cdot\mathbf{r})\mathbf{r} - r^2\boldsymbol\mu}{4\pi r^5}\big[\cos(kr + \omega t) + kr\sin(kr + \omega t)\big] \nonumber\\
+ &\qquad - \frac{k^2(\boldsymbol\mu\times\mathbf{r})\times\mathbf{r}}{4\pi r^3}\cos(kr + \omega t)\\
+\bE(\mathbf{r}) &= \frac{\omega\,\boldsymbol\mu\times\mathbf{r}}{4\pi r^3}\big[\sin(kr + \omega t) - kr\cos(kr + \omega t)\big] && \text{（Riemannian）}\\
+\bB(\mathbf{r}) &= \frac{3(\boldsymbol\mu\cdot\mathbf{r})\mathbf{r} - r^2\boldsymbol\mu}{4\pi r^5}\big[\cos(\omega(r-t)) + \omega r\sin(\omega(r-t))\big] \nonumber\\
+ &\qquad - \frac{\omega^2(\boldsymbol\mu\times\mathbf{r})\times\mathbf{r}}{4\pi r^3}\cos(\omega(r-t))\\
+\bE(\mathbf{r}) &= \frac{\omega\,\boldsymbol\mu\times\mathbf{r}}{4\pi r^3}\big[\omega r\cos(\omega(r-t)) - \sin(\omega(r-t))\big] && \text{（Lorentzian）}
+\end{align}
+
+\begin{align}
+\text{振荡磁偶极子·一个周期上平均的坡印廷矢量}\quad
+\langle \mathbf{S}\rangle &= \frac{k^3 \omega\,\big((\boldsymbol\mu\cdot\boldsymbol\mu) - (\boldsymbol\mu\cdot\be_r)^2\big)}{32 \pi^2 r^2}\,\be_r && \text{（Riemannian）}\\
+\langle \mathbf{S}\rangle &= \frac{\omega^4\big((\boldsymbol\mu\cdot\boldsymbol\mu) - (\boldsymbol\mu\cdot\be_r)^2\big)}{32 \pi^2 r^2}\,\be_r && \text{（Lorentzian）}\\[6pt]
+\text{振荡磁偶极子·一个周期上平均的总功率}\quad
+\langle P\rangle &= \frac{k^3 \omega\,(\boldsymbol\mu\cdot\boldsymbol\mu)}{12 \pi} && \text{（Riemannian）}\\
+\langle P\rangle &= \frac{\omega^4\,(\boldsymbol\mu\cdot\boldsymbol\mu)}{12 \pi} && \text{（Lorentzian）}
+\end{align}
+
+\orthofig{images/04__014.png}{振荡磁偶极子的功率}
+
+若看黎曼四维势在大 $r$ 处的渐近形式，我们有：
+\[
+\bA(r) \approx \frac{k\sin(kr + \omega t)}{4\pi r}\,\boldsymbol\mu\times\be_r.
+\]
+偏振始终是横向的，四维势环绕偶极子轴指向。其大小在垂直于偶极子方向最大，在轴上本身降为零。辐射功率的角分布与洛伦兹情形完全一致。
+
+在黎曼情形下，一个周期上平均的能量密度正比于 $k^2 \omega^2$。乘以波速 $k/\omega$，就给出表中与右图所示功率的 $k^3 \omega$ 频率依赖关系。
+
+\subsection{螺线管中的交流电流（Alternating Current in a Solenoid）}
+
+我们可以用同样的方法，把带恒定电流螺线管的静磁描述改造成带交流电流者。为得到一个无源静磁解，我们把恒定电流螺线管解外部部分的因子 $Y_1$ 换成 $J_1$，并让同一解一直延续到 $z$ 轴。把两个驻波解组合起来，就得到出射行波解。
+
+长螺线管（交流）的出射行波解（半径 $R$，电流 $I_0\cos(\omega t)$，单位长度 $n$ 匝；黎曼解中 $k^2 + \omega^2 = \wms^2$）：
+\begin{align}
+\bA_{(3)}(r) &= \begin{cases}
+-\tfrac12 \pi I_0 n R\,J_1(kr)\big[J_1(kR)\sin(\omega t) + Y_1(kR)\cos(\omega t)\big]\be_\phi, & r < R\\[4pt]
+-\tfrac12 \pi I_0 n R\,J_1(kR)\big[J_1(kr)\sin(\omega t) + Y_1(kr)\cos(\omega t)\big]\be_\phi, & r > R
+\end{cases} && \text{（Riemannian）}\\
+\bA_{(3)}(r) &= \begin{cases}
+\tfrac12 \pi I_0 n R\,J_1(\omega r)\big[J_1(\omega R)\sin(\omega t) - Y_1(\omega R)\cos(\omega t)\big]\be_\phi, & r < R\\[4pt]
+\tfrac12 \pi I_0 n R\,J_1(\omega R)\big[J_1(\omega r)\sin(\omega t) - Y_1(\omega r)\cos(\omega t)\big]\be_\phi, & r > R
+\end{cases} && \text{（Lorentzian）}
+\end{align}
+
+长螺线管（交流）的磁场与电场：
+\begin{align}
+\bB(r) &= \begin{cases}
+-\tfrac12 \pi k I_0 n R\,J_0(kr)\big[J_1(kR)\sin(\omega t) + Y_1(kR)\cos(\omega t)\big]\be_z, & r < R\\[4pt]
+-\tfrac12 \pi k I_0 n R\,J_1(kR)\big[J_0(kr)\sin(\omega t) + Y_0(kr)\cos(\omega t)\big]\be_z, & r > R
+\end{cases}\\
+\bE(r) &= \begin{cases}
+\tfrac12 \pi I_0 n \omega R\,J_1(kr)\big[J_1(kR)\cos(\omega t) - Y_1(kR)\sin(\omega t)\big]\be_\phi, & r < R\\[4pt]
+\tfrac12 \pi I_0 n \omega R\,J_1(kR)\big[J_1(kr)\cos(\omega t) - Y_1(kr)\sin(\omega t)\big]\be_\phi, & r > R
+\end{cases} && \text{（Riemannian）}\\
+\bB(r) &= \begin{cases}
+\tfrac12 \pi I_0 n \omega R\,J_0(\omega r)\big[J_1(\omega R)\sin(\omega t) - Y_1(\omega R)\cos(\omega t)\big]\be_z, & r < R\\[4pt]
+\tfrac12 \pi I_0 n \omega R\,J_1(\omega R)\big[J_0(\omega r)\sin(\omega t) - Y_0(\omega r)\cos(\omega t)\big]\be_z, & r > R
+\end{cases}\\
+\bE(r) &= \begin{cases}
+-\tfrac12 \pi I_0 n \omega R\,J_1(\omega r)\big[J_1(\omega R)\cos(\omega t) + Y_1(\omega R)\sin(\omega t)\big]\be_\phi, & r < R\\[4pt]
+-\tfrac12 \pi I_0 n \omega R\,J_1(\omega R)\big[J_1(\omega r)\cos(\omega t) + Y_1(\omega r)\sin(\omega t)\big]\be_\phi, & r > R
+\end{cases} && \text{（Lorentzian）}
+\end{align}
+
+长螺线管（交流）在一个周期上平均的坡印廷矢量：
+\begin{align}
+\langle \mathbf{S}(r)\rangle &= \begin{cases}
+0, & r < R\\[4pt]
+\dfrac{\pi I_0^2 n^2 R^2 \omega\,J_1(kR)^2}{4r}\,\be_r, & r > R
+\end{cases} && \text{（Riemannian）}\\
+\langle \mathbf{S}(r)\rangle &= \begin{cases}
+0, & r < R\\[4pt]
+\dfrac{\pi I_0^2 n^2 R^2 \omega\,J_1(\omega R)^2}{4r}\,\be_r, & r > R
+\end{cases} && \text{（Lorentzian）}
+\end{align}
+
+长螺线管（交流）在一个周期上平均的总辐射功率（管长 $l$）：
+\begin{align}
+\langle P_{\text{Radiated}}\rangle &= \tfrac12 \pi^2 I_0^2 l n^2 R^2 \omega\,J_1(kR)^2 \nonumber\\
+&\approx \tfrac18 \pi^2 I_0^2 l n^2 R^4 \wms k^2 \quad (\textbf{低 } k \textbf{ 极限}) && \text{（Riemannian）}\\
+\langle P_{\text{Radiated}}\rangle &= \tfrac12 \pi^2 I_0^2 l n^2 R^2 \omega\,J_1(\omega R)^2 \nonumber\\
+ &\approx \tfrac18 \pi^2 I_0^2 l n^2 R^4 \omega^3 \quad (\textbf{低 } \omega \textbf{ 极限}) && \text{（Lorentzian）}
+\end{align}
+
+长螺线管（交流）线圈内的总磁通：
+\begin{align}
+\Phi &= -\pi^2 I_0 n R^2 J_1(kR)\big[J_1(kR)\sin(\omega t) + Y_1(kR)\cos(\omega t)\big] && \text{（Riemannian）}\\
+\Phi &= \pi^2 I_0 n R^2 J_1(\omega R)\big[J_1(\omega R)\sin(\omega t) - Y_1(\omega R)\cos(\omega t)\big] && \text{（Lorentzian）}
+\end{align}
+
+长螺线管（交流）长度 $l$ 的线圈上的电压：
+\begin{align}
+V &= \pi^2 I_0 l n^2 R^2 \omega\,J_1(kR)\big[Y_1(kR)\sin(\omega t) - J_1(kR)\cos(\omega t)\big] \nonumber\\
+&\approx -\pi I_0 l n^2 R^2 \wms \sin(\omega t) \quad (\textbf{低 } k \textbf{ 极限}) && \text{（Riemannian）}\\
+V &= \pi^2 I_0 l n^2 R^2 \omega\,J_1(\omega R)\big[Y_1(\omega R)\sin(\omega t) + J_1(\omega R)\cos(\omega t)\big] \nonumber\\
+ &\approx -\pi I_0 l n^2 R^2 \omega \sin(\omega t) \quad (\textbf{低 } \omega \textbf{ 极限}) && \text{（Lorentzian）}
+\end{align}
+
+长螺线管（交流）长度 $l$ 的线圈上平均消耗的电功率：
+\begin{align}
+\langle P_{\text{Radiated}}\rangle &= -\tfrac12 \pi^2 I_0^2 l n^2 R^2 \omega\,J_1(kR)^2 \nonumber\\
+&\approx -\tfrac18 \pi^2 I_0^2 l n^2 R^4 \wms k^2 \quad (\textbf{低 } k \textbf{ 极限}) && \text{（Riemannian）}\\
+\langle P_{\text{Radiated}}\rangle &= \tfrac12 \pi^2 I_0^2 l n^2 R^2 \omega\,J_1(\omega R)^2 \nonumber\\
+ &\approx \tfrac18 \pi^2 I_0^2 l n^2 R^4 \omega^3 \quad (\textbf{低 } \omega \textbf{ 极限}) && \text{（Lorentzian）}
+\end{align}
+
+黎曼解的第一个有趣特征在于：如今是空间角频率 $k$ 而非恒定电流时的 $\wms$ 决定了螺线管几何的尺度。螺线管的直流行为会对任何可与光的最小波长相比拟的瑕疵极端敏感——而一个现实的器件，其导线宽度可能跨越若干波长，以致整个结构包含一系列几乎彼此抵消的负电感与正电感——而如今我们有可能获得大得多的波长，从而得到一个既无抵消、又对线圈精确形状不那么敏感的系统。
+
+\orthofig{images/04__015.png}{交流螺线管的电流、电压与功率}
+
+我们在处理直流螺线管时指出，它可以具有正电感或负电感，因而可以\emph{要么}阻碍、\emph{要么}帮助电流变化。然而在交流语境下这一区分不那么重要；重要的是一个完整周期上消耗的功率，而我们选择出射波这一点保证了黎曼螺线管将充当电功率的\emph{源}，而洛伦兹对应物则需要消耗功率。
+
+右图给出三种尺寸线圈下黎曼与洛伦兹情形的电流、电压与功率。这里 $J_1$、$Y_1$ 是缩写，在黎曼情形下代表 $J_1(kR)$、$Y_1(kR)$，在洛伦兹情形下代表 $J_1(\omega R)$、$Y_1(\omega R)$。我们此处对电压所用的符号约定是：普通电阻器上的电压恰与电流同相，因而按 $VI$ 之积算出的功率是正在耗散的电能。
+
+在洛伦兹情形下，电压与电流的相位差从不超过 90 度。在低频直流极限下，$J_1(\omega R) Y_1(\omega R) \approx -1/\pi$（到一阶），电压恰好超前电流 90 度。若考虑一个至少几毫米大小、携带千赫兹或更低频交流的电感器，其波长远大于螺线管尺寸，因此那个“极限情形”实际上对许多常见交流电路都是良好近似。不过随着频率升高，$Y_1(\omega R)$ 最终变为零，使电压与电流同相，继而变为正，于是电压滞后于电流。但无论 $J_1(\omega R)$ 与 $Y_1(\omega R)$ 取何值，每个周期平均耗散的功率总是非负。
+
+在黎曼情形下，电压与电流的相位差从不\emph{小于} 90 度。直流极限涉及最大可能的空间频率，以及高度依赖线圈几何的行为。只有在高（时间）频率极限下波长才变大，此时 $J_1(kR) Y_1(kR) \approx -1/\pi$，电压超前电流 90 度。但在所有频率与线圈尺寸下，平均耗散的功率都是非正——因为在黎曼情形下，任何辐射出去的能量都必须伴随常规能量的增加。

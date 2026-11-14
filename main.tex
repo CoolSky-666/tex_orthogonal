@@ -1,0 +1,69 @@
+% ============================================================
+%  main.tex —— 《正交宇宙物理学：Greg Egan〈Orthogonal〉设定导论》
+%  编译： xelatex main.tex  (连续两次，以生成目录与交叉引用)
+% ============================================================
+\input{preamble}
+
+\begin{document}
+
+\frontmatter
+\title{\Huge 正交宇宙物理学\\[6pt]
+       \Large ——\ Greg Egan《Orthogonal》科幻设定导论\\(面向物理学研究生的硬核注记)}
+\author{编译、翻译与整理自 Greg Egan 官方网站 \texttt{gregegan.net/ORTHOGONAL}}
+\date{\today}
+\maketitle
+
+\chapter*{编译说明}
+\addcontentsline{toc}{chapter}{编译说明}
+本书是对 Greg Egan 为其长篇科幻三部曲 \emph{Orthogonal}（《正交》）所撰写的
+官方物理设定注释（原文 8 万余词、逾百幅插图）的中文编译整理。
+原著包含三部作品：\emph{The Clockwork Rocket}（《发条火箭》）、
+\emph{The Eternal Flame}（《永恒之火》）与 \emph{The Arrows of Time}（《时间之箭》）。
+
+按原作作者说明，正文各章所需数学不超过高中水平；标注为“\textbf{进阶}”的内容
+（对应官网带 ``[Extra]'' 的页面）则假定读者具备本科高年级的物理与数学训练。
+本书面向物理学研究生，故完整保留了进阶部分，并在必要处补足推导背景。
+
+全书数学约定：采用自然单位制，取时空坐标 $(x,y,z,t)$，四维矢量的分量记作
+$v^x,v^y,v^z,v^t$（$x,y,z,t$ 为标号而非幂次）。除特别说明外，黎曼（Riemannian）
+度规取全正号 $(+,+,+,+)$，洛伦兹（Lorentzian，即我们宇宙的）度规取 $(-,+,+,+)$
+或 $(+,-,-,-)$，文中给出公式时会明确标注。符号 $\omega_m$ 表示与粒子静止质量对应的
+“质量频率”，即 $\omega_m = mc^2/\hbar$ 在自然单位下的形式。
+
+本书所有插图均取自 Greg Egan 官方网站，版权归原作者所有，仅作学习与研究之用。
+
+正文之外另设三份附录，供读者按需查阅：附录~A 汇列全书所用的数学工具（度规约定、正交群与
+旋量、傅里叶方法、特殊函数与变分法）；附录~B 补齐正文中若干处跳步的关键推导；附录~C 以对照表
+形式总览正交宇宙与我们所处宇宙在物理层面的系统性差异。
+
+\tableofcontents
+\listoffigures
+
+\mainmatter
+
+\input{chapters/ch00_intro}
+\input{chapters/ch01_addsub}
+\input{chapters/ch02_dualpy}
+\input{chapters/ch03_motion}
+\input{chapters/ch04a_waves}
+\input{chapters/ch04a2_waves}
+\input{chapters/ch04b_waves}
+\input{chapters/ch05a_em}
+\input{chapters/ch05b_em}
+\input{chapters/ch05b2_em}
+\input{chapters/ch05b3_em}
+\input{chapters/ch06_thermo}
+\input{chapters/ch07a_qm}
+\input{chapters/ch07b_qm}
+\input{chapters/ch07c_qm}
+\input{chapters/ch07d_qm}
+\input{chapters/ch08_gr}
+\input{chapters/ch09_world}
+\input{chapters/ch10_glossary}
+
+\appendix
+\input{chapters/appA_math}
+\input{chapters/appB_derivations}
+\input{chapters/appC_comparison}
+
+\end{document}

@@ -1,0 +1,97 @@
+% ============================================================
+%  preamble.tex —— 《正交宇宙物理学》共用导言区
+%  编译： xelatex -> xelatex  (XeLaTeX + ctexbook)
+% ============================================================
+\documentclass[11pt, UTF8, scheme=chinese, fontset=windows]{ctexbook}
+
+\usepackage{amsmath, amssymb, amsfonts, mathrsfs, bm}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, top=25mm, bottom=25mm, left=28mm, right=28mm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  urlcolor=teal!60!black,
+  citecolor=green!45!black,
+  bookmarksnumbered=true,
+  pdftitle={正交宇宙物理学},
+  pdfauthor={编译自 Greg Egan《Orthogonal》官方设定}
+}
+
+% ---- 图表 ----
+\captionsetup{font=small, labelfont=bf, labelsep=quad}
+\graphicspath{{images/}}
+
+% 插图命令：\orthofig[宽度]{图文件名}{中文图注}
+\newcommand{\orthofig}[3][0.62\textwidth]{%
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=#1]{#2}
+    \caption{#3}
+  \end{figure}}
+
+% 不浮动的小图（用于正文中就地的示意图）
+\newcommand{\inlinefig}[3][0.5\textwidth]{%
+  \begin{center}
+    \includegraphics[width=#1]{#2}\\[2pt]
+    {\small #3}
+  \end{center}}
+
+% ---- 自定义盒子 ----
+\newtcolorbox{keybox}[1][]{
+  colback=blue!4!white, colframe=blue!45!black,
+  boxrule=0.6pt, arc=2pt, left=6pt, right=6pt, top=5pt, bottom=5pt,
+  fonttitle=\bfseries, title=#1}
+
+\newtcolorbox{notebox}[1][]{
+  colback=orange!5!white, colframe=orange!65!black,
+  boxrule=0.6pt, arc=2pt, left=6pt, right=6pt, top=5pt, bottom=5pt,
+  fonttitle=\bfseries, title=#1}
+
+% ---- 常用记号 ----
+\newcommand{\Riem}{\mathrm{R}}
+\newcommand{\Lor}{\mathrm{L}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\wms}{\omega_m}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bj}{\mathbf{j}}
+\newcommand{\bk}{\mathbf{k}}
+\newcommand{\bp}{\mathbf{p}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\be}{\mathbf{e}}
+\newcommand{\bP}{\mathbf{P}}
+\newcommand{\bq}{\mathbf{q}}
+\newcommand{\bzero}{\mathbf{0}}
+\newcommand{\half}{\tfrac{1}{2}}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+
+% ---- 页眉页脚 ----
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\small\thepage}
+\fancyhead[LO]{\small\nouppercase{\rightmark}}
+\fancyhead[RE]{\small\nouppercase{\leftmark}}
+\renewcommand{\headrulewidth}{0.4pt}

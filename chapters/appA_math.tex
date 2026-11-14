@@ -1,0 +1,210 @@
+\chapter{数学预备}
+
+本附录汇列全书反复用到的数学工具与记号约定，供读者随时查阅。这些内容都是标准的线性代数、
+群表示论、傅里叶分析与变分法知识，本身不涉及正交宇宙的任何物理假设；把它们集中放在这里，
+是为了让正文可以专注于物理本身，而不必在每一章重复铺垫。
+
+\section{度规、指标与对偶矢量}
+
+全书采用自然单位制，取 $\hbar=1$、$c=1$，时空坐标记作 $(x,y,z,t)$。四维矢量的分量以
+上标书写：$v^x,v^y,v^z,v^t$，其中 $x,y,z,t$ 是标号而非幂次。两个四维矢量之间的内积由度规
+（metric）$g_{ab}$ 给出，
+\begin{equation}
+A\cdot B = g_{ab}\,A^a B^b ,
+\end{equation}
+这里对重复指标求和（Einstein 求和约定），指标取遍 $x,y,z,t$。
+
+本书涉及两种度规。其一是我们自身宇宙的\emph{洛伦兹度规}（Lorentzian metric），本书统一取
+\begin{equation}
+g^{\Lor}_{ab}=\diag(-1,+1,+1,+1),
+\tag{A.1}
+\end{equation}
+于是
+\begin{equation}
+A\cdot B \big|_{\Lor} = -A^t B^t + A^x B^x + A^y B^y + A^z B^z .
+\end{equation}
+其二是正交宇宙的\emph{黎曼度规}（Riemannian metric），取全正号
+\begin{equation}
+g^{\Riem}_{ab}=\diag(+1,+1,+1,+1),
+\tag{A.2}
+\end{equation}
+于是
+\begin{equation}
+A\cdot B \big|_{\Riem} = A^x B^x + A^y B^y + A^z B^z + A^t B^t .
+\end{equation}
+两种度规的唯一差别，正是时间项前面那个符号；而正是这一符号之差，造成了本书所讲述的全部
+物理差异。
+
+由度规可以升降指标。若 $A^a$ 是逆变（contravariant）分量，则协变（covariant）分量为
+\begin{equation}
+A_a = g_{ab} A^b ,\qquad A^a = g^{ab} A_b ,
+\end{equation}
+其中 $g^{ab}$ 是 $g_{ab}$ 的逆矩阵。在黎曼度规下，$g_{ab}$ 与 $g^{ab}$ 都是单位矩阵，
+升降指标不改变分量；而在洛伦兹度规下，时间分量的符号会发生翻转。
+
+对四维矢量 $v$，其“长度平方”为 $v\cdot v$。在洛伦兹度规下，$v\cdot v$ 可正可负可为零，
+据此把矢量分为类空（spacelike，$v\cdot v>0$）、类时（timelike，$v\cdot v<0$）与类光
+（lightlike / null，$v\cdot v=0$）三类，后者的集合构成光锥（light cone）。在黎曼度规下，
+度规正定，$v\cdot v\ge 0$ 且当且仅当 $v=0$ 时取零：\textbf{不存在非零的类光矢量，也不存在
+光锥}。这正是正交宇宙“没有普适光速”的几何根源，我们在正文第 1 章与《几何与运动》一章中
+已反复用到。
+
+\section{对偶空间与对偶矢量}
+
+给定矢量空间 $V$（这里即四维时空），其\emph{对偶空间}（dual space）$V^*$ 由所有从 $V$ 到
+实数的线性映射（线性泛函）组成。每个矢量 $v\in V$ 都自然地对应一个对偶矢量
+$\tilde v\in V^*$，其作用规则为
+\begin{equation}
+\tilde v(w) = v\cdot w .
+\end{equation}
+在黎曼度规下，$v\mapsto \tilde v$ 是一个同构（isomorphism）：不同的矢量给出不同的对偶矢量，
+且每个对偶矢量都恰好来自一个矢量。于是可以无歧义地“把矢量与对偶矢量视为同一事物的两种
+记法”。
+
+在洛伦兹度规下，这个映射虽仍是同构（$g_{ab}$ 非退化），但矢量的分类使得几何图景显著复杂化：
+类光矢量对应的对偶矢量为零模，因而“同时”“垂直”等概念都变得与观察者相关。正文《双勾股
+定理》一章正是借助对偶空间的这套语言，来说明正交宇宙中许多几何关系的优雅来源。
+
+\section{正交群、四元数与旋量}
+
+黎曼度规 $(+,+,+,+)$ 在坐标变换下的保持群是\emph{正交群}（orthogonal group）$O(4)$；
+其中行列式为 $+1$ 的子群 $\mathrm{SO}(4)$ 称为特殊正交群（special orthogonal group），
+它给出四维空间中的“转动”——在正交宇宙里，四个维度地位平等，转动可以同时混合空间与时间
+方向。此外，交换两个坐标轴的反射（reflection）也属于 $O(4)$。
+
+$\mathrm{SO}(4)$ 有一个著名的二对一同态（two-to-one homomorphism）
+\begin{equation}
+\mathrm{SU}(2)\times \mathrm{SU}(2)\ \longrightarrow\ \mathrm{SO}(4),
+\tag{A.3}
+\end{equation}
+即 $\mathrm{SU}(2)\times \mathrm{SU}(2)$ 是 $\mathrm{SO}(4)$ 的\emph{双覆盖}
+（double cover）。这一事实可以用四元数（quaternion）非常简洁地表述。
+
+\subsection{四元数}
+
+四元数是复数的推广：除实数单位 $1$ 外，还有三个平方为 $-1$ 的“虚单位” $i,j,k$，它们满足
+\begin{equation}
+i^{2}=j^{2}=k^{2}=-1,\qquad ij=k,\quad jk=i,\quad ki=j,\qquad ijk=-1 .
+\end{equation}
+一般四元数写作 $a+bi+cj+dk$（$a,b,c,d\in\mathbb{R}$），其加法与乘法除乘法不满足交换律
+（non-commutative）外，与我们熟悉的实数、复数运算一致。
+
+四元数可表示为 $2\times 2$ 复矩阵，且矩阵乘法恰对应四元数乘法。把四维实空间记为 $H$，
+其中四个基矩阵 $H_x,H_y,H_z,H_t$ 满足与 $i,j,k,1$ 完全相同的乘法表；于是任一时空矢量
+$(x,y,z,t)$ 都可以写成一个四元数 $xH_x+yH_y+zH_z+tH_t$。$\mathrm{SO}(4)$ 的转动作用，
+便对应到在左侧（或右侧）乘上单位四元数。这一套表述是附录 B 中推导黎曼 Dirac 方程的
+基础，详见正文《黎曼量子力学》各章。
+
+\subsection{旋量}
+
+$\mathrm{SU}(2)\times \mathrm{SU}(2)\to \mathrm{SO}(4)$ 是二对一的：两个不同的
+$\mathrm{SU}(2)\times\mathrm{SU}(2)$ 元素对应同一个 $\mathrm{SO}(4)$ 转动。因此
+$\mathrm{SO}(4)$ 的表示并不能完全描述量子态——量子态所在的表示是这一双覆盖的表示，
+其中的元素称为\emph{旋量}（spinor）。旋量在四维转动一周（$2\pi$）后并不回到自身，而要
+在转动两周（$4\pi$）后才复原。这一“自旋”（spin）结构在正交宇宙中依然存在，并直接进入
+电子等粒子的量子描述。
+
+\section{傅里叶方法与色散关系}
+
+本书大量使用平面波（plane wave）解。对场 $A(x)$，设其具有形式
+\begin{equation}
+A(x)=A_0\, \ee^{\,\ii\, k\cdot x},\qquad k=(k_x,k_y,k_z,\omega),
+\end{equation}
+其中 $k$ 为四维波矢，$\omega$ 为角频率（angular frequency），$k_x,k_y,k_z$ 为空间波数
+（wave number）分量。在黎曼度规下 $k\cdot k=k_x^{2}+k_y^{2}+k_z^{2}+\omega^{2}$；
+在洛伦兹度规下则为 $k\cdot k=-\omega^{2}+k_x^{2}+k_y^{2}+k_z^{2}$。
+
+把平面波代入波动方程，即得\emph{色散关系}（dispersion relation），它把频率与波数联系
+起来。以质量为 $m$ 的自由场为例：
+
+在洛伦兹宇宙中，Klein–Gordon 方程给出
+\begin{equation}
+\omega^{2}-k_x^{2}-k_y^{2}-k_z^{2}=m^{2},
+\tag{A.4}
+\end{equation}
+相应地，相位速度 $v_{\mathrm p}=\omega/|\mathbf{k}|$ 随波长而变，但在 $|\mathbf{k}|\to 0$
+极限下趋于统一的常数 $c=1$——这正对应“光速是普适常量”。
+
+在正交宇宙中，黎曼标量波方程（Riemannian Scalar Wave equation, RSW）为
+\begin{equation}
+\partial_x^{2}A+\partial_y^{2}A+\partial_z^{2}A+\partial_t^{2}A+\wms^{2}A=0 ,
+\tag{A.5}
+\end{equation}
+其中 $\wms$ 是质量频率（mass frequency），$\wms=mc^{2}/\hbar$。代入平面波得
+\begin{equation}
+\omega^{2}+k_x^{2}+k_y^{2}+k_z^{2}=\wms^{2},
+\tag{A.6}
+\end{equation}
+即 $\omega^{2}+|\mathbf{k}|^{2}=\wms^{2}$。与 (A.4) 相较，空间项与频率项的符号关系发生了
+整体翻转：正交宇宙中的相位速度
+\begin{equation}
+v_{\mathrm p}=\frac{\omega}{|\mathbf{k}|}=\frac{\sqrt{\wms^{2}-|\mathbf{k}|^{2}}}{|\mathbf{k}|}
+\end{equation}
+\textbf{依赖于波长}，不存在一个所有波长共有的极限速度。长波（$|\mathbf{k}|\to 0$）
+趋于无穷快，短波（$|\mathbf{k}|\to \wms$）趋于静止。这正是正文《几何与波》《黎曼电磁学》
+诸章中“没有普适光速”“发光释能”等现象的数学根源。
+
+\section{特殊函数与常用积分}
+
+黎曼黑体谱（正文《黎曼热力学》一章）的推导涉及若干特殊函数与定积分，这里一并列出。
+
+\subsection{Gamma 函数与 Riemann zeta 函数}
+
+Gamma 函数 $\Gamma(z)$ 由积分定义
+\begin{equation}
+\Gamma(z)=\int_{0}^{\infty} t^{\,z-1}\ee^{-t}\,\dd t ,\qquad \Re z>0 ,
+\end{equation}
+满足 $\Gamma(n)=(n-1)!$（$n$ 为正整数）与 $\Gamma(1/2)=\sqrt{\pi}$ 以及递推关系
+$\Gamma(z+1)=z\,\Gamma(z)$。Riemann zeta 函数由级数定义
+\begin{equation}
+\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^{s}},\qquad \Re s>1 ,
+\end{equation}
+并可由解析延拓推广到更大的区域。
+
+\subsection{多对数与玻色型积分}
+
+\emph{多对数}（polylogarithm）定义为
+\begin{equation}
+\mathrm{Li}_s(z)=\sum_{n=1}^{\infty}\frac{z^{n}}{n^{s}},
+\end{equation}
+它是 $\zeta(s)$ 的推广：$\mathrm{Li}_s(1)=\zeta(s)$。处理黑体谱时反复出现形如
+\begin{equation}
+\int_{0}^{\infty}\frac{x^{\,n}}{\ee^{x}-1}\,\dd x=\Gamma(n+1)\,\zeta(n+1)=n!\,\zeta(n+1)
+\end{equation}
+的玻色型积分；例如 $n=3$ 时结果为 $\pi^{4}/15$。在正交宇宙中，色散关系 (A.6) 把积分
+上限截断在 $\wms$ 处，从而给出与洛伦兹情形不同的黑体谱，具体形式见正文《黎曼热力学》。
+
+\subsection{贝塞尔函数}
+
+含 $\sqrt{\cdot}$ 型色散关系（如 (A.6)）的方程，在分离变量后常化为贝塞尔方程
+\begin{equation}
+x^{2}y''+xy'+(x^{2}-n^{2})y=0 ,
+\end{equation}
+其解为第一类与第二类贝塞尔函数 $J_n(x)$、$Y_n(x)$；在虚宗量（imaginary argument）下则
+出现修正贝塞尔函数 $I_n(x)$、$K_n(x)$。正文讨论弯曲黎曼空间中的波动与黑体谱时会用到它们。
+
+\section{变分法基础}
+
+正文《世界观与文明设定》一章中求解“软性拦截”问题，以及《几何与运动》一章导出自由粒子的
+拉格朗日量与哈密顿量，都用到了\emph{变分法}（calculus of variations）。这里给出最基本
+的形式。
+
+给定泛函
+\begin{equation}
+S[\mathbf{x}]=\int_{t_0}^{t_1} L\big(\mathbf{x}(t),\dot{\mathbf{x}}(t),t\big)\,\dd t ,
+\end{equation}
+其中 $L$ 为拉格朗日量（Lagrangian），$\mathbf{x}(t)$ 是一条候选轨迹。$S$ 取极值
+（极小或极大）的必要条件是 $\mathbf{x}(t)$ 满足 Euler–Lagrange 方程
+\begin{equation}
+\frac{\dd}{\dd t}\left(\frac{\partial L}{\partial \dot{\mathbf{x}}}\right)
+-\frac{\partial L}{\partial \mathbf{x}}=0 .
+\tag{A.7}
+\end{equation}
+若被积函数不含 $t$ 显含项，则另有守恒量（Beltrami 恒等式）
+\begin{equation}
+\dot{\mathbf{x}}\cdot\frac{\partial L}{\partial\dot{\mathbf{x}}}-L=\text{const}.
+\end{equation}
+
+对“最大化某量”“最小化某量”的约束极值问题，可以引入 Lagrange 乘子（Lagrange multiplier），
+把所有约束并入一个增广泛函，再用 (A.7) 求解。正文《世界观与文明设定》一章中的软性拦截
+问题，正是把“与目标飞船速度匹配”作为约束、以“追击时间最短”为目标函数的一次典型应用。

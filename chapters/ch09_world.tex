@@ -1,0 +1,358 @@
+\chapter{世界观与文明设定}
+
+\section{导语：物理如何塑造文明}
+
+前几章所确立的正交宇宙物理——一个没有普适光速、发光反而释放能量、时空度规处处正定的世界——并不只是一堆反直觉的理论习题；它同样决定了生活于其中的文明能做什么、不能做什么，以及他们如何理解自己的宇宙。本节先综述这些物理结论如何塑造文明形态，再以一个具体的运动学问题——\emph{软性拦截}（Soft Interception）——展示变分法（Calculus of Variations）在求解最优化物理过程中的运用。
+
+其一，正交宇宙\emph{不存在普适光速}。不同的波长以不同的速度传播，红（长波）光比紫（短波）光更慢。这一点彻底改写了星空的面貌：一颗恒星发出的各种颜色不会同时抵达，于是每颗星在天空中拖出一条"色谱拖尾"（colour trail），其红、紫两端之间的张角直接度量该恒星的横向速度。对文明而言，天象观测、测距与导航都须按一套全然不同的规则去理解——光不再是一个统一而瞬时的信使。
+
+其二，\emph{发光过程释放能量}。在我们所处的宇宙中，产生光需要消耗能量；而在正交宇宙中，由于能量—动量矢量的"上下颠倒"，发光体系的动能反而增加，表现为放热。这一反转最深刻的文化后果体现在生命本身：这里的植物不靠吸收光来进行光合作用，而是向漆黑一片的夜空发出自己的光，借此把能量转化为化学能、制造养分。夜与昼、黑与亮对这个文明的意义，与我们恰好相反。
+
+其三，能源与推进。既然产生光会释放（而非消耗）能量，正交宇宙的飞行器无需携带任何燃料或推进剂，便能凭借\emph{发光引擎}持续地把能量转化为动能、长时间地加速。星际航行因此在原则上变得可行，而"燃料"与"推进剂"这类概念根本不会出现在这个文明的工程语汇里。
+
+其四，威胁与世代航行。雅尔达的故乡正遭受一群被称作"伤人者"（Hurtlers）的奇异流星的侵袭，它们以空前的速度闯入行星系统，而应对这一威胁所需的知识与技术远超该文明已有的水平。唯一看似可行的出路，是以极高的速度派出一艘飞船远航：由于正交宇宙没有速度上限，飞船可以远超我们宇宙的"光速"行进；又由于黎曼几何中"绕道使时间更长"，这趟航行对船上的旅行者而言要跨越许多代人的岁月，对故乡却只过去短短数年。旅行者便有机会发现母星急需的科学，并在灾难降临之前把它带回。
+
+需要说明的是，本章第二节所讨论的"软性拦截"并不是关于正交宇宙特有物理的问题。在该问题所涉及的（低速）速度范围内并不会出现相对论效应，正交宇宙的另类物理恰恰只在"引擎可以无燃料、无推进剂地发光加速"这一点上起作用；除此之外，我们可以沿用与我们宇宙低速情形相同的牛顿（Newtonian）力学规则。它因此成为一座很好的桥梁：既有正交宇宙的文明底色，又是两个宇宙共享的经典运动学。
+
+\section{软性拦截（Soft Interception）}
+
+在《时间之箭》（\emph{The Arrows of Time}）第三章中，拉米罗（Ramiro）与塔尔奎尼亚（Tarquinia）需要拦截一艘沿固定轨迹加速飞行的叛逃飞船（rogue spacecraft）。他们的目标是登上它，因此仅仅横穿其轨迹是不够的：他们还须与它\emph{速度匹配}。这就是所谓的\emph{软性拦截}（soft interception）。
+
+既然他们可以让自己的引擎无限期地全功率运转，那么应当选择怎样的轨迹，才能在最短时间内完成这次拦截？考虑到涉及的速度并不高、不足以引发相对论效应，正交宇宙的另类物理并不会登场（除了使航天器的引擎成为可能——这种引擎靠发光来产生动能，且不需要任何燃料或推进剂）。因此，我们可以沿用与我们宇宙低速情形相同的牛顿力学规则。
+
+这类问题——求一个使某物理量取极大或极小的数学函数——正是由\emph{变分法}（Calculus of Variations）处理的。在我们的情形里，所关心的函数将描述一条随时间穿过空间的轨迹，而要最小化的量，则是沿这条轨迹从追击飞行器（gnat）的初始位置走到叛逃飞船轨迹上某一点所需的时间。
+
+\orthofig{images/E3__Fig002.png}{拦截叛逃飞船的飞行方案}
+
+\subsection{问题陈述}
+
+设拉米罗与塔尔奎尼亚的追击飞行器开始追击时的位置为 $\bp_0$、速度为 $\bv_0$，其引擎能产生的最大加速度大小为 $A$。叛逃飞船正沿一个固定方向做恒定加速；若把该加速度矢量记作 $\mathbf{a}$，则叛逃飞船随时间的轨迹为
+
+\begin{equation}
+\mathbf{r}(t) = \mathbf{r}_0 + \bw_0\,t + \half\,\mathbf{a}\,t^{2} .
+\end{equation}
+
+我们约定从追击开始的那一刻起计时，因此在 $t=0$ 时，追击飞行器位于位置 $\bp_0$、速度为 $\bv_0$，而叛逃飞船位于位置 $\mathbf{r}_0$、速度为 $\bw_0$。
+
+对于追击飞行器的任一条候选轨迹 $\bp(t)$，我们提出如下要求：
+
+\begin{itemize}
+  \item $\bp(0)=\bp_0$：轨迹从正确的位置出发。
+  \item $\bp'(0)=\bv_0$：轨迹以正确的速度出发。
+  \item $\bp(T)=\mathbf{r}(T)$，在某个时刻 $T$：追击飞行器与叛逃飞船相遇。
+  \item $\bp'(T)=\mathbf{r}'(T)$，对于同一个 $T$：两艘航天器速度匹配。
+  \item 对所有 $0\le t\le T$ 都有 $|\bp''(t)|\le A$：追击飞行器在任何时刻都不被要求做出超出其能力的加速。
+\end{itemize}
+
+我们的目标，是在满足这些条件的前提下，找到使拦截时刻 $T$ 尽可能小的那条轨迹 $\bp(t)$。
+
+为使分析稍稍简化，我们不加证明地假定：追击飞行器在整个航程中都应以最大推力工作，仅仅改变引擎喷推的\emph{方向}。直觉上，以尽可能大的加速度加速总能带来某种好处（更详尽的分析会证实这一点）。这使我们能把上面最后一个不等式条件改写成等式：
+
+\begin{itemize}
+  \item 对所有 $0\le t\le T$ 都有 $|\bp''(t)|=A$：追击飞行器始终以可能的最大速率加速，不多也不少。
+\end{itemize}
+
+这个约束也可以写成
+
+\begin{equation}
+\bp''(t)\cdot\bp''(t)-A^{2}=0 .
+\end{equation}
+
+\subsection{拉格朗日乘子}
+
+先回顾一下普通微积分里的情形：要在某个约束（例如 $G(x,y,z)=0$）下极小化函数 $F(x,y,z)$，我们会用到所谓的\emph{拉格朗日乘子}（Lagrange multiplier）技巧。设想我们设法把约束方程 $G(x,y,z)=0$ 对其中一个变量（例如 $z$）解出，便可写出
+
+\begin{equation}
+f(x,y)=F\bigl(x,y,z(x,y)\bigr),
+\end{equation}
+
+再令 $f(x,y)$ 对 $x$ 与 $y$ 的偏导数为零来求其极小值：
+
+\begin{align}
+\partial_{x} f(x,y) &= \partial_{x}F + \partial_{z}F\,\partial_{x}z = 0, \\
+\partial_{y} f(x,y) &= \partial_{y}F + \partial_{z}F\,\partial_{y}z = 0 .
+\end{align}
+
+我们也可以对 $G(x,y,z(x,y))$ 求关于 $x$、$y$ 的偏导数，由于 $z=z(x,y)$ 正是 $G(x,y,z)=0$ 的解，这些偏导数当然必须为零：
+
+\begin{align}
+\partial_{x}G + \partial_{z}G\,\partial_{x}z &= 0, \\
+\partial_{y}G + \partial_{z}G\,\partial_{y}z &= 0 .
+\end{align}
+
+合起来一共有四个方程。我们可以从后两个方程解出 $\partial_{x}z$ 与 $\partial_{y}z$，再代回前两个方程，得到
+
+\begin{align}
+\partial_{x}F - \frac{\partial_{z}F}{\partial_{z}G}\,\partial_{x}G &= 0, \\
+\partial_{y}F - \frac{\partial_{z}F}{\partial_{z}G}\,\partial_{y}G &= 0 .
+\end{align}
+
+而这恰恰也是下面三个方程所给出的结果：
+
+\begin{align}
+\partial_{x}F + \lambda\,\partial_{x}G &= 0, \\
+\partial_{y}F + \lambda\,\partial_{y}G &= 0, \\
+\partial_{z}F + \lambda\,\partial_{z}G &= 0,
+\end{align}
+
+只要把其中最后一个方程解出 $\lambda$，即得
+
+\begin{equation}
+\lambda = -\frac{\partial_{z}F}{\partial_{z}G} .
+\end{equation}
+
+因此，原问题等价于求
+
+\begin{equation}
+S(x,y,z,\lambda)=F(x,y,z)+\lambda\,G(x,y,z)
+\end{equation}
+
+对 $x$、$y$、$z$ 与 $\lambda$ 的偏导数全部为零的点；其中对 $\lambda$ 的偏导数恰好把我们带回原来的约束 $G(x,y,z)=0$。这个多出来的变量 $\lambda$ 便是拉格朗日乘子。
+
+从几何上可以更清楚地理解这一点。函数 $F$ 的梯度为 $\nabla F=(\partial_{x}F,\partial_{y}F,\partial_{z}F)$，它描述了与 $F$ 的"等值面"（即 $(x,y,z)$ 空间中使 $F$ 取常数的点集）正交的一个矢量。类似地，$G$ 的梯度为 $\nabla G=(\partial_{x}G,\partial_{y}G,\partial_{z}G)$，它与 $G$ 取常数的点集正交——当然也包括满足约束方程 $G(x,y,z)=0$ 的那个点集。前面写下的、联系 $F$ 与 $G$ 的各偏导数的三个方程，可以用梯度归纳为
+
+\begin{equation}
+\nabla F = -\lambda\,\nabla G .
+\end{equation}
+
+若我们从约束点集中的某一点出发，任何\emph{始终留在}该点集内的路径，其切矢量都正交于 $\nabla G$。但若 $\nabla F$ 是 $\nabla G$ 的倍数，则同一个切矢量也正交于 $\nabla F$，于是我们同时也沿一条 $F$ 取常数的路径运动。因此在这样的点上，满足约束就保证了 $F$ 的导数为零——这正是局部极大或极小点附近必然成立的性质。
+
+这可以轻易推广到任意多个约束函数 $G_1,G_2,G_3,\dots$（它们都必须为零）、以及任意多变量的空间。从满足所有这些约束的某一点出发，沿一条同时正交于 $\nabla G_1,\nabla G_2,\nabla G_3,\dots$ 的路径移动，就能使全部约束继续得到满足。现在假设在约束点集中的某一点处有
+
+\begin{equation}
+\nabla F = -\lambda_{1}\nabla G_{1} - \lambda_{2}\nabla G_{2} - \lambda_{3}\nabla G_{3} - \cdots .
+\end{equation}
+
+由于在该点穿过约束点集的任一条路径，其切矢量都正交于每个 $\nabla G_i$，同一个切矢量也就正交于 $\nabla F$。这意味着 $F$ 沿任何此类路径的导数都为零，从而该点就是 $F$ 在约束 $G_1=G_2=G_3=\cdots=0$ 下取局部极大或极小的候选点。
+
+\subsection{连续约束下的变分}
+
+回到原问题。我们要在追击飞行器的整条轨迹上施加约束
+
+\begin{equation}
+\bp''(t)\cdot\bp''(t)-A^{2}=0 .
+\end{equation}
+
+若把 $t$ 的每个取值都看作需要一个单独的约束，就须对这些不同时刻，把"单独的拉格朗日乘子 $\times$ 相应的约束"之积全部"加起来"。但对于这样一段连续的取值，我们用积分而非求和。于是我们写下一个积分，其中既包含沿轨迹流逝的时间（即我们真正想最小化的那个函数），也包含拉格朗日乘子乘以约束的项——此时的拉格朗日乘子已是时间的函数：
+
+\begin{equation}
+I(\bp,\lambda)=\int_{0}^{T(\bp)}\Bigl[\,1+\lambda(t)\bigl(\bp''(t)\cdot\bp''(t)-A^{2}\bigr)\Bigr]\,\dd t .
+\end{equation}
+
+这里，沿轨迹对 $1$ 积分给出总历时。我们把积分上限记作 $T(\bp)$，以强调追击者拦截到叛逃飞船的时刻取决于所选的轨迹。$T(\bp)$ 的实际取值就是下式的第一个正解：
+
+\begin{equation}
+\bp(T)=\mathbf{r}(T).
+\end{equation}
+
+我们的目标是找到一条在满足全部要求的同时、使拦截时间最小的轨迹 $\bp_M(t)$；为此，我们要找到 $\bp_M(t)$ 以及相应的拉格朗日乘子 $\lambda_M(t)$，使得积分 $I(\bp,\lambda)$ 对两个函数中任一个的任意合适变分的导数都为零。所谓\emph{合适}的变分，是指它能让轨迹继续满足必要的边界条件：它必须仍具有相同的初始位置与速度，并且仍须在与叛逃飞船相遇之处匹配其位置与速度。我们将考察如下形式的轨迹：
+
+\begin{equation}
+\bp(t)=\bp_M(t)+\varepsilon\,\bq(t),
+\end{equation}
+
+并在 $t=0$ 处施加限制
+
+\begin{equation}
+\bq(0)=0,\qquad \bq'(0)=0 ,
+\end{equation}
+
+以满足边界条件。由于 $\bp_M$（依定义）已具有正确的初始位置与速度，这些限制便保证了 $\bp_M+\varepsilon\bq$ 同样如此。在 $t=T$ 处，我们要求
+
+\begin{align}
+\bp_M(T)+\varepsilon\,\bq(T) &= \mathbf{r}(T), \\
+\bp_M'(T)+\varepsilon\,\bq'(T) &= \mathbf{r}'(T).
+\end{align}
+
+请记住，$T$ 会随我们改变轨迹而依赖于轨迹，因此这里的第一个方程并不是对 $\bq$ 的限制，而是\emph{确定} $T$ 取值的手段——$T$ 就是这个方程的第一个正解。
+
+若把这两个方程对 $\varepsilon$ 求导、再令 $\varepsilon$ 等于零（并记 $T_M\equiv T(\bp_M)$ 作为简写），便得到
+
+\begin{align}
+\bq(T_M) &= \bigl[\mathbf{r}'(T_M)-\bp_M'(T_M)\bigr]\left.\frac{\dd T}{\dd\varepsilon}\right|_{\varepsilon=0} = 0, \\
+\bq'(T_M) &= \bigl[\mathbf{r}''(T_M)-\bp_M''(T_M)\bigr]\left.\frac{\dd T}{\dd\varepsilon}\right|_{\varepsilon=0}
+= \bigl[\mathbf{a}-\bp_M''(T_M)\bigr]\left.\frac{\dd T}{\dd\varepsilon}\right|_{\varepsilon=0}.
+\end{align}
+
+我们还要对拉格朗日乘子作变分，令
+
+\begin{equation}
+\lambda(t)=\lambda_M(t)+\varepsilon\,\mu(t).
+\end{equation}
+
+现在施加条件：我们的积分对 $\varepsilon$ 的导数为零，
+
+\begin{equation}
+\left.\frac{\dd}{\dd\varepsilon} I\bigl(\bp_M+\varepsilon\bq,\ \lambda_M+\varepsilon\mu\bigr)\right|_{\varepsilon=0}=0 ,
+\end{equation}
+
+即
+
+\begin{equation}
+\left.\frac{\dd}{\dd\varepsilon}\int_{0}^{T(\bp_M+\varepsilon\bq)}
+\Bigl[\,1+\bigl[\lambda_M(t)+\varepsilon\mu(t)\bigr]\bigl([\bp_M''(t)+\varepsilon\bq''(t)]\cdot[\bp_M''(t)+\varepsilon\bq''(t)]-A^{2}\bigr)\Bigr]\,\dd t\right|_{\varepsilon=0}=0 .
+\end{equation}
+
+展开后得
+
+\begin{equation}
+\left.\frac{\dd T}{\dd\varepsilon}\right|_{\varepsilon=0}\Bigl[1+\lambda_M(T)\bigl(\bp_M''(T)\cdot\bp_M''(T)-A^{2}\bigr)\Bigr]
++\int_{0}^{T_M}\!\Bigl[2\lambda_M(t)\,\bp_M''(t)\cdot\bq''(t)+\mu(t)\bigl(\bp_M''(t)\cdot\bp_M''(t)-A^{2}\bigr)\Bigr]\,\dd t=0 .
+\end{equation}
+
+由于 $\bp_M$ 依定义必须在各处都满足"加速度大小等于 $A$"这一约束，上式化为
+
+\begin{equation}
+\left.\frac{\dd T}{\dd\varepsilon}\right|_{\varepsilon=0}
++2\int_{0}^{T_M}\lambda_M(t)\,\bp_M''(t)\cdot\bq''(t)\,\dd t=0 .
+\end{equation}
+
+我们可以用分部积分法变换这个积分，其一般法则是
+
+\begin{equation}
+\int_{a}^{b}u(t)\,v'(t)\,\dd t
+= u(t)\,v(t)\Big|_{a}^{b}-\int_{a}^{b}u'(t)\,v(t)\,\dd t .
+\end{equation}
+
+把它用两次，将关于 $t$ 的导数从 $\bq''(t)$ 移到 $\lambda_M(t)\,\bp_M''(t)$ 上，得到
+
+\begin{equation}
+\left.\frac{\dd T}{\dd\varepsilon}\right|_{\varepsilon=0}
++2\Biggl[
+\lambda_M(t)\,\bp_M''(t)\cdot\bq'(t)\Big|_{0}^{T_M}
+-\frac{\dd}{\dd t}\bigl(\lambda_M(t)\,\bp_M''(t)\bigr)\cdot\bq(t)\Big|_{0}^{T_M}
++\int_{0}^{T_M}\frac{\dd^{2}}{\dd t^{2}}\bigl(\lambda_M(t)\,\bp_M''(t)\bigr)\cdot\bq(t)\,\dd t
+\Biggr]=0 .
+\end{equation}
+
+关于 $\bq$ 的边界条件给出 $\bq(0)=0$、$\bq'(0)=0$，以及 $\bq(T_M)=0$。代入其中唯一非零的边界条件 $\bq'(T_M)=[\mathbf{a}-\bp_M''(T_M)]\left.\dfrac{\dd T}{\dd\varepsilon}\right|_{\varepsilon=0}$，得到
+
+\begin{equation}
+\left.\frac{\dd T}{\dd\varepsilon}\right|_{\varepsilon=0}
+\Bigl(1+2\lambda_M(T_M)\,\bp_M''(T_M)\cdot\bigl[\mathbf{a}-\bp_M''(T_M)\bigr]\Bigr)
++2\int_{0}^{T_M}\frac{\dd^{2}}{\dd t^{2}}\bigl(\lambda_M(t)\,\bp_M''(t)\bigr)\cdot\bq(t)\,\dd t=0 .
+\end{equation}
+
+这个方程需要对所有变分 $\bq$ 都成立。不难看出：只要轨迹的加速度与拉格朗日乘子之积满足微分方程
+
+\begin{equation}
+\frac{\dd^{2}}{\dd t^{2}}\bigl(\lambda_M(t)\,\bp_M''(t)\bigr)=0,
+\end{equation}
+
+我们就能对任何 $\bq$ 使该积分为零。若满足这个方程，就还需要另外保证边界项单独为零。看出这一点的最简便办法，就是把这个方程直接解出来：
+
+\begin{equation}
+\lambda_M(t)\,\bp_M''(t)=\mathbf{C}\,t+\mathbf{D},
+\end{equation}
+
+其中 $\mathbf{C}$ 与 $\mathbf{D}$ 是两个常矢量。由于轨迹 $\bp_M$ 具有恒定的加速度大小 $A$，我们有
+
+\begin{align}
+|\lambda_M(t)|\,|\bp_M''(t)| &= |\mathbf{C}\,t+\mathbf{D}|, \\
+|\lambda_M(t)|\,A &= |\mathbf{C}\,t+\mathbf{D}|, \\
+\lambda_M(t) &= \pm\frac{|\mathbf{C}\,t+\mathbf{D}|}{A}, \\
+\bp_M''(t) &= \pm\frac{A\,(\mathbf{C}\,t+\mathbf{D})}{|\mathbf{C}\,t+\mathbf{D}|}.
+\end{align}
+
+若我们从某一对 $\mathbf{C}\,t+\mathbf{D}$ 出发、再把这二者同乘一个常数，这一因子会在 $\bp_M''(t)$ 的解中完全消去，因此丝毫不影响我们选出满足问题各项具体要求（初态匹配追击飞行器的位置与速度、拦截点匹配叛逃飞船）的轨迹的能力。现在，把我们的解代回边界项，并略去整体因子 $\left.\dfrac{\dd T}{\dd\varepsilon}\right|_{\varepsilon=0}$，得到
+
+\begin{align}
+&1+2\lambda_M(T_M)\,\bp_M''(T_M)\cdot\bigl[\mathbf{a}-\bp_M''(T_M)\bigr] \nonumber\\
+&\qquad = 1+2\,(\mathbf{C}\,T_M+\mathbf{D})\cdot\Bigl[\mathbf{a}\mp\frac{A\,(\mathbf{C}\,T_M+\mathbf{D})}{|\mathbf{C}\,T_M+\mathbf{D}|}\Bigr] \nonumber\\
+&\qquad = 1+2\Bigl[(\mathbf{C}\,T_M+\mathbf{D})\cdot\mathbf{a}\mp A\,|\mathbf{C}\,T_M+\mathbf{D}|\Bigr].
+\end{align}
+
+若引入简写
+
+\begin{equation}
+\mathbf{c}=\mathbf{C}\,T_M+\mathbf{D},
+\end{equation}
+
+并作替换 $\mathbf{c}\to\alpha\,\mathbf{c}$，边界项变为
+
+\begin{equation}
+1+2\bigl[\alpha\,\mathbf{c}\cdot\mathbf{a}\mp A\,|\alpha|\,|\mathbf{c}|\bigr].
+\end{equation}
+
+若假定 $\alpha$ 为正，则可通过令
+
+\begin{equation}
+\alpha=\frac{1}{2\bigl(\pm A\,|\mathbf{c}|-\mathbf{c}\cdot\mathbf{a}\bigr)}
+\end{equation}
+
+使其为零，其中还要对符号作恰当的选择（回忆一下：这个符号决定了轨迹的加速度与方向 $\mathbf{C}\,t+\mathbf{D}$ 之间的整体关系）。我们预期追击飞行器在拦截时刻的加速方向几乎与叛逃飞船一致，因此若 $\mathbf{c}\cdot\mathbf{a}$ 为正，取正号就是恰当的。既然必须满足 $A>|\mathbf{a}|$ 才能让追击飞行器追上叛逃飞船，右端的分母便为正，从而给出我们假定的正 $\alpha$。若 $\mathbf{c}\cdot\mathbf{a}$ 为负，我们只需把最初对 $\mathbf{C}$ 与 $\mathbf{D}$ 的选择取反即可。
+
+于是，只要轨迹的加速度取如下形式，我们就能使边界项与积分同时为零：
+
+\begin{equation}
+\bp_M''(t)=A\,\frac{\mathbf{C}\,t+\mathbf{D}}{|\mathbf{C}\,t+\mathbf{D}|}.
+\end{equation}
+
+\subsection{最优轨迹的显式构造}
+
+为求出上式的通解，我们先从一个特解入手。（以下部分内容改编自文献 [2]，那篇文献处理的是棒球场上各垒之间跑动的最快路径问题。）
+
+\emph{双曲正弦}函数 $\sinh$ 定义为
+
+\begin{equation}
+\sinh(x)=\half\bigl(\ee^{x}-\ee^{-x}\bigr).
+\end{equation}
+
+它的反函数 $\operatorname{arcsinh}$，可以通过对 $\ee^{x}$ 解一个二次方程再取对数求得：
+
+\begin{align}
+y &= \sinh(x), \\
+2y &= \ee^{x}-\ee^{-x}, \\
+(\ee^{x})^{2}-2y\,\ee^{x}-1 &= 0, \\
+\operatorname{arcsinh}(y) = x &= \ln\bigl(y+\sqrt{1+y^{2}}\bigr).
+\end{align}
+
+自然对数的导数就是其反函数，所以 $\operatorname{arcsinh}$ 的导数为
+
+\begin{equation}
+\operatorname{arcsinh}'(y)=\frac{1+y/\sqrt{1+y^{2}}}{y+\sqrt{1+y^{2}}}=\frac{1}{\sqrt{1+y^{2}}} .
+\end{equation}
+
+这使我们能找到一个简单的矢量函数，其一阶导数具有恒定的模长 $A$：
+
+\begin{align}
+\mathbf{V}(t) &= \mathbf{V}_0+A\bigl(\operatorname{arcsinh}(t),\,\sqrt{1+t^{2}}\bigr), \\
+\mathbf{V}'(t) &= A\left(\frac{1}{\sqrt{1+t^{2}}},\,\frac{t}{\sqrt{1+t^{2}}}\right)=A\,\frac{(1,t)}{|(1,t)|}, \\
+|\mathbf{V}'(t)| &= A .
+\end{align}
+
+再多花一点功夫，即可求出这个速度的积分：
+
+\begin{equation}
+\mathbf{X}(t)=\mathbf{X}_0+\mathbf{V}_0\,t+A\Bigl(t\,\operatorname{arcsinh}(t)-\sqrt{1+t^{2}},\ \half\bigl(\operatorname{arcsinh}(t)+t\sqrt{1+t^{2}}\bigr)\Bigr).
+\end{equation}
+
+为把它推广，我们可作替换 $t\to\beta\,t+\gamma$，同时把 $A$ 换成 $A/\beta^{2}$ 以保持加速度大小不变。我们还自由地把坐标旋转任意角度 $\theta$。这样便留下八个可以调整的参数：来自矢量 $\mathbf{X}_0$ 与 $\mathbf{V}_0$ 的四个分量，外加 $\beta$、$\gamma$、$\theta$ 与拦截时刻 $T$。在 $t=0$ 处需要满足四个方程，以拟合追击飞行器的初始位置与速度；在 $t=T$ 处还需满足另外四个方程，以匹配叛逃飞船的位置与速度。
+
+这个方程组可以用数值方法求解。所得结果即为小说中出现的那条曲线：其加速度的方向随时间改变，但大小保持不变：
+
+\orthofig{images/E3__Fig003.png}{拦截叛逃飞船的飞行方案，已标出加速度方向}
+
+关于变分法这一整门学科，文献 [1] 给出了远为严谨的处理，可供进一步阅读。
+
+\section{参考文献}
+
+\begin{itemize}
+  \item [{[1]}] \emph{The Calculus of Variations}, M. Bendersky, Lecture Notes, City University of New York.
+  \item [{[2]}] ``Baserunner's Optimal Path'', Davide Carozza, Stewart Johnson, Frank Morgan, \emph{The Mathematical Intelligencer}, 2009 年 10 月。
+\end{itemize}
+
+\begin{keybox}[本章要点]
+\begin{itemize}
+  \item \textbf{物理塑造文明}：正交宇宙没有普适光速，使得天象呈现"色谱拖尾"；发光释放（而非消耗）能量，使植物靠向夜空发光制造养分；发光引擎无需燃料与推进剂即可持续加速，使星际航行成为可能；面对"伤人者"（Hurtlers）的威胁，文明以"船上历许多代、故乡只过数年"的世代远航作为出路。
+  \item \textbf{软性拦截}（soft interception）要求追击飞行器不仅与叛逃飞船相遇，还要\emph{与其速度匹配}。在所涉低速下沿用牛顿力学；正交宇宙的另类物理仅体现在引擎的运转上。
+  \item 设追击飞行器初始位置 $\bp_0$、速度 $\bv_0$、最大加速度大小 $A$，叛逃飞船轨迹 $\mathbf{r}(t)=\mathbf{r}_0+\bw_0 t+\half\mathbf{a}t^{2}$。要在满足 $\bp(0)=\bp_0$、$\bp'(0)=\bv_0$、$\bp(T)=\mathbf{r}(T)$、$\bp'(T)=\mathbf{r}'(T)$、$|\bp''(t)|\le A$ 的前提下最小化拦截时刻 $T$。
+  \item 假定全程以最大推力工作，把约束取为等式 $|\bp''(t)|=A$，即 $\bp''(t)\cdot\bp''(t)-A^{2}=0$。借助连续形式的拉格朗日乘子，构造泛函
+        $I(\bp,\lambda)=\int_{0}^{T(\bp)}[\,1+\lambda(t)(\bp''(t)\cdot\bp''(t)-A^{2})\,]\dd t$，
+        令其对一切合适变分的导数为零。
+  \item 变分、两次分部积分并消去边界项后，得到 $\dfrac{\dd^{2}}{\dd t^{2}}\bigl(\lambda_M(t)\bp_M''(t)\bigr)=0$，故 $\lambda_M(t)\bp_M''(t)=\mathbf{C}t+\mathbf{D}$，从而最优轨道的加速度为
+        $\bp_M''(t)=A(\mathbf{C}t+\mathbf{D})/|\mathbf{C}t+\mathbf{D}|$——方向可变、大小恒为 $A$。
+  \item 边界项可由 $\mathbf{c}=\mathbf{C}T_M+\mathbf{D}$ 与 $\alpha=1/\bigl(2(\pm A|\mathbf{c}|-\mathbf{c}\cdot\mathbf{a})\bigr)$ 配平；追上叛逃飞船须 $A>|\mathbf{a}|$。
+  \item 借助 $\operatorname{arcsinh}$ 可得显式特解 $\mathbf{V}(t)=\mathbf{V}_0+A(\operatorname{arcsinh}(t),\sqrt{1+t^{2}})$ 及其积分 $\mathbf{X}(t)$；再经 $t\to\beta t+\gamma$、$A\to A/\beta^{2}$ 与旋转 $\theta$ 推广，共有八个参数（$\mathbf{X}_0,\mathbf{V}_0$ 的四个分量及 $\beta,\gamma,\theta,T$），由 $t=0$ 与 $t=T$ 各四个方程数值求解。
+\end{itemize}
+\end{keybox}
